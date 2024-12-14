@@ -9,10 +9,12 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emotion/cache": "^11.14.0",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
     "@mui/icons-material": "^6.2.0",
     "@mui/material": "^6.2.0",
+    "@mui/material-nextjs": "^6.2.0",
     "@reduxjs/toolkit": "^2.5.0",
     "@types/multer": "^1.4.12",
     "chart.js": "^4.4.7",

@@ -1,11 +1,8 @@
-import React from 'react'
+import React from "react";
+import { Button } from "@mui/material";
 
-function page() {
-  return (
-	<div>
-	  Hello
-	</div>
-  )
+function Home() {
+	return <Button color="secondary">Click Me</Button>;
 }
 
-export default page
+export default Home;
