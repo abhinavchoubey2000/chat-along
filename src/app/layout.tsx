@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
 import { MUIThemeProvider } from "./_client-components";
 import { Container } from "@mui/material";
-import { Header } from "@/shared";
+import { Footer, Header } from "@/shared";
 
 export const metadata: Metadata = {
 	title: "chatAlong - Discover and create your own journey",
@@ -19,9 +19,17 @@ export default function RootLayout({
 			<body>
 				<AppRouterCacheProvider>
 					<MUIThemeProvider>
-						<Container maxWidth={"md"} sx={{ height: "100vh" }}>
+						<Container
+							maxWidth={"sm"}
+							sx={{
+								height: "100vh",
+								position: "relative",
+								boxShadow: "0px 0px 2px 3px #00000021",
+							}}
+						>
 							<Header />
 							{children}
+							<Footer />
 						</Container>
 					</MUIThemeProvider>
 				</AppRouterCacheProvider>
