@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
-import { MUIThemeProvider } from "./_client-components";
+import { MUIThemeProvider } from "./_components/client";
 import { Container } from "@mui/material";
 import { Footer, Header } from "@/shared";
 
