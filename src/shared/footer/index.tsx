@@ -13,17 +13,19 @@ export function Footer() {
 		fontSize: "2rem",
 		transition: "all 0.5s",
 		"&:hover": {
-			color: "#86d4ff",
+			color: "#046af2",
 		},
 	};
 	return (
 		<Stack
+			zIndex={100}
 			position="fixed"
 			direction={"row"}
 			bottom={0}
 			left="50%"
 			spacing={10}
 			alignItems={"center"}
+			bgcolor={"white"}
 			sx={{
 				width: "auto",
 				maxWidth: "100%",

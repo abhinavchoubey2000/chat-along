@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
 import { MUIThemeProvider } from "./_components/client";
 import { Container } from "@mui/material";
+import "../globals.css";
 import { Footer, Header } from "@/shared";
 
 export const metadata: Metadata = {
@@ -22,6 +23,8 @@ export default function RootLayout({
 						<Container
 							maxWidth={"sm"}
 							sx={{
+								padding:0,
+								overflow: "auto",
 								height: "100vh",
 								position: "relative",
 								boxShadow: "0px 0px 2px 3px #00000021",
