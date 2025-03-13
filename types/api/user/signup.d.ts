@@ -2,12 +2,12 @@
 /// <reference types="next/image-types/global" />
 
 interface SignupRequestDataInterface {
-	email: String;
-	password: String;
-	image: String;
-	name: String;
-	phone: String;
-	username: String;
+	email: string;
+	password: string;
+	image: string;
+	name: string;
+	phone: string;
+	username: string;
 }
 
 interface SaveDataFunctionInterface {
@@ -15,5 +15,5 @@ interface SaveDataFunctionInterface {
 }
 
 interface GenerateUsernameFunctionInterface {
-	(name: String, phone: String): String;
+	(firstName: string, phone: string): String;
 }

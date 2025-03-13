@@ -1,12 +1,14 @@
 import React from "react";
 import { Status, Post } from "./_components";
-import BottomNavigation from '@mui/material/BottomNavigation'
+import { Footer, Header } from "@/shared";
 
 function Home() {
 	return (
 		<>
+			<Header />
 			<Status />
 			<Post/>
+			<Footer />
 		</>
 	);
 }

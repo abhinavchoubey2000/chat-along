@@ -1,14 +1,24 @@
+"use client";
 import React from "react";
-import { Stack, IconButton, Avatar } from "@mui/material";
+import { Stack, IconButton, Avatar, Badge } from "@mui/material";
 import { CustomToolTip } from "@/custom-components";
+import { useSelector, useDispatch } from "react-redux";
+import Link from "next/link";
 import {
 	Home,
 	Search,
 	AddCircleOutlineSharp,
 	ChatBubble,
 } from "@mui/icons-material";
+import { RootState } from "@/redux/store";
+import { handleDialog } from "@/redux/slices/user";
 
 export function Footer() {
+	const { userData, isAuthenticated, chats } = useSelector(
+		(state: RootState) => state.User
+	);
+	const dispatch = useDispatch();
+	
 	const iconStyle = {
 		fontSize: "2rem",
 		transition: "all 0.5s",
@@ -34,27 +44,73 @@ export function Footer() {
 			}}
 		>
 			<CustomToolTip title={"Home"} placement="top" arrow>
-				<IconButton>
-					<Home sx={iconStyle} />
-				</IconButton>
+				<Link href={"/"}>
+					<IconButton>
+						<Home sx={iconStyle} />
+					</IconButton>
+				</Link>
 			</CustomToolTip>
 			<CustomToolTip title={"Search"} placement="top" arrow>
-				<IconButton>
-					<Search sx={iconStyle} />
-				</IconButton>
+				<Link href={"/search-users"}>
+					<IconButton>
+						<Search sx={iconStyle} />
+					</IconButton>
+				</Link>
 			</CustomToolTip>
 			<CustomToolTip title={"Create Post"} placement="top" arrow>
-				<IconButton>
-					<AddCircleOutlineSharp sx={iconStyle} />
-				</IconButton>
+				{isAuthenticated ? (
+					<Link href={"/create-post"}>
+						<IconButton>
+							<AddCircleOutlineSharp sx={iconStyle} />
+						</IconButton>
+					</Link>
+				) : (
+					<IconButton
+						onClick={() => {
+							dispatch(handleDialog(true));
+						}}
+					>
+						<AddCircleOutlineSharp sx={iconStyle} />
+					</IconButton>
+				)}
 			</CustomToolTip>
 			<CustomToolTip title={"Chat"} placement="top" arrow>
-				<IconButton>
-					<ChatBubble sx={iconStyle} />
-				</IconButton>
+				{isAuthenticated ? (
+					<Link href={"/chats"}>
+						<IconButton>
+							<ChatBubble sx={iconStyle} />
+						</IconButton>
+					</Link>
+				) : (
+					<IconButton
+						onClick={() => {
+							dispatch(handleDialog(true));
+						}}
+					>
+						<Badge
+							variant="dot"
+							invisible={true}
+							color="secondary"
+						>
+							<ChatBubble sx={iconStyle} />
+						</Badge>
+					</IconButton>
+				)}
 			</CustomToolTip>
 			<CustomToolTip title={"Profile"} placement="top" arrow>
-				<Avatar sx={{ cursor: "pointer" }} />
+				{isAuthenticated ? (
+					<Link href={"/profile"}>
+						<Avatar src={userData?.image || ""} sx={{ cursor: "pointer" }} />
+					</Link>
+				) : (
+					<Avatar
+						onClick={() => {
+							dispatch(handleDialog(true));
+						}}
+						src={userData?.image || ""}
+						sx={{ cursor: "pointer" }}
+					/>
+				)}
 			</CustomToolTip>
 		</Stack>
 	);

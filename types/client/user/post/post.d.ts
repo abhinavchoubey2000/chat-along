@@ -1,16 +1,36 @@
+interface PostCreatorInterface {
+	_id: string;
+	name: string;
+	username: string;
+	image: string;
+}
+
+interface PostCommentUserInterface {
+	_id: string;
+	name: string;
+	username: string;
+	image: string;
+}
+
 interface PostCommentsInterface {
-    userId: number;
-    username: string;
-    comment: string;
-    image: string;
+	userId: PostCommentUserInterface;
+	comment: string;
+	_id?:string
+}
+
+interface PostLikesInterface {
+	_id: string;
+	username: string;
+	name: string;
+	image: string;
 }
 
 interface PostInterface {
-    id: number;
-    name: string;
-    likes: Array<number>;
-    comments: Array<PostCommentsInterface>;
-    caption: string;
-    date: string;
-    image: string;
+	_id?:string
+	creator?: PostCreatorInterface;
+	post_image?: string;
+	caption?: string;
+	likes?: Array<PostLikesInterface>;
+	comments?: Array<PostCommentsInterface>;
+	// date: string;
 }

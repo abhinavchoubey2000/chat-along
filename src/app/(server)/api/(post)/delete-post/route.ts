@@ -18,20 +18,24 @@ export async function DELETE(request: Request) {
 		const callCookies = cookies();
 		const cookie = (await callCookies).get("token")?.value;
 
+		//Converting cookie to User Id
+		const id = atob(String(cookie));
+
+		const user = await userModel.findById(id);
+		console.log(user?.posts.includes(postId));
+
 		//Checking if cookie exist or not
-		if (!cookie) {
+		if (!cookie && !user?.posts.includes(postId)) {
 			return NextResponse.json({
 				success: false,
 				message:
 					"You are not authorized to perform this action. Please login first.",
 			});
 		}
+
 		const deletedPost = await postModel.findByIdAndDelete(postId);
 
-		//Converting cookie to User Id
-		const id = atob(String(cookie));
 		//Deleting post id in user posts array
-		const user = await userModel.findById(id);
 		const deletedPostIndex = user?.posts.indexOf(postId);
 		user?.posts.splice(Number(deletedPostIndex), 1);
 		await user?.save();

@@ -1,9 +1,7 @@
 import { NextResponse } from "next/server";
 import { connectToDB } from "../../../_database/connectToDatabase";
-import { userModel } from "../../../_database/models";
 import { postModel, PostSchemaInterface } from "../../../_database/models";
 import { cookies } from "next/headers";
-import mongoose from "mongoose";
 
 connectToDB();
 
@@ -14,6 +12,7 @@ interface CommentPostRequestDataInterface {
 
 export async function POST(request: Request) {
 	try {
+		
 		//Getting data from client
 		const { postId, comment }: CommentPostRequestDataInterface =
 			await request.json();

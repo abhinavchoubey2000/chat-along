@@ -33,9 +33,10 @@ export function MyStatus({ statusArray }: MyStatusPropsInterface) {
 			<Stack
 				onClick={handleOpen}
 				alignItems={"center"}
-				sx={{ cursor: "pointer" }}
+				sx={{ cursor: "pointer", pr:2 }}
 			>
 				<Avatar
+					src="https://images.unsplash.com/photo-1527073620320-77635188c627?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
 					sx={{
 						height: 70,
 						width: 70,

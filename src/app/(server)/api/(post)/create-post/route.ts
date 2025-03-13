@@ -16,11 +16,11 @@ export async function POST(request: Request) {
 		//Getting data from client
 		const { post_image, caption }: CreatePostRequestDataInterface =
 			await request.json();
-		//Call and initialize cookies function
+		// //Call and initialize cookies function
 		const callCookies = cookies();
 		const cookie = (await callCookies).get("token")?.value;
 
-		//Checking if cookie exist or not
+		// //Checking if cookie exist or not
 		if (!cookie) {
 			return NextResponse.json({
 				success: false,
@@ -29,7 +29,7 @@ export async function POST(request: Request) {
 			});
 		}
 
-		//Converting cookie to User Id
+		// //Converting cookie to User Id
 		const id = atob(String(cookie));
 		const post: PostSchemaInterface = new postModel({
 			creator: id,

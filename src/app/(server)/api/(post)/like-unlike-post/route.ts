@@ -28,7 +28,6 @@ export async function PUT(request: Request) {
 
 		//Converting cookie to User Id
 		const id = atob(String(cookie));
-
 		//Finding the post by the id to like or unlike
 		const post = await postModel.findById(postId);
 		//Checking if the user already liked the post or not

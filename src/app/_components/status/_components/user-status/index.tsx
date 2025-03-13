@@ -44,7 +44,10 @@ export function UserStatus({ statusArray }: UserStatusPropsInterface) {
 					alignItems={"center"}
 					sx={{ cursor: "pointer" }}
 				>
-					<Avatar sx={{ height: 70, width: 70, border: "2px solid red" }} />
+					<Avatar
+						src={value.image}
+						sx={{ height: 70, width: 70, border: "2px solid #06d001" }}
+					/>
 					<Typography textAlign={"center"} variant="caption">
 						{value.username}
 					</Typography>

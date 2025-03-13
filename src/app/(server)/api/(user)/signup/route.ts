@@ -21,24 +21,6 @@ export async function POST(request: Request) {
 		return newUser;
 	};
 
-	//Suggest username to client
-	const getUsername: GenerateUsernameFunctionInterface = (name, phone) => {
-		const symbols = ["_", ".", "@", "-"];
-		const randomSymbolsIndex = Math.floor(Math.random() * symbols.length);
-		const randomSymbol = symbols[randomSymbolsIndex];
-		const firstName = name.split(" ")[0].substring(0, 5);
-		const middle4DigitNumbers = phone.substring(3, 7);
-		const nameAndNumber = firstName + middle4DigitNumbers;
-		const randomPostionsForSymbols =
-			Math.floor(Math.random() * (nameAndNumber.length - 1 - 2 + 1)) + 2;
-		const username =
-			nameAndNumber.slice(0, randomPostionsForSymbols) +
-			randomSymbol +
-			nameAndNumber.slice(randomPostionsForSymbols);
-
-		return username.toLowerCase();
-	};
-
 	try {
 		//Getting data from client
 		const {
@@ -49,40 +31,6 @@ export async function POST(request: Request) {
 			phone,
 			username,
 		}: SignupRequestDataInterface = await request.json();
-
-		//Checking if email already exist
-		const matachedEmail = await userModel.findOne({ email });
-		if (matachedEmail) {
-			return NextResponse.json({
-				success: false,
-				message: "The email you entered is already in use",
-			});
-		}
-
-		//Checking the username validation
-		const checkUsernameValidation = /[+\`!#$%^&*()={}\[\]|\\:;"'<>,?/]/.test(
-			String(username)
-		);
-		if (checkUsernameValidation) {
-			const suggestedUserName = getUsername(name, phone);
-			return NextResponse.json({
-				success: false,
-				message:
-					"The username could only include these special characters [@ _ - .]",
-				data: suggestedUserName,
-			});
-		}
-
-		//Checking if username already exists
-		const matachedUsername = await userModel.findOne({ username });
-		if (matachedUsername) {
-			const suggestedUserName = getUsername(name, phone);
-			return NextResponse.json({
-				success: false,
-				message: "This username has been already taken.",
-				data: suggestedUserName,
-			});
-		}
 
 		//Calling save data function
 		const newUser = saveData({

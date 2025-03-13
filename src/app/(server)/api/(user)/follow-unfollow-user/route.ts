@@ -26,7 +26,7 @@ export async function PUT(request: Request) {
 		//Converting cookie to User Id
 		const id = atob(String(cookie));
 
-        //Checking if user trying to follow himself/herself
+		//Checking if user trying to follow himself/herself
 		if (userId === id) {
 			return NextResponse.json({
 				success: false,

@@ -20,6 +20,7 @@
     "chart.js": "^4.4.7",
     "cloudinary": "^2.5.1",
     "dotenv": "^16.4.5",
+    "express": "^4.21.2",
     "framer-motion": "^11.14.4",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.8.3",
@@ -31,7 +32,9 @@
     "react-dom": "^18.3.1",
     "react-hot-toast": "^2.4.1",
     "react-loader-spinner": "^6.1.6",
-    "react-redux": "^9.2.0"
+    "react-redux": "^9.2.0",
+    "socket.io": "^4.8.1",
+    "socket.io-client": "^4.8.1"
   },
   "devDependencies": {
     "@types/next": "^9.0.0",

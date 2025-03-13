@@ -22,8 +22,12 @@ export async function GET(request: Request) {
 
 		//Converting cookie to User Id
 		const id = atob(String(cookie));
-		const user = await userModel.findById(id);
-
+		const user = await userModel
+			.findById(id)
+			.populate("posts", ["_id", "post_image", "likes", "comments"])
+			.populate("following", ["_id", "name", "username", "image"])
+			.populate("followers", ["_id", "name", "username", "image"]);
+			
 		return NextResponse.json({
 			success: true,
 			message: "Fetched user profile.",

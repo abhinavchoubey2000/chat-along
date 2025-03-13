@@ -1,9 +1,14 @@
+"use client";
 import React from "react";
 import { Stack } from "@mui/material";
 import { MyStatus, UserStatus } from "./_components";
+import { useSelector } from "react-redux";
+import { RootState } from "@/redux/store";
 
 export function Status() {
-	return (
+	const { isAuthenticated } = useSelector((state: RootState) => state.User);
+
+	return !isAuthenticated ? null : (
 		<Stack direction={"row"} overflow={"auto"} spacing={2}>
 			{/* Logged in user status component */}
 			<MyStatus
@@ -35,22 +40,9 @@ export function Status() {
 			<UserStatus
 				statusArray={[
 					{
-						username: "ayushee",
-						status: [
-							{
-								_id: 1,
-								statusContent: "Hie I am ayushee.",
-								bgColor: "red",
-							},
-							{
-								_id: 2,
-								statusContent: "Abhinav is my bestfriend.",
-								bgColor: "yellow",
-							},
-						],
-					},
-					{
-						username: "anshul",
+						username: "ansh@12",
+						image:
+							"https://images.unsplash.com/photo-1708752316614-5454d905e654?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
 						status: [
 							{
 								_id: 1,
@@ -70,7 +62,9 @@ export function Status() {
 						],
 					},
 					{
-						username: "aman",
+						username: "aman@12",
+						image:
+							"https://plus.unsplash.com/premium_photo-1673296129756-e45408e25250?q=80&w=1413&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
 						status: [
 							{
 								_id: 1,

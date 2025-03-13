@@ -9,9 +9,14 @@ export async function POST(request: Request) {
 		//Getting data from client
 		const { password, username }: LoginRequestDataInterface =
 			await request.json();
-		
-		//Checking if username exsist or not	
-		const user = await userModel.findOne({ username });
+
+		//Checking if username exsist or not
+		const user = await userModel
+			.findOne({ username })
+			.populate("posts")
+			.populate("following", ["_id", "name", "username", "image"])
+			.populate("followers", ["_id", "name", "username", "image"])
+			.populate("blocked_users", ["_id", "name", "username", "image"]);
 		if (!user) {
 			return NextResponse.json({
 				success: false,
@@ -27,7 +32,7 @@ export async function POST(request: Request) {
 			});
 		}
 
-		//Instead of returning response directly, storing it into a variable to set cookies 
+		//Instead of returning response directly, storing it into a variable to set cookies
 		const response = NextResponse.json({
 			success: true,
 			message: `Welcome back ${user.name.split(" ")[0]}!`,

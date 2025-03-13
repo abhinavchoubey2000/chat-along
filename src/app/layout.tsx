@@ -1,9 +1,16 @@
 import type { Metadata } from "next";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
-import { MUIThemeProvider } from "./_components/client";
+import {
+	MUIThemeProvider,
+	StorePublicPosts,
+	StoreUserData,
+	StoreAllUsersData,
+	ReceiveMessage,
+	ReceiveNotification,
+} from "./_components/client";
 import { Container } from "@mui/material";
 import "../globals.css";
-import { Footer, Header } from "@/shared";
+import { ReduxProvider } from "@/redux/ReduxProvider";
 
 export const metadata: Metadata = {
 	title: "chatAlong - Discover and create your own journey",
@@ -20,20 +27,29 @@ export default function RootLayout({
 			<body>
 				<AppRouterCacheProvider>
 					<MUIThemeProvider>
-						<Container
-							maxWidth={"sm"}
-							sx={{
-								padding:0,
-								overflow: "auto",
-								height: "100vh",
-								position: "relative",
-								boxShadow: "0px 0px 2px 3px #00000021",
-							}}
-						>
-							<Header />
-							{children}
-							<Footer />
-						</Container>
+						<ReduxProvider>
+							<main>
+								<StoreUserData />
+								<StorePublicPosts />
+								<StoreAllUsersData />
+								<ReceiveNotification />
+								<ReceiveMessage />
+								<Container
+									maxWidth={"sm"}
+									sx={{
+										px: 0,
+										pb: 7,
+										overflow: "auto",
+										height: "100vh",
+										position: "relative",
+										boxShadow: "0px 0px 2px 3px #00000021",
+										overflowX: "hidden",
+									}}
+								>
+									{children}
+								</Container>
+							</main>
+						</ReduxProvider>
 					</MUIThemeProvider>
 				</AppRouterCacheProvider>
 			</body>

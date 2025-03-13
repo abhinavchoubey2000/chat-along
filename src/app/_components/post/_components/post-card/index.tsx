@@ -9,26 +9,43 @@ import {
 	Typography,
 } from "@mui/material";
 import { LikeCommentButtonStack, PostOption } from "./_components";
+import Link from "next/link";
 
-export function PostCard({ postObject }: { postObject: PostInterface }) {
+export function PostCard({
+	_id,
+	creator,
+	caption,
+	post_image,
+	comments,
+	likes,
+}: PostInterface) {
 	return (
-		<Card sx={{ maxWidth: "100%", marginY: 3 }} raised>
+		<Card sx={{ width: "30rem", marginY: 3 }} raised>
 			<CardHeader
-				avatar={<Avatar />}
-				action={<PostOption />}
-				title={postObject.name}
-				subheader={postObject.date}
+				avatar={<Avatar src={creator?.image} />}
+				action={<PostOption id={_id || ""} />}
+				title={
+					<Link
+						href={`/${creator?.username}`}
+						style={{ textDecoration: "none", color: "black" }}
+					>
+						{creator?.name}
+					</Link>
+				}
+				subheader={"1 Jan 2025"}
 			/>
-			<CardMedia component="img" width={400} image={postObject.image} />
+			<CardMedia component="img" width={200} height={400} image={post_image} />
 			<CardContent>
 				<Typography variant="body2" sx={{ color: "black" }}>
-					{postObject.caption}
+					{caption}
 				</Typography>
 			</CardContent>
 			<CardActions disableSpacing>
 				<LikeCommentButtonStack
-					likes={postObject.likes}
-					comments={postObject.comments}
+					likes={likes || []}
+					comments={comments || []}
+					id={_id || ""}
+					creatorId={creator?._id||""}
 				/>
 			</CardActions>
 		</Card>
