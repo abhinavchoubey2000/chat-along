@@ -10,15 +10,19 @@ import {
 } from "@mui/material";
 import { Close } from "@mui/icons-material";
 
-export function UserStatus({ statusArray }: UserStatusPropsInterface) {
+export function UserStatus({
+	followings,
+}: {
+	followings: Array<FollowingInterface>;
+}) {
 	// State for opening and closing status backgrop status window
 	const [open, setOpen] = useState(false);
 	// State for the index of pagination
 	const [statusIndex, setStatusIndex] = useState(1);
 	// State for the current user status object, initially all the values will be empty due to type safety
 	const [currentStatusObject, setCurrentStatusObject] = useState<
-		Array<UserStatusObjectInterface>
-	>([{ _id: 0, statusContent: "", bgColor: "" }]);
+		Array<StatusInterface>
+	>([{ _id: "", statusContent: "", colorCode: "", colorName: "" }]);
 	//Function for handling the pagination button next or previous
 	const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
 		setStatusIndex(value);
@@ -28,28 +32,28 @@ export function UserStatus({ statusArray }: UserStatusPropsInterface) {
 		setOpen(false);
 	};
 	//Fuction for opening the backdrop status window
-	const handleOpen = (currentStatusArray: Array<UserStatusObjectInterface>) => {
+	const handleOpen = (currentStatusArray: Array<StatusInterface>) => {
 		console.log(currentStatusArray);
 		setCurrentStatusObject(currentStatusArray);
 		setOpen(true);
 	};
 
-	return statusArray.map((value, index) => {
-		return (
+	return followings.map((user, index) => {
+		return user.status?.length === 0 ? null : (
 			<div key={index}>
 				<Stack
 					onClick={() => {
-						handleOpen(value.status);
+						handleOpen(user.status || []);
 					}}
 					alignItems={"center"}
 					sx={{ cursor: "pointer" }}
 				>
 					<Avatar
-						src={value.image}
+						src={user.image}
 						sx={{ height: 70, width: 70, border: "2px solid #06d001" }}
 					/>
 					<Typography textAlign={"center"} variant="caption">
-						{value.username}
+						{user.username}
 					</Typography>
 				</Stack>
 				{/* Backdrop component where the status will be viewed */}
@@ -60,7 +64,7 @@ export function UserStatus({ statusArray }: UserStatusPropsInterface) {
 						width: "44%",
 						height: "100%",
 						left: "26.8%",
-						bgcolor: `${currentStatusObject[statusIndex - 1].bgColor}`,
+						bgcolor: `${currentStatusObject[statusIndex - 1].colorCode}`,
 						backdropFilter: "blur(2px)",
 					})}
 					open={open}
@@ -79,6 +83,22 @@ export function UserStatus({ statusArray }: UserStatusPropsInterface) {
 						>
 							<Close fontSize="small" />
 						</Fab>
+						<Stack
+							position={"fixed"}
+							direction={"row"}
+							spacing={1}
+							top={5}
+							left={30}
+							alignItems={"center"}
+						>
+							<Avatar src={user.image} sx={{ height: 35, width: 35 }} />
+							<Stack spacing={0}>
+								<Typography>{user.name}</Typography>
+								<Typography variant="caption" sx={{ opacity: 0.7 }}>
+									2:33 PM
+								</Typography>
+							</Stack>
+						</Stack>
 						<Pagination
 							count={currentStatusObject.length}
 							page={statusIndex}

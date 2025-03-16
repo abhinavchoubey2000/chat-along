@@ -25,7 +25,7 @@ export async function GET(request: Request) {
 		const user = await userModel
 			.findById(id)
 			.populate("posts", ["_id", "post_image", "likes", "comments"])
-			.populate("following", ["_id", "name", "username", "image"])
+			.populate("following", ["_id", "name", "username", "image", "status"])
 			.populate("followers", ["_id", "name", "username", "image"]);
 			
 		return NextResponse.json({

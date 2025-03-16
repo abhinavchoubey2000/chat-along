@@ -4,5 +4,5 @@ interface MyStatusPropsInterface {
 interface MyStatusObjectInterface {
     _id: number;
     statusContent: string;
-    bgColor:string
+    // bgColor:string
 }

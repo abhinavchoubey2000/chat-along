@@ -1,9 +1,18 @@
-import React from 'react'
+import React from "react";
+import { CircularProgress, Container } from "@mui/material";
 
-export default function Loading() {
-  return (
-    <div>
-      <h1>Loading...</h1>
-    </div>
-  )
+export default function loading() {
+	return (
+		<Container
+			maxWidth={"sm"}
+			sx={{
+				display: "flex",
+				alignItems: "center",
+				justifyContent: "center",
+				height: "90vh",
+			}}
+		>
+			<CircularProgress sx={{ color: "blue" }} size={100}/>
+		</Container>
+	);
 }

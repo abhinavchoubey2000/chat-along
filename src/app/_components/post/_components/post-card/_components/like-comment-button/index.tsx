@@ -16,12 +16,16 @@ import {
 	InputLabel,
 	OutlinedInput,
 	InputAdornment,
+	Dialog,
+	DialogContent,
+	Box,
 } from "@mui/material";
 import Link from "next/link";
 import React, { useState } from "react";
 import { RootState } from "@/redux/store";
 import { likeUnlikePostInState, commentPostInState } from "@/redux/slices/post";
 import { handleDialog } from "@/redux/slices/user";
+import { UserCard } from "./_components";
 
 const socket = io("http://localhost:5000");
 
@@ -37,6 +41,7 @@ export function LikeCommentButtonStack({
 	creatorId: string;
 }) {
 	const [isCommentOpen, setIsCommentOpen] = useState(false);
+	const [isDialogOpened, setIsDialogOpened] = useState(false);
 	const [comment, setComment] = useState("");
 	const { userData, isAuthenticated } = useSelector(
 		(state: RootState) => state.User
@@ -99,7 +104,7 @@ export function LikeCommentButtonStack({
 			senderImage: userData.image,
 			receiverId: creatorId,
 			action: `comment`,
-			link:`/post/${id}`
+			link: `/post/${id}`,
 		};
 
 		socket.off().emit("sendNotification", data);
@@ -107,6 +112,31 @@ export function LikeCommentButtonStack({
 
 	return (
 		<Stack direction={"column"} spacing={2} width={"100%"}>
+			<Dialog
+				fullWidth
+				open={isDialogOpened}
+				onClose={() => {
+					setIsDialogOpened(false);
+				}}
+				aria-labelledby="alert-dialog-title"
+				aria-describedby="alert-dialog-description"
+			>
+				<DialogContent>
+					<Box height={"80vh"}>
+						{likes.length===0?<Typography textAlign={"center"}>No likes yet</Typography>:
+						likes?.map((user, index) => {
+							return (
+								<UserCard
+									key={index}
+									name={user.name}
+									image={user.image}
+									username={user.username}
+								/>
+							);
+						})}
+					</Box>
+				</DialogContent>
+			</Dialog>
 			<Stack direction={"row"} spacing={2}>
 				<Stack direction={"column"} spacing={0} justifyContent={"center"}>
 					<IconButton
@@ -120,7 +150,14 @@ export function LikeCommentButtonStack({
 					>
 						<Favorite />
 					</IconButton>
-					<Typography variant="caption" color="text.secondary">
+					<Typography
+						variant="caption"
+						color="text.secondary"
+						sx={{ cursor: "pointer" }}
+						onClick={() => {
+							setIsDialogOpened(true);
+						}}
+					>
 						{`${likes.length} ${likes.length > 1 ? "Likes" : "Like"}`}
 					</Typography>
 				</Stack>

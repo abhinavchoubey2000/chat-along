@@ -14,7 +14,7 @@ export async function POST(request: Request) {
 		const user = await userModel
 			.findOne({ username })
 			.populate("posts")
-			.populate("following", ["_id", "name", "username", "image"])
+			.populate("following", ["_id", "name", "username", "image", "status"])
 			.populate("followers", ["_id", "name", "username", "image"])
 			.populate("blocked_users", ["_id", "name", "username", "image"]);
 		if (!user) {

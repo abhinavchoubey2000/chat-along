@@ -1,6 +1,6 @@
 import mongoose, { Document, Schema } from "mongoose";
 
-export interface UserSchemaInterface extends Document{
+export interface UserSchemaInterface extends Document {
 	name: string;
 	email: string;
 	password: string;
@@ -10,7 +10,7 @@ export interface UserSchemaInterface extends Document{
 	following: [string];
 	followers: [string];
 	image: string;
-	status:StatusInterface[];
+	status: StatusInterface[];
 	blocked_users: [string];
 }
 
@@ -63,6 +63,8 @@ const userSchema: Schema = new mongoose.Schema<UserSchemaInterface>(
 			{
 				statusContent: String,
 				statusId: mongoose.Schema.Types.ObjectId,
+				colorCode: String,
+				colorName: String,
 			},
 		],
 		blocked_users: [

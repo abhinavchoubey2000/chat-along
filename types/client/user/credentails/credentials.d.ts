@@ -6,11 +6,11 @@ interface UserResponseDataInterface {
 	phone?: string;
 	username?: string;
 	posts?: Array<PostInterface>;
-    following?:Array<FollowingInterface>;
-    followers?:Array<FollowersInterface>
-    image?:string;
-    blocked_users?:Array<BlockedUsersInterface>
-    status?:Array<StatusInterface>
+	following?: Array<FollowingInterface>;
+	followers?: Array<FollowersInterface>;
+	image?: string;
+	blocked_users?: Array<BlockedUsersInterface>;
+	status?: Array<StatusInterface>;
 }
 
 interface FollowingInterface {
@@ -18,6 +18,7 @@ interface FollowingInterface {
 	name: string;
 	image: string;
 	username: string;
+	status?: Array<StatusInterface>;
 }
 
 interface FollowersInterface {
@@ -35,6 +36,8 @@ interface BlockedUsersInterface {
 }
 
 interface StatusInterface {
-	_id: string;
+	_id?: string;
 	statusContent: string;
+	colorName: string;
+	colorCode: string;
 }

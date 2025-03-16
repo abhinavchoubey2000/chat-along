@@ -167,6 +167,25 @@ export const userSlice = createSlice({
 				state.chats[userId][state.chats[userId].length - 1].seen = true;
 			}
 		},
+		addStatusInState: (state, action: PayloadAction<StatusInterface>) => {
+			if (state.userData.status) {
+				state?.userData?.status.push({
+					statusContent: action.payload.statusContent,
+					colorCode: action.payload.colorCode,
+					colorName: action.payload.colorName,
+					_id: String(state.userData.status?.length + 1),
+				});
+			}
+		},
+		deleteStatusInState: (state, action: PayloadAction<string>) => {
+			if (state.userData.status) {
+				const indexOfStatus = state.userData.status.findIndex(
+					(status) => status._id === action.payload
+				);
+
+				state.userData.status.splice(Number(indexOfStatus), 1);
+			}
+		},
 	},
 });
 
@@ -179,6 +198,8 @@ export const {
 	sendMessageInState,
 	receiveMessageInState,
 	receiveNotificationInState,
+	addStatusInState,
+	deleteStatusInState,
 	seenMessageInState,
 	changeLoadingState,
 } = userSlice.actions;

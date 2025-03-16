@@ -8,12 +8,17 @@ connectToDB();
 
 interface AddStatusRequestDataInterface {
 	statusContent: string;
+	colorName: string;
+	colorCode: string;
 }
 
 export async function POST(request: Request) {
 	try {
-		const { statusContent }: AddStatusRequestDataInterface =
-			await request.json();
+		const {
+			statusContent,
+			colorCode,
+			colorName,
+		}: AddStatusRequestDataInterface = await request.json();
 		//Call and initialize cookies function
 		const callCookies = cookies();
 		const cookie = (await callCookies).get("token")?.value;
@@ -31,7 +36,12 @@ export async function POST(request: Request) {
 		const id = atob(String(cookie));
 		const user = await userModel.findById(id);
 		const objectId = new mongoose.Types.ObjectId();
-		user?.status.push({ _id: String(objectId), statusContent });
+		user?.status.push({
+			_id: String(objectId),
+			statusContent,
+			colorCode,
+			colorName,
+		});
 		await user?.save();
 
 		return NextResponse.json({

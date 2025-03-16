@@ -80,18 +80,18 @@ export const usersApi = createApi({
 				},
 			}),
 		}),
-		addLink: builder.mutation({
-			query: (linkObj: {
-				url: string;
-				fullname: string;
-				linkColor: string;
+		addStatus: builder.mutation({
+			query: (data: {
+				statusContent: string;
+				colorName: string;
+				colorCode: string;
 			}) => ({
-				url: "api/add-link",
+				url: "api/add-status",
 				method: "POST",
 				body: {
-					url: linkObj.url,
-					fullname: linkObj.fullname,
-					linkColor: linkObj.linkColor,
+					statusContent: data.statusContent,
+					colorCode: data.colorCode,
+					colorName: data.colorName,
 				},
 			}),
 		}),
@@ -112,17 +112,19 @@ export const usersApi = createApi({
 				},
 			}),
 		}),
-		deleteLink: builder.mutation({
-			query: (linkId) => ({
-				url: `api/delete-link/${linkId}`,
+		deleteStatus: builder.mutation({
+			query: (statusId) => ({
+				url: `api/delete-status`,
 				method: "DELETE",
+				body: {
+					statusId,
+				},
 			}),
 		}),
 	}),
 });
 
 export const {
-	// User Api Slices
 	useFetchUserDataQuery,
 	useFetchAllUsersDataQuery,
 	useLoginMutation,
@@ -131,7 +133,7 @@ export const {
 	useSignupMutation,
 	useLogoutMutation,
 	useFollowUnfollowUserMutation,
-	useAddLinkMutation,
+	useAddStatusMutation,
 	useEditProfileMutation,
-	useDeleteLinkMutation,
+	useDeleteStatusMutation,
 } = usersApi;

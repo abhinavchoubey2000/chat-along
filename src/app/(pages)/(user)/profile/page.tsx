@@ -1,13 +1,24 @@
 "use client";
-import { Avatar, Box, Button, Stack, Typography } from "@mui/material";
-import React from "react";
-import { PostCard } from "./_components";
+import {
+	Avatar,
+	Box,
+	Button,
+	Container,
+	Dialog,
+	DialogContent,
+	Stack,
+	Typography,
+} from "@mui/material";
+import React, { useState } from "react";
+import { PostCard, UserCard } from "./_components";
 import { useSelector } from "react-redux";
 import Link from "next/link";
 import { RootState } from "@/redux/store";
 
 export default function Profile() {
 	const { userData } = useSelector((state: RootState) => state.User);
+	const [isDialogOpened, setIsDialogOpened] = useState(false);
+	const [dialogOption, setDialogOption] = useState("followers");
 
 	return (
 		<Box display={"flex"} flexDirection={"column"} width={"100%"} gap={3}>
@@ -24,7 +35,15 @@ export default function Profile() {
 								{userData.posts?.length}
 							</Typography>
 						</Stack>
-						<Stack direction={"column"} alignItems={"center"}>
+						<Stack
+							onClick={() => {
+								setDialogOption("followers");
+								setIsDialogOpened(true);
+							}}
+							sx={{ cursor: "pointer" }}
+							direction={"column"}
+							alignItems={"center"}
+						>
 							<Typography sx={{ opacity: 0.6 }} fontWeight={"bold"}>
 								Followers
 							</Typography>
@@ -32,7 +51,15 @@ export default function Profile() {
 								{userData.followers?.length}
 							</Typography>
 						</Stack>
-						<Stack direction={"column"} alignItems={"center"}>
+						<Stack
+							direction={"column"}
+							alignItems={"center"}
+							onClick={() => {
+								setDialogOption("following");
+								setIsDialogOpened(true);
+							}}
+							sx={{ cursor: "pointer" }}
+						>
 							<Typography sx={{ opacity: 0.6 }} fontWeight={"bold"}>
 								Following
 							</Typography>
@@ -43,6 +70,41 @@ export default function Profile() {
 					</Stack>
 				</Stack>
 			</Stack>
+			<Dialog
+				fullWidth
+				open={isDialogOpened}
+				onClose={() => {
+					setIsDialogOpened(false);
+				}}
+				aria-labelledby="alert-dialog-title"
+				aria-describedby="alert-dialog-description"
+			>
+				<DialogContent>
+					<Box height={"80vh"}>
+						{dialogOption === "followers"
+							? userData?.followers?.map((follower, index) => {
+									return (
+										<UserCard
+											key={index}
+											name={follower.name}
+											image={follower.image}
+											username={follower.username}
+										/>
+									);
+							  })
+							: userData?.following?.map((following, index) => {
+									return (
+										<UserCard
+											key={index}
+											name={following.name}
+											image={following.image}
+											username={following.username}
+										/>
+									);
+							  })}
+					</Box>
+				</DialogContent>
+			</Dialog>
 			<Stack direction={"row"} alignItems={"flex-end"}>
 				<Typography fontWeight={"bold"} variant="h6" sx={{ opacity: 0.7 }}>
 					#
@@ -52,7 +114,7 @@ export default function Profile() {
 				</Typography>
 			</Stack>
 			<Stack direction={"row"} gap={2}>
-				<Link href={'/edit-profile'} style={{width:"100%"}}>
+				<Link href={"/edit-profile"} style={{ width: "100%" }}>
 					<Button variant="contained" fullWidth>
 						Edit profile
 					</Button>
