@@ -14,7 +14,7 @@ export function Status() {
 		<Stack direction={"row"} overflow={"auto"} spacing={2}>
 			<MyStatus
 				statusArray={userData.status || []}
-				loggedInUserImage={userData?.image || ""}
+				loggedInUserImage={userData?.image?.image_url || ""}
 			/>
 
 			{/* Other connected users status component */}

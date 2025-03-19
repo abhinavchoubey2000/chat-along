@@ -18,12 +18,18 @@ export function PostCard({
 	post_image,
 	comments,
 	likes,
+	date,
 }: PostInterface) {
 	return (
-		<Card sx={{ width: "30rem", marginY: 3 }} raised>
+		<Card sx={{ width: ["100%","30rem"], marginY: 3 }} raised>
 			<CardHeader
-				avatar={<Avatar src={creator?.image} />}
-				action={<PostOption id={_id || ""} />}
+				avatar={<Avatar src={creator?.image.image_url} />}
+				action={
+					<PostOption
+						id={_id || ""}
+						image_public_id={post_image?.public_id || ""}
+					/>
+				}
 				title={
 					<Link
 						href={`/${creator?.username}`}
@@ -32,9 +38,14 @@ export function PostCard({
 						{creator?.name}
 					</Link>
 				}
-				subheader={"1 Jan 2025"}
+				subheader={date}
 			/>
-			<CardMedia component="img" width={200} height={400} image={post_image} />
+			<CardMedia
+				component="img"
+				width={200}
+				height={400}
+				image={post_image?.image_url}
+			/>
 			<CardContent>
 				<Typography variant="body2" sx={{ color: "black" }}>
 					{caption}
@@ -45,7 +56,7 @@ export function PostCard({
 					likes={likes || []}
 					comments={comments || []}
 					id={_id || ""}
-					creatorId={creator?._id||""}
+					creatorId={creator?._id || ""}
 				/>
 			</CardActions>
 		</Card>

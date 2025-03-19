@@ -19,7 +19,7 @@ export async function Header() {
 			direction={"row"}
 			justifyContent={"space-between"}
 		>
-			<Image src={Logo} alt="chatAlong logo" height={50} />
+			<Image src={Logo} alt="chatAlong logo" style={{height:30, width:50}} />
 			{cookie ? (
 				<NotificationBadge />
 			) : (

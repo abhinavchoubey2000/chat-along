@@ -3,13 +3,21 @@ import { ArrowBack } from "@mui/icons-material";
 import { Box, Button, IconButton, Stack, Typography } from "@mui/material";
 import Link from "next/link";
 import React from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 import { NotificationCard } from "./_components";
 import { RootState } from "@/redux/store";
+import { clearNotificationsInState } from "@/redux/slices/user";
+import { useClearNotificationsMutation } from "@/redux/api-slices";
 
 export default function Notification() {
-	const { notifications } = useSelector((state: RootState) => state.User);
+	const { userData } = useSelector((state: RootState) => state.User);
+	const dispatch = useDispatch();
+	const [clearNotifications] = useClearNotificationsMutation();
+	const handleClearNotifications = async () => {
+		dispatch(clearNotificationsInState());
+		await clearNotifications();
+	};
 	return (
 		<>
 			<Stack
@@ -33,25 +41,27 @@ export default function Notification() {
 				overflow={"auto"}
 				mt={1}
 				sx={{ display: "flex", flexDirection: "column" }}
-                gap={1}
+				gap={1}
 			>
-				{notifications.length === 0 ? (
-					<Typography textAlign={"center"} sx={{opacity:0.7}}>No notifications for now.</Typography>
+				{userData.notifications?.length === 0 ? (
+					<Typography textAlign={"center"} sx={{ opacity: 0.7 }}>
+						No notifications for now.
+					</Typography>
 				) : (
-					notifications.map((notification, index) => {
+					userData.notifications?.map((notification, index) => {
 						return (
 							<NotificationCard
 								key={index}
 								action={notification.action}
-								image={notification.senderImage}
-								name={notification.senderName}
+								image={notification.image}
+								name={notification.name}
 								link={notification.link}
 							/>
 						);
 					})
 				)}
 			</Box>
-			<Button size="small" color="error">
+			<Button onClick={handleClearNotifications} size="small" color="error">
 				Clear all
 			</Button>
 		</>

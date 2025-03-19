@@ -21,17 +21,31 @@ export default function Profile() {
 	const [dialogOption, setDialogOption] = useState("followers");
 
 	return (
-		<Box display={"flex"} flexDirection={"column"} width={"100%"} gap={3}>
+		<Box
+			display={"flex"}
+			flexDirection={"column"}
+			width={"100%"}
+			gap={3}
+			px={[1, 0]}
+		>
 			<Stack direction={"row"} gap={2} alignItems={"center"}>
-				<Avatar src={userData.image} sx={{ height: "7rem", width: "7rem" }} />
-				<Stack direction={"column"} gap={1}>
-					<Typography variant="h5">{userData.name}</Typography>
+				<Avatar
+					src={userData.image?.image_url}
+					sx={{ height: ["5rem", "7rem"], width: ["5rem", "7rem"] }}
+				/>
+				<Stack direction={"column"} gap={[0, 1]}>
+					<Typography sx={{ fontSize: ["1.5rem", "2rem"] }}>
+						{userData.name}
+					</Typography>
 					<Stack direction={"row"} gap={2}>
 						<Stack direction={"column"} alignItems={"center"}>
-							<Typography sx={{ opacity: 0.6 }} fontWeight={"bold"}>
+							<Typography
+								sx={{ opacity: 0.6, fontSize: ["0.8rem", "1rem"] }}
+								fontWeight={"bold"}
+							>
 								Posts
 							</Typography>
-							<Typography sx={{ opacity: 0.6 }}>
+							<Typography sx={{ opacity: 0.6, fontSize: ["0.8rem", "1rem"] }}>
 								{userData.posts?.length}
 							</Typography>
 						</Stack>
@@ -44,10 +58,13 @@ export default function Profile() {
 							direction={"column"}
 							alignItems={"center"}
 						>
-							<Typography sx={{ opacity: 0.6 }} fontWeight={"bold"}>
+							<Typography
+								sx={{ opacity: 0.6, fontSize: ["0.8rem", "1rem"] }}
+								fontWeight={"bold"}
+							>
 								Followers
 							</Typography>
-							<Typography sx={{ opacity: 0.6 }}>
+							<Typography sx={{ opacity: 0.6, fontSize: ["0.8rem", "1rem"] }}>
 								{userData.followers?.length}
 							</Typography>
 						</Stack>
@@ -60,10 +77,13 @@ export default function Profile() {
 							}}
 							sx={{ cursor: "pointer" }}
 						>
-							<Typography sx={{ opacity: 0.6 }} fontWeight={"bold"}>
+							<Typography
+								sx={{ opacity: 0.6, fontSize: ["0.8rem", "1rem"] }}
+								fontWeight={"bold"}
+							>
 								Following
 							</Typography>
-							<Typography sx={{ opacity: 0.6 }}>
+							<Typography sx={{ opacity: 0.6, fontSize: ["0.8rem", "1rem"] }}>
 								{userData.following?.length}
 							</Typography>
 						</Stack>
@@ -87,7 +107,7 @@ export default function Profile() {
 										<UserCard
 											key={index}
 											name={follower.name}
-											image={follower.image}
+											image={follower.image.image_url}
 											username={follower.username}
 										/>
 									);
@@ -97,7 +117,7 @@ export default function Profile() {
 										<UserCard
 											key={index}
 											name={following.name}
-											image={following.image}
+											image={following.image.image_url}
 											username={following.username}
 										/>
 									);
@@ -106,10 +126,13 @@ export default function Profile() {
 				</DialogContent>
 			</Dialog>
 			<Stack direction={"row"} alignItems={"flex-end"}>
-				<Typography fontWeight={"bold"} variant="h6" sx={{ opacity: 0.7 }}>
+				<Typography
+					fontWeight={"bold"}
+					sx={{ opacity: 0.7, fontSize: ["1rem", "1.4rem"] }}
+				>
 					#
 				</Typography>
-				<Typography fontStyle={"italic"} variant="h6">
+				<Typography fontStyle={"italic"} sx={{ fontSize: ["1rem", "1.4rem"] }}>
 					{userData.username}
 				</Typography>
 			</Stack>
@@ -138,7 +161,7 @@ export default function Profile() {
 						return (
 							<PostCard
 								key={index}
-								postImage={post.post_image || ""}
+								postImage={post.post_image?.image_url || ""}
 								postId={post._id || ""}
 							/>
 						);

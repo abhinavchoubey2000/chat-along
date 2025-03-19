@@ -1,23 +1,22 @@
 "use client";
 
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { styled } from "@mui/material/styles";
-import { useCreatePostMutation } from "@/redux/api-slices/post";
+import {
+	useCreatePostMutation,
+	useUploadImageToCloudinaryMutation,
+} from "@/redux/api-slices/post";
 import {
 	Box,
 	IconButton,
 	Stack,
 	Typography,
 	TextareaAutosize,
-	FormControl,
-	InputLabel,
-	OutlinedInput,
-	InputAdornment,
 	Button,
 	CircularProgress,
 } from "@mui/material";
-import { ArrowBack, Check, CloudUpload } from "@mui/icons-material";
+import { ArrowBack, CloudUpload } from "@mui/icons-material";
 
 const VisuallyHiddenInput = styled("input")({
 	clip: "rect(0 0 0 0)",
@@ -32,32 +31,64 @@ const VisuallyHiddenInput = styled("input")({
 });
 
 export default function CreatePost() {
-	const [createPost, { isLoading }] = useCreatePostMutation();
-	const [imageUrl, setImageUrl] = useState("");
+	const [createPost, { isLoading: createPostLoading }] =
+		useCreatePostMutation();
+	const [
+		uploadImageToCloudinary,
+		{ isLoading: uploadImageToCloudinaryLoading },
+	] = useUploadImageToCloudinaryMutation();
 	const [caption, setCaption] = useState("");
-	const imageRef = useRef<HTMLImageElement | null>(null);
+	const [imageFile, setImageFile] = useState<File | null>(null);
+	const [imageSrc, setImageSrc] = useState<string>(
+		"https://icons.veryicon.com/png/o/healthcate-medical/medical-profession-1/ico-nurse-workstation-photo-file-management-1.png"
+	);
 
-	const addImageViaLink = () => {
-		if (imageRef.current) {
-			imageRef.current.src = imageUrl;
+	const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+		const firstFile = event.target.files?.[0];
+		if (firstFile) {
+			setImageFile(firstFile);
+			const imageTempURL = URL.createObjectURL(firstFile);
+			setImageSrc(imageTempURL);
 		}
 	};
+
 	const createUserPost = async () => {
-		const postObj = {
-			post_image: imageUrl,
+		const formData = new FormData();
+		formData.append("image", imageFile as Blob);
+		const response: {
+			data?: {
+				message: string;
+				image_url: string;
+				public_id: string;
+				success: boolean;
+			};
+		} = await uploadImageToCloudinary(formData);
+		await createPost({
 			caption,
-		};
-		const response = await createPost(postObj);
+			date: new Date().toLocaleTimeString("en-US", {
+				hour: "2-digit",
+				minute: "2-digit",
+				hour12: true,
+				month: "short",
+				year: "2-digit",
+				day: "2-digit",
+			}),
+			post_image: {
+				image_url: response.data?.image_url || "",
+				public_id: response.data?.public_id || "",
+			},
+		});
 		setCaption("");
-		setImageUrl("");
 		window.location.href = "/";
 	};
+
 	return (
 		<Box
 			display={"flex"}
 			flexDirection={"column"}
 			alignItems={"center"}
 			gap={5}
+			px={[1,0]}
 		>
 			<Stack
 				paddingY={1}
@@ -83,17 +114,14 @@ export default function CreatePost() {
 				justifyContent={"space-between"}
 			>
 				<Box
-					width={"50%"}
-					height={"25vh"}
+					width={["50%","50%"]}
+					height={["25vh","25vh"]}
 					display={"flex"}
 					justifyContent={"center"}
 				>
 					<img
 						style={{ borderRadius: 5 }}
-						ref={imageRef}
-						src={
-							"https://icons.veryicon.com/png/o/healthcate-medical/medical-profession-1/ico-nurse-workstation-photo-file-management-1.png"
-						}
+						src={imageSrc}
 						alt="Post image"
 						width={"100%"}
 						height={"100%"}
@@ -118,35 +146,6 @@ export default function CreatePost() {
 				/>
 			</Stack>
 
-			<FormControl variant="outlined" fullWidth color="primary">
-				<InputLabel htmlFor="outlined-adornment-add-comment">
-					Image url
-				</InputLabel>
-				<OutlinedInput
-					id="outlined-adornment-image-url"
-					type={"text"}
-					value={imageUrl}
-					onChange={(e) => {
-						setImageUrl(e.target.value);
-					}}
-					endAdornment={
-						<InputAdornment position="end">
-							{imageUrl !== "" ? (
-								<IconButton
-									color="secondary"
-									aria-label={"search"}
-									edge="end"
-									onClick={addImageViaLink}
-								>
-									<Check />
-								</IconButton>
-							) : null}
-						</InputAdornment>
-					}
-					label="Image URL"
-				/>
-			</FormControl>
-			<Typography>Or</Typography>
 			<Button
 				component="label"
 				role={undefined}
@@ -158,7 +157,8 @@ export default function CreatePost() {
 				Upload image from files
 				<VisuallyHiddenInput
 					type="file"
-					onChange={(event) => console.log(event.target.files)}
+					onChange={handleFileChange}
+					accept="image/*"
 				/>
 			</Button>
 
@@ -169,7 +169,7 @@ export default function CreatePost() {
 				onClick={createUserPost}
 				variant="outlined"
 			>
-				{isLoading ? (
+				{uploadImageToCloudinaryLoading ? (
 					<Typography
 						display={"flex"}
 						justifyContent={"center"}

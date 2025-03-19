@@ -15,8 +15,8 @@ export function PostCard({
 				src={postImage}
 				sx={{
 					borderRadius: 2,
-					width: "10rem",
-					height: "12rem",
+					width: ["6rem", "10rem"],
+					height: ["8rem", "12rem"],
 					objectFit: "contain",
 				}}
 			/>

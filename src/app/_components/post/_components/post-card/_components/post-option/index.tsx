@@ -2,7 +2,10 @@
 
 import React, { useState } from "react";
 import { deletePostFromState } from "@/redux/slices/post";
-import { useDeletePostMutation } from "@/redux/api-slices/post";
+import {
+	useDeleteImageFromCloudinaryMutation,
+	useDeletePostMutation,
+} from "@/redux/api-slices/post";
 import { useDispatch, useSelector } from "react-redux";
 import {
 	Button,
@@ -19,7 +22,13 @@ import {
 import { MoreVert } from "@mui/icons-material";
 import { RootState } from "@/redux/store";
 
-export function PostOption({ id }: { id: string }) {
+export function PostOption({
+	id,
+	image_public_id,
+}: {
+	id: string;
+	image_public_id: string;
+}) {
 	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 	const open = Boolean(anchorEl);
 	const editIconHoverStyle = { "&:hover": { color: colors.green["700"] } };
@@ -30,7 +39,7 @@ export function PostOption({ id }: { id: string }) {
 		(state: RootState) => state.User
 	);
 	const [deletePost, { isLoading }] = useDeletePostMutation();
-
+	const [deleteImageFromCloudinary] = useDeleteImageFromCloudinaryMutation();
 	const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
 		setAnchorEl(event.currentTarget);
 	};
@@ -46,6 +55,7 @@ export function PostOption({ id }: { id: string }) {
 	};
 
 	const handleDeletePost = async () => {
+		await deleteImageFromCloudinary(image_public_id);
 		dispatch(deletePostFromState(id));
 		await deletePost(id);
 		closeDialog();

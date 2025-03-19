@@ -47,10 +47,15 @@ export function UserStatus({
 					}}
 					alignItems={"center"}
 					sx={{ cursor: "pointer" }}
+					spacing={1}
 				>
 					<Avatar
-						src={user.image}
-						sx={{ height: 70, width: 70, border: "2px solid #06d001" }}
+						src={user.image.image_url}
+						sx={{
+							height: [40, 70],
+							width: [40, 70],
+							border: "2px solid #06d001",
+						}}
 					/>
 					<Typography textAlign={"center"} variant="caption">
 						{user.username}
@@ -61,9 +66,9 @@ export function UserStatus({
 					sx={(theme) => ({
 						color: "#fff",
 						zIndex: theme.zIndex.drawer + 1,
-						width: "44%",
+						width: ["100%", "44%"],
 						height: "100%",
-						left: "26.8%",
+						left: ["-3.5%", "26.8%"],
 						bgcolor: `${currentStatusObject[statusIndex - 1].colorCode}`,
 						backdropFilter: "blur(2px)",
 					})}
@@ -91,7 +96,10 @@ export function UserStatus({
 							left={30}
 							alignItems={"center"}
 						>
-							<Avatar src={user.image} sx={{ height: 35, width: 35 }} />
+							<Avatar
+								src={user.image.image_url}
+								sx={{ height: 35, width: 35 }}
+							/>
 							<Stack spacing={0}>
 								<Typography>{user.name}</Typography>
 								<Typography variant="caption" sx={{ opacity: 0.7 }}>

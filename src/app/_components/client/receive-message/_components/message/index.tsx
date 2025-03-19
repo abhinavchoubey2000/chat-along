@@ -25,7 +25,7 @@ export function Message({
 	userId,
 }: {
 	senderName: string;
-	senderImage: string;
+	senderImage: { image_url: string; public_id: string };
 	message: string;
 	closeSnackbar: () => void;
 	userId: string;
@@ -44,13 +44,13 @@ export function Message({
 			senderId: string;
 			receiverId: string;
 			message: string;
-			image: string;
+			image: { image_url: string; public_id: string };
 			time: string;
 		} = {
 			senderId: userData._id || "",
 			receiverId: userId,
 			message: replyMessage,
-			image: userData.image || "",
+			image: userData.image || { image_url: "", public_id: "" },
 			time: new Date().toLocaleTimeString("en-US", {
 				hour: "2-digit",
 				minute: "2-digit",
@@ -62,7 +62,7 @@ export function Message({
 		dispatch(
 			sendMessageInState({
 				receiverId: userId,
-				image: userData.image || "",
+				image: userData.image || { image_url: "", public_id: "" },
 				message: replyMessage,
 				time: new Date().toLocaleTimeString("en-US", {
 					hour: "2-digit",
@@ -81,7 +81,10 @@ export function Message({
 			<Stack>
 				<Stack spacing={1} justifyContent={"space-between"} direction={"row"}>
 					<Stack direction={"row"} spacing={1}>
-						<Avatar src={senderImage} sx={{ height: 20, width: 20 }} />
+						<Avatar
+							src={senderImage.image_url}
+							sx={{ height: 20, width: 20 }}
+						/>
 						<Typography variant="caption" sx={{ opacity: 0.7 }}>
 							{senderName}
 						</Typography>

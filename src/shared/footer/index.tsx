@@ -14,13 +14,13 @@ import { RootState } from "@/redux/store";
 import { handleDialog } from "@/redux/slices/user";
 
 export function Footer() {
-	const { userData, isAuthenticated, chats } = useSelector(
+	const { userData, isAuthenticated } = useSelector(
 		(state: RootState) => state.User
 	);
 	const dispatch = useDispatch();
 	
 	const iconStyle = {
-		fontSize: "2rem",
+		fontSize: ["1.5rem","2rem"],
 		transition: "all 0.5s",
 		"&:hover": {
 			color: "#046af2",
@@ -33,11 +33,12 @@ export function Footer() {
 			direction={"row"}
 			bottom={0}
 			left="50%"
-			spacing={10}
+			spacing={[4, 10]}
 			alignItems={"center"}
+			justifyContent={"space-between"}
 			bgcolor={"white"}
 			sx={{
-				width: "auto",
+				width: ["100%", "auto"],
 				maxWidth: "100%",
 				transform: "translateX(-50%)",
 				padding: "10px",
@@ -87,11 +88,7 @@ export function Footer() {
 							dispatch(handleDialog(true));
 						}}
 					>
-						<Badge
-							variant="dot"
-							invisible={true}
-							color="secondary"
-						>
+						<Badge variant="dot" invisible={true} color="secondary">
 							<ChatBubble sx={iconStyle} />
 						</Badge>
 					</IconButton>
@@ -100,15 +97,18 @@ export function Footer() {
 			<CustomToolTip title={"Profile"} placement="top" arrow>
 				{isAuthenticated ? (
 					<Link href={"/profile"}>
-						<Avatar src={userData?.image || ""} sx={{ cursor: "pointer" }} />
+						<Avatar
+							src={userData?.image?.image_url || ""}
+							sx={{ cursor: "pointer", height: [28, 38], width: [28, 38] }}
+						/>
 					</Link>
 				) : (
 					<Avatar
 						onClick={() => {
 							dispatch(handleDialog(true));
 						}}
-						src={userData?.image || ""}
-						sx={{ cursor: "pointer" }}
+						src={userData?.image?.image_url || ""}
+						sx={{ cursor: "pointer", height: [28, 38], width: [28, 38] }}
 					/>
 				)}
 			</CustomToolTip>

@@ -114,14 +114,14 @@ export default function AddStatus() {
 									flexDirection={"column"}
 									py={2}
 									borderRadius={4}
-									width={100}
-									height={100}
+									width={[70,100]}
+									height={[70,100]}
 									gap={1}
 								>
 									<Stack
-										width={15}
+										width={[10,15]}
 										display={"inline-flex"}
-										height={15}
+										height={[10,15]}
 										borderRadius={"50%"}
 										bgcolor={color.colorCode}
 									></Stack>
@@ -166,11 +166,12 @@ export default function AddStatus() {
 					style={{
 						background: "transparent",
 						width: "100%",
+						height:"20%",
 						textAlign: "center",
 						display: "flex",
 						alignItems: "center",
 						justifyContent: "center",
-						fontSize: "2.5rem",
+						fontSize: "2rem",
 						border: "none",
 						outline: "none",
 						resize: "none",

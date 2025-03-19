@@ -21,8 +21,8 @@ export function UserCard({
 				direction={"row"}
 				alignItems={"center"}
 				justifyContent={"space-between"}
-				spacing={1}
-				px={2}
+				spacing={[0, 1]}
+				px={[0, 2]}
 				py={1}
 				sx={{
 					"&:hover": {
@@ -32,7 +32,7 @@ export function UserCard({
 					},
 				}}
 			>
-				<Stack direction={"row"} spacing={3} >
+				<Stack direction={"row"} spacing={[1,3]} alignItems={"center"}>
 					<Avatar src={image} sx={{ height: "3rem", width: "3rem" }} />
 					<Stack>
 						<Typography>{username}</Typography>

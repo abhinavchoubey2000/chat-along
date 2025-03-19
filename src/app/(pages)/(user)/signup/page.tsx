@@ -9,11 +9,14 @@ import {
 	useCheckUsernameInDBMutation,
 	useSignupMutation,
 } from "@/redux/api-slices";
+import { useUploadImageToCloudinaryMutation } from "@/redux/api-slices/post";
 
 const Signup = () => {
 	const [activeStep, setActiveStep] = useState(0);
 	const [checkEmailInDB, { isLoading: stepOneLoading }] =
 		useCheckEmailInDBMutation();
+	const [uploadImageToCloudinary, { isLoading: cloudinaryLoading }] =
+		useUploadImageToCloudinaryMutation();
 	const [checkUsernameInDB, { isLoading: stepTwoLoading }] =
 		useCheckUsernameInDBMutation();
 	const [signup, { isLoading: stepThreeLoading }] = useSignupMutation();
@@ -34,18 +37,37 @@ const Signup = () => {
 		phoneError: "",
 		profilePictureError: "",
 	});
-	const [formData, setFormData] = useState({
+	const [formData, setFormData] = useState<{
+		firstName: string;
+		lastName: string;
+		username: string;
+		email: string;
+		password: string;
+		phone: string;
+		profilePicture: null | File;
+	}>({
 		firstName: "",
 		lastName: "",
 		username: "",
 		email: "",
 		password: "",
 		phone: "",
-		profilePicture: "",
+		profilePicture: null,
 	});
 
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		setFormData({ ...formData, [e.target.name]: e.target.value });
+		setFormData({
+			...formData,
+			[e.target.name]: e.target.value,
+		});
+	};
+	const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+		if (e.target.files) {
+			setFormData({
+				...formData,
+				profilePicture: e.target.files[0],
+			});
+		}
 	};
 
 	const checkBasicInfoAndMoveNext = async () => {
@@ -67,6 +89,13 @@ const Signup = () => {
 			setErrorText({
 				...errorText,
 				emailError: "Your email is required",
+				firstNameError: "",
+				lastNameError: "",
+			});
+		} else if (!formData.email.includes("@")) {
+			setErrorText({
+				...errorText,
+				emailError: "Your must write a correct format email",
 				firstNameError: "",
 				lastNameError: "",
 			});
@@ -99,6 +128,30 @@ const Signup = () => {
 			setErrorText({
 				...errorText,
 				usernameError: "Username must be filled",
+				passwordError: "",
+				phoneError: "",
+			});
+		} else if (!formData.username.match(/\d/)) {
+			setErrorText({
+				...errorText,
+				usernameError:
+					"Username must contain combinations of [a-z], [0-9] and ['-','.', '_' or '@']",
+				passwordError: "",
+				phoneError: "",
+			});
+		} else if (!formData.username.match(/[a-z]/)) {
+			setErrorText({
+				...errorText,
+				usernameError:
+					"Username must contain combinations of [a-z], [0-9] and ['-','.', '_' or '@']",
+				passwordError: "",
+				phoneError: "",
+			});
+		} else if (!formData.username.match(/[^a-zA-Z0-9]/)) {
+			setErrorText({
+				...errorText,
+				usernameError:
+					"Username must contain combinations of [a-z], [0-9] and ['-','.', '_' or '@']",
 				passwordError: "",
 				phoneError: "",
 			});
@@ -152,18 +205,22 @@ const Signup = () => {
 		}
 	};
 	const handleSubmit = async () => {
+		const imageFormData = new FormData();
+		imageFormData.append("image", formData.profilePicture || "");
+		const cloudinaryResponse = await uploadImageToCloudinary(imageFormData);
+
 		const response = await signup({
 			name: `${formData.firstName} ${formData.lastName}`,
 			phone: formData.phone,
 			email: formData.email,
-			image:
-				formData.profilePicture !== ""
-					? formData.profilePicture
-					: "https://i.pinimg.com/originals/59/af/9c/59af9cd100daf9aa154cc753dd58316d.jpg",
+			image: {
+				image_url: cloudinaryResponse.data.image_url,
+				public_id: cloudinaryResponse.data.public_id,
+			},
 			username: formData.username,
 			password: formData.password,
 		});
-		window.location.href = "/";
+		window.location.href = "/login";
 	};
 
 	const nextStep = () => setActiveStep((prev) => prev + 1);
@@ -200,10 +257,10 @@ const Signup = () => {
 			{activeStep === 2 && (
 				<StepThree
 					data={formData}
-					handleChange={handleChange}
+					handleFileChange={handleFileChange}
 					handleSubmit={handleSubmit}
 					prevStep={prevStep}
-					isLoading={stepThreeLoading}
+					isLoading={cloudinaryLoading}
 				/>
 			)}
 		</Box>

@@ -84,13 +84,14 @@ export function MyStatus({
 			<Stack
 				onClick={handleOpenMenu}
 				alignItems={"center"}
-				sx={{ cursor: "pointer", pr: 2 }}
+				sx={{ cursor: "pointer", pl: 2 }}
+				spacing={1}
 			>
 				<Avatar
 					src={loggedInUserImage}
 					sx={{
-						height: 70,
-						width: 70,
+						height: [40, 70],
+						width: [40, 70],
 					}}
 				/>
 				<Typography textAlign={"center"} variant="caption">
@@ -150,9 +151,9 @@ export function MyStatus({
 					sx={(theme) => ({
 						color: "#fff",
 						zIndex: theme.zIndex.drawer + 1,
-						width: "44%",
+						width: ["100%", "44%"],
 						height: "100%",
-						left: "26.8%",
+						left: ["-3.5%", "26.8%"],
 						bgcolor: statusArray[statusIndex - 1]?.colorCode || "#000",
 						backdropFilter: "blur(2px)",
 					})}
@@ -218,7 +219,10 @@ export function MyStatus({
 					{isLoading ? (
 						<CircularProgress />
 					) : (
-						<Typography variant="h2" textAlign={"center"}>
+						<Typography
+							sx={{ fontSize: ["2rem", "3rem"] }}
+							textAlign={"center"}
+						>
 							{statusArray[statusIndex - 1]?.statusContent || ""}
 						</Typography>
 					)}

@@ -2,10 +2,11 @@ import mongoose, { Document, Schema } from "mongoose";
 
 export interface PostSchemaInterface extends Document {
 	creator: mongoose.Schema.Types.ObjectId;
-	post_image: string;
+	post_image: { image_url: string; public_id: string };
 	caption: string;
 	likes: [string];
 	comments: [object];
+	date: string;
 }
 
 const postSchema: Schema = new mongoose.Schema<PostSchemaInterface>(
@@ -15,9 +16,10 @@ const postSchema: Schema = new mongoose.Schema<PostSchemaInterface>(
 			ref: "users",
 			required: [true, "Creator Id is required"],
 		},
+		date: String,
 		post_image: {
-			type: String,
-			required: [true, "Post image is required"],
+			image_url: String,
+			public_id: String,
 		},
 		caption: {
 			type: String,

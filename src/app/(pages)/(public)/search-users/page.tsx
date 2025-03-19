@@ -15,7 +15,9 @@ import { RootState } from "@/redux/store";
 
 export default function SearchUsers() {
 	const [searchText, setSearchText] = useState("");
-	const { allUsersData, userData } = useSelector((state: RootState) => state.User);
+	const { allUsersData, userData } = useSelector(
+		(state: RootState) => state.User
+	);
 	const [searchedResults, setSearchedResults] = useState<
 		Array<UserResponseDataInterface>
 	>([]);
@@ -43,6 +45,7 @@ export default function SearchUsers() {
 					type={"text"}
 					value={searchText}
 					onChange={handleChange}
+					sx={{ borderRadius: 0 }}
 					endAdornment={
 						<InputAdornment position="end">
 							<IconButton aria-label={"search"} edge="end">
@@ -67,9 +70,9 @@ export default function SearchUsers() {
 							key={index}
 							name={user.name || ""}
 							username={user.username || ""}
-							image={user.image || ""}
-							followersArray={user.followers||[]}
-							loggedInUserId={userData._id||""}
+							image={user.image?.image_url || ""}
+							followersArray={user.followers || []}
+							loggedInUserId={userData._id || ""}
 						/>
 					);
 				})}

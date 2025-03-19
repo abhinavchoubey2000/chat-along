@@ -3,7 +3,7 @@ interface UserStatusPropsInterface {
 }
 interface UserStatusArrayOfObjectInterface {
 	username: string;
-	image: string;
+	image: { image_url: string; public_id: string };
 	status: Array<UserStatusObjectInterface>;
 }
 interface UserStatusObjectInterface {

@@ -29,6 +29,7 @@ export function Post() {
 						comments={post.comments}
 						caption={post.caption}
 						post_image={post.post_image}
+						date={post.date}
 					/>
 				);
 			})}

@@ -1,27 +1,32 @@
 import { NextResponse } from "next/server";
 import { connectToDB } from "../../../_database/connectToDatabase";
 import { userModel } from "../../../_database/models";
-import { postModel, PostSchemaInterface } from "../../../_database/models";
 import { cookies } from "next/headers";
 
 connectToDB();
 
-interface CreatePostRequestDataInterface {
-	post_image: { image_url: string; public_id: string };
-	caption: string;
-	date:string
-}
-
 export async function POST(request: Request) {
 	try {
 		//Getting data from client
-		const { post_image, caption, date }: CreatePostRequestDataInterface =
-			await request.json();
-		// //Call and initialize cookies function
+		const {
+			action,
+			link,
+			senderName,
+			image,
+			receiverId,
+		}: {
+			action: string;
+			link: string;
+			senderName: string;
+			receiverId: string;
+			image: { image_url: string; public_id: string };
+		} = await request.json();
+
+		//Call and initialize cookies function
 		const callCookies = cookies();
 		const cookie = (await callCookies).get("token")?.value;
 
-		// //Checking if cookie exist or not
+		//Checking if cookie exist or not
 		if (!cookie) {
 			return NextResponse.json({
 				success: false,
@@ -30,27 +35,30 @@ export async function POST(request: Request) {
 			});
 		}
 
-		// //Converting cookie to User Id
+		//Converting cookie to User Id
 		const id = atob(String(cookie));
-		const post: PostSchemaInterface = new postModel({
-			creator: id,
-			caption,
-			date,
-			post_image,
-			comments: [],
-			likes: [],
-		});
-		await post.save();
 
-		//Saving post id in user posts array
-		const user = await userModel.findById(id);
-		user?.posts.push(String(post._id));
-		await user?.save();
+		//Checking if username exsist or not
+		const receiver = await userModel.findById(receiverId);
+		if (!receiver) {
+			return NextResponse.json({
+				success: false,
+				message: "Receiver not found.",
+			});
+		}
+
+		receiver.notifications.push({
+			name: senderName,
+			image,
+			action,
+			link,
+		});
+
+		await receiver.save();
 
 		return NextResponse.json({
 			success: true,
-			message: "New post created.",
-			data: post,
+			message: `Notification saved`,
 		});
 	} catch (error) {
 		return NextResponse.json({

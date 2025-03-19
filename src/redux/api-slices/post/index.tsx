@@ -33,13 +33,32 @@ export const postApi = createApi({
 		fetchPublicPostsData: builder.query<{ data: Array<PostInterface> }, void>({
 			query: () => "api/get-all-posts",
 		}),
+		uploadImageToCloudinary: builder.mutation({
+			query: (formData) => ({
+				url: "https://chat-along-external-server.onrender.com/upload-to-cloudinary",
+				method: "POST",
+				body: formData,
+			}),
+		}),
+		deleteImageFromCloudinary: builder.mutation({
+			query: (public_id: string) => ({
+				url: "https://chat-along-external-server.onrender.com/delete-from-cloudinary",
+				method: "POST",
+				body: { public_id },
+			}),
+		}),
 		createPost: builder.mutation({
-			query: (postObj: { post_image: string; caption: string }) => ({
+			query: (postObj: {
+				post_image: { image_url: string; public_id: string };
+				caption: string;
+				date: string;
+			}) => ({
 				url: "api/create-post",
 				method: "POST",
 				body: {
 					post_image: postObj.post_image,
 					caption: postObj.caption,
+					date: postObj.date,
 				},
 			}),
 		}),
@@ -98,6 +117,8 @@ export const {
 	useLoginMutation,
 	useSignupMutation,
 	useLogoutMutation,
+	useUploadImageToCloudinaryMutation,
+	useDeleteImageFromCloudinaryMutation,
 	useCreatePostMutation,
 	useUpdateLinkMutation,
 	useDeletePostMutation,

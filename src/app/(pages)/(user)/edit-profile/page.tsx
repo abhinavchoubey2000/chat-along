@@ -10,7 +10,7 @@ import {
 	Typography,
 	CircularProgress,
 } from "@mui/material";
-import React, { useState, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
 import Link from "next/link";
@@ -20,14 +20,20 @@ import { useEditProfileMutation } from "@/redux/api-slices";
 export default function EditProfile() {
 	const { userData } = useSelector((state: RootState) => state.User);
 	const [editProfile, { isLoading }] = useEditProfileMutation();
+	const fileInputRef = useRef<HTMLInputElement>(null);
 	const [editStates, setEditStates] = useState({
 		image: false,
 		name: false,
 		email: false,
 		phone: false,
 	});
-	const [editData, setEditData] = useState({
-		image: userData?.image || "",
+	const [editData, setEditData] = useState<{
+		image: { image_url: string; public_id: string };
+		name: string;
+		email: string;
+		phone: string;
+	}>({
+		image: userData?.image || {image_url:"", public_id:""},
 		name: userData?.name || "",
 		email: userData?.email || "",
 		phone: userData?.phone || "",
@@ -49,13 +55,22 @@ export default function EditProfile() {
 		});
 	};
 
+	const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+		const currentFile = event.target.files?.[0];
+		if (currentFile) {
+			setEditData((prev) => {
+				return { ...prev, image: currentFile };
+			});
+		}
+	};
+
 	const updateChanges = async () => {
-		await editProfile({
-			image: editData.image,
-			name: editData.name,
-			email: editData.email,
-			phone: editData.phone,
-		});
+		// await editProfile({
+		// 	image: editData.image,
+		// 	name: editData.name,
+		// 	email: editData.email,
+		// 	phone: editData.phone,
+		// });
 		window.location.href = "/profile";
 	};
 
@@ -86,27 +101,25 @@ export default function EditProfile() {
 				px={2}
 				borderRadius={2}
 			>
-				<Avatar src={editData.image} sx={{ width: 150, height: 150 }} />
-				{editStates.image ? (
-					<TextField
-						variant="outlined"
-						fullWidth
-						label="Image URL"
-						value={editData.image}
-						onChange={handleChange}
-						name="image"
-					/>
-				) : (
-					<IconButton
-						sx={{ width: 50, height: 50 }}
-						color="primary"
-						onClick={() => {
-							handleEditState("image");
-						}}
-					>
-						<Edit sx={{ fontSize: 40 }} />
-					</IconButton>
-				)}
+				<Avatar
+					src={editData.image.image_url}
+					sx={{ width: 150, height: 150 }}
+				/>
+				<IconButton
+					sx={{ width: 50, height: 50 }}
+					color="primary"
+					onClick={() => {
+						fileInputRef.current?.click();
+					}}
+				>
+					<Edit sx={{ fontSize: 40 }} />
+				</IconButton>
+				<input
+					style={{ display: "none" }}
+					type="file"
+					ref={fileInputRef}
+					onChange={handleFileChange}
+				/>
 			</Stack>
 			<Stack direction={"row"} spacing={2} justifyContent={"space-between"}>
 				{editStates.name ? (

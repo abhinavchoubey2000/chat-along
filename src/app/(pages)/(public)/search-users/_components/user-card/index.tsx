@@ -39,18 +39,26 @@ export function UserCard({
 					},
 				}}
 			>
-				<Stack direction={"row"} spacing={1}>
-					<Avatar src={image} sx={{ height: "3rem", width: "3rem" }} />
+				<Stack direction={"row"} spacing={1} alignItems={"center"}>
+					<Avatar
+						src={image}
+						sx={{ height: ["2rem", "3rem"], width: ["2rem", "3rem"] }}
+					/>
 					<Stack>
-						<Typography>{username}</Typography>
-						<Typography variant="caption" sx={{ opacity: 0.7 }}>
+						<Typography sx={{ fontSize: ["0.8rem", "1rem"] }}>
+							{username}
+						</Typography>
+						<Typography
+							variant="caption"
+							sx={{ opacity: 0.7, fontSize: ["0.8rem", "1rem"] }}
+						>
 							{name}
 						</Typography>
 					</Stack>
 				</Stack>
 				{haveFollowed ? (
 					<Typography
-						sx={{ opacity: 0.7 }}
+						sx={{ opacity: 0.7, fontSize: ["0.8rem", "1rem"] }}
 						display={"flex"}
 						justifyContent={"center"}
 						alignItems={"center"}
@@ -59,7 +67,10 @@ export function UserCard({
 						justifySelf={"end"}
 						color="secondary"
 					>
-						<Typography variant="h4">&bull;</Typography> Following
+						<Typography sx={{ fontSize: ["1.5rem", "2rem"] }}>
+							&bull;
+						</Typography>{" "}
+						Following
 					</Typography>
 				) : null}
 			</Stack>

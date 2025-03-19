@@ -25,21 +25,25 @@ export function RightMessage({
 				<Typography
 					noWrap={false}
 					sx={{
-						whiteSpace: "normal", // Allows wrapping
-						overflowWrap: "break-word", // Breaks words if needed
-						wordBreak: "break-word", // Ensures long words break
+						whiteSpace: "normal",
+						overflowWrap: "break-word",
+						wordBreak: "break-word",
+						fontSize: ["0.6rem", "1rem"],
 					}}
 				>
 					{message}
 				</Typography>
 				<Typography
 					alignSelf={"flex-end"}
-					sx={{ fontSize: "0.7rem", opacity: 0.7 }}
+					sx={{ fontSize: ["0.6rem", "0.7rem"], opacity: 0.7 }}
 				>
 					{time}
 				</Typography>
 			</Box>
-			<Avatar src={image} sx={{ height: "20px", width: "20px" }} />
+			<Avatar
+				src={image}
+				sx={{ height: ["1rem", "1.5rem"], width: ["1rem", "1.5rem"] }}
+			/>
 		</Stack>
 	);
 }

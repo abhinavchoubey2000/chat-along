@@ -14,12 +14,15 @@ import { PostCard } from "./_components";
 import { useSelector, useDispatch } from "react-redux";
 import { followUnfollowUserInState, handleDialog } from "@/redux/slices/user";
 import Link from "next/link";
-import { useFollowUnfollowUserMutation } from "@/redux/api-slices";
+import {
+	useFollowUnfollowUserMutation,
+	useSaveNotificationMutation,
+} from "@/redux/api-slices";
 import { OverlayLogin } from "@/shared";
 import { RootState } from "@/redux/store";
 import io from "socket.io-client";
 
-const socket = io("http://localhost:5000");
+const socket = io("https://chat-along-external-server.onrender.com/");
 
 export default function User() {
 	const params = useParams<{ username: string }>();
@@ -27,6 +30,7 @@ export default function User() {
 	if (!params?.username) return <div>User not found</div>;
 	const username = decodeURIComponent(params.username);
 	const [followUnfollowUser, { isLoading }] = useFollowUnfollowUserMutation();
+	const [saveNotification] = useSaveNotificationMutation();
 	const { allUsersData, userData, isAuthenticated } = useSelector(
 		(state: RootState) => state.User
 	);
@@ -45,7 +49,7 @@ export default function User() {
 					_id: matchedUser._id,
 					name: matchedUser.name || "",
 					username: matchedUser.username || "",
-					image: matchedUser.image || "",
+					image: matchedUser.image || { image_url: "", public_id: "" },
 				})
 			);
 
@@ -60,41 +64,65 @@ export default function User() {
 				};
 
 				socket.off().emit("sendNotification", data);
+				await saveNotification({
+					senderName: userData.name || "",
+					image: userData.image || { image_url: "", public_id: "" },
+					action: "follow",
+					link: `/${userData.username}`,
+					receiverId: matchedUser._id,
+				});
 			}
 		}
 	};
 	return (
-		<Box display={"flex"} flexDirection={"column"} width={"100%"} gap={3}>
+		<Box
+			display={"flex"}
+			flexDirection={"column"}
+			width={"100%"}
+			gap={3}
+			px={[1, 0]}
+		>
 			<OverlayLogin />
 			<Stack direction={"row"} gap={2} alignItems={"center"}>
 				<Avatar
-					src={matchedUser?.image}
-					sx={{ height: "7rem", width: "7rem" }}
+					src={matchedUser?.image?.image_url}
+					sx={{ height: ["5rem", "7rem"], width: ["5rem", "7rem"] }}
 				/>
-				<Stack direction={"column"} gap={1}>
-					<Typography variant="h5">{matchedUser?.name}</Typography>
+				<Stack direction={"column"} gap={[0, 1]}>
+					<Typography sx={{ fontSize: ["1.5rem", "2rem"] }}>
+						{matchedUser?.name}
+					</Typography>
 					<Stack direction={"row"} gap={2}>
 						<Stack direction={"column"} alignItems={"center"}>
-							<Typography sx={{ opacity: 0.6 }} fontWeight={"bold"}>
+							<Typography
+								sx={{ opacity: 0.6, fontSize: ["0.8rem", "1rem"] }}
+								fontWeight={"bold"}
+							>
 								Posts
 							</Typography>
-							<Typography sx={{ opacity: 0.6 }}>
+							<Typography sx={{ opacity: 0.6, fontSize: ["0.8rem", "1rem"] }}>
 								{matchedUser?.posts?.length}
 							</Typography>
 						</Stack>
 						<Stack direction={"column"} alignItems={"center"}>
-							<Typography sx={{ opacity: 0.6 }} fontWeight={"bold"}>
+							<Typography
+								sx={{ opacity: 0.6, fontSize: ["0.8rem", "1rem"] }}
+								fontWeight={"bold"}
+							>
 								Followers
 							</Typography>
-							<Typography sx={{ opacity: 0.6 }}>
+							<Typography sx={{ opacity: 0.6, fontSize: ["0.8rem", "1rem"] }}>
 								{matchedUser?.followers?.length}
 							</Typography>
 						</Stack>
 						<Stack direction={"column"} alignItems={"center"}>
-							<Typography sx={{ opacity: 0.6 }} fontWeight={"bold"}>
+							<Typography
+								sx={{ opacity: 0.6, fontSize: ["0.8rem", "1rem"] }}
+								fontWeight={"bold"}
+							>
 								Following
 							</Typography>
-							<Typography sx={{ opacity: 0.6 }}>
+							<Typography sx={{ opacity: 0.6, fontSize: ["0.8rem", "1rem"] }}>
 								{matchedUser?.following?.length}
 							</Typography>
 						</Stack>
@@ -102,10 +130,13 @@ export default function User() {
 				</Stack>
 			</Stack>
 			<Stack direction={"row"} alignItems={"flex-end"}>
-				<Typography fontWeight={"bold"} variant="h6" sx={{ opacity: 0.7 }}>
+				<Typography
+					fontWeight={"bold"}
+					sx={{ opacity: 0.7, fontSize: ["1rem", "1.4rem"] }}
+				>
 					#
 				</Typography>
-				<Typography fontStyle={"italic"} variant="h6">
+				<Typography fontStyle={"italic"} sx={{ fontSize: ["1rem", "1.4rem"] }}>
 					{matchedUser?.username}
 				</Typography>
 			</Stack>
@@ -172,7 +203,7 @@ export default function User() {
 							return (
 								<PostCard
 									key={index}
-									postImage={post.post_image || ""}
+									postImage={post.post_image?.image_url || ""}
 									postId={post._id || ""}
 								/>
 							);

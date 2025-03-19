@@ -5,7 +5,7 @@ import { receiveNotificationInState } from "@/redux/slices/user";
 import { RootState } from "@/redux/store";
 import { usePathname } from "next/navigation";
 
-const socket = io("http://localhost:5000");
+const socket = io("https://chat-along-external-server.onrender.com/");
 
 export function ReceiveNotification() {
 	// Hooks
@@ -18,7 +18,7 @@ export function ReceiveNotification() {
 			"receiveNotification",
 			(data: {
 				senderId: string;
-				senderImage: string;
+				senderImage: { image_url: string; public_id: string };
 				senderName: string;
 				receiverId: string;
 				action: string;
@@ -30,8 +30,8 @@ export function ReceiveNotification() {
 				) {
 					dispatch(
 						receiveNotificationInState({
-							senderName: data.senderName,
-							senderImage: data.senderImage,
+							name: data.senderName,
+							image: data.senderImage,
 							action: data.action,
 							link: data.link,
 						})

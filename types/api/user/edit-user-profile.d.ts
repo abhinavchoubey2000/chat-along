@@ -2,9 +2,8 @@
 /// <reference types="next/image-types/global" />
 
 interface EditUserProfileRequestDataInterface {
-	email: String;
-	image: String;
-	name: String;
-	phone: String;
+	email: string;
+	image: { image_url: string; public_id: string };
+	name: string;
+	phone: string;
 }
-

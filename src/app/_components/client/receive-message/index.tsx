@@ -1,18 +1,14 @@
 "use client";
 import { useDispatch, useSelector } from "react-redux";
 import io from "socket.io-client";
-import {
-	receiveMessageInState,
-	receiveNotificationInState,
-} from "@/redux/slices/user";
+import { receiveMessageInState } from "@/redux/slices/user";
 import { Message } from "./_components";
 import { RootState } from "@/redux/store";
 import { usePathname } from "next/navigation";
-import { Alert, Snackbar, Typography } from "@mui/material";
-import { Check } from "@mui/icons-material";
+import { Snackbar } from "@mui/material";
 import { useState } from "react";
 
-const socket = io("http://localhost:5000");
+const socket = io("https://chat-along-external-server.onrender.com/");
 
 export function ReceiveMessage() {
 	// Hooks
@@ -23,36 +19,11 @@ export function ReceiveMessage() {
 	const [open, setOpen] = useState(false);
 	const [senderData, setSenderData] = useState({
 		name: "",
-		image: "",
+		image: { image_url: "", public_id: "" },
 		message: "",
 		id: "",
 	});
 	const pathname = usePathname();
-
-	socket
-		.off()
-		.on(
-			"receiveNotification",
-			(data: {
-				senderId: string;
-				senderImage: string;
-				senderName: string;
-				receiverId: string;
-				action: string;
-			}) => {
-				console.log("Recived Notification")
-				if (data.receiverId === userData._id) {
-					
-					dispatch(
-						receiveNotificationInState({
-							senderName: data.senderName,
-							senderImage: data.senderImage,
-							action: data.action,
-						})
-					);
-				}
-			}
-		);
 
 	socket
 		.off()
@@ -62,7 +33,7 @@ export function ReceiveMessage() {
 				senderId: string;
 				receiverId: string;
 				message: string;
-				image: string;
+				image: { image_url: string; public_id: string };
 				time: string;
 			}) => {
 				if (data.receiverId === userData._id) {

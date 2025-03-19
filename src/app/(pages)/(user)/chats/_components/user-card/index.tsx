@@ -38,12 +38,14 @@ export function UserCard({
 					},
 				}}
 			>
-				<Avatar src={image} sx={{ height: "3rem", width: "3rem" }} />
+				<Avatar
+					src={image}
+					sx={{ height: ["2rem", "3rem"], width: ["2rem", "3rem"] }}
+				/>
 				<Stack>
-					<Typography>{name}</Typography>
+					<Typography sx={{ fontSize: ["0.8rem", "1rem"] }}>{name}</Typography>
 					<Typography
-						variant="caption"
-						sx={{ opacity: 0.7 }}
+						sx={{ opacity: 0.7, fontSize: ["0.8rem", "1rem"] }}
 						fontWeight={lastMessage === "Tap to chat" ? "" : seen ? "" : "bold"}
 					>
 						{lastMessage}

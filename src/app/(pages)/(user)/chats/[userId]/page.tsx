@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { useSelector, useDispatch } from "react-redux";
 import io from "socket.io-client";
@@ -13,33 +13,82 @@ import {
 	FormControl,
 	OutlinedInput,
 	InputAdornment,
+	Menu,
+	MenuItem,
+	Dialog,
+	DialogTitle,
+	DialogContent,
+	DialogContentText,
+	DialogActions,
+	Button,
 } from "@mui/material";
 import Link from "next/link";
-import { ArrowBack, InfoOutlined, SendOutlined } from "@mui/icons-material";
+import {
+	ArrowBack,
+	InfoOutlined,
+	SendOutlined,
+	Image,
+} from "@mui/icons-material";
 import { RightMessage } from "./_components/right-message";
 import { LeftMessage } from "./_components";
 import { RootState } from "@/redux/store";
-import { sendMessageInState, seenMessageInState } from "@/redux/slices/user";
+import {
+	sendMessageInState,
+	seenMessageInState,
+	clearMessagesInState,
+} from "@/redux/slices/user";
+import {
+	useClearMessagesMutation,
+	useSaveMessageMutation,
+} from "@/redux/api-slices";
 
-const socket = io("http://localhost:5000");
+const socket = io("https://chat-along-external-server.onrender.com/");
 
 export default function ChatBox() {
-	const { allUsersData, userData, chats } = useSelector(
+	const { allUsersData, userData } = useSelector(
 		(state: RootState) => state.User
 	);
 	const dispatch = useDispatch();
 	const params = useParams();
 	const router = useRouter();
 	const [message, setMessage] = useState("");
+	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+	const [isDialogOpened, setIsDialogOpened] = useState(false);
+	const open = Boolean(anchorEl);
 	const [isTyping, setIsTyping] = useState(false);
-
+	const fileInputRef = useRef<HTMLInputElement>(null);
+	const [saveMessage] = useSaveMessageMutation();
+	const [clearMessages] = useClearMessagesMutation();
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setMessage(e.target.value);
 	};
+	const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+		setAnchorEl(event.currentTarget);
+	};
+	const handleClose = () => {
+		setAnchorEl(null);
+	};
+	const openDialog = () => {
+		setIsDialogOpened(true);
+	};
+	const closeDialog = () => {
+		setIsDialogOpened(false);
+	};
 	let seen = false;
+	const deleteIconHoverStyle = { "&:hover": { color: "error" } };
 	const macthedUserData = allUsersData.find(
 		(user) => user._id === params.userId
 	);
+
+	const openFileInput = () => {
+		fileInputRef.current?.click();
+	};
+
+	const handleClearMessages = () => {
+		dispatch(clearMessagesInState(macthedUserData?._id || ""));
+		clearMessages(macthedUserData?._id || "");
+		closeDialog();
+	};
 
 	socket
 		.off()
@@ -68,18 +117,18 @@ export default function ChatBox() {
 		socket.off().emit("sendTypingSignal", data);
 	};
 
-	const sendMessage = () => {
+	const sendMessage = async () => {
 		const data: {
 			senderId: string;
 			receiverId: string;
 			message: string;
-			image: string;
+			image: { image_url: string; public_id: string };
 			time: string;
 		} = {
 			senderId: userData._id || "",
 			receiverId: macthedUserData?._id || "",
 			message,
-			image: userData.image || "",
+			image: userData.image || { image_url: "", public_id: "" },
 			time: new Date().toLocaleTimeString("en-US", {
 				hour: "2-digit",
 				minute: "2-digit",
@@ -91,7 +140,7 @@ export default function ChatBox() {
 		dispatch(
 			sendMessageInState({
 				receiverId: macthedUserData?._id || "",
-				image: userData.image || "",
+				image: userData.image || { image_url: "", public_id: "" },
 				message,
 				time: new Date().toLocaleTimeString("en-US", {
 					hour: "2-digit",
@@ -102,11 +151,18 @@ export default function ChatBox() {
 		);
 
 		setMessage("");
+		await saveMessage({
+			receiverId: data.receiverId,
+			message: data.message,
+			image: data.image,
+			time: data.time,
+		});
 	};
 
-	useEffect(() => {
-		dispatch(seenMessageInState(macthedUserData?._id || ""));
-	}, [chats]);
+	// useEffect(() => {
+	// 	dispatch(seenMessageInState(macthedUserData?._id || ""));
+	// }, [userData.chats]);
+
 	return (
 		<Box
 			display={"flex"}
@@ -125,7 +181,7 @@ export default function ChatBox() {
 					gap={2}
 					width={"100%"}
 				>
-					<Stack direction={"row"} spacing={1}>
+					<Stack direction={"row"} spacing={1} alignItems={"center"}>
 						<Link href={"/chats"}>
 							<IconButton area-label={"Open Notifications"} size="large">
 								<ArrowBack sx={{ fontSize: "1.5rem" }} />
@@ -139,27 +195,74 @@ export default function ChatBox() {
 								router.push(`/${macthedUserData?.username}`);
 							}}
 						>
-							<Stack direction={"row"} gap={2}>
-								<Avatar src={macthedUserData?.image} />
+							<Stack direction={"row"} gap={[1, 2]}>
+								<Avatar
+									sx={{ height: ["2rem", "3rem"], width: ["2rem", "3rem"] }}
+									src={macthedUserData?.image?.image_url}
+								/>
 								<Stack>
-									<Typography variant="body2">
+									<Typography sx={{ fontSize: ["0.8rem", "1rem"] }}>
 										{macthedUserData?.name}
 									</Typography>
-									<Typography variant="caption" sx={{ opacity: 0.7 }}>
+									<Typography
+										sx={{ opacity: 0.7, fontSize: ["0.8rem", "1rem"] }}
+									>
 										{macthedUserData?.username}
 									</Typography>
 								</Stack>
 								{isTyping ? (
-									<Typography sx={{ opacity: 0.7 }} variant="caption">
+									<Typography sx={{ fontWeight: "bold" }} variant="caption">
 										Typing...
 									</Typography>
 								) : null}
 							</Stack>
 						</Stack>
 					</Stack>
-					<IconButton area-label={"Open Notifications"} size="large">
+					<IconButton
+						area-label={"Open Notifications"}
+						size="large"
+						onClick={handleClick}
+					>
 						<InfoOutlined sx={{ fontSize: "1.5rem" }} />
 					</IconButton>
+					<Menu
+						id="basic-menu"
+						anchorEl={anchorEl}
+						open={open}
+						onClose={handleClose}
+						MenuListProps={{
+							"aria-labelledby": "basic-button",
+						}}
+					>
+						<MenuItem
+							onClick={() => {
+								handleClose();
+								openDialog();
+							}}
+							sx={deleteIconHoverStyle}
+						>
+							Clear Messages
+						</MenuItem>
+					</Menu>
+					<Dialog
+						open={isDialogOpened}
+						onClose={closeDialog}
+						aria-labelledby="alert-dialog-title"
+						aria-describedby="alert-dialog-description"
+					>
+						<DialogTitle id="alert-dialog-title">{"Delete post"}</DialogTitle>
+						<DialogContent>
+							<DialogContentText id="alert-dialog-description">
+								Are you sure you want to delete these messages?
+							</DialogContentText>
+						</DialogContent>
+						<DialogActions>
+							<Button onClick={closeDialog}>Cancel</Button>
+							<Button onClick={handleClearMessages} color="error" autoFocus>
+								Yes
+							</Button>
+						</DialogActions>
+					</Dialog>
 				</Stack>
 			</Paper>
 
@@ -173,7 +276,7 @@ export default function ChatBox() {
 				flexDirection={"column-reverse"}
 				gap={1}
 			>
-				{chats[`${macthedUserData?._id}` || ""]
+				{userData.chats?.[`${macthedUserData?._id}` || ""]
 					?.slice()
 					.reverse()
 					.map((value, index) => {
@@ -182,14 +285,14 @@ export default function ChatBox() {
 								key={index}
 								message={value.message}
 								time={value.time}
-								image={value.image}
+								image={value.image.image_url}
 							/>
 						) : (
 							<LeftMessage
 								key={index}
 								message={value.message}
 								time={value.time}
-								image={value.image}
+								image={value.image.image_url}
 							/>
 						);
 					})}
@@ -199,7 +302,7 @@ export default function ChatBox() {
 					id="outlined-adornment-message"
 					type={"text"}
 					placeholder="Message"
-					sx={{ borderRadius: "30px" }}
+					sx={{ borderRadius: "30px", fontSize: "0.8rem" }}
 					value={message}
 					onChange={handleChange}
 					onKeyUp={(e) => {
@@ -207,16 +310,31 @@ export default function ChatBox() {
 					}}
 					endAdornment={
 						<InputAdornment position="end">
-							<IconButton
-								aria-label={"message"}
-								color="primary"
-								edge="end"
-								onClick={() => {
-									sendMessage();
-								}}
-							>
-								<SendOutlined />
-							</IconButton>
+							{message === "" ? (
+								<IconButton
+									aria-label={"image"}
+									edge="end"
+									onClick={openFileInput}
+								>
+									<Image />
+									<input
+										style={{ display: "none" }}
+										type="file"
+										ref={fileInputRef}
+									/>
+								</IconButton>
+							) : (
+								<IconButton
+									aria-label={"message"}
+									color="primary"
+									edge="end"
+									onClick={() => {
+										sendMessage();
+									}}
+								>
+									<SendOutlined />
+								</IconButton>
+							)}
 						</InputAdornment>
 					}
 				/>

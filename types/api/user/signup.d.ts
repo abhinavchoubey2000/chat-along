@@ -4,7 +4,7 @@
 interface SignupRequestDataInterface {
 	email: string;
 	password: string;
-	image: string;
+	image: { image_url: string; public_id: string };
 	name: string;
 	phone: string;
 	username: string;

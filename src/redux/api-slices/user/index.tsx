@@ -40,7 +40,7 @@ export const usersApi = createApi({
 				email: string;
 				password: string;
 				name: string;
-				image: string;
+				image: { image_url: string; public_id: string };
 				username: string;
 				phone: string;
 			}) => ({
@@ -97,7 +97,7 @@ export const usersApi = createApi({
 		}),
 		editProfile: builder.mutation({
 			query: (data: {
-				image: string;
+				image: { image_url: string; public_id: string };
 				name: string;
 				email: string;
 				phone: string;
@@ -121,6 +121,57 @@ export const usersApi = createApi({
 				},
 			}),
 		}),
+		saveMessage: builder.mutation({
+			query: (data: {
+				receiverId: string;
+				time: string;
+				message: string;
+				image: { image_url: string; public_id: string };
+			}) => ({
+				url: `api/save-message`,
+				method: "POST",
+				body: {
+					receiverId: data.receiverId,
+					time: data.time,
+					image: data.image,
+					message: data.message,
+				},
+			}),
+		}),
+		clearMessages: builder.mutation({
+			query: (receiverId: string) => ({
+				url: `api/clear-messages`,
+				method: "POST",
+				body: {
+					receiverId,
+				},
+			}),
+		}),
+		saveNotification: builder.mutation({
+			query: (data: {
+				action: string;
+				link: string;
+				senderName: string;
+				receiverId: string;
+				image: { image_url: string; public_id: string };
+			}) => ({
+				url: `api/save-notification`,
+				method: "POST",
+				body: {
+					receiverId: data.receiverId,
+					link: data.link,
+					image: data.image,
+					senderName: data.senderName,
+					action: data.action,
+				},
+			}),
+		}),
+		clearNotifications: builder.mutation<void, void>({
+			query: () => ({
+				url: `api/clear-notifications`,
+				method: "PUT",
+			}),
+		}),
 	}),
 });
 
@@ -136,4 +187,8 @@ export const {
 	useAddStatusMutation,
 	useEditProfileMutation,
 	useDeleteStatusMutation,
+	useSaveMessageMutation,
+	useClearMessagesMutation,
+	useSaveNotificationMutation,
+	useClearNotificationsMutation,
 } = usersApi;

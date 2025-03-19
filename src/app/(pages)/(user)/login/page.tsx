@@ -27,7 +27,7 @@ export default function Login() {
 		window.location.href = "/";
 	};
 	return (
-		<Box>
+		<Box px={[2,0]}>
 			<Stack py={1}>
 				<Image src={Logo} alt="Logo" height={40} width={60} />
 				<Typography variant="h5" fontWeight={"bold"}>
@@ -38,7 +38,7 @@ export default function Login() {
 				<Typography
 					textAlign={"center"}
 					sx={{ opacity: 0.7 }}
-					letterSpacing={1.5}
+					letterSpacing={[1,1.5]}
 				>
 					Hi, welcome back. Login to your account with your credentials.
 				</Typography>

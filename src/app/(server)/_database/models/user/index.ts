@@ -9,9 +9,24 @@ export interface UserSchemaInterface extends Document {
 	posts: [string];
 	following: [string];
 	followers: [string];
-	image: string;
+	image: { image_url: string; public_id: string };
 	status: StatusInterface[];
 	blocked_users: [string];
+	notifications: Array<{
+		action: string;
+		image: { image_url: string; public_id: string };
+		name: string;
+		link: string;
+	}>;
+	chats: {
+		[id: string]: Array<{
+			name: string;
+			image: { image_url: string; public_id: string };
+			message: string;
+			time: string;
+			seen: boolean;
+		}>;
+	};
 }
 
 const userSchema: Schema = new mongoose.Schema<UserSchemaInterface>(
@@ -57,8 +72,16 @@ const userSchema: Schema = new mongoose.Schema<UserSchemaInterface>(
 			},
 		],
 		image: {
-			type: String,
+			image_url: String,
+			public_id: String,
 		},
+		chats: {
+			type: Object, // Ensure chats is an object
+			default: {
+				test: [],
+			},
+		},
+		notifications: [],
 		status: [
 			{
 				statusContent: String,

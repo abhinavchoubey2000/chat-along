@@ -8,11 +8,11 @@ import React from "react";
 import { RootState } from "@/redux/store";
 
 export function NotificationBadge() {
-	const {notifications} = useSelector((state:RootState)=>state.User)
+	const {userData} = useSelector((state:RootState)=>state.User)
 	return (
 		<Link href={"/notification"}>
 			<IconButton area-label={"Open Notifications"} size="large">
-				<Badge badgeContent={notifications.length} color="secondary">
+				<Badge badgeContent={userData.notifications?.length} color="secondary">
 					<Notifications sx={{ fontSize: "1.5rem" }} />
 				</Badge>
 			</IconButton>

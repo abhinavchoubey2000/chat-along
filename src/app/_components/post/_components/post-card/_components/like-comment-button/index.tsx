@@ -26,8 +26,9 @@ import { RootState } from "@/redux/store";
 import { likeUnlikePostInState, commentPostInState } from "@/redux/slices/post";
 import { handleDialog } from "@/redux/slices/user";
 import { UserCard } from "./_components";
+import { useSaveNotificationMutation } from "@/redux/api-slices";
 
-const socket = io("http://localhost:5000");
+const socket = io("https://chat-along-external-server.onrender.com/");
 
 export function LikeCommentButtonStack({
 	comments,
@@ -51,7 +52,7 @@ export function LikeCommentButtonStack({
 	const [commentPost, { isLoading: isLoadingComments }] =
 		useCommentPostMutation();
 	const dispatch = useDispatch();
-
+	const [saveNotification] = useSaveNotificationMutation();
 	const handleLike = async () => {
 		if (isAuthenticated) {
 			await likeUnlikePost(id);
@@ -61,7 +62,7 @@ export function LikeCommentButtonStack({
 						_id: userData._id || "",
 						name: userData.name || "",
 						username: userData.username || "",
-						image: userData.image || "",
+						image: userData.image || { image_url: "", public_id: "" },
 					},
 					postId: id || "",
 				})
@@ -77,6 +78,13 @@ export function LikeCommentButtonStack({
 				};
 
 				socket.off().emit("sendNotification", data);
+				await saveNotification({
+					senderName: userData.name || "",
+					image: userData.image || { image_url: "", public_id: "" },
+					action: "like",
+					link: `/post/${id}`,
+					receiverId: creatorId,
+				});
 			}
 		} else {
 			dispatch(handleDialog(true));
@@ -92,7 +100,7 @@ export function LikeCommentButtonStack({
 			_id: userData._id || "",
 			name: userData.name || "",
 			username: userData.username || "",
-			image: userData.image || "",
+			image: userData.image || { image_url: "", public_id: "" },
 		};
 		dispatch(
 			commentPostInState({ commentDetails: { comment, userId }, postId: id })
@@ -108,6 +116,14 @@ export function LikeCommentButtonStack({
 		};
 
 		socket.off().emit("sendNotification", data);
+
+		await saveNotification({
+			senderName: userData.name || "",
+			image: userData.image || { image_url: "", public_id: "" },
+			action: "comment",
+			link: `/post/${id}`,
+			receiverId: creatorId,
+		});
 	};
 
 	return (
@@ -123,17 +139,20 @@ export function LikeCommentButtonStack({
 			>
 				<DialogContent>
 					<Box height={"80vh"}>
-						{likes.length===0?<Typography textAlign={"center"}>No likes yet</Typography>:
-						likes?.map((user, index) => {
-							return (
-								<UserCard
-									key={index}
-									name={user.name}
-									image={user.image}
-									username={user.username}
-								/>
-							);
-						})}
+						{likes.length === 0 ? (
+							<Typography textAlign={"center"}>No likes yet</Typography>
+						) : (
+							likes?.map((user, index) => {
+								return (
+									<UserCard
+										key={index}
+										name={user.name}
+										image={user.image.image_url}
+										username={user.username}
+									/>
+								);
+							})
+						)}
 					</Box>
 				</DialogContent>
 			</Dialog>
@@ -191,31 +210,36 @@ export function LikeCommentButtonStack({
 								alignItems="center"
 							>
 								<Avatar
-									src={comment.userId.image}
+									src={comment.userId.image.image_url}
 									alt={comment.userId.username}
-									style={{ width: 40, height: 40 }}
+									sx={{ width: [30, 40], height: [30, 40] }}
 								/>
 								<Stack>
 									<Link
 										href={`/${comment.userId.username}`}
 										style={{ textDecoration: "none", color: "black" }}
 									>
-										<Typography variant="subtitle2" fontWeight={"bold"}>
+										<Typography
+											sx={{ fontSize: ["0.7rem", "0.8rem"] }}
+											fontWeight={"bold"}
+										>
 											{comment.userId.username}
 										</Typography>
 									</Link>
-									<Typography variant="body2">{comment.comment}</Typography>
+									<Typography sx={{ fontSize: ["0.7rem", "0.8rem"] }}>
+										{comment.comment}
+									</Typography>
 								</Stack>
 							</Stack>
 						))}
 					</Stack>
 					<Divider />
 					{isAuthenticated ? (
-						<Stack direction="row" spacing={2} alignItems="center">
+						<Stack direction="row" spacing={[1,2]} alignItems="center">
 							<Avatar
-								src={userData.image}
+								src={userData.image?.image_url}
 								alt="Logged in user"
-								style={{ width: 50, height: 50 }}
+								sx={{ width: [40,50], height: [40,50] }}
 							/>
 							<FormControl variant="outlined" fullWidth color="secondary">
 								<InputLabel htmlFor="outlined-adornment-add-comment">
@@ -224,6 +248,7 @@ export function LikeCommentButtonStack({
 								<OutlinedInput
 									id="outlined-adornment-add-comment"
 									type={"text"}
+									size="small"
 									value={comment}
 									onChange={(e) => setComment(e.target.value)}
 									endAdornment={

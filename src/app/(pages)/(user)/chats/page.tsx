@@ -8,7 +8,7 @@ import { ArrowBack } from "@mui/icons-material";
 import { RootState } from "@/redux/store";
 
 export default function Chats() {
-	const { userData, chats } = useSelector((state: RootState) => state.User);
+	const { userData } = useSelector((state: RootState) => state.User);
 	let chatLastMessage = "";
 	let seen = false;
 
@@ -39,23 +39,31 @@ export default function Chats() {
 				{userData.following?.length === 0
 					? "You dont have any friends for now. Follow them to add and chat"
 					: userData?.following?.map((user, index) => {
-							chatLastMessage = chats[user._id]
-								? chats[user._id][chats[user._id].length - 1].name === "sender"
+							chatLastMessage = userData?.chats?.[user._id]
+								? userData?.chats[user._id][
+										userData?.chats[user._id]?.length - 1
+								  ]?.name === "sender"
 									? `You: ${
-											chats[user._id][chats[user._id].length - 1].message
+											userData?.chats[user._id][
+												userData?.chats[user._id].length - 1
+											]?.message
 									  }`
-									: chats[user._id][chats[user._id].length - 1].message
+									: userData?.chats[user._id][
+											userData?.chats[user._id].length - 1
+									  ]?.message
 								: "Tap to chat";
 
-							seen = chats[user._id]
-								? chats[user._id][chats[user._id].length - 1].seen
+							seen = userData?.chats?.[user._id]
+								? userData?.chats[user._id][
+										userData?.chats[user._id].length - 1
+								  ]?.seen
 								: false;
 							return (
 								<UserCard
 									key={index}
 									id={user._id}
 									name={user.name}
-									image={user.image}
+									image={user.image.image_url}
 									lastMessage={chatLastMessage}
 									seen={seen}
 								/>

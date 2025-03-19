@@ -1,30 +1,11 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-interface ChatsDataInterface {
-	[id: string]: Array<{
-		name: string;
-		image: string;
-		message: string;
-		time: string;
-		seen: boolean;
-	}>;
-}
-
-interface NotificationDataInterface {
-	senderName: string;
-	senderImage: string;
-	action: string;
-	link: string;
-}
-
 interface InitialStateInterface {
 	userData: UserResponseDataInterface;
 	allUsersData: Array<UserResponseDataInterface>;
 	loading: boolean;
 	isAuthenticated: boolean;
 	isDialogOpened: boolean;
-	chats: ChatsDataInterface;
-	notifications: Array<NotificationDataInterface>;
 }
 
 const initialState: InitialStateInterface = {
@@ -33,8 +14,6 @@ const initialState: InitialStateInterface = {
 	loading: true,
 	isAuthenticated: false,
 	isDialogOpened: false,
-	chats: {},
-	notifications: [],
 };
 
 export const userSlice = createSlice({
@@ -58,7 +37,7 @@ export const userSlice = createSlice({
 			action: PayloadAction<{
 				_id: string;
 				name: string;
-				image: string;
+				image: { image_url: string; public_id: string };
 				username: string;
 			}>
 		) => {
@@ -95,7 +74,7 @@ export const userSlice = createSlice({
 				matchedUser?.followers?.push({
 					_id: state.userData._id || "",
 					name: state.userData.name || "",
-					image: state.userData.image || "",
+					image: state.userData.image || { image_url: "", public_id: "" },
 					username: state.userData.username || "",
 				});
 			}
@@ -115,14 +94,17 @@ export const userSlice = createSlice({
 				receiverId: string;
 				time: string;
 				message: string;
-				image: string;
+				image: { image_url: string; public_id: string };
 			}>
 		) => {
-			if (!state.chats[action.payload.receiverId]) {
-				state.chats[action.payload.receiverId] = [];
+			if (!state.userData.chats) {
+				state.userData.chats = {}; // Initialize chats as an empty object
+			}
+			if (!state.userData.chats?.[action.payload.receiverId]) {
+				state.userData.chats[action.payload.receiverId] = [];
 			}
 
-			state.chats[action.payload.receiverId].push({
+			state.userData.chats?.[action.payload.receiverId].push({
 				message: action.payload.message,
 				image: action.payload.image,
 				time: action.payload.time,
@@ -136,13 +118,16 @@ export const userSlice = createSlice({
 				senderId: string;
 				time: string;
 				message: string;
-				image: string;
+				image: { image_url: string; public_id: string };
 			}>
 		) => {
-			if (!state.chats[action.payload.senderId]) {
-				state.chats[action.payload.senderId] = [];
+			if (!state.userData.chats) {
+				state.userData.chats = {}; // Initialize chats as an empty object
 			}
-			state.chats[action.payload.senderId].push({
+			if (!state.userData.chats?.[action.payload.senderId]) {
+				state.userData.chats[action.payload.senderId] = [];
+			}
+			state.userData.chats?.[action.payload.senderId].push({
 				message: action.payload.message,
 				image: action.payload.image,
 				time: action.payload.time,
@@ -150,21 +135,38 @@ export const userSlice = createSlice({
 				seen: false,
 			});
 		},
+		clearMessagesInState: (state, action: PayloadAction<string>) => {
+			if (!state.userData.chats) {
+				state.userData.chats = {}; // Initialize chats as an empty object
+			}
+			if (!state.userData.chats?.[action.payload]) {
+				state.userData.chats[action.payload] = [];
+			}
+			state.userData.chats[action.payload] = [];
+		},
 		receiveNotificationInState: (
 			state,
-			action: PayloadAction<NotificationDataInterface>
+			action: PayloadAction<NotificationInterface>
 		) => {
-			state.notifications.push({
-				senderName: action.payload.senderName,
-				senderImage: action.payload.senderImage,
+			if (!state.userData.notifications) {
+				state.userData.notifications = [];
+			}
+			state.userData.notifications.push({
+				name: action.payload.name,
+				image: action.payload.image,
 				action: action.payload.action,
 				link: action.payload.link,
 			});
 		},
+		clearNotificationsInState: (state) => {
+			state.userData.notifications = [];
+		},
 		seenMessageInState: (state, action: PayloadAction<string>) => {
 			const userId = action.payload;
-			if (state.chats[userId]) {
-				state.chats[userId][state.chats[userId].length - 1].seen = true;
+			if (state.userData.chats?.[userId]) {
+				state.userData.chats[userId][
+					state.userData.chats[userId].length - 1
+				].seen = true;
 			}
 		},
 		addStatusInState: (state, action: PayloadAction<StatusInterface>) => {
@@ -197,7 +199,9 @@ export const {
 	handleDialog,
 	sendMessageInState,
 	receiveMessageInState,
+	clearMessagesInState,
 	receiveNotificationInState,
+	clearNotificationsInState,
 	addStatusInState,
 	deleteStatusInState,
 	seenMessageInState,
