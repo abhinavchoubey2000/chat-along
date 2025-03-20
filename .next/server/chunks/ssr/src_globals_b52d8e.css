@@ -1,0 +1,21 @@
+/* [project]/src/globals.css [app-client] (css) */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: none;
+  margin-right: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #575858;
+  border-radius: 10px;
+  border: 3px solid #0000;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/*# sourceMappingURL=src_globals_b52d8e.css.map*/

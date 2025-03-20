@@ -1,0 +1,7 @@
+{
+  "/(server)/api/(public)/get-all-posts/route": "app/(server)/api/(public)/get-all-posts/route.js",
+  "/page": "app/page.js",
+  "/(server)/api/(public)/get-all-users/route": "app/(server)/api/(public)/get-all-users/route.js",
+  "/(server)/api/(user)/get-user-profile/route": "app/(server)/api/(user)/get-user-profile/route.js",
+  "/(pages)/(public)/[username]/page": "app/(pages)/(public)/[username]/page.js"
+}
