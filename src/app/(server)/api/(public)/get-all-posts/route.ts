@@ -4,7 +4,7 @@ import { postModel } from "../../../_database/models";
 
 connectToDB();
 
-export async function GET(request: Request) {
+export async function GET() {
 	try {
 		const posts = await postModel
 			.find({})

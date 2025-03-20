@@ -38,7 +38,7 @@ export function PostOption({
 	const { userData, isAuthenticated } = useSelector(
 		(state: RootState) => state.User
 	);
-	const [deletePost, { isLoading }] = useDeletePostMutation();
+	const [deletePost] = useDeletePostMutation();
 	const [deleteImageFromCloudinary] = useDeleteImageFromCloudinaryMutation();
 	const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
 		setAnchorEl(event.currentTarget);

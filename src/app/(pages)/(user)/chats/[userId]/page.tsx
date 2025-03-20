@@ -1,8 +1,8 @@
 "use client";
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useRef } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { useSelector, useDispatch } from "react-redux";
-import io from "socket.io-client";
+// import io from "socket.io-client";
 import {
 	IconButton,
 	Stack,
@@ -34,7 +34,7 @@ import { LeftMessage } from "./_components";
 import { RootState } from "@/redux/store";
 import {
 	sendMessageInState,
-	seenMessageInState,
+	// seenMessageInState,
 	clearMessagesInState,
 } from "@/redux/slices/user";
 import {
@@ -42,7 +42,9 @@ import {
 	useSaveMessageMutation,
 } from "@/redux/api-slices";
 
-const socket = io("https://chat-along-external-server.onrender.com/");
+// const socket = io("https://chat-along-external-server.onrender.com/", {
+// 	transports: ["websocket", "polling"],
+// });
 
 export default function ChatBox() {
 	const { allUsersData, userData } = useSelector(
@@ -55,7 +57,7 @@ export default function ChatBox() {
 	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 	const [isDialogOpened, setIsDialogOpened] = useState(false);
 	const open = Boolean(anchorEl);
-	const [isTyping, setIsTyping] = useState(false);
+	// const [isTyping, setIsTyping] = useState(false);
 	const fileInputRef = useRef<HTMLInputElement>(null);
 	const [saveMessage] = useSaveMessageMutation();
 	const [clearMessages] = useClearMessagesMutation();
@@ -74,7 +76,6 @@ export default function ChatBox() {
 	const closeDialog = () => {
 		setIsDialogOpened(false);
 	};
-	let seen = false;
 	const deleteIconHoverStyle = { "&:hover": { color: "error" } };
 	const macthedUserData = allUsersData.find(
 		(user) => user._id === params.userId
@@ -90,31 +91,31 @@ export default function ChatBox() {
 		closeDialog();
 	};
 
-	socket
-		.off()
-		.on(
-			"receiveTypingSignal",
-			(data: { senderId: string; receiverId: string; isTyping: boolean }) => {
-				if (data.receiverId === userData?._id) {
-					setIsTyping(true);
-					setTimeout(() => {
-						setIsTyping(false);
-					}, 2000);
-				}
-			}
-		);
+	// socket
+	// 	.off()
+	// 	.on(
+	// 		"receiveTypingSignal",
+	// 		(data: { senderId: string; receiverId: string; isTyping: boolean }) => {
+	// 			if (data.receiverId === userData?._id) {
+	// 				setIsTyping(true);
+	// 				setTimeout(() => {
+	// 					setIsTyping(false);
+	// 				}, 2000);
+	// 			}
+	// 		}
+	// 	);
 
 	const sendTypingSignal = () => {
-		const data: {
-			senderId: string;
-			receiverId: string;
-			isTyping: boolean;
-		} = {
-			senderId: userData._id || "",
-			receiverId: macthedUserData?._id || "",
-			isTyping: true,
-		};
-		socket.off().emit("sendTypingSignal", data);
+		// const data: {
+		// 	senderId: string;
+		// 	receiverId: string;
+		// 	isTyping: boolean;
+		// } = {
+		// 	senderId: userData._id || "",
+		// 	receiverId: macthedUserData?._id || "",
+		// 	isTyping: true,
+		// };
+		// socket.off().emit("sendTypingSignal", data);
 	};
 
 	const sendMessage = async () => {
@@ -135,7 +136,7 @@ export default function ChatBox() {
 				hour12: true,
 			}),
 		};
-		socket.off().emit("sendMessage", data);
+		// socket.off().emit("sendMessage", data);
 
 		dispatch(
 			sendMessageInState({
@@ -158,7 +159,13 @@ export default function ChatBox() {
 			time: data.time,
 		});
 	};
-
+	const handleKey = (event: React.KeyboardEvent<HTMLInputElement>) => {
+		if (event.key === "Enter") {
+			sendMessage();
+		} else {
+			sendTypingSignal();
+		}
+	};
 	// useEffect(() => {
 	// 	dispatch(seenMessageInState(macthedUserData?._id || ""));
 	// }, [userData.chats]);
@@ -210,11 +217,11 @@ export default function ChatBox() {
 										{macthedUserData?.username}
 									</Typography>
 								</Stack>
-								{isTyping ? (
+								{/* {isTyping ? (
 									<Typography sx={{ fontWeight: "bold" }} variant="caption">
 										Typing...
 									</Typography>
-								) : null}
+								) : null} */}
 							</Stack>
 						</Stack>
 					</Stack>
@@ -305,15 +312,14 @@ export default function ChatBox() {
 					sx={{ borderRadius: "30px", fontSize: "0.8rem" }}
 					value={message}
 					onChange={handleChange}
-					onKeyUp={(e) => {
-						e.key === "Enter" ? sendMessage() : sendTypingSignal();
-					}}
+					onKeyUp={handleKey}
 					endAdornment={
 						<InputAdornment position="end">
 							{message === "" ? (
 								<IconButton
 									aria-label={"image"}
 									edge="end"
+									
 									onClick={openFileInput}
 								>
 									<Image />

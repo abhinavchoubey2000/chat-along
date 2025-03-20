@@ -39,7 +39,7 @@ const postSchema: Schema = new mongoose.Schema<PostSchemaInterface>(
 	{ timestamps: true }
 );
 
-(mongoose.models as any) = {};
+(mongoose.models as object) = {};
 
 const postModel = mongoose.model<PostSchemaInterface>("posts", postSchema);
 export { postModel };

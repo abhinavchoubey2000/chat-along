@@ -35,10 +35,7 @@ export async function POST(request: Request) {
 			});
 		}
 
-		//Converting cookie to User Id
-		const id = atob(String(cookie));
-
-		//Checking if username exsist or not
+		//Checking if receiver exsist or not
 		const receiver = await userModel.findById(receiverId);
 		if (!receiver) {
 			return NextResponse.json({

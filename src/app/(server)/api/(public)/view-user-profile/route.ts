@@ -8,14 +8,14 @@ interface ViewUserProfileRequestDataInterface {
 	userId: string;
 }
 
-interface ViewUserProfileResponseDataInterface {
-	name: string;
-	posts: [];
-	followers: string[];
-	following: string[];
-	username: string;
-	image: string;
-}
+// interface ViewUserProfileResponseDataInterface {
+// 	name: string;
+// 	posts: [];
+// 	followers: string[];
+// 	following: string[];
+// 	username: string;
+// 	image: string;
+// }
 
 export async function POST(request: Request) {
 	try {
@@ -36,19 +36,19 @@ export async function POST(request: Request) {
 			});
 		}
 
-		const responseData: ViewUserProfileResponseDataInterface = {
-			name: String(user?.name),
-			posts: user?.posts || [],
-			image: String(user?.image),
-			username: String(user?.username),
-			followers: Array.isArray(user?.followers) ? user.followers : [],
-			following: Array.isArray(user?.following) ? user.following : [],
-		};
+		// const responseData: ViewUserProfileResponseDataInterface = {
+		// 	name: String(user?.name),
+		// 	posts: user?.posts || [],
+		// 	image: String(user?.image),
+		// 	username: String(user?.username),
+		// 	followers: Array.isArray(user?.followers) ? user.followers : [],
+		// 	following: Array.isArray(user?.following) ? user.following : [],
+		// };
 
 		return NextResponse.json({
 			success: true,
 			message: "Fetched user profile.",
-			data: responseData,
+			// data: responseData,
 		});
 	} catch (error) {
 		return NextResponse.json({

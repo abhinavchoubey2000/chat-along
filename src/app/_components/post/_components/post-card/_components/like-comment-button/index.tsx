@@ -1,7 +1,7 @@
 "use client";
 import { Favorite, ModeComment, SendOutlined } from "@mui/icons-material";
 import { useDispatch, useSelector } from "react-redux";
-import io from "socket.io-client";
+// import io from "socket.io-client";
 import {
 	useLikeUnlikePostMutation,
 	useCommentPostMutation,
@@ -28,7 +28,9 @@ import { handleDialog } from "@/redux/slices/user";
 import { UserCard } from "./_components";
 import { useSaveNotificationMutation } from "@/redux/api-slices";
 
-const socket = io("https://chat-along-external-server.onrender.com/");
+// const socket = io("https://chat-along-external-server.onrender.com/", {
+// 	transports: ["websocket", "polling"],
+// });
 
 export function LikeCommentButtonStack({
 	comments,
@@ -47,12 +49,11 @@ export function LikeCommentButtonStack({
 	const { userData, isAuthenticated } = useSelector(
 		(state: RootState) => state.User
 	);
-	const [likeUnlikePost, { isLoading: isLoadingLikes }] =
-		useLikeUnlikePostMutation();
-	const [commentPost, { isLoading: isLoadingComments }] =
-		useCommentPostMutation();
+	const [likeUnlikePost] = useLikeUnlikePostMutation();
+	const [commentPost] = useCommentPostMutation();
 	const dispatch = useDispatch();
 	const [saveNotification] = useSaveNotificationMutation();
+
 	const handleLike = async () => {
 		if (isAuthenticated) {
 			await likeUnlikePost(id);
@@ -68,23 +69,23 @@ export function LikeCommentButtonStack({
 				})
 			);
 			if (!likes.find((like) => like?._id === userData?._id)) {
-				const data = {
-					senderId: userData._id,
-					senderName: userData.name,
-					senderImage: userData.image,
-					receiverId: creatorId,
-					action: `like`,
-					link: `/post/${id}`,
-				};
+				// const data = {
+				// 	senderId: userData._id,
+				// 	senderName: userData.name,
+				// 	senderImage: userData.image,
+				// 	receiverId: creatorId,
+				// 	action: `like`,
+				// 	link: `/post/${id}`,
+				// };
 
-				socket.off().emit("sendNotification", data);
-				await saveNotification({
-					senderName: userData.name || "",
-					image: userData.image || { image_url: "", public_id: "" },
-					action: "like",
-					link: `/post/${id}`,
-					receiverId: creatorId,
-				});
+				// socket.off().emit("sendNotification", data);
+				// await saveNotification({
+				// 	senderName: userData.name || "",
+				// 	image: userData.image || { image_url: "", public_id: "" },
+				// 	action: "like",
+				// 	link: `/post/${id}`,
+				// 	receiverId: creatorId,
+				// });
 			}
 		} else {
 			dispatch(handleDialog(true));
@@ -106,16 +107,16 @@ export function LikeCommentButtonStack({
 			commentPostInState({ commentDetails: { comment, userId }, postId: id })
 		);
 		setComment("");
-		const data = {
-			senderId: userData._id,
-			senderName: userData.name,
-			senderImage: userData.image,
-			receiverId: creatorId,
-			action: `comment`,
-			link: `/post/${id}`,
-		};
+		// const data = {
+		// 	senderId: userData._id,
+		// 	senderName: userData.name,
+		// 	senderImage: userData.image,
+		// 	receiverId: creatorId,
+		// 	action: `comment`,
+		// 	link: `/post/${id}`,
+		// };
 
-		socket.off().emit("sendNotification", data);
+		// socket.off().emit("sendNotification", data);
 
 		await saveNotification({
 			senderName: userData.name || "",
@@ -235,11 +236,11 @@ export function LikeCommentButtonStack({
 					</Stack>
 					<Divider />
 					{isAuthenticated ? (
-						<Stack direction="row" spacing={[1,2]} alignItems="center">
+						<Stack direction="row" spacing={[1, 2]} alignItems="center">
 							<Avatar
 								src={userData.image?.image_url}
 								alt="Logged in user"
-								sx={{ width: [40,50], height: [40,50] }}
+								sx={{ width: [40, 50], height: [40, 50] }}
 							/>
 							<FormControl variant="outlined" fullWidth color="secondary">
 								<InputLabel htmlFor="outlined-adornment-add-comment">

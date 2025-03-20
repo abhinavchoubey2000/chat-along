@@ -34,7 +34,7 @@ export async function DELETE(request: Request) {
 		}
 
 		//Converting cookie to User Id
-		const id = atob(String(cookie));
+		// const id = atob(String(cookie));
 
 		//Finding the post by the id to delete its comment
 		const post = await postModel.findById(postId);

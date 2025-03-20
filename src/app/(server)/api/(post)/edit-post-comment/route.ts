@@ -31,7 +31,7 @@ export async function PATCH(request: Request) {
 		}
 
 		//Converting cookie to User Id
-		const id = atob(String(cookie));
+		// const id = atob(String(cookie));
 
 		//Finding the post and then inside post.comments finding the comment id to update new one
 		await postModel.findOneAndUpdate(

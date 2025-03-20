@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import React from "react";
 import {
@@ -14,15 +14,16 @@ import { LikeCommentButtonStack, PostOption } from "./_components";
 import Link from "next/link";
 import { useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
+import { useParams } from "next/navigation";
 
-export default function UserPost({ params }: { params: { postId: string } }) {
-	const postId = params.postId;
-	const {postsData} = useSelector((state:RootState)=>state.Post)
+export default function UserPost() {
+	const { postId } = useParams();
+	const { postsData } = useSelector((state: RootState) => state.Post);
 	const matchedPost = postsData.find((post) => post._id === postId);
 	return (
 		<Card sx={{ maxWidth: "100%", marginY: 3 }} raised>
 			<CardHeader
-				avatar={<Avatar src={matchedPost?.creator?.image} />}
+				avatar={<Avatar src={matchedPost?.creator?.image.image_url} />}
 				action={<PostOption />}
 				title={
 					<Link
@@ -38,7 +39,7 @@ export default function UserPost({ params }: { params: { postId: string } }) {
 				component="img"
 				width={300}
 				height={500}
-				image={matchedPost?.post_image}
+				image={matchedPost?.post_image?.image_url}
 			/>
 			<CardContent>
 				<Typography variant="body2" sx={{ color: "black" }}>
@@ -49,6 +50,8 @@ export default function UserPost({ params }: { params: { postId: string } }) {
 				<LikeCommentButtonStack
 					likes={matchedPost?.likes || []}
 					comments={matchedPost?.comments || []}
+					id={matchedPost?._id || ""}
+					creatorId={matchedPost?.creator?._id || ""}
 				/>
 			</CardActions>
 		</Card>

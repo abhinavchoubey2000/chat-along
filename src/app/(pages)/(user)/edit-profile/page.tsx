@@ -8,18 +8,18 @@ import {
 	TextField,
 	Stack,
 	Typography,
-	CircularProgress,
+	// CircularProgress,
 } from "@mui/material";
 import React, { useState, useRef } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
 import Link from "next/link";
 import { ArrowBack, Edit } from "@mui/icons-material";
-import { useEditProfileMutation } from "@/redux/api-slices";
+// import { useEditProfileMutation } from "@/redux/api-slices";
 
 export default function EditProfile() {
 	const { userData } = useSelector((state: RootState) => state.User);
-	const [editProfile, { isLoading }] = useEditProfileMutation();
+	// const [editProfile, { isLoading }] = useEditProfileMutation();
 	const fileInputRef = useRef<HTMLInputElement>(null);
 	const [editStates, setEditStates] = useState({
 		image: false,
@@ -33,7 +33,7 @@ export default function EditProfile() {
 		email: string;
 		phone: string;
 	}>({
-		image: userData?.image || {image_url:"", public_id:""},
+		image: userData?.image || { image_url: "", public_id: "" },
 		name: userData?.name || "",
 		email: userData?.email || "",
 		phone: userData?.phone || "",
@@ -56,12 +56,13 @@ export default function EditProfile() {
 	};
 
 	const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-		const currentFile = event.target.files?.[0];
-		if (currentFile) {
-			setEditData((prev) => {
-				return { ...prev, image: currentFile };
-			});
-		}
+		console.log(event)
+		// const currentFile = event.target.files?.[0];
+		// if (currentFile) {
+		// 	setEditData((prev) => {
+		// 		return { ...prev, image: currentFile };
+		// 	});
+		// }
 	};
 
 	const updateChanges = async () => {
@@ -240,11 +241,11 @@ export default function EditProfile() {
 				</Stack>
 			</Stack>
 			<Button color="secondary" variant="contained" onClick={updateChanges}>
-				{isLoading ? (
+				{/* {isLoading ? (
 					<CircularProgress sx={{ color: "white" }} size={18} />
-				) : (
-					"Update Changes"
-				)}
+				) : ( */}
+				Update Changes
+				{/*)}*/}
 			</Button>
 		</Box>
 	);

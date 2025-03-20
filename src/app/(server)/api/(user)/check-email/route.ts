@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { connectToDB } from "../../../_database/connectToDatabase";
-import { userModel, UserSchemaInterface } from "../../../_database/models";
+import { userModel} from "../../../_database/models";
 
 connectToDB();
 

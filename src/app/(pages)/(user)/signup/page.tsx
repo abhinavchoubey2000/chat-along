@@ -19,7 +19,7 @@ const Signup = () => {
 		useUploadImageToCloudinaryMutation();
 	const [checkUsernameInDB, { isLoading: stepTwoLoading }] =
 		useCheckUsernameInDBMutation();
-	const [signup, { isLoading: stepThreeLoading }] = useSignupMutation();
+	const [signup] = useSignupMutation();
 	const [errorText, setErrorText] = useState<{
 		firstNameError: string;
 		lastNameError: string;
@@ -209,7 +209,7 @@ const Signup = () => {
 		imageFormData.append("image", formData.profilePicture || "");
 		const cloudinaryResponse = await uploadImageToCloudinary(imageFormData);
 
-		const response = await signup({
+		await signup({
 			name: `${formData.firstName} ${formData.lastName}`,
 			phone: formData.phone,
 			email: formData.email,

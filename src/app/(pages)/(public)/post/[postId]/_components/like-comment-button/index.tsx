@@ -1,5 +1,6 @@
 "use client";
 import { Favorite, ModeComment, SendOutlined } from "@mui/icons-material";
+import io from "socket.io-client";
 import {
 	Avatar,
 	IconButton,
@@ -12,50 +13,113 @@ import {
 	InputAdornment,
 } from "@mui/material";
 import Link from "next/link";
+import { useSelector, useDispatch } from "react-redux";
 import React, { useState } from "react";
+import { RootState } from "@/redux/store";
+import {
+	useCommentPostMutation,
+	useLikeUnlikePostMutation,
+} from "@/redux/api-slices/post";
+import { commentPostInState, likeUnlikePostInState } from "@/redux/slices/post";
+import { useSaveNotificationMutation } from "@/redux/api-slices";
+import { handleDialog } from "@/redux/slices/user";
+
+const socket = io("https://chat-along-external-server.onrender.com/", {
+	transports: ["websocket", "polling"],
+});
 
 export function LikeCommentButtonStack({
 	comments,
 	likes,
+	id,
+	creatorId,
 }: {
 	comments: Array<PostCommentsInterface>;
 	likes: Array<PostLikesInterface>;
+	id: string;
+	creatorId: string;
 }) {
-	const [liked, setLiked] = useState(false);
 	const [isCommentOpen, setIsCommentOpen] = useState(false);
 	const [comment, setComment] = useState("");
+	const { isAuthenticated, userData } = useSelector(
+		(state: RootState) => state.User
+	);
+	const dispatch = useDispatch();
+	const [likeUnlikePost] = useLikeUnlikePostMutation();
+	const [saveNotification] = useSaveNotificationMutation();
+	const [commentPost] = useCommentPostMutation();
 
-	const handleLike = () => {
-		if (liked) {
-			setLiked(false);
-			likes.pop();
+	const handleLike = async () => {
+		if (isAuthenticated) {
+			await likeUnlikePost(id);
+			dispatch(
+				likeUnlikePostInState({
+					likesDetails: {
+						_id: userData._id || "",
+						name: userData.name || "",
+						username: userData.username || "",
+						image: userData.image || { image_url: "", public_id: "" },
+					},
+					postId: id || "",
+				})
+			);
+			if (!likes.find((like) => like?._id === userData?._id)) {
+				const data = {
+					senderId: userData._id,
+					senderName: userData.name,
+					senderImage: userData.image,
+					receiverId: creatorId,
+					action: `like`,
+					link: `/post/${id}`,
+				};
+
+				socket.off().emit("sendNotification", data);
+				await saveNotification({
+					senderName: userData.name || "",
+					image: userData.image || { image_url: "", public_id: "" },
+					action: "like",
+					link: `/post/${id}`,
+					receiverId: creatorId,
+				});
+			}
 		} else {
-			setLiked(true);
-			likes.push({
-				id: "1",
-				username: "abh@12",
-				name: "Abhinav Choubey;",
-				image:
-					"https://plus.unsplash.com/premium_photo-1673296129756-e45408e25250?q=80&w=1413&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-			});
+			dispatch(handleDialog(true));
 		}
 	};
 
 	const handleComment = () => {
 		setIsCommentOpen(!isCommentOpen);
 	};
-	const handleCommentSubmit = () => {
-		comments.push({
-			user: {
-				name: "Abhinav Choubey",
-				id: "1",
-				username: "abh@12",
-				image:
-					"https://images.unsplash.com/photo-1527073620320-77635188c627?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-			},
-			comment,
-		});
+	const handleCommentSubmit = async () => {
+		await commentPost({ postId: id, comment });
+		const userId = {
+			_id: userData._id || "",
+			name: userData.name || "",
+			username: userData.username || "",
+			image: userData.image || { image_url: "", public_id: "" },
+		};
+		dispatch(
+			commentPostInState({ commentDetails: { comment, userId }, postId: id })
+		);
 		setComment("");
+		const data = {
+			senderId: userData._id,
+			senderName: userData.name,
+			senderImage: userData.image,
+			receiverId: creatorId,
+			action: `comment`,
+			link: `/post/${id}`,
+		};
+
+		socket.off().emit("sendNotification", data);
+
+		await saveNotification({
+			senderName: userData.name || "",
+			image: userData.image || { image_url: "", public_id: "" },
+			action: "comment",
+			link: `/post/${id}`,
+			receiverId: creatorId,
+		});
 	};
 
 	return (
@@ -64,7 +128,11 @@ export function LikeCommentButtonStack({
 				<Stack direction={"column"} spacing={0} justifyContent={"center"}>
 					<IconButton
 						aria-label="Like"
-						sx={{ color: liked ? "red" : "" }}
+						sx={{
+							color: likes.find((like) => like?._id === userData?._id)
+								? "red"
+								: "",
+						}}
 						onClick={handleLike}
 					>
 						<Favorite />
@@ -103,17 +171,17 @@ export function LikeCommentButtonStack({
 								alignItems="center"
 							>
 								<Avatar
-									src={comment.user.image}
-									alt={comment.user.username}
+									src={comment.userId.image.image_url}
+									alt={comment.userId.username}
 									style={{ width: 40, height: 40 }}
 								/>
 								<Stack>
 									<Link
-										href={`/${comment.user.username}`}
+										href={`/${comment.userId.username}`}
 										style={{ textDecoration: "none", color: "black" }}
 									>
 										<Typography variant="subtitle2" fontWeight={"bold"}>
-											{comment.user.username}
+											{comment.userId.username}
 										</Typography>
 									</Link>
 									<Typography variant="body2">{comment.comment}</Typography>

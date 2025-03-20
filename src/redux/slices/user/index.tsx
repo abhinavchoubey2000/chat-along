@@ -42,7 +42,7 @@ export const userSlice = createSlice({
 			}>
 		) => {
 			// Checking if user already followed then unfollow
-			let alreadyFollowing = state.userData.following?.find(
+			const alreadyFollowing = state.userData.following?.find(
 				(user) => user._id === action.payload._id
 			);
 			const matchedUser = state.allUsersData.find(

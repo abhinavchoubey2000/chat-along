@@ -31,7 +31,7 @@ const VisuallyHiddenInput = styled("input")({
 });
 
 export default function CreatePost() {
-	const [createPost, { isLoading: createPostLoading }] =
+	const [createPost] =
 		useCreatePostMutation();
 	const [
 		uploadImageToCloudinary,

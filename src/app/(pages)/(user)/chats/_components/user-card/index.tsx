@@ -2,10 +2,6 @@ import React from "react";
 import { Stack, Avatar, Typography } from "@mui/material";
 import Link from "next/link";
 
-interface ChatsDataInterface {
-	[id: string]: [];
-}
-
 export function UserCard({
 	id,
 	name,

@@ -6,7 +6,7 @@ import { cookies } from "next/headers";
 connectToDB();
 
 export async function PUT(request: Request) {
-	const checkIfEmailExists = async (email: String) => {
+	const checkIfEmailExists = async (email: string) => {
 		const matchedEmail = await userModel.findOne({ email });
 		return matchedEmail;
 	};
@@ -43,7 +43,7 @@ export async function PUT(request: Request) {
 			}
 		}
 
-		const updatedProfile = await userModel.findByIdAndUpdate(id, {
+		await userModel.findByIdAndUpdate(id, {
 			name,
 			email,
 			image,

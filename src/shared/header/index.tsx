@@ -1,8 +1,7 @@
 "use server";
 import React from "react";
 import { cookies } from "next/headers";
-import { Stack, IconButton, Button } from "@mui/material";
-import { Notifications } from "@mui/icons-material";
+import { Stack, Button } from "@mui/material";
 import Image from "next/image";
 import Logo from "../../../public/logo.png";
 import Link from "next/link";

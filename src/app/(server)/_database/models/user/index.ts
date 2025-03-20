@@ -100,7 +100,7 @@ const userSchema: Schema = new mongoose.Schema<UserSchemaInterface>(
 	{ timestamps: true }
 );
 
-(mongoose.models as any) = {};
+(mongoose.models as object) = {};
 
 const userModel = mongoose.model<UserSchemaInterface>("users", userSchema);
 export { userModel };

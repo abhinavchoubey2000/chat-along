@@ -12,10 +12,12 @@ import {
 import { SendOutlined, Close } from "@mui/icons-material";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
-import io from "socket.io-client";
+// import io from "socket.io-client";
 import { sendMessageInState } from "@/redux/slices/user";
 
-const socket = io("http://localhost:5000");
+// const socket = io("https://chat-along-external-server.onrender.com/", {
+// 	transports: ["websocket", "polling"],
+// });
 
 export function Message({
 	senderName,
@@ -38,26 +40,30 @@ export function Message({
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setReplyMessage(e.target.value);
 	};
-
+	const handleKey = (event: React.KeyboardEvent<HTMLInputElement>) => {
+		if (event.key === "Enter") {
+			sendMessage();
+		}
+	};
 	const sendMessage = () => {
-		const data: {
-			senderId: string;
-			receiverId: string;
-			message: string;
-			image: { image_url: string; public_id: string };
-			time: string;
-		} = {
-			senderId: userData._id || "",
-			receiverId: userId,
-			message: replyMessage,
-			image: userData.image || { image_url: "", public_id: "" },
-			time: new Date().toLocaleTimeString("en-US", {
-				hour: "2-digit",
-				minute: "2-digit",
-				hour12: true,
-			}),
-		};
-		socket.off().emit("sendMessage", data);
+		// const data: {
+		// 	senderId: string;
+		// 	receiverId: string;
+		// 	message: string;
+		// 	image: { image_url: string; public_id: string };
+		// 	time: string;
+		// } = {
+		// 	senderId: userData._id || "",
+		// 	receiverId: userId,
+		// 	message: replyMessage,
+		// 	image: userData.image || { image_url: "", public_id: "" },
+		// 	time: new Date().toLocaleTimeString("en-US", {
+		// 		hour: "2-digit",
+		// 		minute: "2-digit",
+		// 		hour12: true,
+		// 	}),
+		// };
+		// socket.off().emit("sendMessage", data);
 
 		dispatch(
 			sendMessageInState({
@@ -114,9 +120,7 @@ export function Message({
 					size="small"
 					value={replyMessage}
 					onChange={handleChange}
-					onKeyUp={(e) => {
-						e.key === "Enter" ? sendMessage() : null;
-					}}
+					onKeyUp={handleKey}
 					endAdornment={
 						<InputAdornment position="end">
 							<IconButton

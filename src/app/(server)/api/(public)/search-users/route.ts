@@ -8,12 +8,6 @@ interface SearchUserRequestDataInterface {
 	query: string;
 }
 
-interface SearchUserResponseDataInterface {
-	name: string;
-	username: string;
-	image: string;
-}
-
 export async function POST(request: Request) {
 	try {
 		const { query }: SearchUserRequestDataInterface = await request.json();

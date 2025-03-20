@@ -32,10 +32,10 @@ export const postSlice = createSlice({
 				postId: string;
 			}>
 		) => {
-			let foundPost = state.postsData.find(
+			const foundPost = state.postsData.find(
 				(post) => post._id === action.payload.postId
 			);
-			let isLikedByUser = foundPost?.likes?.find(
+			const isLikedByUser = foundPost?.likes?.find(
 				(like) => like._id === action.payload.likesDetails._id
 			);
 			if (!isLikedByUser) {
@@ -46,7 +46,7 @@ export const postSlice = createSlice({
 					username: action.payload.likesDetails.username,
 				});
 			} else {
-				let likedByUserIndex = foundPost?.likes?.findIndex(
+				const likedByUserIndex = foundPost?.likes?.findIndex(
 					(like) => like._id === action.payload.likesDetails._id
 				);
 				state.postsData
@@ -61,7 +61,7 @@ export const postSlice = createSlice({
 				postId: string;
 			}>
 		) => {
-			let foundPost = state.postsData.find(
+			const foundPost = state.postsData.find(
 				(post) => post._id === action.payload.postId
 			);
 			foundPost?.comments?.push({

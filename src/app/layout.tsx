@@ -6,8 +6,8 @@ import {
 	StorePublicPosts,
 	StoreUserData,
 	StoreAllUsersData,
-	ReceiveMessage,
-	ReceiveNotification,
+	// ReceiveMessage,
+	// ReceiveNotification,
 } from "./_components/client";
 import { Container } from "@mui/material";
 import "../globals.css";
@@ -33,8 +33,8 @@ export default function RootLayout({
 								<StoreUserData />
 								<StorePublicPosts />
 								<StoreAllUsersData />
-								<ReceiveNotification />
-								<ReceiveMessage />
+								{/* <ReceiveNotification /> */}
+								{/* <ReceiveMessage /> */}
 								<Container
 									maxWidth={"sm"}
 									sx={{

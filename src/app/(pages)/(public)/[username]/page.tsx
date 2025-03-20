@@ -20,22 +20,23 @@ import {
 } from "@/redux/api-slices";
 import { OverlayLogin } from "@/shared";
 import { RootState } from "@/redux/store";
-import io from "socket.io-client";
+// import io from "socket.io-client";
 
-const socket = io("https://chat-along-external-server.onrender.com/");
+// const socket = io("https://chat-along-external-server.onrender.com/", {
+// 	transports: ["websocket", "polling"],
+// });
 
 export default function User() {
 	const params = useParams<{ username: string }>();
 	const dispatch = useDispatch();
-	if (!params?.username) return <div>User not found</div>;
-	const username = decodeURIComponent(params.username);
 	const [followUnfollowUser, { isLoading }] = useFollowUnfollowUserMutation();
 	const [saveNotification] = useSaveNotificationMutation();
 	const { allUsersData, userData, isAuthenticated } = useSelector(
 		(state: RootState) => state.User
 	);
 	const { postsData } = useSelector((state: RootState) => state.Post);
-
+	if (!params?.username) return <div>User not found</div>;
+	const username = decodeURIComponent(params.username);
 	const matchedUser = allUsersData.find((user) => user.username === username);
 	const matchedPost = postsData.filter(
 		(post) => post.creator?._id === matchedUser?._id
@@ -54,16 +55,16 @@ export default function User() {
 			);
 
 			if (!userData.following?.find((user) => user._id === matchedUser?._id)) {
-				const data = {
-					senderId: userData._id,
-					senderName: userData.name,
-					senderImage: userData.image,
-					receiverId: matchedUser._id,
-					action: `follow`,
-					link: `/${userData.username}`,
-				};
+				// const data = {
+				// 	senderId: userData._id,
+				// 	senderName: userData.name,
+				// 	senderImage: userData.image,
+				// 	receiverId: matchedUser._id,
+				// 	action: `follow`,
+				// 	link: `/${userData.username}`,
+				// };
 
-				socket.off().emit("sendNotification", data);
+				// socket.off().emit("sendNotification", data);
 				await saveNotification({
 					senderName: userData.name || "",
 					image: userData.image || { image_url: "", public_id: "" },
