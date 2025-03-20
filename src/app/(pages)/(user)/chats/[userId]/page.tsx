@@ -2,7 +2,7 @@
 import React, { useState, useRef } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { useSelector, useDispatch } from "react-redux";
-// import io from "socket.io-client";
+import io from "socket.io-client";
 import {
 	IconButton,
 	Stack,
@@ -42,9 +42,7 @@ import {
 	useSaveMessageMutation,
 } from "@/redux/api-slices";
 
-// const socket = io("https://chat-along-external-server.onrender.com/", {
-// 	transports: ["websocket", "polling"],
-// });
+const socket = io("https://chat-along-external-server.onrender.com/");
 
 export default function ChatBox() {
 	const { allUsersData, userData } = useSelector(
@@ -57,7 +55,7 @@ export default function ChatBox() {
 	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 	const [isDialogOpened, setIsDialogOpened] = useState(false);
 	const open = Boolean(anchorEl);
-	// const [isTyping, setIsTyping] = useState(false);
+	const [isTyping, setIsTyping] = useState(false);
 	const fileInputRef = useRef<HTMLInputElement>(null);
 	const [saveMessage] = useSaveMessageMutation();
 	const [clearMessages] = useClearMessagesMutation();
@@ -91,31 +89,31 @@ export default function ChatBox() {
 		closeDialog();
 	};
 
-	// socket
-	// 	.off()
-	// 	.on(
-	// 		"receiveTypingSignal",
-	// 		(data: { senderId: string; receiverId: string; isTyping: boolean }) => {
-	// 			if (data.receiverId === userData?._id) {
-	// 				setIsTyping(true);
-	// 				setTimeout(() => {
-	// 					setIsTyping(false);
-	// 				}, 2000);
-	// 			}
-	// 		}
-	// 	);
+	socket
+		.off()
+		.on(
+			"receiveTypingSignal",
+			(data: { senderId: string; receiverId: string; isTyping: boolean }) => {
+				if (data.receiverId === userData?._id) {
+					setIsTyping(true);
+					setTimeout(() => {
+						setIsTyping(false);
+					}, 2000);
+				}
+			}
+		);
 
 	const sendTypingSignal = () => {
-		// const data: {
-		// 	senderId: string;
-		// 	receiverId: string;
-		// 	isTyping: boolean;
-		// } = {
-		// 	senderId: userData._id || "",
-		// 	receiverId: macthedUserData?._id || "",
-		// 	isTyping: true,
-		// };
-		// socket.off().emit("sendTypingSignal", data);
+		const data: {
+			senderId: string;
+			receiverId: string;
+			isTyping: boolean;
+		} = {
+			senderId: userData._id || "",
+			receiverId: macthedUserData?._id || "",
+			isTyping: true,
+		};
+		socket.off().emit("sendTypingSignal", data);
 	};
 
 	const sendMessage = async () => {
@@ -136,7 +134,7 @@ export default function ChatBox() {
 				hour12: true,
 			}),
 		};
-		// socket.off().emit("sendMessage", data);
+		socket.off().emit("sendMessage", data);
 
 		dispatch(
 			sendMessageInState({
@@ -177,6 +175,7 @@ export default function ChatBox() {
 			justifyContent={"space-between"}
 			height={"100%"}
 			py={1}
+			px={[1, 0]}
 		>
 			<Paper elevation={0}>
 				<Stack
@@ -217,11 +216,11 @@ export default function ChatBox() {
 										{macthedUserData?.username}
 									</Typography>
 								</Stack>
-								{/* {isTyping ? (
+								{isTyping ? (
 									<Typography sx={{ fontWeight: "bold" }} variant="caption">
 										Typing...
 									</Typography>
-								) : null} */}
+								) : null}
 							</Stack>
 						</Stack>
 					</Stack>
@@ -304,7 +303,12 @@ export default function ChatBox() {
 						);
 					})}
 			</Box>
-			<FormControl variant="outlined" fullWidth color="primary">
+			<FormControl
+				sx={{ position: ["fixed","relative"], bottom: 0 }}
+				variant="outlined"
+				fullWidth
+				color="primary"
+			>
 				<OutlinedInput
 					id="outlined-adornment-message"
 					type={"text"}
@@ -319,7 +323,6 @@ export default function ChatBox() {
 								<IconButton
 									aria-label={"image"}
 									edge="end"
-									
 									onClick={openFileInput}
 								>
 									<Image />

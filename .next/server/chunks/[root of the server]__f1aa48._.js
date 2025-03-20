@@ -60,7 +60,9 @@ var __TURBOPACK__imported__module__$5b$externals$5d2f$__$5b$external$5d$__$28$mo
 ;
 const connectToDB = async ()=>{
     try {
-        await __TURBOPACK__imported__module__$5b$externals$5d2f$__$5b$external$5d$__$28$mongoose$2c$__cjs$29$__["default"].connect(String(process.env.DATABASE_URL));
+        await __TURBOPACK__imported__module__$5b$externals$5d2f$__$5b$external$5d$__$28$mongoose$2c$__cjs$29$__["default"].connect(String(process.env.DATABASE_URL), {
+            serverSelectionTimeoutMS: 5000
+        });
         console.log("Connected To Database!!!");
     } catch (error) {
         console.log("The error message says -> ", error.message);

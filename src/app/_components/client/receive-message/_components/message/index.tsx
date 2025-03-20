@@ -12,12 +12,10 @@ import {
 import { SendOutlined, Close } from "@mui/icons-material";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
-// import io from "socket.io-client";
+import io from "socket.io-client";
 import { sendMessageInState } from "@/redux/slices/user";
 
-// const socket = io("https://chat-along-external-server.onrender.com/", {
-// 	transports: ["websocket", "polling"],
-// });
+const socket = io("https://chat-along-external-server.onrender.com/");
 
 export function Message({
 	senderName,
@@ -46,24 +44,24 @@ export function Message({
 		}
 	};
 	const sendMessage = () => {
-		// const data: {
-		// 	senderId: string;
-		// 	receiverId: string;
-		// 	message: string;
-		// 	image: { image_url: string; public_id: string };
-		// 	time: string;
-		// } = {
-		// 	senderId: userData._id || "",
-		// 	receiverId: userId,
-		// 	message: replyMessage,
-		// 	image: userData.image || { image_url: "", public_id: "" },
-		// 	time: new Date().toLocaleTimeString("en-US", {
-		// 		hour: "2-digit",
-		// 		minute: "2-digit",
-		// 		hour12: true,
-		// 	}),
-		// };
-		// socket.off().emit("sendMessage", data);
+		const data: {
+			senderId: string;
+			receiverId: string;
+			message: string;
+			image: { image_url: string; public_id: string };
+			time: string;
+		} = {
+			senderId: userData._id || "",
+			receiverId: userId,
+			message: replyMessage,
+			image: userData.image || { image_url: "", public_id: "" },
+			time: new Date().toLocaleTimeString("en-US", {
+				hour: "2-digit",
+				minute: "2-digit",
+				hour12: true,
+			}),
+		};
+		socket.off().emit("sendMessage", data);
 
 		dispatch(
 			sendMessageInState({
@@ -127,9 +125,9 @@ export function Message({
 								aria-label={"message"}
 								color="primary"
 								edge="end"
-								// onClick={() => {
-								// 	sendMessage();
-								// }}
+								onClick={() => {
+									sendMessage();
+								}}
 							>
 								<SendOutlined />
 							</IconButton>

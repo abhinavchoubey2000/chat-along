@@ -227,7 +227,7 @@ const Signup = () => {
 	const prevStep = () => setActiveStep((prev) => prev - 1);
 
 	return (
-		<Box>
+		<Box px={[2, 0]}>
 			<Stack py={1}>
 				<Image src={Logo} alt="Logo" height={40} width={60} />
 				<Typography variant="h5" fontWeight={"bold"}>
