@@ -8,45 +8,39 @@ import {
 	TextField,
 	Stack,
 	Typography,
-	// CircularProgress,
+	CircularProgress,
 } from "@mui/material";
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
 import Link from "next/link";
 import { ArrowBack, Edit } from "@mui/icons-material";
-// import { useEditProfileMutation } from "@/redux/api-slices";
+import { useReplaceImageInCloudinaryMutation } from "@/redux/api-slices";
+import { useEditProfileMutation } from "@/redux/api-slices";
 
 export default function EditProfile() {
 	const { userData } = useSelector((state: RootState) => state.User);
-	// const [editProfile, { isLoading }] = useEditProfileMutation();
+	const [editProfile] = useEditProfileMutation();
+	const [replaceImageInCloudinary, { isLoading }] =
+		useReplaceImageInCloudinaryMutation();
 	const fileInputRef = useRef<HTMLInputElement>(null);
-	const [editStates, setEditStates] = useState({
-		image: false,
-		name: false,
-		email: false,
-		phone: false,
-	});
+
+	const [nameText, setNameText] = useState(false);
+	const [emailText, setEmailText] = useState(false);
+	const [phoneText, setPhoneText] = useState(false);
+	const [imageFile, setImageFile] = useState<File | null>(null);
+	const [imageSrc, setImageSrc] = useState<string>("");
 	const [editData, setEditData] = useState<{
 		image: { image_url: string; public_id: string };
 		name: string;
 		email: string;
 		phone: string;
 	}>({
-		image: userData?.image || { image_url: "", public_id: "" },
+		image: userData.image || { image_url: "", public_id: "" },
 		name: userData?.name || "",
 		email: userData?.email || "",
 		phone: userData?.phone || "",
 	});
-
-	const handleEditState = (name: string) => {
-		setEditStates((prev) => {
-			return {
-				...prev,
-				[name]: true,
-			};
-		});
-	};
 
 	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		const { value, name } = event.target;
@@ -56,27 +50,54 @@ export default function EditProfile() {
 	};
 
 	const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-		console.log(event)
-		// const currentFile = event.target.files?.[0];
-		// if (currentFile) {
-		// 	setEditData((prev) => {
-		// 		return { ...prev, image: currentFile };
-		// 	});
-		// }
+		const currentFile = event.target.files?.[0];
+
+		if (currentFile) {
+			setImageFile(currentFile);
+			setImageSrc(URL.createObjectURL(currentFile));
+		}
 	};
 
 	const updateChanges = async () => {
-		// await editProfile({
-		// 	image: editData.image,
-		// 	name: editData.name,
-		// 	email: editData.email,
-		// 	phone: editData.phone,
-		// });
+		if (imageFile) {
+			const formData = new FormData();
+			formData.append("image", imageFile as Blob);
+			formData.append("publicId", userData.image?.public_id || "");
+			const response = await replaceImageInCloudinary(formData);
+			const imageData = {
+				image_url: response.data.image_url,
+				public_id: response.data.public_id,
+			};
+			await editProfile({
+				image: imageData,
+				name: editData.name,
+				email: editData.email,
+				phone: editData.phone,
+			});
+		} else {
+			await editProfile({
+				image: userData.image || { image_url: "", public_id: "" },
+				name: editData.name,
+				email: editData.email,
+				phone: editData.phone,
+			});
+		}
+
 		window.location.href = "/profile";
 	};
 
+	useEffect(() => {
+		setImageSrc(userData.image?.image_url || "");
+	}, []);
+
 	return (
-		<Box display={"flex"} flexDirection={"column"} width={"100%"} gap={3}>
+		<Box
+			display={"flex"}
+			px={[2, 0]}
+			flexDirection={"column"}
+			width={"100%"}
+			gap={3}
+		>
 			<Stack
 				paddingY={1}
 				paddingX={1}
@@ -102,18 +123,15 @@ export default function EditProfile() {
 				px={2}
 				borderRadius={2}
 			>
-				<Avatar
-					src={editData.image.image_url}
-					sx={{ width: 150, height: 150 }}
-				/>
+				<Avatar src={imageSrc} sx={{ width: [100, 150], height: [100, 150] }} />
 				<IconButton
-					sx={{ width: 50, height: 50 }}
+					sx={{ width: [20, 50], height: [20, 50] }}
 					color="primary"
 					onClick={() => {
 						fileInputRef.current?.click();
 					}}
 				>
-					<Edit sx={{ fontSize: 40 }} />
+					<Edit sx={{ fontSize: [25, 40] }} />
 				</IconButton>
 				<input
 					style={{ display: "none" }}
@@ -123,7 +141,7 @@ export default function EditProfile() {
 				/>
 			</Stack>
 			<Stack direction={"row"} spacing={2} justifyContent={"space-between"}>
-				{editStates.name ? (
+				{nameText ? (
 					<TextField
 						variant="outlined"
 						fullWidth
@@ -131,6 +149,7 @@ export default function EditProfile() {
 						value={editData.name}
 						onChange={handleChange}
 						name="name"
+						size="small"
 					/>
 				) : (
 					<Stack
@@ -141,15 +160,17 @@ export default function EditProfile() {
 						px={1}
 						borderRadius={2}
 					>
-						<Typography variant="h6">{userData.name}</Typography>
+						<Typography sx={{ fontSize: ["0.8rem", "2rem"] }}>
+							{userData.name}
+						</Typography>
 						<IconButton
-							sx={{ width: 50, height: 50 }}
+							sx={{ width: [20, 50], height: [20, 50] }}
 							color="primary"
 							onClick={() => {
-								handleEditState("name");
+								setNameText(true);
 							}}
 						>
-							<Edit />
+							<Edit sx={{ fontSize: 18 }} />
 						</IconButton>
 					</Stack>
 				)}
@@ -162,21 +183,24 @@ export default function EditProfile() {
 					px={2}
 					borderRadius={2}
 				>
-					<Typography sx={{ opacity: 0.7 }} variant="h6">
+					<Typography sx={{ opacity: 0.7, fontSize: ["0.8rem", "1.5rem"] }}>
 						#{userData.username}
 					</Typography>
 				</Stack>
 			</Stack>
 			<Stack>
-				<Typography fontWeight={"bold"}>Email and Phone:</Typography>
+				<Typography fontWeight={"bold"} sx={{ fontSize: ["0.8rem", "1rem"] }}>
+					Email and Phone:
+				</Typography>
 				<Divider />
 				<Stack
 					spacing={2}
 					py={2}
-					direction={"row"}
+					gap={1}
+					direction={["column", "row"]}
 					justifyContent={"space-between"}
 				>
-					{editStates.email ? (
+					{emailText ? (
 						<TextField
 							variant="outlined"
 							fullWidth
@@ -184,6 +208,7 @@ export default function EditProfile() {
 							value={editData.email}
 							onChange={handleChange}
 							name="email"
+							size="small"
 						/>
 					) : (
 						<Stack
@@ -195,19 +220,21 @@ export default function EditProfile() {
 							py={1}
 							borderRadius={2}
 						>
-							<Typography variant="subtitle2">{userData.email}</Typography>
+							<Typography sx={{ fontSize: ["0.8rem", "1rem"] }}>
+								{userData.email}
+							</Typography>
 							<IconButton
 								sx={{ width: 25, height: 25 }}
 								color="primary"
 								onClick={() => {
-									handleEditState("email");
+									setEmailText(true);
 								}}
 							>
 								<Edit sx={{ fontSize: 18 }} />
 							</IconButton>
 						</Stack>
 					)}
-					{editStates.phone ? (
+					{phoneText ? (
 						<TextField
 							variant="outlined"
 							fullWidth
@@ -215,6 +242,7 @@ export default function EditProfile() {
 							value={editData.phone}
 							onChange={handleChange}
 							name="phone"
+							size="small"
 						/>
 					) : (
 						<Stack
@@ -226,12 +254,14 @@ export default function EditProfile() {
 							py={1}
 							borderRadius={2}
 						>
-							<Typography variant="subtitle2">{userData.phone}</Typography>
+							<Typography sx={{ fontSize: ["0.8rem", "1rem"] }}>
+								{userData.phone}
+							</Typography>
 							<IconButton
 								sx={{ width: 25, height: 25 }}
 								color="primary"
 								onClick={() => {
-									handleEditState("phone");
+									setPhoneText(true);
 								}}
 							>
 								<Edit sx={{ fontSize: 18 }} />
@@ -241,11 +271,11 @@ export default function EditProfile() {
 				</Stack>
 			</Stack>
 			<Button color="secondary" variant="contained" onClick={updateChanges}>
-				{/* {isLoading ? (
+				{isLoading ? (
 					<CircularProgress sx={{ color: "white" }} size={18} />
-				) : ( */}
-				Update Changes
-				{/*)}*/}
+				) : (
+					"Update Changes"
+				)}
 			</Button>
 		</Box>
 	);

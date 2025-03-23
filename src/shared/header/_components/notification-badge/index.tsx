@@ -8,7 +8,7 @@ import React from "react";
 import { RootState } from "@/redux/store";
 
 export function NotificationBadge() {
-	const {userData} = useSelector((state:RootState)=>state.User)
+	const { userData } = useSelector((state: RootState) => state.User);
 	return (
 		<Link href={"/notification"}>
 			<IconButton area-label={"Open Notifications"} size="large">

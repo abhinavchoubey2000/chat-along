@@ -84,8 +84,8 @@ export function MyStatus({
 			<Stack
 				onClick={handleOpenMenu}
 				alignItems={"center"}
-				sx={{ cursor: "pointer", pl: 2 }}
-				spacing={1}
+				sx={{ cursor: "pointer", ml: 2 }}
+				spacing={[0,1]}
 			>
 				<Avatar
 					src={loggedInUserImage}
@@ -131,12 +131,13 @@ export function MyStatus({
 				onClick={handleOpenMenu}
 				alignItems={"center"}
 				sx={{ cursor: "pointer", pr: 2 }}
+				spacing={[0,1]}
 			>
 				<Avatar
 					src={loggedInUserImage}
 					sx={{
-						height: 70,
-						width: 70,
+						height: [40, 70],
+						width: [40, 70],
 						border: statusArray.length === 0 ? "0" : "2px solid #86d4ff",
 					}}
 				/>
@@ -153,7 +154,7 @@ export function MyStatus({
 						zIndex: theme.zIndex.drawer + 1,
 						width: ["100%", "44%"],
 						height: "100%",
-						left: ["-3.5%", "26.8%"],
+						left: ["-3.9%", "26.8%"],
 						bgcolor: statusArray[statusIndex - 1]?.colorCode || "#000",
 						backdropFilter: "blur(2px)",
 					})}
@@ -202,7 +203,7 @@ export function MyStatus({
 						>
 							<Avatar src={loggedInUserImage} sx={{ height: 35, width: 35 }} />
 							<Stack spacing={0}>
-								<Typography>You</Typography>
+								<Typography variant="caption">You</Typography>
 								<Typography variant="caption" sx={{ opacity: 0.7 }}>
 									2:33 PM
 								</Typography>
@@ -221,6 +222,7 @@ export function MyStatus({
 					) : (
 						<Typography
 							sx={{ fontSize: ["2rem", "3rem"] }}
+							px={[2,0]}
 							textAlign={"center"}
 						>
 							{statusArray[statusIndex - 1]?.statusContent || ""}

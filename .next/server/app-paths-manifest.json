@@ -1,10 +1,6 @@
 {
   "/page": "app/page.js",
   "/(server)/api/(public)/get-all-posts/route": "app/(server)/api/(public)/get-all-posts/route.js",
-  "/(server)/api/(user)/get-user-profile/route": "app/(server)/api/(user)/get-user-profile/route.js",
   "/(server)/api/(public)/get-all-users/route": "app/(server)/api/(public)/get-all-users/route.js",
-  "/(pages)/(public)/[username]/page": "app/(pages)/(public)/[username]/page.js",
-  "/(pages)/(user)/chats/page": "app/(pages)/(user)/chats/page.js",
-  "/(pages)/(user)/chats/[userId]/page": "app/(pages)/(user)/chats/[userId]/page.js",
-  "/(server)/api/(user)/save-message/route": "app/(server)/api/(user)/save-message/route.js"
+  "/(server)/api/(user)/get-user-profile/route": "app/(server)/api/(user)/get-user-profile/route.js"
 }

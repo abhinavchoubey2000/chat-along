@@ -92,9 +92,12 @@ function MyStatus({ statusArray, loggedInUserImage }) {
             alignItems: "center",
             sx: {
                 cursor: "pointer",
-                pl: 2
+                ml: 2
             },
-            spacing: 1,
+            spacing: [
+                0,
+                1
+            ],
             children: [
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Avatar$2f$Avatar$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Avatar$3e$__["Avatar"], {
                     src: loggedInUserImage,
@@ -178,17 +181,27 @@ function MyStatus({ statusArray, loggedInUserImage }) {
                     cursor: "pointer",
                     pr: 2
                 },
+                spacing: [
+                    0,
+                    1
+                ],
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Avatar$2f$Avatar$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Avatar$3e$__["Avatar"], {
                         src: loggedInUserImage,
                         sx: {
-                            height: 70,
-                            width: 70,
+                            height: [
+                                40,
+                                70
+                            ],
+                            width: [
+                                40,
+                                70
+                            ],
                             border: statusArray.length === 0 ? "0" : "2px solid #86d4ff"
                         }
                     }, void 0, false, {
                         fileName: "[project]/src/app/_components/status/_components/my-status/index.tsx",
-                        lineNumber: 135,
+                        lineNumber: 136,
                         columnNumber: 5
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Typography$2f$Typography$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Typography$3e$__["Typography"], {
@@ -197,7 +210,7 @@ function MyStatus({ statusArray, loggedInUserImage }) {
                         children: "My Status"
                     }, void 0, false, {
                         fileName: "[project]/src/app/_components/status/_components/my-status/index.tsx",
-                        lineNumber: 143,
+                        lineNumber: 144,
                         columnNumber: 5
                     }, this)
                 ]
@@ -216,7 +229,7 @@ function MyStatus({ statusArray, loggedInUserImage }) {
                         ],
                         height: "100%",
                         left: [
-                            "-3.5%",
+                            "-3.9%",
                             "26.8%"
                         ],
                         bgcolor: statusArray[statusIndex - 1]?.colorCode || "#000",
@@ -245,12 +258,12 @@ function MyStatus({ statusArray, loggedInUserImage }) {
                                             fontSize: "small"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/_components/status/_components/my-status/index.tsx",
-                                            lineNumber: 176,
+                                            lineNumber: 177,
                                             columnNumber: 9
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/_components/status/_components/my-status/index.tsx",
-                                        lineNumber: 164,
+                                        lineNumber: 165,
                                         columnNumber: 8
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Fab$2f$Fab$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Fab$3e$__["Fab"], {
@@ -270,18 +283,18 @@ function MyStatus({ statusArray, loggedInUserImage }) {
                                             fontSize: "small"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/_components/status/_components/my-status/index.tsx",
-                                            lineNumber: 192,
+                                            lineNumber: 193,
                                             columnNumber: 9
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/_components/status/_components/my-status/index.tsx",
-                                        lineNumber: 178,
+                                        lineNumber: 179,
                                         columnNumber: 8
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/_components/status/_components/my-status/index.tsx",
-                                lineNumber: 163,
+                                lineNumber: 164,
                                 columnNumber: 7
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Stack$2f$Stack$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Stack$3e$__["Stack"], {
@@ -300,17 +313,18 @@ function MyStatus({ statusArray, loggedInUserImage }) {
                                         }
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/_components/status/_components/my-status/index.tsx",
-                                        lineNumber: 203,
+                                        lineNumber: 204,
                                         columnNumber: 8
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Stack$2f$Stack$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Stack$3e$__["Stack"], {
                                         spacing: 0,
                                         children: [
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Typography$2f$Typography$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Typography$3e$__["Typography"], {
+                                                variant: "caption",
                                                 children: "You"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/_components/status/_components/my-status/index.tsx",
-                                                lineNumber: 205,
+                                                lineNumber: 206,
                                                 columnNumber: 9
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Typography$2f$Typography$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Typography$3e$__["Typography"], {
@@ -321,19 +335,19 @@ function MyStatus({ statusArray, loggedInUserImage }) {
                                                 children: "2:33 PM"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/_components/status/_components/my-status/index.tsx",
-                                                lineNumber: 206,
+                                                lineNumber: 207,
                                                 columnNumber: 9
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/app/_components/status/_components/my-status/index.tsx",
-                                        lineNumber: 204,
+                                        lineNumber: 205,
                                         columnNumber: 8
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/_components/status/_components/my-status/index.tsx",
-                                lineNumber: 195,
+                                lineNumber: 196,
                                 columnNumber: 7
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Pagination$2f$Pagination$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Pagination$3e$__["Pagination"], {
@@ -344,18 +358,18 @@ function MyStatus({ statusArray, loggedInUserImage }) {
                                 onKeyUp: handleLeftRightButtons
                             }, void 0, false, {
                                 fileName: "[project]/src/app/_components/status/_components/my-status/index.tsx",
-                                lineNumber: 211,
+                                lineNumber: 212,
                                 columnNumber: 7
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/_components/status/_components/my-status/index.tsx",
-                        lineNumber: 162,
+                        lineNumber: 163,
                         columnNumber: 6
                     }, this),
                     isLoading ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$CircularProgress$2f$CircularProgress$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__CircularProgress$3e$__["CircularProgress"], {}, void 0, false, {
                         fileName: "[project]/src/app/_components/status/_components/my-status/index.tsx",
-                        lineNumber: 220,
+                        lineNumber: 221,
                         columnNumber: 7
                     }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Typography$2f$Typography$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Typography$3e$__["Typography"], {
                         sx: {
@@ -364,17 +378,21 @@ function MyStatus({ statusArray, loggedInUserImage }) {
                                 "3rem"
                             ]
                         },
+                        px: [
+                            2,
+                            0
+                        ],
                         textAlign: "center",
                         children: statusArray[statusIndex - 1]?.statusContent || ""
                     }, void 0, false, {
                         fileName: "[project]/src/app/_components/status/_components/my-status/index.tsx",
-                        lineNumber: 222,
+                        lineNumber: 223,
                         columnNumber: 7
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/app/_components/status/_components/my-status/index.tsx",
-                lineNumber: 150,
+                lineNumber: 151,
                 columnNumber: 5
             }, this)
         ]
@@ -391,21 +409,32 @@ __turbopack_esm__({
 });
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react-jsx-dev-runtime.js [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$redux$2f$slices$2f$user$2f$index$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/src/redux/slices/user/index.tsx [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$redux$2f$api$2d$slices$2f$index$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$module__evaluation$3e$__ = __turbopack_import__("[project]/src/redux/api-slices/index.tsx [app-ssr] (ecmascript) <module evaluation>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$redux$2f$dist$2f$react$2d$redux$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/react-redux/dist/react-redux.mjs [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$redux$2f$api$2d$slices$2f$user$2f$index$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/src/redux/api-slices/user/index.tsx [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Stack$2f$Stack$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Stack$3e$__ = __turbopack_import__("[project]/node_modules/@mui/material/Stack/Stack.js [app-ssr] (ecmascript) <export default as Stack>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Avatar$2f$Avatar$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Avatar$3e$__ = __turbopack_import__("[project]/node_modules/@mui/material/Avatar/Avatar.js [app-ssr] (ecmascript) <export default as Avatar>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Typography$2f$Typography$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Typography$3e$__ = __turbopack_import__("[project]/node_modules/@mui/material/Typography/Typography.js [app-ssr] (ecmascript) <export default as Typography>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Backdrop$2f$Backdrop$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Backdrop$3e$__ = __turbopack_import__("[project]/node_modules/@mui/material/Backdrop/Backdrop.js [app-ssr] (ecmascript) <export default as Backdrop>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Fab$2f$Fab$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Fab$3e$__ = __turbopack_import__("[project]/node_modules/@mui/material/Fab/Fab.js [app-ssr] (ecmascript) <export default as Fab>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$icons$2d$material$2f$esm$2f$Close$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/@mui/icons-material/esm/Close.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$icons$2d$material$2f$esm$2f$Delete$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/@mui/icons-material/esm/Delete.js [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Pagination$2f$Pagination$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Pagination$3e$__ = __turbopack_import__("[project]/node_modules/@mui/material/Pagination/Pagination.js [app-ssr] (ecmascript) <export default as Pagination>");
 "use client";
 ;
 ;
 ;
 ;
+;
+;
+;
+;
 function UserStatus({ followings }) {
+    const dispatch = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$redux$2f$dist$2f$react$2d$redux$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useDispatch"])();
     // State for opening and closing status backgrop status window
     const [open, setOpen] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
+    const [deleteStatus] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$redux$2f$api$2d$slices$2f$user$2f$index$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useDeleteStatusMutation"])();
     // State for the index of pagination
     const [statusIndex, setStatusIndex] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(1);
     // State for the current user status object, initially all the values will be empty due to type safety
@@ -425,9 +454,16 @@ function UserStatus({ followings }) {
     const handleClose = ()=>{
         setOpen(false);
     };
+    const handleDeleteStatus = async (statusId)=>{
+        await deleteStatus(statusId);
+        dispatch((0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$redux$2f$slices$2f$user$2f$index$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["deleteStatusInState"])(statusId));
+        // Adjust statusIndex if the deleted status was the last one
+        if (statusIndex > currentStatusObject.length - 1) {
+            setStatusIndex(Math.max(1, currentStatusObject.length - 1));
+        }
+    };
     //Fuction for opening the backdrop status window
     const handleOpen = (currentStatusArray)=>{
-        console.log(currentStatusArray);
         setCurrentStatusObject(currentStatusArray);
         setOpen(true);
     };
@@ -442,7 +478,10 @@ function UserStatus({ followings }) {
                     sx: {
                         cursor: "pointer"
                     },
-                    spacing: 1,
+                    spacing: [
+                        0,
+                        1
+                    ],
                     children: [
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Avatar$2f$Avatar$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Avatar$3e$__["Avatar"], {
                             src: user.image.image_url,
@@ -459,7 +498,7 @@ function UserStatus({ followings }) {
                             }
                         }, void 0, false, {
                             fileName: "[project]/src/app/_components/status/_components/user-status/index.tsx",
-                            lineNumber: 52,
+                            lineNumber: 64,
                             columnNumber: 6
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Typography$2f$Typography$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Typography$3e$__["Typography"], {
@@ -468,13 +507,13 @@ function UserStatus({ followings }) {
                             children: user.username
                         }, void 0, false, {
                             fileName: "[project]/src/app/_components/status/_components/user-status/index.tsx",
-                            lineNumber: 60,
+                            lineNumber: 72,
                             columnNumber: 6
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/app/_components/status/_components/user-status/index.tsx",
-                    lineNumber: 44,
+                    lineNumber: 56,
                     columnNumber: 5
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Backdrop$2f$Backdrop$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Backdrop$3e$__["Backdrop"], {
@@ -487,7 +526,7 @@ function UserStatus({ followings }) {
                             ],
                             height: "100%",
                             left: [
-                                "-3.5%",
+                                "-3.9%",
                                 "26.8%"
                             ],
                             bgcolor: `${currentStatusObject[statusIndex - 1].colorCode}`,
@@ -509,16 +548,42 @@ function UserStatus({ followings }) {
                                         bgcolor: "transparent"
                                     },
                                     size: "small",
+                                    color: "default",
                                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$icons$2d$material$2f$esm$2f$Close$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
                                         fontSize: "small"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/_components/status/_components/user-status/index.tsx",
-                                        lineNumber: 89,
+                                        lineNumber: 102,
                                         columnNumber: 8
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/_components/status/_components/user-status/index.tsx",
-                                    lineNumber: 78,
+                                    lineNumber: 90,
+                                    columnNumber: 7
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Fab$2f$Fab$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Fab$3e$__["Fab"], {
+                                    onClick: ()=>{
+                                        handleDeleteStatus(currentStatusObject[statusIndex - 1]?._id);
+                                    },
+                                    sx: {
+                                        position: "fixed",
+                                        top: 5,
+                                        right: 50,
+                                        boxShadow: "none",
+                                        bgcolor: "transparent"
+                                    },
+                                    size: "small",
+                                    color: "default",
+                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$icons$2d$material$2f$esm$2f$Delete$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
+                                        fontSize: "small"
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/app/_components/status/_components/user-status/index.tsx",
+                                        lineNumber: 118,
+                                        columnNumber: 8
+                                    }, this)
+                                }, void 0, false, {
+                                    fileName: "[project]/src/app/_components/status/_components/user-status/index.tsx",
+                                    lineNumber: 104,
                                     columnNumber: 7
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Stack$2f$Stack$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Stack$3e$__["Stack"], {
@@ -537,17 +602,18 @@ function UserStatus({ followings }) {
                                             }
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/_components/status/_components/user-status/index.tsx",
-                                            lineNumber: 99,
+                                            lineNumber: 128,
                                             columnNumber: 8
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Stack$2f$Stack$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Stack$3e$__["Stack"], {
                                             spacing: 0,
                                             children: [
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Typography$2f$Typography$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Typography$3e$__["Typography"], {
+                                                    variant: "caption",
                                                     children: user.name
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/_components/status/_components/user-status/index.tsx",
-                                                    lineNumber: 104,
+                                                    lineNumber: 133,
                                                     columnNumber: 9
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Typography$2f$Typography$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Typography$3e$__["Typography"], {
@@ -558,36 +624,35 @@ function UserStatus({ followings }) {
                                                     children: "2:33 PM"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/_components/status/_components/user-status/index.tsx",
-                                                    lineNumber: 105,
+                                                    lineNumber: 134,
                                                     columnNumber: 9
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/app/_components/status/_components/user-status/index.tsx",
-                                            lineNumber: 103,
+                                            lineNumber: 132,
                                             columnNumber: 8
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/_components/status/_components/user-status/index.tsx",
-                                    lineNumber: 91,
+                                    lineNumber: 120,
                                     columnNumber: 7
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Pagination$2f$Pagination$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Pagination$3e$__["Pagination"], {
                                     count: currentStatusObject.length,
                                     page: statusIndex,
-                                    color: "primary",
                                     onChange: handleChange,
-                                    size: "large"
+                                    size: "small"
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/_components/status/_components/user-status/index.tsx",
-                                    lineNumber: 110,
+                                    lineNumber: 139,
                                     columnNumber: 7
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/_components/status/_components/user-status/index.tsx",
-                            lineNumber: 77,
+                            lineNumber: 89,
                             columnNumber: 6
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Typography$2f$Typography$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Typography$3e$__["Typography"], {
@@ -596,19 +661,19 @@ function UserStatus({ followings }) {
                             children: currentStatusObject[statusIndex - 1].statusContent
                         }, void 0, false, {
                             fileName: "[project]/src/app/_components/status/_components/user-status/index.tsx",
-                            lineNumber: 118,
+                            lineNumber: 146,
                             columnNumber: 6
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/app/_components/status/_components/user-status/index.tsx",
-                    lineNumber: 65,
+                    lineNumber: 77,
                     columnNumber: 5
                 }, this)
             ]
         }, index, true, {
             fileName: "[project]/src/app/_components/status/_components/user-status/index.tsx",
-            lineNumber: 43,
+            lineNumber: 55,
             columnNumber: 4
         }, this);
     });
@@ -694,6 +759,8 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react.js [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$redux$2f$slices$2f$post$2f$index$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/src/redux/slices/post/index.tsx [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$redux$2f$api$2d$slices$2f$post$2f$index$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/src/redux/api-slices/post/index.tsx [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/link.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$hot$2d$toast$2f$dist$2f$index$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/react-hot-toast/dist/index.mjs [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$colors$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__$2a$__as__colors$3e$__ = __turbopack_import__("[project]/node_modules/@mui/material/colors/index.js [app-ssr] (ecmascript) <export * as colors>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$redux$2f$dist$2f$react$2d$redux$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/react-redux/dist/react-redux.mjs [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$IconButton$2f$IconButton$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__IconButton$3e$__ = __turbopack_import__("[project]/node_modules/@mui/material/IconButton/IconButton.js [app-ssr] (ecmascript) <export default as IconButton>");
@@ -707,6 +774,8 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$mat
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$DialogActions$2f$DialogActions$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__DialogActions$3e$__ = __turbopack_import__("[project]/node_modules/@mui/material/DialogActions/DialogActions.js [app-ssr] (ecmascript) <export default as DialogActions>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Button$2f$Button$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Button$3e$__ = __turbopack_import__("[project]/node_modules/@mui/material/Button/Button.js [app-ssr] (ecmascript) <export default as Button>");
 "use client";
+;
+;
 ;
 ;
 ;
@@ -745,10 +814,11 @@ function PostOption({ id, image_public_id }) {
         setIsDialogOpened(false);
     };
     const handleDeletePost = async ()=>{
+        const response = await deletePost(id);
         await deleteImageFromCloudinary(image_public_id);
         dispatch((0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$redux$2f$slices$2f$post$2f$index$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["deletePostFromState"])(id));
-        await deletePost(id);
         closeDialog();
+        return __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$hot$2d$toast$2f$dist$2f$index$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"].success(response.data.message);
     };
     return !isAuthenticated ? null : userData?.posts?.find((post)=>post?._id === id) ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Fragment"], {
         children: [
@@ -761,12 +831,12 @@ function PostOption({ id, image_public_id }) {
                 onClick: handleClick,
                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$icons$2d$material$2f$esm$2f$MoreVert$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                     fileName: "[project]/src/app/_components/post/_components/post-card/_components/post-option/index.tsx",
-                    lineNumber: 75,
+                    lineNumber: 78,
                     columnNumber: 5
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/app/_components/post/_components/post-card/_components/post-option/index.tsx",
-                lineNumber: 67,
+                lineNumber: 70,
                 columnNumber: 4
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Menu$2f$Menu$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Menu$3e$__["Menu"], {
@@ -778,15 +848,26 @@ function PostOption({ id, image_public_id }) {
                     "aria-labelledby": "basic-button"
                 },
                 children: [
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$MenuItem$2f$MenuItem$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__MenuItem$3e$__["MenuItem"], {
-                        onClick: ()=>{
-                            handleClose();
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
+                        href: `/edit-post/${id}`,
+                        style: {
+                            textDecoration: "none",
+                            color: "black"
                         },
-                        sx: editIconHoverStyle,
-                        children: "Edit Post"
+                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$MenuItem$2f$MenuItem$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__MenuItem$3e$__["MenuItem"], {
+                            onClick: ()=>{
+                                handleClose();
+                            },
+                            sx: editIconHoverStyle,
+                            children: "Edit Post"
+                        }, void 0, false, {
+                            fileName: "[project]/src/app/_components/post/_components/post-card/_components/post-option/index.tsx",
+                            lineNumber: 93,
+                            columnNumber: 6
+                        }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/app/_components/post/_components/post-card/_components/post-option/index.tsx",
-                        lineNumber: 86,
+                        lineNumber: 89,
                         columnNumber: 5
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$MenuItem$2f$MenuItem$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__MenuItem$3e$__["MenuItem"], {
@@ -798,13 +879,13 @@ function PostOption({ id, image_public_id }) {
                         children: "Delete Post"
                     }, void 0, false, {
                         fileName: "[project]/src/app/_components/post/_components/post-card/_components/post-option/index.tsx",
-                        lineNumber: 94,
+                        lineNumber: 103,
                         columnNumber: 5
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/app/_components/post/_components/post-card/_components/post-option/index.tsx",
-                lineNumber: 77,
+                lineNumber: 80,
                 columnNumber: 4
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Dialog$2f$Dialog$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Dialog$3e$__["Dialog"], {
@@ -818,7 +899,7 @@ function PostOption({ id, image_public_id }) {
                         children: "Delete post"
                     }, void 0, false, {
                         fileName: "[project]/src/app/_components/post/_components/post-card/_components/post-option/index.tsx",
-                        lineNumber: 110,
+                        lineNumber: 119,
                         columnNumber: 5
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$DialogContent$2f$DialogContent$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__DialogContent$3e$__["DialogContent"], {
@@ -827,12 +908,12 @@ function PostOption({ id, image_public_id }) {
                             children: "Are you sure you want to delete this post?"
                         }, void 0, false, {
                             fileName: "[project]/src/app/_components/post/_components/post-card/_components/post-option/index.tsx",
-                            lineNumber: 112,
+                            lineNumber: 121,
                             columnNumber: 6
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/app/_components/post/_components/post-card/_components/post-option/index.tsx",
-                        lineNumber: 111,
+                        lineNumber: 120,
                         columnNumber: 5
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$DialogActions$2f$DialogActions$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__DialogActions$3e$__["DialogActions"], {
@@ -842,7 +923,7 @@ function PostOption({ id, image_public_id }) {
                                 children: "Cancel"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/_components/post/_components/post-card/_components/post-option/index.tsx",
-                                lineNumber: 117,
+                                lineNumber: 126,
                                 columnNumber: 6
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Button$2f$Button$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Button$3e$__["Button"], {
@@ -852,19 +933,19 @@ function PostOption({ id, image_public_id }) {
                                 children: "Yes"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/_components/post/_components/post-card/_components/post-option/index.tsx",
-                                lineNumber: 118,
+                                lineNumber: 127,
                                 columnNumber: 6
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/_components/post/_components/post-card/_components/post-option/index.tsx",
-                        lineNumber: 116,
+                        lineNumber: 125,
                         columnNumber: 5
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/app/_components/post/_components/post-card/_components/post-option/index.tsx",
-                lineNumber: 104,
+                lineNumber: 113,
                 columnNumber: 4
             }, this)
         ]
@@ -1070,17 +1151,19 @@ function LikeCommentButtonStack({ comments, likes, id, creatorId }) {
                     action: `like`,
                     link: `/post/${id}`
                 };
-                socket.off().emit("sendNotification", data);
-                await saveNotification({
-                    senderName: userData.name || "",
-                    image: userData.image || {
-                        image_url: "",
-                        public_id: ""
-                    },
-                    action: "like",
-                    link: `/post/${id}`,
-                    receiverId: creatorId
-                });
+                if (userData._id !== creatorId) {
+                    socket.off().emit("sendNotification", data);
+                    await saveNotification({
+                        senderName: userData.name || "",
+                        image: userData.image || {
+                            image_url: "",
+                            public_id: ""
+                        },
+                        action: "like",
+                        link: `/post/${id}`,
+                        receiverId: creatorId
+                    });
+                }
             }
         } else {
             dispatch((0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$redux$2f$slices$2f$user$2f$index$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["handleDialog"])(true));
@@ -1111,25 +1194,27 @@ function LikeCommentButtonStack({ comments, likes, id, creatorId }) {
             postId: id
         }));
         setComment("");
-        const data = {
-            senderId: userData._id,
-            senderName: userData.name,
-            senderImage: userData.image,
-            receiverId: creatorId,
-            action: `comment`,
-            link: `/post/${id}`
-        };
-        socket.off().emit("sendNotification", data);
-        await saveNotification({
-            senderName: userData.name || "",
-            image: userData.image || {
-                image_url: "",
-                public_id: ""
-            },
-            action: "comment",
-            link: `/post/${id}`,
-            receiverId: creatorId
-        });
+        if (creatorId !== userData._id) {
+            const data = {
+                senderId: userData._id,
+                senderName: userData.name,
+                senderImage: userData.image,
+                receiverId: creatorId,
+                action: `comment`,
+                link: `/post/${id}`
+            };
+            socket.off().emit("sendNotification", data);
+            await saveNotification({
+                senderName: userData.name || "",
+                image: userData.image || {
+                    image_url: "",
+                    public_id: ""
+                },
+                action: "comment",
+                link: `/post/${id}`,
+                receiverId: creatorId
+            });
+        }
     };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Stack$2f$Stack$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Stack$3e$__["Stack"], {
         direction: "column",
@@ -1152,7 +1237,7 @@ function LikeCommentButtonStack({ comments, likes, id, creatorId }) {
                             children: "No likes yet"
                         }, void 0, false, {
                             fileName: "[project]/src/app/_components/post/_components/post-card/_components/like-comment-button/index.tsx",
-                            lineNumber: 142,
+                            lineNumber: 145,
                             columnNumber: 8
                         }, this) : likes?.map((user, index)=>{
                             return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$_components$2f$post$2f$_components$2f$post$2d$card$2f$_components$2f$like$2d$comment$2d$button$2f$_components$2f$user$2d$card$2f$index$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["UserCard"], {
@@ -1161,23 +1246,23 @@ function LikeCommentButtonStack({ comments, likes, id, creatorId }) {
                                 username: user.username
                             }, index, false, {
                                 fileName: "[project]/src/app/_components/post/_components/post-card/_components/like-comment-button/index.tsx",
-                                lineNumber: 146,
+                                lineNumber: 149,
                                 columnNumber: 10
                             }, this);
                         })
                     }, void 0, false, {
                         fileName: "[project]/src/app/_components/post/_components/post-card/_components/like-comment-button/index.tsx",
-                        lineNumber: 140,
+                        lineNumber: 143,
                         columnNumber: 6
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/app/_components/post/_components/post-card/_components/like-comment-button/index.tsx",
-                    lineNumber: 139,
+                    lineNumber: 142,
                     columnNumber: 5
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/app/_components/post/_components/post-card/_components/like-comment-button/index.tsx",
-                lineNumber: 130,
+                lineNumber: 133,
                 columnNumber: 4
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Stack$2f$Stack$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Stack$3e$__["Stack"], {
@@ -1197,12 +1282,12 @@ function LikeCommentButtonStack({ comments, likes, id, creatorId }) {
                                 onClick: handleLike,
                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$icons$2d$material$2f$esm$2f$Favorite$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                                     fileName: "[project]/src/app/_components/post/_components/post-card/_components/like-comment-button/index.tsx",
-                                    lineNumber: 169,
+                                    lineNumber: 172,
                                     columnNumber: 7
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/src/app/_components/post/_components/post-card/_components/like-comment-button/index.tsx",
-                                lineNumber: 160,
+                                lineNumber: 163,
                                 columnNumber: 6
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Typography$2f$Typography$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Typography$3e$__["Typography"], {
@@ -1217,13 +1302,13 @@ function LikeCommentButtonStack({ comments, likes, id, creatorId }) {
                                 children: `${likes.length} ${likes.length > 1 ? "Likes" : "Like"}`
                             }, void 0, false, {
                                 fileName: "[project]/src/app/_components/post/_components/post-card/_components/like-comment-button/index.tsx",
-                                lineNumber: 171,
+                                lineNumber: 174,
                                 columnNumber: 6
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/_components/post/_components/post-card/_components/like-comment-button/index.tsx",
-                        lineNumber: 159,
+                        lineNumber: 162,
                         columnNumber: 5
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Stack$2f$Stack$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Stack$3e$__["Stack"], {
@@ -1239,12 +1324,12 @@ function LikeCommentButtonStack({ comments, likes, id, creatorId }) {
                                 },
                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$icons$2d$material$2f$esm$2f$ModeComment$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                                     fileName: "[project]/src/app/_components/post/_components/post-card/_components/like-comment-button/index.tsx",
-                                    lineNumber: 188,
+                                    lineNumber: 191,
                                     columnNumber: 7
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/src/app/_components/post/_components/post-card/_components/like-comment-button/index.tsx",
-                                lineNumber: 183,
+                                lineNumber: 186,
                                 columnNumber: 6
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Typography$2f$Typography$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Typography$3e$__["Typography"], {
@@ -1256,19 +1341,19 @@ function LikeCommentButtonStack({ comments, likes, id, creatorId }) {
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/_components/post/_components/post-card/_components/like-comment-button/index.tsx",
-                                lineNumber: 190,
+                                lineNumber: 193,
                                 columnNumber: 6
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/_components/post/_components/post-card/_components/like-comment-button/index.tsx",
-                        lineNumber: 182,
+                        lineNumber: 185,
                         columnNumber: 5
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/app/_components/post/_components/post-card/_components/like-comment-button/index.tsx",
-                lineNumber: 158,
+                lineNumber: 161,
                 columnNumber: 4
             }, this),
             isCommentOpen && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Stack$2f$Stack$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Stack$3e$__["Stack"], {
@@ -1278,7 +1363,7 @@ function LikeCommentButtonStack({ comments, likes, id, creatorId }) {
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Divider$2f$Divider$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Divider$3e$__["Divider"], {}, void 0, false, {
                         fileName: "[project]/src/app/_components/post/_components/post-card/_components/like-comment-button/index.tsx",
-                        lineNumber: 197,
+                        lineNumber: 200,
                         columnNumber: 6
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Stack$2f$Stack$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Stack$3e$__["Stack"], {
@@ -1306,7 +1391,7 @@ function LikeCommentButtonStack({ comments, likes, id, creatorId }) {
                                         }
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/_components/post/_components/post-card/_components/like-comment-button/index.tsx",
-                                        lineNumber: 211,
+                                        lineNumber: 214,
                                         columnNumber: 9
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Stack$2f$Stack$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Stack$3e$__["Stack"], {
@@ -1328,12 +1413,12 @@ function LikeCommentButtonStack({ comments, likes, id, creatorId }) {
                                                     children: comment.userId.username
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/_components/post/_components/post-card/_components/like-comment-button/index.tsx",
-                                                    lineNumber: 221,
+                                                    lineNumber: 224,
                                                     columnNumber: 11
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/_components/post/_components/post-card/_components/like-comment-button/index.tsx",
-                                                lineNumber: 217,
+                                                lineNumber: 220,
                                                 columnNumber: 10
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Typography$2f$Typography$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Typography$3e$__["Typography"], {
@@ -1346,29 +1431,29 @@ function LikeCommentButtonStack({ comments, likes, id, creatorId }) {
                                                 children: comment.comment
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/_components/post/_components/post-card/_components/like-comment-button/index.tsx",
-                                                lineNumber: 228,
+                                                lineNumber: 231,
                                                 columnNumber: 10
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/app/_components/post/_components/post-card/_components/like-comment-button/index.tsx",
-                                        lineNumber: 216,
+                                        lineNumber: 219,
                                         columnNumber: 9
                                     }, this)
                                 ]
                             }, index, true, {
                                 fileName: "[project]/src/app/_components/post/_components/post-card/_components/like-comment-button/index.tsx",
-                                lineNumber: 205,
+                                lineNumber: 208,
                                 columnNumber: 8
                             }, this))
                     }, void 0, false, {
                         fileName: "[project]/src/app/_components/post/_components/post-card/_components/like-comment-button/index.tsx",
-                        lineNumber: 198,
+                        lineNumber: 201,
                         columnNumber: 6
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Divider$2f$Divider$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Divider$3e$__["Divider"], {}, void 0, false, {
                         fileName: "[project]/src/app/_components/post/_components/post-card/_components/like-comment-button/index.tsx",
-                        lineNumber: 235,
+                        lineNumber: 238,
                         columnNumber: 6
                     }, this),
                     isAuthenticated ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Stack$2f$Stack$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Stack$3e$__["Stack"], {
@@ -1394,7 +1479,7 @@ function LikeCommentButtonStack({ comments, likes, id, creatorId }) {
                                 }
                             }, void 0, false, {
                                 fileName: "[project]/src/app/_components/post/_components/post-card/_components/like-comment-button/index.tsx",
-                                lineNumber: 238,
+                                lineNumber: 241,
                                 columnNumber: 8
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$FormControl$2f$FormControl$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__FormControl$3e$__["FormControl"], {
@@ -1407,7 +1492,7 @@ function LikeCommentButtonStack({ comments, likes, id, creatorId }) {
                                         children: "Add a comment"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/_components/post/_components/post-card/_components/like-comment-button/index.tsx",
-                                        lineNumber: 244,
+                                        lineNumber: 247,
                                         columnNumber: 9
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$OutlinedInput$2f$OutlinedInput$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__OutlinedInput$3e$__["OutlinedInput"], {
@@ -1424,47 +1509,47 @@ function LikeCommentButtonStack({ comments, likes, id, creatorId }) {
                                                 edge: "end",
                                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$icons$2d$material$2f$esm$2f$SendOutlined$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                                                     fileName: "[project]/src/app/_components/post/_components/post-card/_components/like-comment-button/index.tsx",
-                                                    lineNumber: 260,
+                                                    lineNumber: 263,
                                                     columnNumber: 13
                                                 }, void 0)
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/_components/post/_components/post-card/_components/like-comment-button/index.tsx",
-                                                lineNumber: 255,
+                                                lineNumber: 258,
                                                 columnNumber: 12
                                             }, void 0)
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/_components/post/_components/post-card/_components/like-comment-button/index.tsx",
-                                            lineNumber: 254,
+                                            lineNumber: 257,
                                             columnNumber: 11
                                         }, void 0),
                                         label: "Add a comment"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/_components/post/_components/post-card/_components/like-comment-button/index.tsx",
-                                        lineNumber: 247,
+                                        lineNumber: 250,
                                         columnNumber: 9
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/_components/post/_components/post-card/_components/like-comment-button/index.tsx",
-                                lineNumber: 243,
+                                lineNumber: 246,
                                 columnNumber: 8
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/_components/post/_components/post-card/_components/like-comment-button/index.tsx",
-                        lineNumber: 237,
+                        lineNumber: 240,
                         columnNumber: 7
                     }, this) : null
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/app/_components/post/_components/post-card/_components/like-comment-button/index.tsx",
-                lineNumber: 196,
+                lineNumber: 199,
                 columnNumber: 5
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/app/_components/post/_components/post-card/_components/like-comment-button/index.tsx",
-        lineNumber: 129,
+        lineNumber: 132,
         columnNumber: 3
     }, this);
 }
@@ -1524,19 +1609,30 @@ function PostCard({ _id, creator, caption, post_image, comments, likes, date }) 
         raised: true,
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$CardHeader$2f$CardHeader$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__CardHeader$3e$__["CardHeader"], {
-                avatar: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Avatar$2f$Avatar$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Avatar$3e$__["Avatar"], {
-                    src: creator?.image.image_url
+                avatar: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
+                    href: `/${creator?.username}`,
+                    style: {
+                        textDecoration: "none",
+                        color: "black"
+                    },
+                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Avatar$2f$Avatar$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Avatar$3e$__["Avatar"], {
+                        src: creator?.image.image_url
+                    }, void 0, false, {
+                        fileName: "[project]/src/app/_components/post/_components/post-card/index.tsx",
+                        lineNumber: 31,
+                        columnNumber: 7
+                    }, void 0)
                 }, void 0, false, {
                     fileName: "[project]/src/app/_components/post/_components/post-card/index.tsx",
-                    lineNumber: 26,
-                    columnNumber: 13
+                    lineNumber: 27,
+                    columnNumber: 6
                 }, void 0),
                 action: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$_components$2f$post$2f$_components$2f$post$2d$card$2f$_components$2f$post$2d$option$2f$index$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["PostOption"], {
                     id: _id || "",
                     image_public_id: post_image?.public_id || ""
                 }, void 0, false, {
                     fileName: "[project]/src/app/_components/post/_components/post-card/index.tsx",
-                    lineNumber: 28,
+                    lineNumber: 35,
                     columnNumber: 6
                 }, void 0),
                 title: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
@@ -1548,10 +1644,22 @@ function PostCard({ _id, creator, caption, post_image, comments, likes, date }) 
                     children: creator?.name
                 }, void 0, false, {
                     fileName: "[project]/src/app/_components/post/_components/post-card/index.tsx",
-                    lineNumber: 34,
+                    lineNumber: 41,
                     columnNumber: 6
                 }, void 0),
-                subheader: date
+                subheader: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
+                    href: `/${creator?.username}`,
+                    style: {
+                        textDecoration: "none",
+                        color: "black",
+                        opacity: 0.7
+                    },
+                    children: date
+                }, void 0, false, {
+                    fileName: "[project]/src/app/_components/post/_components/post-card/index.tsx",
+                    lineNumber: 49,
+                    columnNumber: 6
+                }, void 0)
             }, void 0, false, {
                 fileName: "[project]/src/app/_components/post/_components/post-card/index.tsx",
                 lineNumber: 25,
@@ -1559,12 +1667,17 @@ function PostCard({ _id, creator, caption, post_image, comments, likes, date }) 
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$CardMedia$2f$CardMedia$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__CardMedia$3e$__["CardMedia"], {
                 component: "img",
-                width: 200,
-                height: 400,
+                sx: {
+                    objectFit: "contain",
+                    maxWidth: "100%",
+                    maxHeight: "60vh",
+                    display: "block",
+                    marginX: "auto"
+                },
                 image: post_image?.image_url
             }, void 0, false, {
                 fileName: "[project]/src/app/_components/post/_components/post-card/index.tsx",
-                lineNumber: 43,
+                lineNumber: 58,
                 columnNumber: 4
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$CardContent$2f$CardContent$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__CardContent$3e$__["CardContent"], {
@@ -1576,12 +1689,12 @@ function PostCard({ _id, creator, caption, post_image, comments, likes, date }) 
                     children: caption
                 }, void 0, false, {
                     fileName: "[project]/src/app/_components/post/_components/post-card/index.tsx",
-                    lineNumber: 50,
+                    lineNumber: 70,
                     columnNumber: 5
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/app/_components/post/_components/post-card/index.tsx",
-                lineNumber: 49,
+                lineNumber: 69,
                 columnNumber: 4
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$CardActions$2f$CardActions$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__CardActions$3e$__["CardActions"], {
@@ -1593,12 +1706,12 @@ function PostCard({ _id, creator, caption, post_image, comments, likes, date }) 
                     creatorId: creator?._id || ""
                 }, void 0, false, {
                     fileName: "[project]/src/app/_components/post/_components/post-card/index.tsx",
-                    lineNumber: 55,
+                    lineNumber: 75,
                     columnNumber: 5
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/app/_components/post/_components/post-card/index.tsx",
-                lineNumber: 54,
+                lineNumber: 74,
                 columnNumber: 4
             }, this)
         ]
@@ -1696,6 +1809,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$custom$2d$components$2f$index$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$module__evaluation$3e$__ = __turbopack_import__("[project]/src/custom-components/index.tsx [app-ssr] (ecmascript) <module evaluation>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/link.js [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$redux$2f$slices$2f$user$2f$index$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/src/redux/slices/user/index.tsx [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/navigation.js [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$redux$2f$dist$2f$react$2d$redux$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/react-redux/dist/react-redux.mjs [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Stack$2f$Stack$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Stack$3e$__ = __turbopack_import__("[project]/node_modules/@mui/material/Stack/Stack.js [app-ssr] (ecmascript) <export default as Stack>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$custom$2d$components$2f$tooltip$2f$index$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/src/custom-components/tooltip/index.tsx [app-ssr] (ecmascript)");
@@ -1703,7 +1817,6 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$mat
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$icons$2d$material$2f$esm$2f$Home$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/@mui/icons-material/esm/Home.js [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$icons$2d$material$2f$esm$2f$Search$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/@mui/icons-material/esm/Search.js [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$icons$2d$material$2f$esm$2f$AddCircleOutlineSharp$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/@mui/icons-material/esm/AddCircleOutlineSharp.js [app-ssr] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Badge$2f$Badge$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Badge$3e$__ = __turbopack_import__("[project]/node_modules/@mui/material/Badge/Badge.js [app-ssr] (ecmascript) <export default as Badge>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$icons$2d$material$2f$esm$2f$ChatBubble$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/@mui/icons-material/esm/ChatBubble.js [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Avatar$2f$Avatar$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Avatar$3e$__ = __turbopack_import__("[project]/node_modules/@mui/material/Avatar/Avatar.js [app-ssr] (ecmascript) <export default as Avatar>");
 "use client";
@@ -1717,9 +1830,11 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$mat
 ;
 ;
 ;
+;
 function Footer() {
     const { userData, isAuthenticated } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$redux$2f$dist$2f$react$2d$redux$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useSelector"])((state)=>state.User);
     const dispatch = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$redux$2f$dist$2f$react$2d$redux$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useDispatch"])();
+    const pathname = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["usePathname"])();
     const iconStyle = {
         fontSize: [
             "1.5rem",
@@ -1729,6 +1844,14 @@ function Footer() {
         "&:hover": {
             color: "#046af2"
         }
+    };
+    const currentIconStyle = {
+        fontSize: [
+            "1.5rem",
+            "2rem"
+        ],
+        transition: "all 0.5s",
+        color: "#046af2"
     };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Stack$2f$Stack$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Stack$3e$__["Stack"], {
         zIndex: 100,
@@ -1761,36 +1884,7 @@ function Footer() {
                     href: "/",
                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$IconButton$2f$IconButton$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__IconButton$3e$__["IconButton"], {
                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$icons$2d$material$2f$esm$2f$Home$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
-                            sx: iconStyle
-                        }, void 0, false, {
-                            fileName: "[project]/src/shared/footer/index.tsx",
-                            lineNumber: 50,
-                            columnNumber: 7
-                        }, this)
-                    }, void 0, false, {
-                        fileName: "[project]/src/shared/footer/index.tsx",
-                        lineNumber: 49,
-                        columnNumber: 6
-                    }, this)
-                }, void 0, false, {
-                    fileName: "[project]/src/shared/footer/index.tsx",
-                    lineNumber: 48,
-                    columnNumber: 5
-                }, this)
-            }, void 0, false, {
-                fileName: "[project]/src/shared/footer/index.tsx",
-                lineNumber: 47,
-                columnNumber: 4
-            }, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$custom$2d$components$2f$tooltip$2f$index$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["CustomToolTip"], {
-                title: "Search",
-                placement: "top",
-                arrow: true,
-                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
-                    href: "/search-users",
-                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$IconButton$2f$IconButton$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__IconButton$3e$__["IconButton"], {
-                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$icons$2d$material$2f$esm$2f$Search$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
-                            sx: iconStyle
+                            sx: pathname === "/" ? currentIconStyle : iconStyle
                         }, void 0, false, {
                             fileName: "[project]/src/shared/footer/index.tsx",
                             lineNumber: 57,
@@ -1812,6 +1906,35 @@ function Footer() {
                 columnNumber: 4
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$custom$2d$components$2f$tooltip$2f$index$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["CustomToolTip"], {
+                title: "Search",
+                placement: "top",
+                arrow: true,
+                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
+                    href: "/search-users",
+                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$IconButton$2f$IconButton$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__IconButton$3e$__["IconButton"], {
+                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$icons$2d$material$2f$esm$2f$Search$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
+                            sx: pathname === "/search-users" ? currentIconStyle : iconStyle
+                        }, void 0, false, {
+                            fileName: "[project]/src/shared/footer/index.tsx",
+                            lineNumber: 64,
+                            columnNumber: 7
+                        }, this)
+                    }, void 0, false, {
+                        fileName: "[project]/src/shared/footer/index.tsx",
+                        lineNumber: 63,
+                        columnNumber: 6
+                    }, this)
+                }, void 0, false, {
+                    fileName: "[project]/src/shared/footer/index.tsx",
+                    lineNumber: 62,
+                    columnNumber: 5
+                }, this)
+            }, void 0, false, {
+                fileName: "[project]/src/shared/footer/index.tsx",
+                lineNumber: 61,
+                columnNumber: 4
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$custom$2d$components$2f$tooltip$2f$index$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["CustomToolTip"], {
                 title: "Create Post",
                 placement: "top",
                 arrow: true,
@@ -1822,37 +1945,35 @@ function Footer() {
                             sx: iconStyle
                         }, void 0, false, {
                             fileName: "[project]/src/shared/footer/index.tsx",
-                            lineNumber: 65,
+                            lineNumber: 74,
                             columnNumber: 8
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/shared/footer/index.tsx",
-                        lineNumber: 64,
+                        lineNumber: 73,
                         columnNumber: 7
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/shared/footer/index.tsx",
-                    lineNumber: 63,
+                    lineNumber: 72,
                     columnNumber: 6
                 }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$IconButton$2f$IconButton$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__IconButton$3e$__["IconButton"], {
                     onClick: ()=>{
                         dispatch((0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$redux$2f$slices$2f$user$2f$index$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["handleDialog"])(true));
                     },
-                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$icons$2d$material$2f$esm$2f$AddCircleOutlineSharp$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
-                        sx: iconStyle
-                    }, void 0, false, {
+                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$icons$2d$material$2f$esm$2f$AddCircleOutlineSharp$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                         fileName: "[project]/src/shared/footer/index.tsx",
-                        lineNumber: 74,
+                        lineNumber: 83,
                         columnNumber: 7
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/shared/footer/index.tsx",
-                    lineNumber: 69,
+                    lineNumber: 78,
                     columnNumber: 6
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/shared/footer/index.tsx",
-                lineNumber: 61,
+                lineNumber: 70,
                 columnNumber: 4
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$custom$2d$components$2f$tooltip$2f$index$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["CustomToolTip"], {
@@ -1866,46 +1987,37 @@ function Footer() {
                             sx: iconStyle
                         }, void 0, false, {
                             fileName: "[project]/src/shared/footer/index.tsx",
-                            lineNumber: 82,
+                            lineNumber: 91,
                             columnNumber: 8
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/shared/footer/index.tsx",
-                        lineNumber: 81,
+                        lineNumber: 90,
                         columnNumber: 7
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/shared/footer/index.tsx",
-                    lineNumber: 80,
+                    lineNumber: 89,
                     columnNumber: 6
                 }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$IconButton$2f$IconButton$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__IconButton$3e$__["IconButton"], {
                     onClick: ()=>{
                         dispatch((0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$redux$2f$slices$2f$user$2f$index$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["handleDialog"])(true));
                     },
-                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Badge$2f$Badge$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Badge$3e$__["Badge"], {
-                        variant: "dot",
-                        invisible: true,
-                        color: "secondary",
-                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$icons$2d$material$2f$esm$2f$ChatBubble$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
-                            sx: iconStyle
-                        }, void 0, false, {
-                            fileName: "[project]/src/shared/footer/index.tsx",
-                            lineNumber: 92,
-                            columnNumber: 8
-                        }, this)
+                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$icons$2d$material$2f$esm$2f$ChatBubble$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
+                        sx: iconStyle
                     }, void 0, false, {
                         fileName: "[project]/src/shared/footer/index.tsx",
-                        lineNumber: 91,
+                        lineNumber: 100,
                         columnNumber: 7
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/shared/footer/index.tsx",
-                    lineNumber: 86,
+                    lineNumber: 95,
                     columnNumber: 6
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/shared/footer/index.tsx",
-                lineNumber: 78,
+                lineNumber: 87,
                 columnNumber: 4
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$custom$2d$components$2f$tooltip$2f$index$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["CustomToolTip"], {
@@ -1929,12 +2041,12 @@ function Footer() {
                         }
                     }, void 0, false, {
                         fileName: "[project]/src/shared/footer/index.tsx",
-                        lineNumber: 100,
+                        lineNumber: 107,
                         columnNumber: 7
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/shared/footer/index.tsx",
-                    lineNumber: 99,
+                    lineNumber: 106,
                     columnNumber: 6
                 }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Avatar$2f$Avatar$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Avatar$3e$__["Avatar"], {
                     onClick: ()=>{
@@ -1954,18 +2066,18 @@ function Footer() {
                     }
                 }, void 0, false, {
                     fileName: "[project]/src/shared/footer/index.tsx",
-                    lineNumber: 106,
+                    lineNumber: 113,
                     columnNumber: 6
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/shared/footer/index.tsx",
-                lineNumber: 97,
+                lineNumber: 104,
                 columnNumber: 4
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/shared/footer/index.tsx",
-        lineNumber: 30,
+        lineNumber: 37,
         columnNumber: 3
     }, this);
 }
@@ -2008,6 +2120,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$redux$2f$slices$2f$us
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$redux$2f$api$2d$slices$2f$index$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$module__evaluation$3e$__ = __turbopack_import__("[project]/src/redux/api-slices/index.tsx [app-ssr] (ecmascript) <module evaluation>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react.js [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$image$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/image.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/link.js [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$redux$2f$dist$2f$react$2d$redux$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/react-redux/dist/react-redux.mjs [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$redux$2f$api$2d$slices$2f$user$2f$index$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/src/redux/api-slices/user/index.tsx [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Dialog$2f$Dialog$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Dialog$3e$__ = __turbopack_import__("[project]/node_modules/@mui/material/Dialog/Dialog.js [app-ssr] (ecmascript) <export default as Dialog>");
@@ -2019,6 +2132,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$mat
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Button$2f$Button$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Button$3e$__ = __turbopack_import__("[project]/node_modules/@mui/material/Button/Button.js [app-ssr] (ecmascript) <export default as Button>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$CircularProgress$2f$CircularProgress$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__CircularProgress$3e$__ = __turbopack_import__("[project]/node_modules/@mui/material/CircularProgress/CircularProgress.js [app-ssr] (ecmascript) <export default as CircularProgress>");
 "use client";
+;
 ;
 ;
 ;
@@ -2062,7 +2176,7 @@ function OverlayLogin() {
                                 width: 60
                             }, void 0, false, {
                                 fileName: "[project]/src/shared/overlay-login/index.tsx",
-                                lineNumber: 45,
+                                lineNumber: 46,
                                 columnNumber: 7
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Typography$2f$Typography$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Typography$3e$__["Typography"], {
@@ -2071,13 +2185,13 @@ function OverlayLogin() {
                                 children: "LOG IN"
                             }, void 0, false, {
                                 fileName: "[project]/src/shared/overlay-login/index.tsx",
-                                lineNumber: 46,
+                                lineNumber: 47,
                                 columnNumber: 7
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/shared/overlay-login/index.tsx",
-                        lineNumber: 44,
+                        lineNumber: 45,
                         columnNumber: 6
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Stack$2f$Stack$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Stack$3e$__["Stack"], {
@@ -2092,7 +2206,7 @@ function OverlayLogin() {
                                 children: "Opps!!! You need to be logged in to perform this action."
                             }, void 0, false, {
                                 fileName: "[project]/src/shared/overlay-login/index.tsx",
-                                lineNumber: 51,
+                                lineNumber: 52,
                                 columnNumber: 7
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$TextField$2f$TextField$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__TextField$3e$__["TextField"], {
@@ -2106,7 +2220,7 @@ function OverlayLogin() {
                                 margin: "normal"
                             }, void 0, false, {
                                 fileName: "[project]/src/shared/overlay-login/index.tsx",
-                                lineNumber: 58,
+                                lineNumber: 59,
                                 columnNumber: 7
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$TextField$2f$TextField$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__TextField$3e$__["TextField"], {
@@ -2121,7 +2235,30 @@ function OverlayLogin() {
                                 margin: "normal"
                             }, void 0, false, {
                                 fileName: "[project]/src/shared/overlay-login/index.tsx",
-                                lineNumber: 68,
+                                lineNumber: 69,
+                                columnNumber: 7
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Typography$2f$Typography$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Typography$3e$__["Typography"], {
+                                alignSelf: "end",
+                                children: [
+                                    "Dont have account?",
+                                    " ",
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
+                                        href: "/signup",
+                                        style: {
+                                            textDecoration: "none",
+                                            color: "#06D001"
+                                        },
+                                        children: "Let's create one"
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/shared/overlay-login/index.tsx",
+                                        lineNumber: 82,
+                                        columnNumber: 8
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/src/shared/overlay-login/index.tsx",
+                                lineNumber: 80,
                                 columnNumber: 7
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Button$2f$Button$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Button$3e$__["Button"], {
@@ -2139,34 +2276,34 @@ function OverlayLogin() {
                                     size: 18
                                 }, void 0, false, {
                                     fileName: "[project]/src/shared/overlay-login/index.tsx",
-                                    lineNumber: 87,
+                                    lineNumber: 97,
                                     columnNumber: 9
                                 }, this) : "LOGIN"
                             }, void 0, false, {
                                 fileName: "[project]/src/shared/overlay-login/index.tsx",
-                                lineNumber: 79,
+                                lineNumber: 89,
                                 columnNumber: 7
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/shared/overlay-login/index.tsx",
-                        lineNumber: 50,
+                        lineNumber: 51,
                         columnNumber: 6
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/shared/overlay-login/index.tsx",
-                lineNumber: 43,
+                lineNumber: 44,
                 columnNumber: 5
             }, this)
         }, void 0, false, {
             fileName: "[project]/src/shared/overlay-login/index.tsx",
-            lineNumber: 42,
+            lineNumber: 43,
             columnNumber: 4
         }, this)
     }, void 0, false, {
         fileName: "[project]/src/shared/overlay-login/index.tsx",
-        lineNumber: 36,
+        lineNumber: 37,
         columnNumber: 3
     }, this);
 }
@@ -2207,6 +2344,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$red
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Container$2f$Container$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Container$3e$__ = __turbopack_import__("[project]/node_modules/@mui/material/Container/Container.js [app-ssr] (ecmascript) <export default as Container>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$shared$2f$overlay$2d$login$2f$index$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/src/shared/overlay-login/index.tsx [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$_components$2f$post$2f$_components$2f$post$2d$card$2f$index$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/src/app/_components/post/_components/post-card/index.tsx [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$CircularProgress$2f$CircularProgress$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__CircularProgress$3e$__ = __turbopack_import__("[project]/node_modules/@mui/material/CircularProgress/CircularProgress.js [app-ssr] (ecmascript) <export default as CircularProgress>");
 "use client";
 ;
 ;
@@ -2215,7 +2353,30 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$_components$2f
 ;
 function Post() {
     const { postsData } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$redux$2f$dist$2f$react$2d$redux$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useSelector"])((state)=>state.Post);
-    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Container$2f$Container$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Container$3e$__["Container"], {
+    const { loading } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$redux$2f$dist$2f$react$2d$redux$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useSelector"])((state)=>state.User);
+    return loading ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Container$2f$Container$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Container$3e$__["Container"], {
+        maxWidth: "sm",
+        sx: {
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            height: "90vh"
+        },
+        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$CircularProgress$2f$CircularProgress$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__CircularProgress$3e$__["CircularProgress"], {
+            sx: {
+                color: "blue"
+            },
+            size: 100
+        }, void 0, false, {
+            fileName: "[project]/src/app/_components/post/index.tsx",
+            lineNumber: 23,
+            columnNumber: 4
+        }, this)
+    }, void 0, false, {
+        fileName: "[project]/src/app/_components/post/index.tsx",
+        lineNumber: 14,
+        columnNumber: 3
+    }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Container$2f$Container$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Container$3e$__["Container"], {
         sx: {
             display: "flex",
             flexDirection: "column",
@@ -2225,7 +2386,7 @@ function Post() {
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$shared$2f$overlay$2d$login$2f$index$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["OverlayLogin"], {}, void 0, false, {
                 fileName: "[project]/src/app/_components/post/index.tsx",
-                lineNumber: 21,
+                lineNumber: 34,
                 columnNumber: 4
             }, this),
             postsData.map((post, index)=>{
@@ -2239,14 +2400,14 @@ function Post() {
                     date: post.date
                 }, index, false, {
                     fileName: "[project]/src/app/_components/post/index.tsx",
-                    lineNumber: 24,
+                    lineNumber: 37,
                     columnNumber: 6
                 }, this);
             })
         ]
     }, void 0, true, {
         fileName: "[project]/src/app/_components/post/index.tsx",
-        lineNumber: 13,
+        lineNumber: 26,
         columnNumber: 3
     }, this);
 }

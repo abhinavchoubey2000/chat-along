@@ -31,8 +31,7 @@ const VisuallyHiddenInput = styled("input")({
 });
 
 export default function CreatePost() {
-	const [createPost] =
-		useCreatePostMutation();
+	const [createPost] = useCreatePostMutation();
 	const [
 		uploadImageToCloudinary,
 		{ isLoading: uploadImageToCloudinaryLoading },
@@ -87,13 +86,15 @@ export default function CreatePost() {
 			display={"flex"}
 			flexDirection={"column"}
 			alignItems={"center"}
-			gap={5}
-			px={[1,0]}
+			gap={[3, 5]}
+			px={[1, 0]}
 		>
 			<Stack
-				paddingY={1}
+				paddingY={[0, 1]}
 				paddingX={1}
 				direction={"row"}
+				position={"fixed"}
+				bgcolor={"white"}
 				alignItems={"center"}
 				gap={2}
 				width={"100%"}
@@ -107,24 +108,30 @@ export default function CreatePost() {
 			</Stack>
 
 			<Stack
+				pt={[4,10]}
 				width={"100%"}
-				height={"25vh"}
-				gap={2}
-				direction={"row"}
+				height={["100%", "100%"]}
+				gap={[1, 2]}
+				direction={["column", "row"]}
+				alignItems={"center"}
 				justifyContent={"space-between"}
 			>
 				<Box
-					width={["50%","50%"]}
-					height={["25vh","25vh"]}
+					width={["70vw", "50%"]}
+					height={["40vh", "30vh"]}
 					display={"flex"}
 					justifyContent={"center"}
 				>
 					<img
-						style={{ borderRadius: 5 }}
+						style={{
+							borderRadius: 5,
+							maxWidth: "100%",
+							maxHeight: "100%",
+							height: "auto",
+							width: "auto",
+						}}
 						src={imageSrc}
 						alt="Post image"
-						width={"100%"}
-						height={"100%"}
 					/>
 				</Box>
 				<TextareaAutosize
@@ -135,6 +142,7 @@ export default function CreatePost() {
 					}}
 					style={{
 						width: "100%",
+						height: "30vh",
 						fontSize: "1rem",
 						outline: "none",
 						border: "1px solid #d5d5d5",

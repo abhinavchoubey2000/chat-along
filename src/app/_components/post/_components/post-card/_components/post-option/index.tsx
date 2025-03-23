@@ -21,6 +21,8 @@ import {
 } from "@mui/material";
 import { MoreVert } from "@mui/icons-material";
 import { RootState } from "@/redux/store";
+import Link from "next/link";
+import toast from "react-hot-toast";
 
 export function PostOption({
 	id,
@@ -55,10 +57,11 @@ export function PostOption({
 	};
 
 	const handleDeletePost = async () => {
+		const response = await deletePost(id);
 		await deleteImageFromCloudinary(image_public_id);
 		dispatch(deletePostFromState(id));
-		await deletePost(id);
 		closeDialog();
+		return toast.success(response.data.message);
 	};
 	return !isAuthenticated ? null : userData?.posts?.find(
 			(post) => post?._id === id
@@ -83,14 +86,20 @@ export function PostOption({
 					"aria-labelledby": "basic-button",
 				}}
 			>
-				<MenuItem
-					onClick={() => {
-						handleClose();
-					}}
-					sx={editIconHoverStyle}
+				<Link
+					href={`/edit-post/${id}`}
+					style={{ textDecoration: "none", color: "black" }}
 				>
-					Edit Post
-				</MenuItem>
+					<MenuItem
+						onClick={() => {
+							handleClose();
+						}}
+						sx={editIconHoverStyle}
+					>
+						Edit Post
+					</MenuItem>
+				</Link>
+
 				<MenuItem
 					sx={deleteIconHoverStyle}
 					onClick={() => {

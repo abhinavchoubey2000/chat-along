@@ -114,6 +114,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$custom$2d$components$2f$index$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$module__evaluation$3e$__ = __turbopack_import__("[project]/src/custom-components/index.tsx [app-ssr] (ecmascript) <module evaluation>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/link.js [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$redux$2f$slices$2f$user$2f$index$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/src/redux/slices/user/index.tsx [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/navigation.js [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$redux$2f$dist$2f$react$2d$redux$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/react-redux/dist/react-redux.mjs [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Stack$2f$Stack$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Stack$3e$__ = __turbopack_import__("[project]/node_modules/@mui/material/Stack/Stack.js [app-ssr] (ecmascript) <export default as Stack>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$custom$2d$components$2f$tooltip$2f$index$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/src/custom-components/tooltip/index.tsx [app-ssr] (ecmascript)");
@@ -135,9 +136,11 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$mat
 ;
 ;
 ;
+;
 function Footer() {
     const { userData, isAuthenticated } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$redux$2f$dist$2f$react$2d$redux$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useSelector"])((state)=>state.User);
     const dispatch = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$redux$2f$dist$2f$react$2d$redux$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useDispatch"])();
+    const pathname = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["usePathname"])();
     const iconStyle = {
         fontSize: [
             "1.5rem",
@@ -147,6 +150,14 @@ function Footer() {
         "&:hover": {
             color: "#046af2"
         }
+    };
+    const currentIconStyle = {
+        fontSize: [
+            "1.5rem",
+            "2rem"
+        ],
+        transition: "all 0.5s",
+        color: "#046af2"
     };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Stack$2f$Stack$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Stack$3e$__["Stack"], {
         zIndex: 100,
@@ -179,36 +190,7 @@ function Footer() {
                     href: "/",
                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$IconButton$2f$IconButton$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__IconButton$3e$__["IconButton"], {
                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$icons$2d$material$2f$esm$2f$Home$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
-                            sx: iconStyle
-                        }, void 0, false, {
-                            fileName: "[project]/src/shared/footer/index.tsx",
-                            lineNumber: 50,
-                            columnNumber: 7
-                        }, this)
-                    }, void 0, false, {
-                        fileName: "[project]/src/shared/footer/index.tsx",
-                        lineNumber: 49,
-                        columnNumber: 6
-                    }, this)
-                }, void 0, false, {
-                    fileName: "[project]/src/shared/footer/index.tsx",
-                    lineNumber: 48,
-                    columnNumber: 5
-                }, this)
-            }, void 0, false, {
-                fileName: "[project]/src/shared/footer/index.tsx",
-                lineNumber: 47,
-                columnNumber: 4
-            }, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$custom$2d$components$2f$tooltip$2f$index$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["CustomToolTip"], {
-                title: "Search",
-                placement: "top",
-                arrow: true,
-                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
-                    href: "/search-users",
-                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$IconButton$2f$IconButton$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__IconButton$3e$__["IconButton"], {
-                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$icons$2d$material$2f$esm$2f$Search$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
-                            sx: iconStyle
+                            sx: pathname === "/" ? currentIconStyle : iconStyle
                         }, void 0, false, {
                             fileName: "[project]/src/shared/footer/index.tsx",
                             lineNumber: 57,
@@ -230,6 +212,35 @@ function Footer() {
                 columnNumber: 4
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$custom$2d$components$2f$tooltip$2f$index$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["CustomToolTip"], {
+                title: "Search",
+                placement: "top",
+                arrow: true,
+                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
+                    href: "/search-users",
+                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$IconButton$2f$IconButton$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__IconButton$3e$__["IconButton"], {
+                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$icons$2d$material$2f$esm$2f$Search$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
+                            sx: pathname === "/search-users" ? currentIconStyle : iconStyle
+                        }, void 0, false, {
+                            fileName: "[project]/src/shared/footer/index.tsx",
+                            lineNumber: 64,
+                            columnNumber: 7
+                        }, this)
+                    }, void 0, false, {
+                        fileName: "[project]/src/shared/footer/index.tsx",
+                        lineNumber: 63,
+                        columnNumber: 6
+                    }, this)
+                }, void 0, false, {
+                    fileName: "[project]/src/shared/footer/index.tsx",
+                    lineNumber: 62,
+                    columnNumber: 5
+                }, this)
+            }, void 0, false, {
+                fileName: "[project]/src/shared/footer/index.tsx",
+                lineNumber: 61,
+                columnNumber: 4
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$custom$2d$components$2f$tooltip$2f$index$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["CustomToolTip"], {
                 title: "Create Post",
                 placement: "top",
                 arrow: true,
@@ -240,37 +251,35 @@ function Footer() {
                             sx: iconStyle
                         }, void 0, false, {
                             fileName: "[project]/src/shared/footer/index.tsx",
-                            lineNumber: 65,
+                            lineNumber: 74,
                             columnNumber: 8
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/shared/footer/index.tsx",
-                        lineNumber: 64,
+                        lineNumber: 73,
                         columnNumber: 7
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/shared/footer/index.tsx",
-                    lineNumber: 63,
+                    lineNumber: 72,
                     columnNumber: 6
                 }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$IconButton$2f$IconButton$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__IconButton$3e$__["IconButton"], {
                     onClick: ()=>{
                         dispatch((0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$redux$2f$slices$2f$user$2f$index$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["handleDialog"])(true));
                     },
-                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$icons$2d$material$2f$esm$2f$AddCircleOutlineSharp$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
-                        sx: iconStyle
-                    }, void 0, false, {
+                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$icons$2d$material$2f$esm$2f$AddCircleOutlineSharp$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                         fileName: "[project]/src/shared/footer/index.tsx",
-                        lineNumber: 74,
+                        lineNumber: 83,
                         columnNumber: 7
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/shared/footer/index.tsx",
-                    lineNumber: 69,
+                    lineNumber: 78,
                     columnNumber: 6
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/shared/footer/index.tsx",
-                lineNumber: 61,
+                lineNumber: 70,
                 columnNumber: 4
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$custom$2d$components$2f$tooltip$2f$index$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["CustomToolTip"], {
@@ -284,17 +293,17 @@ function Footer() {
                             sx: iconStyle
                         }, void 0, false, {
                             fileName: "[project]/src/shared/footer/index.tsx",
-                            lineNumber: 82,
+                            lineNumber: 91,
                             columnNumber: 8
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/shared/footer/index.tsx",
-                        lineNumber: 81,
+                        lineNumber: 90,
                         columnNumber: 7
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/shared/footer/index.tsx",
-                    lineNumber: 80,
+                    lineNumber: 89,
                     columnNumber: 6
                 }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$IconButton$2f$IconButton$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__IconButton$3e$__["IconButton"], {
                     onClick: ()=>{
@@ -308,22 +317,22 @@ function Footer() {
                             sx: iconStyle
                         }, void 0, false, {
                             fileName: "[project]/src/shared/footer/index.tsx",
-                            lineNumber: 92,
+                            lineNumber: 101,
                             columnNumber: 8
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/shared/footer/index.tsx",
-                        lineNumber: 91,
+                        lineNumber: 100,
                         columnNumber: 7
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/shared/footer/index.tsx",
-                    lineNumber: 86,
+                    lineNumber: 95,
                     columnNumber: 6
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/shared/footer/index.tsx",
-                lineNumber: 78,
+                lineNumber: 87,
                 columnNumber: 4
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$custom$2d$components$2f$tooltip$2f$index$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["CustomToolTip"], {
@@ -347,12 +356,12 @@ function Footer() {
                         }
                     }, void 0, false, {
                         fileName: "[project]/src/shared/footer/index.tsx",
-                        lineNumber: 100,
+                        lineNumber: 109,
                         columnNumber: 7
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/shared/footer/index.tsx",
-                    lineNumber: 99,
+                    lineNumber: 108,
                     columnNumber: 6
                 }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Avatar$2f$Avatar$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Avatar$3e$__["Avatar"], {
                     onClick: ()=>{
@@ -372,18 +381,18 @@ function Footer() {
                     }
                 }, void 0, false, {
                     fileName: "[project]/src/shared/footer/index.tsx",
-                    lineNumber: 106,
+                    lineNumber: 115,
                     columnNumber: 6
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/shared/footer/index.tsx",
-                lineNumber: 97,
+                lineNumber: 106,
                 columnNumber: 4
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/shared/footer/index.tsx",
-        lineNumber: 30,
+        lineNumber: 37,
         columnNumber: 3
     }, this);
 }
@@ -426,6 +435,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$redux$2f$slices$2f$us
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$redux$2f$api$2d$slices$2f$index$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$module__evaluation$3e$__ = __turbopack_import__("[project]/src/redux/api-slices/index.tsx [app-ssr] (ecmascript) <module evaluation>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react.js [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$image$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/image.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/link.js [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$redux$2f$dist$2f$react$2d$redux$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/react-redux/dist/react-redux.mjs [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$redux$2f$api$2d$slices$2f$user$2f$index$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/src/redux/api-slices/user/index.tsx [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Dialog$2f$Dialog$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Dialog$3e$__ = __turbopack_import__("[project]/node_modules/@mui/material/Dialog/Dialog.js [app-ssr] (ecmascript) <export default as Dialog>");
@@ -437,6 +447,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$mat
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Button$2f$Button$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Button$3e$__ = __turbopack_import__("[project]/node_modules/@mui/material/Button/Button.js [app-ssr] (ecmascript) <export default as Button>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$CircularProgress$2f$CircularProgress$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__CircularProgress$3e$__ = __turbopack_import__("[project]/node_modules/@mui/material/CircularProgress/CircularProgress.js [app-ssr] (ecmascript) <export default as CircularProgress>");
 "use client";
+;
 ;
 ;
 ;
@@ -480,7 +491,7 @@ function OverlayLogin() {
                                 width: 60
                             }, void 0, false, {
                                 fileName: "[project]/src/shared/overlay-login/index.tsx",
-                                lineNumber: 45,
+                                lineNumber: 46,
                                 columnNumber: 7
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Typography$2f$Typography$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Typography$3e$__["Typography"], {
@@ -489,13 +500,13 @@ function OverlayLogin() {
                                 children: "LOG IN"
                             }, void 0, false, {
                                 fileName: "[project]/src/shared/overlay-login/index.tsx",
-                                lineNumber: 46,
+                                lineNumber: 47,
                                 columnNumber: 7
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/shared/overlay-login/index.tsx",
-                        lineNumber: 44,
+                        lineNumber: 45,
                         columnNumber: 6
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Stack$2f$Stack$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Stack$3e$__["Stack"], {
@@ -510,7 +521,7 @@ function OverlayLogin() {
                                 children: "Opps!!! You need to be logged in to perform this action."
                             }, void 0, false, {
                                 fileName: "[project]/src/shared/overlay-login/index.tsx",
-                                lineNumber: 51,
+                                lineNumber: 52,
                                 columnNumber: 7
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$TextField$2f$TextField$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__TextField$3e$__["TextField"], {
@@ -524,7 +535,7 @@ function OverlayLogin() {
                                 margin: "normal"
                             }, void 0, false, {
                                 fileName: "[project]/src/shared/overlay-login/index.tsx",
-                                lineNumber: 58,
+                                lineNumber: 59,
                                 columnNumber: 7
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$TextField$2f$TextField$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__TextField$3e$__["TextField"], {
@@ -539,7 +550,30 @@ function OverlayLogin() {
                                 margin: "normal"
                             }, void 0, false, {
                                 fileName: "[project]/src/shared/overlay-login/index.tsx",
-                                lineNumber: 68,
+                                lineNumber: 69,
+                                columnNumber: 7
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Typography$2f$Typography$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Typography$3e$__["Typography"], {
+                                alignSelf: "end",
+                                children: [
+                                    "Dont have account?",
+                                    " ",
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
+                                        href: "/signup",
+                                        style: {
+                                            textDecoration: "none",
+                                            color: "#06D001"
+                                        },
+                                        children: "Let's create one"
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/shared/overlay-login/index.tsx",
+                                        lineNumber: 82,
+                                        columnNumber: 8
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/src/shared/overlay-login/index.tsx",
+                                lineNumber: 80,
                                 columnNumber: 7
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Button$2f$Button$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Button$3e$__["Button"], {
@@ -557,34 +591,34 @@ function OverlayLogin() {
                                     size: 18
                                 }, void 0, false, {
                                     fileName: "[project]/src/shared/overlay-login/index.tsx",
-                                    lineNumber: 87,
+                                    lineNumber: 97,
                                     columnNumber: 9
                                 }, this) : "LOGIN"
                             }, void 0, false, {
                                 fileName: "[project]/src/shared/overlay-login/index.tsx",
-                                lineNumber: 79,
+                                lineNumber: 89,
                                 columnNumber: 7
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/shared/overlay-login/index.tsx",
-                        lineNumber: 50,
+                        lineNumber: 51,
                         columnNumber: 6
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/shared/overlay-login/index.tsx",
-                lineNumber: 43,
+                lineNumber: 44,
                 columnNumber: 5
             }, this)
         }, void 0, false, {
             fileName: "[project]/src/shared/overlay-login/index.tsx",
-            lineNumber: 42,
+            lineNumber: 43,
             columnNumber: 4
         }, this)
     }, void 0, false, {
         fileName: "[project]/src/shared/overlay-login/index.tsx",
-        lineNumber: 36,
+        lineNumber: 37,
         columnNumber: 3
     }, this);
 }

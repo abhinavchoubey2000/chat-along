@@ -1,6 +1,7 @@
 "use client";
 import { Favorite, ModeComment, SendOutlined } from "@mui/icons-material";
 import io from "socket.io-client";
+import { UserCard } from "./_components";
 import {
 	Avatar,
 	IconButton,
@@ -11,6 +12,9 @@ import {
 	InputLabel,
 	OutlinedInput,
 	InputAdornment,
+	Dialog,
+	DialogContent,
+	Box,
 } from "@mui/material";
 import Link from "next/link";
 import { useSelector, useDispatch } from "react-redux";
@@ -24,9 +28,7 @@ import { commentPostInState, likeUnlikePostInState } from "@/redux/slices/post";
 import { useSaveNotificationMutation } from "@/redux/api-slices";
 import { handleDialog } from "@/redux/slices/user";
 
-const socket = io("https://chat-along-external-server.onrender.com/", {
-	transports: ["websocket", "polling"],
-});
+const socket = io("https://chat-along-external-server.onrender.com/");
 
 export function LikeCommentButtonStack({
 	comments,
@@ -40,6 +42,7 @@ export function LikeCommentButtonStack({
 	creatorId: string;
 }) {
 	const [isCommentOpen, setIsCommentOpen] = useState(false);
+	const [isDialogOpened, setIsDialogOpened] = useState(false);
 	const [comment, setComment] = useState("");
 	const { isAuthenticated, userData } = useSelector(
 		(state: RootState) => state.User
@@ -63,24 +66,26 @@ export function LikeCommentButtonStack({
 					postId: id || "",
 				})
 			);
-			if (!likes.find((like) => like?._id === userData?._id)) {
-				const data = {
-					senderId: userData._id,
-					senderName: userData.name,
-					senderImage: userData.image,
-					receiverId: creatorId,
-					action: `like`,
-					link: `/post/${id}`,
-				};
+			if (creatorId !== userData._id) {
+				if (!likes.find((like) => like?._id === userData?._id)) {
+					const data = {
+						senderId: userData._id,
+						senderName: userData.name,
+						senderImage: userData.image,
+						receiverId: creatorId,
+						action: `like`,
+						link: `/post/${id}`,
+					};
 
-				socket.off().emit("sendNotification", data);
-				await saveNotification({
-					senderName: userData.name || "",
-					image: userData.image || { image_url: "", public_id: "" },
-					action: "like",
-					link: `/post/${id}`,
-					receiverId: creatorId,
-				});
+					socket.off().emit("sendNotification", data);
+					await saveNotification({
+						senderName: userData.name || "",
+						image: userData.image || { image_url: "", public_id: "" },
+						action: "like",
+						link: `/post/${id}`,
+						receiverId: creatorId,
+					});
+				}
 			}
 		} else {
 			dispatch(handleDialog(true));
@@ -102,28 +107,59 @@ export function LikeCommentButtonStack({
 			commentPostInState({ commentDetails: { comment, userId }, postId: id })
 		);
 		setComment("");
-		const data = {
-			senderId: userData._id,
-			senderName: userData.name,
-			senderImage: userData.image,
-			receiverId: creatorId,
-			action: `comment`,
-			link: `/post/${id}`,
-		};
 
-		socket.off().emit("sendNotification", data);
+		if (userData._id !== creatorId) {
+			const data = {
+				senderId: userData._id,
+				senderName: userData.name,
+				senderImage: userData.image,
+				receiverId: creatorId,
+				action: `comment`,
+				link: `/post/${id}`,
+			};
 
-		await saveNotification({
-			senderName: userData.name || "",
-			image: userData.image || { image_url: "", public_id: "" },
-			action: "comment",
-			link: `/post/${id}`,
-			receiverId: creatorId,
-		});
+			socket.off().emit("sendNotification", data);
+
+			await saveNotification({
+				senderName: userData.name || "",
+				image: userData.image || { image_url: "", public_id: "" },
+				action: "comment",
+				link: `/post/${id}`,
+				receiverId: creatorId,
+			});
+		}
 	};
 
 	return (
 		<Stack direction={"column"} spacing={2} width={"100%"}>
+			<Dialog
+				fullWidth
+				open={isDialogOpened}
+				onClose={() => {
+					setIsDialogOpened(false);
+				}}
+				aria-labelledby="alert-dialog-title"
+				aria-describedby="alert-dialog-description"
+			>
+				<DialogContent>
+					<Box height={"80vh"}>
+						{likes.length === 0 ? (
+							<Typography textAlign={"center"}>No likes yet</Typography>
+						) : (
+							likes?.map((user, index) => {
+								return (
+									<UserCard
+										key={index}
+										name={user.name}
+										image={user.image.image_url}
+										username={user.username}
+									/>
+								);
+							})
+						)}
+					</Box>
+				</DialogContent>
+			</Dialog>
 			<Stack direction={"row"} spacing={2}>
 				<Stack direction={"column"} spacing={0} justifyContent={"center"}>
 					<IconButton
@@ -137,7 +173,14 @@ export function LikeCommentButtonStack({
 					>
 						<Favorite />
 					</IconButton>
-					<Typography variant="caption" color="text.secondary">
+					<Typography
+						variant="caption"
+						color="text.secondary"
+						sx={{ cursor: "pointer" }}
+						onClick={() => {
+							setIsDialogOpened(true);
+						}}
+					>
 						{likes.length} Likes
 					</Typography>
 				</Stack>
@@ -190,36 +233,39 @@ export function LikeCommentButtonStack({
 						))}
 					</Stack>
 					<Divider />
-					<Stack direction="row" spacing={2} alignItems="center">
-						<Avatar
-							src="https://images.unsplash.com/photo-1527073620320-77635188c627?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-							alt="Logged in user"
-							style={{ width: 50, height: 50 }}
-						/>
-						<FormControl variant="outlined" fullWidth color="secondary">
-							<InputLabel htmlFor="outlined-adornment-add-comment">
-								Add a comment
-							</InputLabel>
-							<OutlinedInput
-								id="outlined-adornment-add-comment"
-								type={"text"}
-								value={comment}
-								onChange={(e) => setComment(e.target.value)}
-								endAdornment={
-									<InputAdornment position="end">
-										<IconButton
-											aria-label={"add-comment"}
-											onClick={handleCommentSubmit}
-											edge="end"
-										>
-											<SendOutlined />
-										</IconButton>
-									</InputAdornment>
-								}
-								label="Add a comment"
+					{isAuthenticated ? (
+						<Stack direction="row" spacing={[1, 2]} alignItems="center">
+							<Avatar
+								src={userData.image?.image_url}
+								alt="Logged in user"
+								sx={{ width: [40, 50], height: [40, 50] }}
 							/>
-						</FormControl>
-					</Stack>
+							<FormControl variant="outlined" fullWidth color="secondary">
+								<InputLabel htmlFor="outlined-adornment-add-comment">
+									Add a comment
+								</InputLabel>
+								<OutlinedInput
+									id="outlined-adornment-add-comment"
+									type={"text"}
+									size="small"
+									value={comment}
+									onChange={(e) => setComment(e.target.value)}
+									endAdornment={
+										<InputAdornment position="end">
+											<IconButton
+												aria-label={"add-comment"}
+												onClick={handleCommentSubmit}
+												edge="end"
+											>
+												<SendOutlined />
+											</IconButton>
+										</InputAdornment>
+									}
+									label="Add a comment"
+								/>
+							</FormControl>
+						</Stack>
+					) : null}
 				</Stack>
 			)}
 		</Stack>

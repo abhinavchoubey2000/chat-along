@@ -6,6 +6,8 @@ import {
 	InputLabel,
 	OutlinedInput,
 	Box,
+	Container,
+	CircularProgress,
 } from "@mui/material";
 import { Search } from "@mui/icons-material";
 import { UserCard } from "./_components";
@@ -15,12 +17,11 @@ import { RootState } from "@/redux/store";
 
 export default function SearchUsers() {
 	const [searchText, setSearchText] = useState("");
-	const { allUsersData, userData } = useSelector(
+	const { allUsersData, userData, loading } = useSelector(
 		(state: RootState) => state.User
 	);
-	const [searchedResults, setSearchedResults] = useState<
-		Array<UserResponseDataInterface>
-	>([]);
+	const [searchedResults, setSearchedResults] =
+		useState<Array<UserResponseDataInterface>>([]);
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setSearchText(e.target.value);
 	};
@@ -36,7 +37,19 @@ export default function SearchUsers() {
 		);
 	}, [searchText]);
 
-	return (
+	return loading ? (
+		<Container
+			maxWidth={"sm"}
+			sx={{
+				display: "flex",
+				alignItems: "center",
+				justifyContent: "center",
+				height: "90vh",
+			}}
+		>
+			<CircularProgress sx={{ color: "blue" }} size={100} />
+		</Container>
+	) : (
 		<>
 			<FormControl variant="outlined" fullWidth color="secondary">
 				<InputLabel htmlFor="outlined-adornment-add-comment">Search</InputLabel>

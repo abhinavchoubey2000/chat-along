@@ -15,9 +15,11 @@ export default function Chats() {
 	return (
 		<>
 			<Stack
-				paddingY={1}
+				paddingY={[0, 1]}
 				paddingX={1}
 				direction={"row"}
+				position={"fixed"}
+				bgcolor={"white"}
 				alignItems={"center"}
 				gap={2}
 				width={"100%"}
@@ -30,45 +32,48 @@ export default function Chats() {
 				<Typography>Chats</Typography>
 			</Stack>
 			<Box
+				pt={[5, 7]}
 				width={"100%"}
 				height={"80vh"}
 				overflow={"auto"}
 				mt={1}
 				sx={{ display: "flex", flexDirection: "column" }}
 			>
-				{userData.following?.length === 0
-					? "You dont have any friends for now. Follow them to add and chat"
-					: userData?.following?.map((user, index) => {
-							chatLastMessage = userData?.chats?.[user._id]
-								? userData?.chats[user._id][
-										userData?.chats[user._id]?.length - 1
-								  ]?.name === "sender"
-									? `You: ${
-											userData?.chats[user._id][
-												userData?.chats[user._id].length - 1
-											]?.message
-									  }`
-									: userData?.chats[user._id][
+				{userData.following?.length === 0 ? (
+					<Typography textAlign={"center"} px={2}>
+						You dont have any friends for now. Follow them to add and chat
+					</Typography>
+				) : (
+					userData?.following?.map((user, index) => {
+						chatLastMessage = userData?.chats?.[user._id]
+							? userData?.chats[user._id][userData?.chats[user._id]?.length - 1]
+									?.name === "sender"
+								? `You: ${
+										userData?.chats[user._id][
 											userData?.chats[user._id].length - 1
-									  ]?.message
-								: "Tap to chat";
-
-							seen = userData?.chats?.[user._id]
-								? userData?.chats[user._id][
+										]?.message
+								  }`
+								: userData?.chats[user._id][
 										userData?.chats[user._id].length - 1
-								  ]?.seen
-								: false;
-							return (
-								<UserCard
-									key={index}
-									id={user._id}
-									name={user.name}
-									image={user.image.image_url}
-									lastMessage={chatLastMessage}
-									seen={seen}
-								/>
-							);
-					  })}
+								  ]?.message
+							: "Tap to chat";
+
+						seen = userData?.chats?.[user._id]
+							? userData?.chats[user._id][userData?.chats[user._id].length - 1]
+									?.seen
+							: false;
+						return (
+							<UserCard
+								key={index}
+								id={user._id}
+								name={user.name}
+								image={user.image.image_url}
+								lastMessage={chatLastMessage}
+								seen={seen}
+							/>
+						);
+					})
+				)}
 			</Box>
 		</>
 	);

@@ -5,29 +5,21 @@ import { userModel } from "../../../_database/models";
 connectToDB();
 
 interface ViewUserProfileRequestDataInterface {
-	userId: string;
+	username: string;
 }
 
-// interface ViewUserProfileResponseDataInterface {
-// 	name: string;
-// 	posts: [];
-// 	followers: string[];
-// 	following: string[];
-// 	username: string;
-// 	image: string;
-// }
 
 export async function POST(request: Request) {
 	try {
-		const { userId }: ViewUserProfileRequestDataInterface =
+		const { username }: ViewUserProfileRequestDataInterface =
 			await request.json();
 
 		//Only populating the data which is necessary
 		const user = await userModel
-			.findById(userId)
+			.findOne({ username })
 			.populate({ path: "posts" })
-			.populate({ path: "following", select: "_id name image" })
-			.populate({ path: "followers", select: "_id name image" });
+			.populate({ path: "following", select: "_id name image username" })
+			.populate({ path: "followers", select: "_id name image username" });
 
 		if (!user) {
 			return NextResponse.json({
@@ -48,7 +40,7 @@ export async function POST(request: Request) {
 		return NextResponse.json({
 			success: true,
 			message: "Fetched user profile.",
-			// data: responseData,
+			data: user,
 		});
 	} catch (error) {
 		return NextResponse.json({

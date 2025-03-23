@@ -17,6 +17,7 @@ import { useLoginMutation } from "@/redux/api-slices";
 import React, { useState } from "react";
 import { RootState } from "@/redux/store";
 import Image from "next/image";
+import Link from "next/link";
 
 export function OverlayLogin() {
 	const [username, setUsername] = useState("");
@@ -76,6 +77,15 @@ export function OverlayLogin() {
 							fullWidth
 							margin="normal"
 						/>
+						<Typography alignSelf={"end"}>
+							Dont have account?{" "}
+							<Link
+								href={"/signup"}
+								style={{ textDecoration: "none", color: "#06D001" }}
+							>
+								Let&apos;s create one
+							</Link>
+						</Typography>
 						<Button
 							sx={{ my: 2 }}
 							variant="contained"

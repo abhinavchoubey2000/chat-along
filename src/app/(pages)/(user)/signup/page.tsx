@@ -235,6 +235,7 @@ const Signup = () => {
 				</Typography>
 			</Stack>
 			<SignupStepper activeStep={activeStep} />
+			
 			{activeStep === 0 && (
 				<StepOne
 					data={formData}
@@ -263,6 +264,7 @@ const Signup = () => {
 					isLoading={cloudinaryLoading}
 				/>
 			)}
+			
 		</Box>
 	);
 };

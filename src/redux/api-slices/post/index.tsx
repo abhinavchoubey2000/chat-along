@@ -6,32 +6,17 @@ export const postApi = createApi({
 		baseUrl: process.env.NEXT_PUBLIC_BASE_URL,
 	}),
 	endpoints: (builder) => ({
-		login: builder.mutation({
-			query: (credentials) => ({
-				url: "api/login",
-				method: "POST",
-				body: { email: credentials.email, password: credentials.password },
-			}),
-		}),
-		signup: builder.mutation({
-			query: (credentials) => ({
-				url: "/api/signup",
-				method: "POST",
-				body: {
-					email: credentials.email,
-					password: credentials.password,
-					name: credentials.name,
-				},
-			}),
-		}),
-		logout: builder.mutation<void, void>({
-			query: () => ({
-				url: "api/logout",
-				method: "DELETE",
-			}),
-		}),
 		fetchPublicPostsData: builder.query<{ data: Array<PostInterface> }, void>({
 			query: () => "api/get-all-posts",
+		}),
+		viewUserPost: builder.mutation({
+			query: (postId: string) => ({
+				url: `api/view-user-post`,
+				method: "POST",
+				body: {
+					postId,
+				},
+			}),
 		}),
 		uploadImageToCloudinary: builder.mutation({
 			query: (formData) => ({
@@ -62,29 +47,22 @@ export const postApi = createApi({
 				},
 			}),
 		}),
-		updateLink: builder.mutation({
-			query: (updatedLinkObj: {
-				url: string;
-				fullname: string;
-				id: string;
-				linkColor: string;
-			}) => ({
-				url: "api/update-link",
-				method: "PUT",
-				body: {
-					url: updatedLinkObj.url,
-					fullname: updatedLinkObj.fullname,
-					id: updatedLinkObj.id,
-					linkColor: updatedLinkObj.linkColor,
-				},
-			}),
-		}),
 		deletePost: builder.mutation({
 			query: (postId: string) => ({
 				url: `api/delete-post`,
 				method: "DELETE",
 				body: {
 					postId,
+				},
+			}),
+		}),
+		editCaption: builder.mutation({
+			query: (data: { postId: string; caption: string }) => ({
+				url: `api/edit-post-caption`,
+				method: "PATCH",
+				body: {
+					postId: data.postId,
+					caption: data.caption,
 				},
 			}),
 		}),
@@ -114,12 +92,10 @@ export const {
 	useFetchPublicPostsDataQuery,
 	useLikeUnlikePostMutation,
 	useCommentPostMutation,
-	useLoginMutation,
-	useSignupMutation,
-	useLogoutMutation,
 	useUploadImageToCloudinaryMutation,
 	useDeleteImageFromCloudinaryMutation,
 	useCreatePostMutation,
-	useUpdateLinkMutation,
+	useEditCaptionMutation,
+	useViewUserPostMutation,
 	useDeletePostMutation,
 } = postApi;

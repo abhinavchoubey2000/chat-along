@@ -95,6 +95,13 @@ export const usersApi = createApi({
 				},
 			}),
 		}),
+		replaceImageInCloudinary: builder.mutation({
+			query: (formData) => ({
+				url: "https://chat-along-external-server.onrender.com/replace-in-cloudinary",
+				method: "POST",
+				body: formData,
+			}),
+		}),
 		editProfile: builder.mutation({
 			query: (data: {
 				image: { image_url: string; public_id: string };
@@ -138,6 +145,15 @@ export const usersApi = createApi({
 				},
 			}),
 		}),
+		saveSeenMessage: builder.mutation({
+			query: (userId: string) => ({
+				url: `api/seen-message`,
+				method: "PUT",
+				body: {
+					userId,
+				},
+			}),
+		}),
 		clearMessages: builder.mutation({
 			query: (receiverId: string) => ({
 				url: `api/clear-messages`,
@@ -172,6 +188,13 @@ export const usersApi = createApi({
 				method: "PUT",
 			}),
 		}),
+		viewUserProfile: builder.mutation({
+			query: (username) => ({
+				url: `api/view-user-profile`,
+				method: "POST",
+				body: { username },
+			}),
+		}),
 	}),
 });
 
@@ -185,10 +208,13 @@ export const {
 	useLogoutMutation,
 	useFollowUnfollowUserMutation,
 	useAddStatusMutation,
+	useReplaceImageInCloudinaryMutation,
 	useEditProfileMutation,
 	useDeleteStatusMutation,
 	useSaveMessageMutation,
 	useClearMessagesMutation,
 	useSaveNotificationMutation,
 	useClearNotificationsMutation,
+	useViewUserProfileMutation,
+	useSaveSeenMessageMutation
 } = usersApi;

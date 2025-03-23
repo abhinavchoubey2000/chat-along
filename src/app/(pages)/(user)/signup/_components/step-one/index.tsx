@@ -5,6 +5,7 @@ import {
 	Typography,
 	CircularProgress,
 } from "@mui/material";
+import Link from "next/link";
 
 interface StepOneProps {
 	data: { firstName: string; lastName: string; email: string };
@@ -74,6 +75,15 @@ const StepOne: React.FC<StepOneProps> = ({
 					{errorData.emailError}
 				</Typography>
 			</Stack>
+			<Typography alignSelf={"end"}>
+				Already have an account?{" "}
+				<Link
+					href={"/login"}
+					style={{ textDecoration: "none", color: "#06D001" }}
+				>
+					Let&apos;s login
+				</Link>
+			</Typography>
 			<Button
 				sx={{ my: 2 }}
 				variant="contained"

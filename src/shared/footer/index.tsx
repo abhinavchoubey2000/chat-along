@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { Stack, IconButton, Avatar, Badge } from "@mui/material";
+import { Stack, IconButton, Avatar} from "@mui/material";
 import { CustomToolTip } from "@/custom-components";
 import { useSelector, useDispatch } from "react-redux";
 import Link from "next/link";
@@ -12,19 +12,26 @@ import {
 } from "@mui/icons-material";
 import { RootState } from "@/redux/store";
 import { handleDialog } from "@/redux/slices/user";
+import { usePathname } from "next/navigation";
 
 export function Footer() {
 	const { userData, isAuthenticated } = useSelector(
 		(state: RootState) => state.User
 	);
 	const dispatch = useDispatch();
-	
+	const pathname = usePathname();
+
 	const iconStyle = {
-		fontSize: ["1.5rem","2rem"],
+		fontSize: ["1.5rem", "2rem"],
 		transition: "all 0.5s",
 		"&:hover": {
 			color: "#046af2",
 		},
+	};
+	const currentIconStyle = {
+		fontSize: ["1.5rem", "2rem"],
+		transition: "all 0.5s",
+		color: "#046af2",
 	};
 	return (
 		<Stack
@@ -47,14 +54,16 @@ export function Footer() {
 			<CustomToolTip title={"Home"} placement="top" arrow>
 				<Link href={"/"}>
 					<IconButton>
-						<Home sx={iconStyle} />
+						<Home sx={pathname === "/" ? currentIconStyle : iconStyle} />
 					</IconButton>
 				</Link>
 			</CustomToolTip>
 			<CustomToolTip title={"Search"} placement="top" arrow>
 				<Link href={"/search-users"}>
 					<IconButton>
-						<Search sx={iconStyle} />
+						<Search
+							sx={pathname === "/search-users" ? currentIconStyle : iconStyle}
+						/>
 					</IconButton>
 				</Link>
 			</CustomToolTip>
@@ -71,7 +80,7 @@ export function Footer() {
 							dispatch(handleDialog(true));
 						}}
 					>
-						<AddCircleOutlineSharp sx={iconStyle} />
+						<AddCircleOutlineSharp />
 					</IconButton>
 				)}
 			</CustomToolTip>
@@ -88,9 +97,7 @@ export function Footer() {
 							dispatch(handleDialog(true));
 						}}
 					>
-						<Badge variant="dot" invisible={true} color="secondary">
-							<ChatBubble sx={iconStyle} />
-						</Badge>
+						<ChatBubble sx={iconStyle} />
 					</IconButton>
 				)}
 			</CustomToolTip>

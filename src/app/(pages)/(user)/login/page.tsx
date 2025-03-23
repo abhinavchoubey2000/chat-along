@@ -14,6 +14,8 @@ import { useLoginMutation } from "@/redux/api-slices";
 import { useDispatch } from "react-redux";
 import { storeUserDataInState } from "@/redux/slices/user";
 import Logo from "../../../../../public/logo.png";
+import Link from "next/link";
+import toast from "react-hot-toast";
 
 export default function Login() {
 	const [login, { isLoading }] = useLoginMutation();
@@ -23,11 +25,15 @@ export default function Login() {
 
 	const processLogin = async () => {
 		const response = await login({ username, password });
+
+		if (!response.data.success) {
+			return toast.error(response.data.message);
+		}
 		dispatch(storeUserDataInState(response.data));
 		window.location.href = "/";
 	};
 	return (
-		<Box px={[2,0]}>
+		<Box px={[2, 0]}>
 			<Stack py={1}>
 				<Image src={Logo} alt="Logo" height={40} width={60} />
 				<Typography variant="h5" fontWeight={"bold"}>
@@ -38,7 +44,7 @@ export default function Login() {
 				<Typography
 					textAlign={"center"}
 					sx={{ opacity: 0.7 }}
-					letterSpacing={[1,1.5]}
+					letterSpacing={[1, 1.5]}
 				>
 					Hi, welcome back. Login to your account with your credentials.
 				</Typography>
@@ -63,6 +69,15 @@ export default function Login() {
 					fullWidth
 					margin="normal"
 				/>
+				<Typography alignSelf={"end"}>
+					Dont have account?{" "}
+					<Link
+						href={"/signup"}
+						style={{ textDecoration: "none", color: "#06D001" }}
+					>
+						Let&apos;s create one
+					</Link>
+				</Typography>
 				<Button
 					sx={{ my: 2 }}
 					variant="contained"

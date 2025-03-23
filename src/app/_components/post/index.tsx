@@ -1,5 +1,5 @@
 "use client";
-import { Container } from "@mui/material";
+import { CircularProgress, Container } from "@mui/material";
 import React from "react";
 import { PostCard } from "./_components";
 import { OverlayLogin } from "@/shared";
@@ -8,8 +8,21 @@ import { RootState } from "@/redux/store";
 
 export function Post() {
 	const { postsData } = useSelector((state: RootState) => state.Post);
+	const { loading } = useSelector((state: RootState) => state.User);
 
-	return (
+	return loading ? (
+		<Container
+			maxWidth={"sm"}
+			sx={{
+				display: "flex",
+				alignItems: "center",
+				justifyContent: "center",
+				height: "90vh",
+			}}
+		>
+			<CircularProgress sx={{ color: "blue" }} size={100} />
+		</Container>
+	) : (
 		<Container
 			sx={{
 				display: "flex",

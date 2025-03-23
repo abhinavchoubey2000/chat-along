@@ -21,9 +21,16 @@ export function PostCard({
 	date,
 }: PostInterface) {
 	return (
-		<Card sx={{ width: ["100%","30rem"], marginY: 3 }} raised>
+		<Card sx={{ width: ["100%", "30rem"], marginY: 3 }} raised>
 			<CardHeader
-				avatar={<Avatar src={creator?.image.image_url} />}
+				avatar={
+					<Link
+						href={`/${creator?.username}`}
+						style={{ textDecoration: "none", color: "black" }}
+					>
+						<Avatar src={creator?.image.image_url} />
+					</Link>
+				}
 				action={
 					<PostOption
 						id={_id || ""}
@@ -38,12 +45,25 @@ export function PostCard({
 						{creator?.name}
 					</Link>
 				}
-				subheader={date}
+				subheader={
+					<Link
+						href={`/${creator?.username}`}
+						style={{ textDecoration: "none", color: "black", opacity: 0.7 }}
+					>
+						{date}
+					</Link>
+				}
 			/>
+
 			<CardMedia
 				component="img"
-				width={200}
-				height={400}
+				sx={{
+					objectFit: "contain", // Ensures the actual size is preserved
+					maxWidth: "100%", // Prevents overflow
+					maxHeight: "60vh",
+					display: "block", // Prevents extra space below images
+					marginX: "auto", // Centers the image
+				}}
 				image={post_image?.image_url}
 			/>
 			<CardContent>

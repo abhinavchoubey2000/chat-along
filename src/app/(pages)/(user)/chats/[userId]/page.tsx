@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { useSelector, useDispatch } from "react-redux";
 import io from "socket.io-client";
@@ -26,20 +26,20 @@ import Link from "next/link";
 import {
 	ArrowBack,
 	InfoOutlined,
-	SendOutlined,
-	Image,
+	SendOutlined
 } from "@mui/icons-material";
 import { RightMessage } from "./_components/right-message";
 import { LeftMessage } from "./_components";
 import { RootState } from "@/redux/store";
 import {
 	sendMessageInState,
-	// seenMessageInState,
+	seenMessageInState,
 	clearMessagesInState,
 } from "@/redux/slices/user";
 import {
 	useClearMessagesMutation,
 	useSaveMessageMutation,
+	useSaveSeenMessageMutation,
 } from "@/redux/api-slices";
 
 const socket = io("https://chat-along-external-server.onrender.com/");
@@ -56,8 +56,8 @@ export default function ChatBox() {
 	const [isDialogOpened, setIsDialogOpened] = useState(false);
 	const open = Boolean(anchorEl);
 	const [isTyping, setIsTyping] = useState(false);
-	const fileInputRef = useRef<HTMLInputElement>(null);
 	const [saveMessage] = useSaveMessageMutation();
+	const [saveSeenMessage] = useSaveSeenMessageMutation();
 	const [clearMessages] = useClearMessagesMutation();
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setMessage(e.target.value);
@@ -79,10 +79,7 @@ export default function ChatBox() {
 		(user) => user._id === params.userId
 	);
 
-	const openFileInput = () => {
-		fileInputRef.current?.click();
-	};
-
+	
 	const handleClearMessages = () => {
 		dispatch(clearMessagesInState(macthedUserData?._id || ""));
 		clearMessages(macthedUserData?._id || "");
@@ -164,9 +161,16 @@ export default function ChatBox() {
 			sendTypingSignal();
 		}
 	};
-	// useEffect(() => {
-	// 	dispatch(seenMessageInState(macthedUserData?._id || ""));
-	// }, [userData.chats]);
+	useEffect(() => {
+		dispatch(seenMessageInState(macthedUserData?._id || ""));
+		saveSeenMessage(macthedUserData?._id || "")
+			.then((res) => {
+				console.log(res);
+			})
+			.catch((err) => {
+				console.log(err.message);
+			});
+	}, [userData.chats]);
 
 	return (
 		<Box
@@ -174,7 +178,7 @@ export default function ChatBox() {
 			flexDirection={"column"}
 			justifyContent={"space-between"}
 			height={"100%"}
-			py={1}
+			py={[0, 1]}
 			px={[1, 0]}
 		>
 			<Paper elevation={0}>
@@ -304,7 +308,7 @@ export default function ChatBox() {
 					})}
 			</Box>
 			<FormControl
-				sx={{ position: ["fixed","relative"], bottom: 0 }}
+				sx={{ position: ["fixed", "relative"], bottom: 0 }}
 				variant="outlined"
 				fullWidth
 				color="primary"
@@ -319,7 +323,7 @@ export default function ChatBox() {
 					onKeyUp={handleKey}
 					endAdornment={
 						<InputAdornment position="end">
-							{message === "" ? (
+							{/* {message === "" ? (
 								<IconButton
 									aria-label={"image"}
 									edge="end"
@@ -332,18 +336,17 @@ export default function ChatBox() {
 										ref={fileInputRef}
 									/>
 								</IconButton>
-							) : (
-								<IconButton
-									aria-label={"message"}
-									color="primary"
-									edge="end"
-									onClick={() => {
-										sendMessage();
-									}}
-								>
-									<SendOutlined />
-								</IconButton>
-							)}
+							) : ( */}
+							<IconButton
+								aria-label={"message"}
+								color="primary"
+								edge="end"
+								onClick={() => {
+									sendMessage();
+								}}
+							>
+								<SendOutlined />
+							</IconButton>
 						</InputAdornment>
 					}
 				/>

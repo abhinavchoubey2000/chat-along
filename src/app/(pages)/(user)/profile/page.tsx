@@ -5,6 +5,7 @@ import {
 	Button,
 	Dialog,
 	DialogContent,
+	IconButton,
 	Stack,
 	Typography,
 } from "@mui/material";
@@ -13,6 +14,7 @@ import { PostCard, UserCard } from "./_components";
 import { useSelector } from "react-redux";
 import Link from "next/link";
 import { RootState } from "@/redux/store";
+import { Settings } from "@mui/icons-material";
 
 export default function Profile() {
 	const { userData } = useSelector((state: RootState) => state.User);
@@ -27,67 +29,89 @@ export default function Profile() {
 			gap={3}
 			px={[1, 0]}
 		>
-			<Stack direction={"row"} gap={2} alignItems={"center"}>
-				<Avatar
-					src={userData.image?.image_url}
-					sx={{ height: ["5rem", "7rem"], width: ["5rem", "7rem"] }}
-				/>
-				<Stack direction={"column"} gap={[0, 1]}>
-					<Typography sx={{ fontSize: ["1.5rem", "2rem"] }}>
-						{userData.name}
-					</Typography>
-					<Stack direction={"row"} gap={2}>
-						<Stack direction={"column"} alignItems={"center"}>
-							<Typography
-								sx={{ opacity: 0.6, fontSize: ["0.8rem", "1rem"] }}
-								fontWeight={"bold"}
+			<Stack
+				direction={"row"}
+				gap={2}
+				alignItems={"center"}
+				justifyContent={"space-between"}
+			>
+				<Stack direction={"row"} gap={2}>
+					<Avatar
+						src={userData.image?.image_url}
+						sx={{ height: ["5rem", "7rem"], width: ["5rem", "7rem"] }}
+					/>
+					<Stack direction={"column"} gap={[0, 1]}>
+						<Typography sx={{ fontSize: ["1.5rem", "2rem"] }}>
+							{userData.name}
+						</Typography>
+						<Stack direction={"row"} gap={2}>
+							<Stack direction={"column"} alignItems={"center"}>
+								<Typography
+									sx={{ opacity: 0.6, fontSize: ["0.8rem", "1rem"] }}
+									fontWeight={"bold"}
+								>
+									Posts
+								</Typography>
+								<Typography sx={{ opacity: 0.6, fontSize: ["0.8rem", "1rem"] }}>
+									{userData.posts?.length}
+								</Typography>
+							</Stack>
+							<Stack
+								onClick={() => {
+									setDialogOption("followers");
+									setIsDialogOpened(true);
+								}}
+								sx={{ cursor: "pointer" }}
+								direction={"column"}
+								alignItems={"center"}
 							>
-								Posts
-							</Typography>
-							<Typography sx={{ opacity: 0.6, fontSize: ["0.8rem", "1rem"] }}>
-								{userData.posts?.length}
-							</Typography>
-						</Stack>
-						<Stack
-							onClick={() => {
-								setDialogOption("followers");
-								setIsDialogOpened(true);
-							}}
-							sx={{ cursor: "pointer" }}
-							direction={"column"}
-							alignItems={"center"}
-						>
-							<Typography
-								sx={{ opacity: 0.6, fontSize: ["0.8rem", "1rem"] }}
-								fontWeight={"bold"}
+								<Typography
+									sx={{ opacity: 0.6, fontSize: ["0.8rem", "1rem"] }}
+									fontWeight={"bold"}
+								>
+									Followers
+								</Typography>
+								<Typography sx={{ opacity: 0.6, fontSize: ["0.8rem", "1rem"] }}>
+									{userData.followers?.length}
+								</Typography>
+							</Stack>
+							<Stack
+								direction={"column"}
+								alignItems={"center"}
+								onClick={() => {
+									setDialogOption("following");
+									setIsDialogOpened(true);
+								}}
+								sx={{ cursor: "pointer" }}
 							>
-								Followers
-							</Typography>
-							<Typography sx={{ opacity: 0.6, fontSize: ["0.8rem", "1rem"] }}>
-								{userData.followers?.length}
-							</Typography>
-						</Stack>
-						<Stack
-							direction={"column"}
-							alignItems={"center"}
-							onClick={() => {
-								setDialogOption("following");
-								setIsDialogOpened(true);
-							}}
-							sx={{ cursor: "pointer" }}
-						>
-							<Typography
-								sx={{ opacity: 0.6, fontSize: ["0.8rem", "1rem"] }}
-								fontWeight={"bold"}
-							>
-								Following
-							</Typography>
-							<Typography sx={{ opacity: 0.6, fontSize: ["0.8rem", "1rem"] }}>
-								{userData.following?.length}
-							</Typography>
+								<Typography
+									sx={{ opacity: 0.6, fontSize: ["0.8rem", "1rem"] }}
+									fontWeight={"bold"}
+								>
+									Following
+								</Typography>
+								<Typography sx={{ opacity: 0.6, fontSize: ["0.8rem", "1rem"] }}>
+									{userData.following?.length}
+								</Typography>
+							</Stack>
 						</Stack>
 					</Stack>
 				</Stack>
+				<Link href={"/settings"}>
+					<IconButton
+						sx={{
+							alignSelf: "start",
+							justifySelf: "flex-end",
+							borderRadius: 0,
+							gap: 1,
+						}}
+					>
+						<Typography sx={{ display: ["none", "block"] }}>
+							Settings
+						</Typography>
+						<Settings sx={{ height: [15, 25], width: [15, 25] }} />
+					</IconButton>
+				</Link>
 			</Stack>
 			<Dialog
 				fullWidth
@@ -154,17 +178,20 @@ export default function Profile() {
 					py={2}
 					justifyContent={"center"}
 					gap={1}
-					flexDirection={"row-reverse"}
+					flexDirection={"row"}
 				>
-					{userData.posts?.map((post, index) => {
-						return (
-							<PostCard
-								key={index}
-								postImage={post.post_image?.image_url || ""}
-								postId={post._id || ""}
-							/>
-						);
-					})}
+					{userData.posts
+						?.slice()
+						.reverse()
+						.map((post, index) => {
+							return (
+								<PostCard
+									key={index}
+									postImage={post.post_image?.image_url || ""}
+									postId={post._id || ""}
+								/>
+							);
+						})}
 				</Box>
 			</Box>
 		</Box>

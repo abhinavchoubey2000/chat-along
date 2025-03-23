@@ -1,11 +1,7 @@
 "use client";
 import { Favorite, ModeComment, SendOutlined } from "@mui/icons-material";
-import { useDispatch, useSelector } from "react-redux";
 import io from "socket.io-client";
-import {
-	useLikeUnlikePostMutation,
-	useCommentPostMutation,
-} from "@/redux/api-slices/post";
+import { useDispatch, useSelector } from "react-redux";
 import {
 	Avatar,
 	IconButton,
@@ -20,6 +16,10 @@ import {
 	DialogContent,
 	Box,
 } from "@mui/material";
+import {
+	useLikeUnlikePostMutation,
+	useCommentPostMutation,
+} from "@/redux/api-slices/post";
 import Link from "next/link";
 import React, { useState } from "react";
 import { RootState } from "@/redux/store";
@@ -75,15 +75,16 @@ export function LikeCommentButtonStack({
 					action: `like`,
 					link: `/post/${id}`,
 				};
-
-				socket.off().emit("sendNotification", data);
-				await saveNotification({
-					senderName: userData.name || "",
-					image: userData.image || { image_url: "", public_id: "" },
-					action: "like",
-					link: `/post/${id}`,
-					receiverId: creatorId,
-				});
+				if (userData._id !== creatorId) {
+					socket.off().emit("sendNotification", data);
+					await saveNotification({
+						senderName: userData.name || "",
+						image: userData.image || { image_url: "", public_id: "" },
+						action: "like",
+						link: `/post/${id}`,
+						receiverId: creatorId,
+					});
+				}
 			}
 		} else {
 			dispatch(handleDialog(true));
@@ -105,24 +106,26 @@ export function LikeCommentButtonStack({
 			commentPostInState({ commentDetails: { comment, userId }, postId: id })
 		);
 		setComment("");
-		const data = {
-			senderId: userData._id,
-			senderName: userData.name,
-			senderImage: userData.image,
-			receiverId: creatorId,
-			action: `comment`,
-			link: `/post/${id}`,
-		};
-		
-		socket.off().emit("sendNotification", data);
 
-		await saveNotification({
-			senderName: userData.name || "",
-			image: userData.image || { image_url: "", public_id: "" },
-			action: "comment",
-			link: `/post/${id}`,
-			receiverId: creatorId,
-		});
+		if (creatorId !== userData._id) {
+			const data = {
+				senderId: userData._id,
+				senderName: userData.name,
+				senderImage: userData.image,
+				receiverId: creatorId,
+				action: `comment`,
+				link: `/post/${id}`,
+			};
+
+			socket.off().emit("sendNotification", data);
+			await saveNotification({
+				senderName: userData.name || "",
+				image: userData.image || { image_url: "", public_id: "" },
+				action: "comment",
+				link: `/post/${id}`,
+				receiverId: creatorId,
+			});
+		}
 	};
 
 	return (

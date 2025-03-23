@@ -8,15 +8,20 @@ import {
 	Fab,
 	Pagination,
 } from "@mui/material";
-import { Close } from "@mui/icons-material";
+import { Close, Delete } from "@mui/icons-material";
+import { deleteStatusInState } from "@/redux/slices/user";
+import { useDispatch } from "react-redux";
+import { useDeleteStatusMutation } from "@/redux/api-slices";
 
 export function UserStatus({
 	followings,
 }: {
 	followings: Array<FollowingInterface>;
 }) {
+	const dispatch = useDispatch();
 	// State for opening and closing status backgrop status window
 	const [open, setOpen] = useState(false);
+	const [deleteStatus] = useDeleteStatusMutation();
 	// State for the index of pagination
 	const [statusIndex, setStatusIndex] = useState(1);
 	// State for the current user status object, initially all the values will be empty due to type safety
@@ -31,9 +36,16 @@ export function UserStatus({
 	const handleClose = () => {
 		setOpen(false);
 	};
+	const handleDeleteStatus = async (statusId: string) => {
+		await deleteStatus(statusId);
+		dispatch(deleteStatusInState(statusId));
+		// Adjust statusIndex if the deleted status was the last one
+		if (statusIndex > currentStatusObject.length - 1) {
+			setStatusIndex(Math.max(1, currentStatusObject.length - 1));
+		}
+	};
 	//Fuction for opening the backdrop status window
 	const handleOpen = (currentStatusArray: Array<StatusInterface>) => {
-		console.log(currentStatusArray);
 		setCurrentStatusObject(currentStatusArray);
 		setOpen(true);
 	};
@@ -47,7 +59,7 @@ export function UserStatus({
 					}}
 					alignItems={"center"}
 					sx={{ cursor: "pointer" }}
-					spacing={1}
+					spacing={[0, 1]}
 				>
 					<Avatar
 						src={user.image.image_url}
@@ -68,7 +80,7 @@ export function UserStatus({
 						zIndex: theme.zIndex.drawer + 1,
 						width: ["100%", "44%"],
 						height: "100%",
-						left: ["-3.5%", "26.8%"],
+						left: ["-3.9%", "26.8%"],
 						bgcolor: `${currentStatusObject[statusIndex - 1].colorCode}`,
 						backdropFilter: "blur(2px)",
 					})}
@@ -85,8 +97,25 @@ export function UserStatus({
 								bgcolor: "transparent",
 							}}
 							size="small"
+							color="default"
 						>
 							<Close fontSize="small" />
+						</Fab>
+						<Fab
+							onClick={() => {
+								handleDeleteStatus(currentStatusObject[statusIndex - 1]?._id);
+							}}
+							sx={{
+								position: "fixed",
+								top: 5,
+								right: 50,
+								boxShadow: "none",
+								bgcolor: "transparent",
+							}}
+							size="small"
+							color="default"
+						>
+							<Delete fontSize="small" />
 						</Fab>
 						<Stack
 							position={"fixed"}
@@ -101,7 +130,7 @@ export function UserStatus({
 								sx={{ height: 35, width: 35 }}
 							/>
 							<Stack spacing={0}>
-								<Typography>{user.name}</Typography>
+								<Typography variant="caption">{user.name}</Typography>
 								<Typography variant="caption" sx={{ opacity: 0.7 }}>
 									2:33 PM
 								</Typography>
@@ -110,9 +139,8 @@ export function UserStatus({
 						<Pagination
 							count={currentStatusObject.length}
 							page={statusIndex}
-							color="primary"
 							onChange={handleChange}
-							size="large"
+							size="small"
 						/>
 					</Stack>
 					<Typography variant="h2" textAlign={"center"}>

@@ -8,23 +8,29 @@ import {
 	CardContent,
 	CardActions,
 	Avatar,
-	Typography,
+	Typography
 } from "@mui/material";
 import { LikeCommentButtonStack, PostOption } from "./_components";
 import Link from "next/link";
+import { useParams } from "next/navigation";
 import { useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
-import { useParams } from "next/navigation";
 
 export default function UserPost() {
-	const { postId } = useParams();
+	const { postId } = useParams<{ postId: string }>();
 	const { postsData } = useSelector((state: RootState) => state.Post);
 	const matchedPost = postsData.find((post) => post._id === postId);
+
 	return (
 		<Card sx={{ maxWidth: "100%", marginY: 3 }} raised>
 			<CardHeader
 				avatar={<Avatar src={matchedPost?.creator?.image.image_url} />}
-				action={<PostOption />}
+				action={
+					<PostOption
+						id={matchedPost?._id || ""}
+						image_public_id={matchedPost?.post_image?.public_id || ""}
+					/>
+				}
 				title={
 					<Link
 						href={`/${matchedPost?.creator?.username}`}
@@ -37,8 +43,13 @@ export default function UserPost() {
 			/>
 			<CardMedia
 				component="img"
-				width={300}
-				height={500}
+				sx={{
+					objectFit: "contain", // Ensures the actual size is preserved
+					maxWidth: "100%", // Prevents overflow
+					maxHeight: "60vh",
+					display: "block", // Prevents extra space below images
+					marginX: "auto", // Centers the image
+				}}
 				image={matchedPost?.post_image?.image_url}
 			/>
 			<CardContent>

@@ -102,6 +102,7 @@ __turbopack_esm__({
     "default": (()=>User)
 });
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react-jsx-dev-runtime.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react.js [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/navigation.js [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f28$pages$292f28$public$292f5b$username$5d2f$_components$2f$index$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$module__evaluation$3e$__ = __turbopack_import__("[project]/src/app/(pages)/(public)/[username]/_components/index.tsx [app-ssr] (ecmascript) <module evaluation>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$redux$2f$slices$2f$user$2f$index$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/src/redux/slices/user/index.tsx [app-ssr] (ecmascript)");
@@ -120,7 +121,9 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$mat
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Button$2f$Button$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Button$3e$__ = __turbopack_import__("[project]/node_modules/@mui/material/Button/Button.js [app-ssr] (ecmascript) <export default as Button>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$CircularProgress$2f$CircularProgress$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__CircularProgress$3e$__ = __turbopack_import__("[project]/node_modules/@mui/material/CircularProgress/CircularProgress.js [app-ssr] (ecmascript) <export default as CircularProgress>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f28$pages$292f28$public$292f5b$username$5d2f$_components$2f$post$2d$card$2f$index$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/src/app/(pages)/(public)/[username]/_components/post-card/index.tsx [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Container$2f$Container$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Container$3e$__ = __turbopack_import__("[project]/node_modules/@mui/material/Container/Container.js [app-ssr] (ecmascript) <export default as Container>");
 "use client";
+;
 ;
 ;
 ;
@@ -137,36 +140,35 @@ function User() {
     const dispatch = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$redux$2f$dist$2f$react$2d$redux$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useDispatch"])();
     const [followUnfollowUser, { isLoading }] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$redux$2f$api$2d$slices$2f$user$2f$index$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useFollowUnfollowUserMutation"])();
     const [saveNotification] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$redux$2f$api$2d$slices$2f$user$2f$index$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useSaveNotificationMutation"])();
-    const { allUsersData, userData, isAuthenticated } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$redux$2f$dist$2f$react$2d$redux$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useSelector"])((state)=>state.User);
-    const { postsData } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$redux$2f$dist$2f$react$2d$redux$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useSelector"])((state)=>state.Post);
+    const [viewUserProfile, { isLoading: userLoading }] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$redux$2f$api$2d$slices$2f$user$2f$index$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useViewUserProfileMutation"])();
+    const [user, setUser] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])({});
+    const { userData, isAuthenticated } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$redux$2f$dist$2f$react$2d$redux$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useSelector"])((state)=>state.User);
     if (!params?.username) return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         children: "User not found"
     }, void 0, false, {
         fileName: "[project]/src/app/(pages)/(public)/[username]/page.tsx",
-        lineNumber: 36,
+        lineNumber: 39,
         columnNumber: 32
     }, this);
     const username = decodeURIComponent(params.username);
-    const matchedUser = allUsersData.find((user)=>user.username === username);
-    const matchedPost = postsData.filter((post)=>post.creator?._id === matchedUser?._id);
     const handleFollowUnfollowUser = async ()=>{
-        if (matchedUser?._id) {
-            await followUnfollowUser(matchedUser?._id);
+        if (user?._id) {
+            await followUnfollowUser(user?._id);
             dispatch((0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$redux$2f$slices$2f$user$2f$index$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["followUnfollowUserInState"])({
-                _id: matchedUser._id,
-                name: matchedUser.name || "",
-                username: matchedUser.username || "",
-                image: matchedUser.image || {
+                _id: user._id,
+                name: user.name || "",
+                username: user.username || "",
+                image: user.image || {
                     image_url: "",
                     public_id: ""
                 }
             }));
-            if (!userData.following?.find((user)=>user._id === matchedUser?._id)) {
+            if (!userData.following?.find((userF)=>userF._id === user?._id)) {
                 const data = {
                     senderId: userData._id,
                     senderName: userData.name,
                     senderImage: userData.image,
-                    receiverId: matchedUser._id,
+                    receiverId: user._id,
                     action: `follow`,
                     link: `/${userData.username}`
                 };
@@ -179,12 +181,41 @@ function User() {
                     },
                     action: "follow",
                     link: `/${userData.username}`,
-                    receiverId: matchedUser._id
+                    receiverId: user._id
                 });
             }
         }
     };
-    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Box$2f$Box$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Box$3e$__["Box"], {
+    const fetchData = async ()=>{
+        const response = await viewUserProfile(username);
+        setUser(response.data.data);
+    };
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
+        fetchData();
+    }, []);
+    return userLoading ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Container$2f$Container$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Container$3e$__["Container"], {
+        maxWidth: "sm",
+        sx: {
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            height: "90vh"
+        },
+        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$CircularProgress$2f$CircularProgress$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__CircularProgress$3e$__["CircularProgress"], {
+            sx: {
+                color: "blue"
+            },
+            size: 100
+        }, void 0, false, {
+            fileName: "[project]/src/app/(pages)/(public)/[username]/page.tsx",
+            lineNumber: 94,
+            columnNumber: 4
+        }, this)
+    }, void 0, false, {
+        fileName: "[project]/src/app/(pages)/(public)/[username]/page.tsx",
+        lineNumber: 85,
+        columnNumber: 3
+    }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Box$2f$Box$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Box$3e$__["Box"], {
         display: "flex",
         flexDirection: "column",
         width: "100%",
@@ -196,7 +227,7 @@ function User() {
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$shared$2f$overlay$2d$login$2f$index$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["OverlayLogin"], {}, void 0, false, {
                 fileName: "[project]/src/app/(pages)/(public)/[username]/page.tsx",
-                lineNumber: 84,
+                lineNumber: 104,
                 columnNumber: 4
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Stack$2f$Stack$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Stack$3e$__["Stack"], {
@@ -205,7 +236,7 @@ function User() {
                 alignItems: "center",
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Avatar$2f$Avatar$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Avatar$3e$__["Avatar"], {
-                        src: matchedUser?.image?.image_url,
+                        src: user?.image?.image_url,
                         sx: {
                             height: [
                                 "5rem",
@@ -218,7 +249,7 @@ function User() {
                         }
                     }, void 0, false, {
                         fileName: "[project]/src/app/(pages)/(public)/[username]/page.tsx",
-                        lineNumber: 86,
+                        lineNumber: 106,
                         columnNumber: 5
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Stack$2f$Stack$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Stack$3e$__["Stack"], {
@@ -235,10 +266,10 @@ function User() {
                                         "2rem"
                                     ]
                                 },
-                                children: matchedUser?.name
+                                children: user?.name
                             }, void 0, false, {
                                 fileName: "[project]/src/app/(pages)/(public)/[username]/page.tsx",
-                                lineNumber: 91,
+                                lineNumber: 111,
                                 columnNumber: 6
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Stack$2f$Stack$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Stack$3e$__["Stack"], {
@@ -261,7 +292,7 @@ function User() {
                                                 children: "Posts"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/(pages)/(public)/[username]/page.tsx",
-                                                lineNumber: 96,
+                                                lineNumber: 116,
                                                 columnNumber: 8
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Typography$2f$Typography$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Typography$3e$__["Typography"], {
@@ -272,16 +303,16 @@ function User() {
                                                         "1rem"
                                                     ]
                                                 },
-                                                children: matchedUser?.posts?.length
+                                                children: user?.posts?.length
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/(pages)/(public)/[username]/page.tsx",
-                                                lineNumber: 102,
+                                                lineNumber: 122,
                                                 columnNumber: 8
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/app/(pages)/(public)/[username]/page.tsx",
-                                        lineNumber: 95,
+                                        lineNumber: 115,
                                         columnNumber: 7
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Stack$2f$Stack$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Stack$3e$__["Stack"], {
@@ -300,7 +331,7 @@ function User() {
                                                 children: "Followers"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/(pages)/(public)/[username]/page.tsx",
-                                                lineNumber: 107,
+                                                lineNumber: 127,
                                                 columnNumber: 8
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Typography$2f$Typography$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Typography$3e$__["Typography"], {
@@ -311,16 +342,16 @@ function User() {
                                                         "1rem"
                                                     ]
                                                 },
-                                                children: matchedUser?.followers?.length
+                                                children: user?.followers?.length
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/(pages)/(public)/[username]/page.tsx",
-                                                lineNumber: 113,
+                                                lineNumber: 133,
                                                 columnNumber: 8
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/app/(pages)/(public)/[username]/page.tsx",
-                                        lineNumber: 106,
+                                        lineNumber: 126,
                                         columnNumber: 7
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Stack$2f$Stack$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Stack$3e$__["Stack"], {
@@ -339,7 +370,7 @@ function User() {
                                                 children: "Following"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/(pages)/(public)/[username]/page.tsx",
-                                                lineNumber: 118,
+                                                lineNumber: 138,
                                                 columnNumber: 8
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Typography$2f$Typography$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Typography$3e$__["Typography"], {
@@ -350,34 +381,34 @@ function User() {
                                                         "1rem"
                                                     ]
                                                 },
-                                                children: matchedUser?.following?.length
+                                                children: user?.following?.length
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/(pages)/(public)/[username]/page.tsx",
-                                                lineNumber: 124,
+                                                lineNumber: 144,
                                                 columnNumber: 8
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/app/(pages)/(public)/[username]/page.tsx",
-                                        lineNumber: 117,
+                                        lineNumber: 137,
                                         columnNumber: 7
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/(pages)/(public)/[username]/page.tsx",
-                                lineNumber: 94,
+                                lineNumber: 114,
                                 columnNumber: 6
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/(pages)/(public)/[username]/page.tsx",
-                        lineNumber: 90,
+                        lineNumber: 110,
                         columnNumber: 5
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/app/(pages)/(public)/[username]/page.tsx",
-                lineNumber: 85,
+                lineNumber: 105,
                 columnNumber: 4
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Stack$2f$Stack$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Stack$3e$__["Stack"], {
@@ -396,7 +427,7 @@ function User() {
                         children: "#"
                     }, void 0, false, {
                         fileName: "[project]/src/app/(pages)/(public)/[username]/page.tsx",
-                        lineNumber: 132,
+                        lineNumber: 152,
                         columnNumber: 5
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Typography$2f$Typography$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Typography$3e$__["Typography"], {
@@ -407,16 +438,16 @@ function User() {
                                 "1.4rem"
                             ]
                         },
-                        children: matchedUser?.username
+                        children: user?.username
                     }, void 0, false, {
                         fileName: "[project]/src/app/(pages)/(public)/[username]/page.tsx",
-                        lineNumber: 138,
+                        lineNumber: 158,
                         columnNumber: 5
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/app/(pages)/(public)/[username]/page.tsx",
-                lineNumber: 131,
+                lineNumber: 151,
                 columnNumber: 4
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Stack$2f$Stack$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Stack$3e$__["Stack"], {
@@ -434,12 +465,12 @@ function User() {
                             size: 18
                         }, void 0, false, {
                             fileName: "[project]/src/app/(pages)/(public)/[username]/page.tsx",
-                            lineNumber: 150,
+                            lineNumber: 170,
                             columnNumber: 8
-                        }, this) : userData.following?.find((user)=>user._id === matchedUser?._id) ? "Following" : "Follow"
+                        }, this) : userData.following?.find((user)=>user._id === user?._id) ? "Following" : "Follow"
                     }, void 0, false, {
                         fileName: "[project]/src/app/(pages)/(public)/[username]/page.tsx",
-                        lineNumber: 144,
+                        lineNumber: 164,
                         columnNumber: 6
                     }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Button$2f$Button$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Button$3e$__["Button"], {
                         variant: "contained",
@@ -450,11 +481,11 @@ function User() {
                         children: "Follow"
                     }, void 0, false, {
                         fileName: "[project]/src/app/(pages)/(public)/[username]/page.tsx",
-                        lineNumber: 160,
+                        lineNumber: 178,
                         columnNumber: 6
                     }, this),
                     isAuthenticated ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
-                        href: `/chats/${matchedUser?._id}`,
+                        href: `/chats/${user?._id}`,
                         style: {
                             width: "100%"
                         },
@@ -465,12 +496,12 @@ function User() {
                             children: "Message"
                         }, void 0, false, {
                             fileName: "[project]/src/app/(pages)/(public)/[username]/page.tsx",
-                            lineNumber: 172,
+                            lineNumber: 190,
                             columnNumber: 7
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/app/(pages)/(public)/[username]/page.tsx",
-                        lineNumber: 171,
+                        lineNumber: 189,
                         columnNumber: 6
                     }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Button$2f$Button$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Button$3e$__["Button"], {
                         variant: "contained",
@@ -482,13 +513,13 @@ function User() {
                         children: "Message"
                     }, void 0, false, {
                         fileName: "[project]/src/app/(pages)/(public)/[username]/page.tsx",
-                        lineNumber: 177,
+                        lineNumber: 195,
                         columnNumber: 6
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/app/(pages)/(public)/[username]/page.tsx",
-                lineNumber: 142,
+                lineNumber: 162,
                 columnNumber: 4
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Box$2f$Box$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Box$3e$__["Box"], {
@@ -500,36 +531,36 @@ function User() {
                     justifyContent: "center",
                     gap: 1,
                     flexDirection: "row-reverse",
-                    children: matchedPost.length !== 0 ? matchedPost.map((post, index)=>{
+                    children: user?.posts?.length !== 0 ? user.posts?.map((post, index)=>{
                         return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f28$pages$292f28$public$292f5b$username$5d2f$_components$2f$post$2d$card$2f$index$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["PostCard"], {
                             postImage: post.post_image?.image_url || "",
                             postId: post._id || ""
                         }, index, false, {
                             fileName: "[project]/src/app/(pages)/(public)/[username]/page.tsx",
-                            lineNumber: 203,
+                            lineNumber: 221,
                             columnNumber: 9
                         }, this);
                     }) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Typography$2f$Typography$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Typography$3e$__["Typography"], {
                         children: "No posts yet"
                     }, void 0, false, {
                         fileName: "[project]/src/app/(pages)/(public)/[username]/page.tsx",
-                        lineNumber: 211,
+                        lineNumber: 229,
                         columnNumber: 7
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/app/(pages)/(public)/[username]/page.tsx",
-                    lineNumber: 191,
+                    lineNumber: 209,
                     columnNumber: 5
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/app/(pages)/(public)/[username]/page.tsx",
-                lineNumber: 189,
+                lineNumber: 207,
                 columnNumber: 4
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/app/(pages)/(public)/[username]/page.tsx",
-        lineNumber: 77,
+        lineNumber: 97,
         columnNumber: 3
     }, this);
 }

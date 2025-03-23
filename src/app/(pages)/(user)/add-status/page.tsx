@@ -14,7 +14,7 @@ import {
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { addStatusInState } from "@/redux/slices/user";
 import { useAddStatusMutation } from "@/redux/api-slices";
 
@@ -35,10 +35,7 @@ export default function AddStatus() {
 	const dispatch = useDispatch();
 	const [addStatus, { isLoading }] = useAddStatusMutation();
 	const router = useRouter();
-	const [currentColor, setCurrentColor] = useState({
-		colorName: "",
-		colorCode: "",
-	});
+	const [currentColor, setCurrentColor] = useState(colorObj[0]);
 	const handleColorChange = (colorData: {
 		colorName: string;
 		colorCode: string;
@@ -79,6 +76,16 @@ export default function AddStatus() {
 			}
 		}
 	};
+
+	useEffect(()=>{
+		const getRandomColor = () => {
+			const randomIndex = Math.floor(Math.random() * colorObj.length);
+			setCurrentColor(colorObj[randomIndex]);
+		};
+
+		getRandomColor();
+	},[])
+
 	return (
 		<Stack spacing={2}>
 			<Dialog
@@ -114,14 +121,14 @@ export default function AddStatus() {
 									flexDirection={"column"}
 									py={2}
 									borderRadius={4}
-									width={[70,100]}
-									height={[70,100]}
+									width={[70, 100]}
+									height={[70, 100]}
 									gap={1}
 								>
 									<Stack
-										width={[10,15]}
+										width={[10, 15]}
 										display={"inline-flex"}
-										height={[10,15]}
+										height={[10, 15]}
 										borderRadius={"50%"}
 										bgcolor={color.colorCode}
 									></Stack>
@@ -166,7 +173,7 @@ export default function AddStatus() {
 					style={{
 						background: "transparent",
 						width: "100%",
-						height:"20%",
+						height: "20%",
 						textAlign: "center",
 						display: "flex",
 						alignItems: "center",

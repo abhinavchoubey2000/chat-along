@@ -1,16 +1,17 @@
 "use client";
-
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import {
 	Avatar,
 	Box,
 	Button,
 	CircularProgress,
+	Dialog,
+	DialogContent,
 	Stack,
 	Typography,
 } from "@mui/material";
-import { PostCard } from "./_components";
+import { PostCard, UserCard } from "./_components";
 import { useSelector, useDispatch } from "react-redux";
 import { followUnfollowUserInState, handleDialog } from "@/redux/slices/user";
 import Link from "next/link";
@@ -20,25 +21,25 @@ import {
 } from "@/redux/api-slices";
 import { OverlayLogin } from "@/shared";
 import { RootState } from "@/redux/store";
+import { useRouter } from "next/navigation";
 import io from "socket.io-client";
 
 const socket = io("https://chat-along-external-server.onrender.com/");
 
 export default function User() {
 	const params = useParams<{ username: string }>();
+	const router = useRouter();
 	const dispatch = useDispatch();
 	const [followUnfollowUser, { isLoading }] = useFollowUnfollowUserMutation();
 	const [saveNotification] = useSaveNotificationMutation();
-	const { allUsersData, userData, isAuthenticated } = useSelector(
+	const [isDialogOpened, setIsDialogOpened] = useState(false);
+	const [dialogOption, setDialogOption] = useState("followers");
+	const { userData, isAuthenticated, allUsersData } = useSelector(
 		(state: RootState) => state.User
 	);
-	const { postsData } = useSelector((state: RootState) => state.Post);
-	if (!params?.username) return <div>User not found</div>;
+
 	const username = decodeURIComponent(params.username);
 	const matchedUser = allUsersData.find((user) => user.username === username);
-	const matchedPost = postsData.filter(
-		(post) => post.creator?._id === matchedUser?._id
-	);
 
 	const handleFollowUnfollowUser = async () => {
 		if (matchedUser?._id) {
@@ -52,7 +53,9 @@ export default function User() {
 				})
 			);
 
-			if (!userData.following?.find((user) => user._id === matchedUser?._id)) {
+			if (
+				!userData.following?.find((userF) => userF._id === matchedUser?._id)
+			) {
 				const data = {
 					senderId: userData._id,
 					senderName: userData.name,
@@ -73,6 +76,17 @@ export default function User() {
 			}
 		}
 	};
+
+	const fetchData = async () => {
+		if (username === userData.username) {
+			return router.push("/profile");
+		}
+	};
+	useEffect(() => {
+		fetchData();
+	}, []);
+
+	if (!params?.username) return <div>User not found</div>;
 	return (
 		<Box
 			display={"flex"}
@@ -103,7 +117,15 @@ export default function User() {
 								{matchedUser?.posts?.length}
 							</Typography>
 						</Stack>
-						<Stack direction={"column"} alignItems={"center"}>
+						<Stack
+							direction={"column"}
+							alignItems={"center"}
+							onClick={() => {
+								setDialogOption("followers");
+								setIsDialogOpened(true);
+							}}
+							sx={{ cursor: "pointer" }}
+						>
 							<Typography
 								sx={{ opacity: 0.6, fontSize: ["0.8rem", "1rem"] }}
 								fontWeight={"bold"}
@@ -114,7 +136,15 @@ export default function User() {
 								{matchedUser?.followers?.length}
 							</Typography>
 						</Stack>
-						<Stack direction={"column"} alignItems={"center"}>
+						<Stack
+							direction={"column"}
+							alignItems={"center"}
+							onClick={() => {
+								setDialogOption("following");
+								setIsDialogOpened(true);
+							}}
+							sx={{ cursor: "pointer" }}
+						>
 							<Typography
 								sx={{ opacity: 0.6, fontSize: ["0.8rem", "1rem"] }}
 								fontWeight={"bold"}
@@ -128,6 +158,41 @@ export default function User() {
 					</Stack>
 				</Stack>
 			</Stack>
+			<Dialog
+				fullWidth
+				open={isDialogOpened}
+				onClose={() => {
+					setIsDialogOpened(false);
+				}}
+				aria-labelledby="alert-dialog-title"
+				aria-describedby="alert-dialog-description"
+			>
+				<DialogContent>
+					<Box height={"80vh"}>
+						{dialogOption === "followers"
+							? matchedUser?.followers?.map((follower, index) => {
+									return (
+										<UserCard
+											key={index}
+											name={follower.name}
+											image={follower.image.image_url}
+											username={follower.username}
+										/>
+									);
+							  })
+							: matchedUser?.following?.map((following, index) => {
+									return (
+										<UserCard
+											key={index}
+											name={following.name}
+											image={following.image.image_url}
+											username={following.username}
+										/>
+									);
+							  })}
+					</Box>
+				</DialogContent>
+			</Dialog>
 			<Stack direction={"row"} alignItems={"flex-end"}>
 				<Typography
 					fontWeight={"bold"}
@@ -152,6 +217,10 @@ export default function User() {
 								(user) => user._id === matchedUser?._id
 						  ) ? (
 							"Following"
+						) : userData.followers?.find(
+								(user) => user._id === matchedUser?._id
+						  ) ? (
+							"Follow back"
 						) : (
 							"Follow"
 						)}
@@ -195,18 +264,21 @@ export default function User() {
 					py={2}
 					justifyContent={"center"}
 					gap={1}
-					flexDirection={"row-reverse"}
+					flexDirection={"row"}
 				>
-					{matchedPost.length !== 0 ? (
-						matchedPost.map((post, index) => {
-							return (
-								<PostCard
-									key={index}
-									postImage={post.post_image?.image_url || ""}
-									postId={post._id || ""}
-								/>
-							);
-						})
+					{matchedUser?.posts?.length !== 0 ? (
+						matchedUser?.posts
+							?.slice()
+							.reverse()
+							.map((post, index) => {
+								return (
+									<PostCard
+										key={index}
+										postImage={post.post_image?.image_url || ""}
+										postId={post._id || ""}
+									/>
+								);
+							})
 					) : (
 						<Typography>No posts yet</Typography>
 					)}

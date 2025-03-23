@@ -226,7 +226,7 @@ async function Header() {
             }, this),
             cookie ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$shared$2f$header$2f$_components$2f$notification$2d$badge$2f$index$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["NotificationBadge"], {}, void 0, false, {
                 fileName: "[project]/src/shared/header/index.tsx",
-                lineNumber: 23,
+                lineNumber: 27,
                 columnNumber: 5
             }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Stack$2f$Stack$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__$3c$export__default__as__Stack$3e$__["Stack"], {
                 direction: "row",
@@ -240,12 +240,12 @@ async function Header() {
                             children: "Login"
                         }, void 0, false, {
                             fileName: "[project]/src/shared/header/index.tsx",
-                            lineNumber: 27,
+                            lineNumber: 31,
                             columnNumber: 7
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/shared/header/index.tsx",
-                        lineNumber: 26,
+                        lineNumber: 30,
                         columnNumber: 6
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$link$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["default"], {
@@ -257,18 +257,18 @@ async function Header() {
                             children: "Sign Up"
                         }, void 0, false, {
                             fileName: "[project]/src/shared/header/index.tsx",
-                            lineNumber: 32,
+                            lineNumber: 36,
                             columnNumber: 7
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/shared/header/index.tsx",
-                        lineNumber: 31,
+                        lineNumber: 35,
                         columnNumber: 6
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/shared/header/index.tsx",
-                lineNumber: 25,
+                lineNumber: 29,
                 columnNumber: 5
             }, this)
         ]

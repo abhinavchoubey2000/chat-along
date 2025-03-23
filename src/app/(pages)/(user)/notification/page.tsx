@@ -21,9 +21,11 @@ export default function Notification() {
 	return (
 		<>
 			<Stack
-				paddingY={1}
+				paddingY={[0, 1]}
 				paddingX={1}
 				direction={"row"}
+				position={"fixed"}
+				bgcolor={"white"}
 				alignItems={"center"}
 				gap={2}
 				width={"100%"}
@@ -36,6 +38,7 @@ export default function Notification() {
 				<Typography>Notifications</Typography>
 			</Stack>
 			<Box
+				pt={[4, 6]}
 				width={"100%"}
 				height={"80vh"}
 				overflow={"auto"}
