@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { useSelector, useDispatch } from "react-redux";
 import io from "socket.io-client";
@@ -26,10 +26,15 @@ import Link from "next/link";
 import {
 	ArrowBack,
 	InfoOutlined,
-	SendOutlined
+	SendOutlined,
+	Image,
 } from "@mui/icons-material";
-import { RightMessage } from "./_components/right-message";
-import { LeftMessage } from "./_components";
+import {
+	LeftImageMessage,
+	LeftMessage,
+	RightImageMessage,
+	RightMessage,
+} from "./_components";
 import { RootState } from "@/redux/store";
 import {
 	sendMessageInState,
@@ -41,6 +46,7 @@ import {
 	useSaveMessageMutation,
 	useSaveSeenMessageMutation,
 } from "@/redux/api-slices";
+import { useUploadImageToCloudinaryMutation } from "@/redux/api-slices/post";
 
 const socket = io("https://chat-along-external-server.onrender.com/");
 
@@ -48,20 +54,89 @@ export default function ChatBox() {
 	const { allUsersData, userData } = useSelector(
 		(state: RootState) => state.User
 	);
+	const fileInputRef = useRef<HTMLInputElement>(null);
 	const dispatch = useDispatch();
-	const params = useParams();
+	const params = useParams<{ userId: string }>();
 	const router = useRouter();
 	const [message, setMessage] = useState("");
 	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 	const [isDialogOpened, setIsDialogOpened] = useState(false);
+	
 	const open = Boolean(anchorEl);
 	const [isTyping, setIsTyping] = useState(false);
 	const [saveMessage] = useSaveMessageMutation();
+	const [uploadImageToCloudinary] = useUploadImageToCloudinaryMutation();
 	const [saveSeenMessage] = useSaveSeenMessageMutation();
 	const [clearMessages] = useClearMessagesMutation();
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setMessage(e.target.value);
 	};
+
+	const openFileInput = () => {
+		fileInputRef.current?.click();
+	};
+
+	const handleFileChange = async (
+		event: React.ChangeEvent<HTMLInputElement>
+	) => {
+		const currentFile = event.target.files?.[0];
+		const formData = new FormData();
+
+		if (currentFile) {
+			formData.append("image", currentFile);
+			const response = await uploadImageToCloudinary(formData);
+
+			dispatch(
+				sendMessageInState({
+					receiverId: macthedUserData?._id || "",
+					image: userData.image || { image_url: "", public_id: "" },
+					message: "",
+					imageMessage: response.data.image_url,
+					senderId: userData._id || "",
+					name: userData.name || "",
+					time: new Date().toLocaleTimeString("en-US", {
+						hour: "2-digit",
+						minute: "2-digit",
+						hour12: true,
+					}),
+				})
+			);
+
+			const data: {
+				senderId: string;
+				receiverId: string;
+				message: string;
+				image: { image_url: string; public_id: string };
+				time: string;
+				imageMessage: string;
+				name: string;
+			} = {
+				senderId: userData._id || "",
+				receiverId: macthedUserData?._id || "",
+				message: "",
+				imageMessage: response.data.image_url,
+				image: userData.image || { image_url: "", public_id: "" },
+				time: new Date().toLocaleTimeString("en-US", {
+					hour: "2-digit",
+					minute: "2-digit",
+					hour12: true,
+				}),
+				name: userData.name || "",
+			};
+			socket.off().emit("sendMessage", data);
+
+			await saveMessage({
+				receiverId: data.receiverId,
+				senderId: userData._id || "",
+				name: userData.name || "",
+				message: "",
+				imageMessage: data.imageMessage,
+				image: data.image,
+				time: data.time,
+			});
+		}
+	};
+
 	const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
 		setAnchorEl(event.currentTarget);
 	};
@@ -79,7 +154,6 @@ export default function ChatBox() {
 		(user) => user._id === params.userId
 	);
 
-	
 	const handleClearMessages = () => {
 		dispatch(clearMessagesInState(macthedUserData?._id || ""));
 		clearMessages(macthedUserData?._id || "");
@@ -120,16 +194,20 @@ export default function ChatBox() {
 			message: string;
 			image: { image_url: string; public_id: string };
 			time: string;
+			imageMessage: string;
+			name: string;
 		} = {
 			senderId: userData._id || "",
 			receiverId: macthedUserData?._id || "",
 			message,
+			imageMessage: "",
 			image: userData.image || { image_url: "", public_id: "" },
 			time: new Date().toLocaleTimeString("en-US", {
 				hour: "2-digit",
 				minute: "2-digit",
 				hour12: true,
 			}),
+			name: userData.name || "",
 		};
 		socket.off().emit("sendMessage", data);
 
@@ -138,6 +216,9 @@ export default function ChatBox() {
 				receiverId: macthedUserData?._id || "",
 				image: userData.image || { image_url: "", public_id: "" },
 				message,
+				imageMessage: "",
+				senderId: userData._id || "",
+				name: userData.name || "",
 				time: new Date().toLocaleTimeString("en-US", {
 					hour: "2-digit",
 					minute: "2-digit",
@@ -149,9 +230,12 @@ export default function ChatBox() {
 		setMessage("");
 		await saveMessage({
 			receiverId: data.receiverId,
+			senderId: userData._id || "",
+			name: userData.name || "",
 			message: data.message,
 			image: data.image,
 			time: data.time,
+			imageMessage: "",
 		});
 	};
 	const handleKey = (event: React.KeyboardEvent<HTMLInputElement>) => {
@@ -162,14 +246,16 @@ export default function ChatBox() {
 		}
 	};
 	useEffect(() => {
-		dispatch(seenMessageInState(macthedUserData?._id || ""));
-		saveSeenMessage(macthedUserData?._id || "")
-			.then((res) => {
-				console.log(res);
-			})
-			.catch((err) => {
-				console.log(err.message);
-			});
+		if (userData.chats?.[params.userId]?.length !== 0) {
+			dispatch(seenMessageInState(macthedUserData?._id || ""));
+			saveSeenMessage(macthedUserData?._id || "")
+				.then((res) => {
+					console.log(res);
+				})
+				.catch((err) => {
+					console.log(err.message);
+				});
+		}
 	}, [userData.chats]);
 
 	return (
@@ -290,20 +376,40 @@ export default function ChatBox() {
 					?.slice()
 					.reverse()
 					.map((value, index) => {
-						return value.name === "sender" ? (
-							<RightMessage
-								key={index}
-								message={value.message}
-								time={value.time}
-								image={value.image.image_url}
-							/>
-						) : (
+						return value.name === userData.name ? (
+							value.imageMessage === "" ? (
+								<RightMessage
+									key={index}
+									message={value.message}
+									time={value.time}
+									image={value.image.image_url}
+								/>
+							) : (
+									<RightImageMessage
+										key={index}
+										imageMessage={value.imageMessage}
+										time={value.time}
+										image={value.image.image_url}
+									/>
+									
+							)
+						) : value.imageMessage === "" ? (
 							<LeftMessage
 								key={index}
 								message={value.message}
 								time={value.time}
 								image={value.image.image_url}
 							/>
+						) : (
+							<>
+								<LeftImageMessage
+									key={index}
+									imageMessage={value.imageMessage}
+									time={value.time}
+									image={value.image.image_url}
+								/>
+								
+							</>
 						);
 					})}
 			</Box>
@@ -323,7 +429,7 @@ export default function ChatBox() {
 					onKeyUp={handleKey}
 					endAdornment={
 						<InputAdornment position="end">
-							{/* {message === "" ? (
+							{message === "" ? (
 								<IconButton
 									aria-label={"image"}
 									edge="end"
@@ -333,20 +439,22 @@ export default function ChatBox() {
 									<input
 										style={{ display: "none" }}
 										type="file"
+										onChange={handleFileChange}
 										ref={fileInputRef}
 									/>
 								</IconButton>
-							) : ( */}
-							<IconButton
-								aria-label={"message"}
-								color="primary"
-								edge="end"
-								onClick={() => {
-									sendMessage();
-								}}
-							>
-								<SendOutlined />
-							</IconButton>
+							) : (
+								<IconButton
+									aria-label={"message"}
+									color="primary"
+									edge="end"
+									onClick={() => {
+										sendMessage();
+									}}
+								>
+									<SendOutlined />
+								</IconButton>
+							)}
 						</InputAdornment>
 					}
 				/>

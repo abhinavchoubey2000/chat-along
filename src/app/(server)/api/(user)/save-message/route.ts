@@ -12,11 +12,17 @@ export async function POST(request: Request) {
 			receiverId,
 			time,
 			message,
+			imageMessage,
 			image,
+			name,
+			senderId,
 		}: {
 			receiverId: string;
 			time: string;
+			name: string;
+			senderId: string;
 			message: string;
+			imageMessage: string;
 			image: { image_url: string; public_id: string };
 		} = await request.json();
 
@@ -52,9 +58,11 @@ export async function POST(request: Request) {
 		}
 
 		sender.chats[receiverId].push({
-			name: "sender",
+			name,
 			image,
 			message,
+			imageMessage,
+			senderId,
 			time,
 			seen: false,
 		});
@@ -73,9 +81,11 @@ export async function POST(request: Request) {
 			receiver.chats[id] = [];
 		}
 		receiver.chats[id].push({
-			name: "receiver",
+			name,
 			image,
+			senderId,
 			message,
+			imageMessage,
 			time,
 			seen: false,
 		});
@@ -84,7 +94,7 @@ export async function POST(request: Request) {
 		await sender.save();
 		receiver.markModified("chats");
 		await receiver.save();
-		
+
 		return NextResponse.json({
 			success: true,
 			message: `Message saved`,

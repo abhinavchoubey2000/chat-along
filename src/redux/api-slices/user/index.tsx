@@ -133,6 +133,9 @@ export const usersApi = createApi({
 				receiverId: string;
 				time: string;
 				message: string;
+				imageMessage: string;
+				name: string;
+				senderId: string;
 				image: { image_url: string; public_id: string };
 			}) => ({
 				url: `api/save-message`,
@@ -142,6 +145,9 @@ export const usersApi = createApi({
 					time: data.time,
 					image: data.image,
 					message: data.message,
+					imageMessage: data.imageMessage,
+					name: data.name,
+					senderId: data.senderId,
 				},
 			}),
 		}),

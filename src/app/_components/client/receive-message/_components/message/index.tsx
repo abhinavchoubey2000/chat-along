@@ -66,6 +66,9 @@ export function Message({
 		dispatch(
 			sendMessageInState({
 				receiverId: userId,
+				imageMessage: "",
+				name: userData.name || "",
+				senderId: userData._id || "",
 				image: userData.image || { image_url: "", public_id: "" },
 				message: replyMessage,
 				time: new Date().toLocaleTimeString("en-US", {

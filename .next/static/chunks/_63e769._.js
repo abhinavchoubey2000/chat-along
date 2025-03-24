@@ -424,17 +424,12 @@ __turbopack_esm__({
 });
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$redux$2f$slices$2f$user$2f$index$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/src/redux/slices/user/index.tsx [app-client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$redux$2f$api$2d$slices$2f$index$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$module__evaluation$3e$__ = __turbopack_import__("[project]/src/redux/api-slices/index.tsx [app-client] (ecmascript) <module evaluation>");
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$redux$2f$dist$2f$react$2d$redux$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/react-redux/dist/react-redux.mjs [app-client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$redux$2f$api$2d$slices$2f$user$2f$index$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/src/redux/api-slices/user/index.tsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Stack$2f$Stack$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Stack$3e$__ = __turbopack_import__("[project]/node_modules/@mui/material/Stack/Stack.js [app-client] (ecmascript) <export default as Stack>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Avatar$2f$Avatar$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Avatar$3e$__ = __turbopack_import__("[project]/node_modules/@mui/material/Avatar/Avatar.js [app-client] (ecmascript) <export default as Avatar>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Typography$2f$Typography$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Typography$3e$__ = __turbopack_import__("[project]/node_modules/@mui/material/Typography/Typography.js [app-client] (ecmascript) <export default as Typography>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Backdrop$2f$Backdrop$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Backdrop$3e$__ = __turbopack_import__("[project]/node_modules/@mui/material/Backdrop/Backdrop.js [app-client] (ecmascript) <export default as Backdrop>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Fab$2f$Fab$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Fab$3e$__ = __turbopack_import__("[project]/node_modules/@mui/material/Fab/Fab.js [app-client] (ecmascript) <export default as Fab>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$icons$2d$material$2f$esm$2f$Close$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/@mui/icons-material/esm/Close.js [app-client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$icons$2d$material$2f$esm$2f$Delete$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/@mui/icons-material/esm/Delete.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Pagination$2f$Pagination$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Pagination$3e$__ = __turbopack_import__("[project]/node_modules/@mui/material/Pagination/Pagination.js [app-client] (ecmascript) <export default as Pagination>");
 ;
 var _s = __turbopack_refresh__.signature();
@@ -442,16 +437,10 @@ var _s = __turbopack_refresh__.signature();
 ;
 ;
 ;
-;
-;
-;
-;
 function UserStatus({ followings }) {
     _s();
-    const dispatch = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$redux$2f$dist$2f$react$2d$redux$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useDispatch"])();
     // State for opening and closing status backgrop status window
     const [open, setOpen] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
-    const [deleteStatus] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$redux$2f$api$2d$slices$2f$user$2f$index$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useDeleteStatusMutation"])();
     // State for the index of pagination
     const [statusIndex, setStatusIndex] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(1);
     // State for the current user status object, initially all the values will be empty due to type safety
@@ -470,14 +459,6 @@ function UserStatus({ followings }) {
     //Function for closing the backdrop status window
     const handleClose = ()=>{
         setOpen(false);
-    };
-    const handleDeleteStatus = async (statusId)=>{
-        await deleteStatus(statusId);
-        dispatch((0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$redux$2f$slices$2f$user$2f$index$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["deleteStatusInState"])(statusId));
-        // Adjust statusIndex if the deleted status was the last one
-        if (statusIndex > currentStatusObject.length - 1) {
-            setStatusIndex(Math.max(1, currentStatusObject.length - 1));
-        }
     };
     //Fuction for opening the backdrop status window
     const handleOpen = (currentStatusArray)=>{
@@ -515,7 +496,7 @@ function UserStatus({ followings }) {
                             }
                         }, void 0, false, {
                             fileName: "[project]/src/app/_components/status/_components/user-status/index.tsx",
-                            lineNumber: 64,
+                            lineNumber: 51,
                             columnNumber: 6
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Typography$2f$Typography$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Typography$3e$__["Typography"], {
@@ -524,13 +505,13 @@ function UserStatus({ followings }) {
                             children: user.username
                         }, void 0, false, {
                             fileName: "[project]/src/app/_components/status/_components/user-status/index.tsx",
-                            lineNumber: 72,
+                            lineNumber: 59,
                             columnNumber: 6
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/app/_components/status/_components/user-status/index.tsx",
-                    lineNumber: 56,
+                    lineNumber: 43,
                     columnNumber: 5
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Backdrop$2f$Backdrop$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Backdrop$3e$__["Backdrop"], {
@@ -570,37 +551,12 @@ function UserStatus({ followings }) {
                                         fontSize: "small"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/_components/status/_components/user-status/index.tsx",
-                                        lineNumber: 102,
+                                        lineNumber: 89,
                                         columnNumber: 8
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/_components/status/_components/user-status/index.tsx",
-                                    lineNumber: 90,
-                                    columnNumber: 7
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Fab$2f$Fab$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Fab$3e$__["Fab"], {
-                                    onClick: ()=>{
-                                        handleDeleteStatus(currentStatusObject[statusIndex - 1]?._id);
-                                    },
-                                    sx: {
-                                        position: "fixed",
-                                        top: 5,
-                                        right: 50,
-                                        boxShadow: "none",
-                                        bgcolor: "transparent"
-                                    },
-                                    size: "small",
-                                    color: "default",
-                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$icons$2d$material$2f$esm$2f$Delete$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
-                                        fontSize: "small"
-                                    }, void 0, false, {
-                                        fileName: "[project]/src/app/_components/status/_components/user-status/index.tsx",
-                                        lineNumber: 118,
-                                        columnNumber: 8
-                                    }, this)
-                                }, void 0, false, {
-                                    fileName: "[project]/src/app/_components/status/_components/user-status/index.tsx",
-                                    lineNumber: 104,
+                                    lineNumber: 77,
                                     columnNumber: 7
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Stack$2f$Stack$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Stack$3e$__["Stack"], {
@@ -619,7 +575,7 @@ function UserStatus({ followings }) {
                                             }
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/_components/status/_components/user-status/index.tsx",
-                                            lineNumber: 128,
+                                            lineNumber: 99,
                                             columnNumber: 8
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Stack$2f$Stack$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Stack$3e$__["Stack"], {
@@ -630,7 +586,7 @@ function UserStatus({ followings }) {
                                                     children: user.name
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/_components/status/_components/user-status/index.tsx",
-                                                    lineNumber: 133,
+                                                    lineNumber: 104,
                                                     columnNumber: 9
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Typography$2f$Typography$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Typography$3e$__["Typography"], {
@@ -641,19 +597,19 @@ function UserStatus({ followings }) {
                                                     children: "2:33 PM"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/_components/status/_components/user-status/index.tsx",
-                                                    lineNumber: 134,
+                                                    lineNumber: 105,
                                                     columnNumber: 9
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/app/_components/status/_components/user-status/index.tsx",
-                                            lineNumber: 132,
+                                            lineNumber: 103,
                                             columnNumber: 8
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/_components/status/_components/user-status/index.tsx",
-                                    lineNumber: 120,
+                                    lineNumber: 91,
                                     columnNumber: 7
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Pagination$2f$Pagination$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Pagination$3e$__["Pagination"], {
@@ -663,13 +619,13 @@ function UserStatus({ followings }) {
                                     size: "small"
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/_components/status/_components/user-status/index.tsx",
-                                    lineNumber: 139,
+                                    lineNumber: 110,
                                     columnNumber: 7
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/_components/status/_components/user-status/index.tsx",
-                            lineNumber: 89,
+                            lineNumber: 76,
                             columnNumber: 6
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Typography$2f$Typography$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Typography$3e$__["Typography"], {
@@ -678,29 +634,24 @@ function UserStatus({ followings }) {
                             children: currentStatusObject[statusIndex - 1].statusContent
                         }, void 0, false, {
                             fileName: "[project]/src/app/_components/status/_components/user-status/index.tsx",
-                            lineNumber: 146,
+                            lineNumber: 117,
                             columnNumber: 6
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/app/_components/status/_components/user-status/index.tsx",
-                    lineNumber: 77,
+                    lineNumber: 64,
                     columnNumber: 5
                 }, this)
             ]
         }, index, true, {
             fileName: "[project]/src/app/_components/status/_components/user-status/index.tsx",
-            lineNumber: 55,
+            lineNumber: 42,
             columnNumber: 4
         }, this);
     });
 }
-_s(UserStatus, "7l8BgTb1Tp4HAQLllexojhNyRTI=", false, function() {
-    return [
-        __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$redux$2f$dist$2f$react$2d$redux$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useDispatch"],
-        __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$redux$2f$api$2d$slices$2f$user$2f$index$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useDeleteStatusMutation"]
-    ];
-});
+_s(UserStatus, "jREzcbvrWGkvxllWRCVp+G55QeY=");
 _c = UserStatus;
 var _c;
 __turbopack_refresh__.register(_c, "UserStatus");

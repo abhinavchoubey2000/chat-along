@@ -94,8 +94,11 @@ export const userSlice = createSlice({
 			state,
 			action: PayloadAction<{
 				receiverId: string;
+				senderId: string;
+				name: string;
 				time: string;
 				message: string;
+				imageMessage: string;
 				image: { image_url: string; public_id: string };
 			}>
 		) => {
@@ -108,9 +111,11 @@ export const userSlice = createSlice({
 
 			state.userData.chats?.[action.payload.receiverId].push({
 				message: action.payload.message,
+				imageMessage: action.payload.imageMessage,
 				image: action.payload.image,
 				time: action.payload.time,
-				name: "sender",
+				name: action.payload.name,
+				senderId: action.payload.senderId,
 				seen: false,
 			});
 		},
@@ -119,7 +124,9 @@ export const userSlice = createSlice({
 			action: PayloadAction<{
 				senderId: string;
 				time: string;
+				name: string;
 				message: string;
+				imageMessage: string;
 				image: { image_url: string; public_id: string };
 			}>
 		) => {
@@ -131,9 +138,11 @@ export const userSlice = createSlice({
 			}
 			state.userData.chats?.[action.payload.senderId].push({
 				message: action.payload.message,
+				imageMessage: action.payload.imageMessage,
 				image: action.payload.image,
 				time: action.payload.time,
-				name: "receiver",
+				name: action.payload.name,
+				senderId: action.payload.senderId,
 				seen: false,
 			});
 		},

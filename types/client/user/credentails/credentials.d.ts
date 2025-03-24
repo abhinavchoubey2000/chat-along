@@ -49,7 +49,9 @@ interface ChatsInterface {
 		name: string;
 		image: { image_url: string; public_id: string };
 		message: string;
+		imageMessage: string;
 		time: string;
+		senderId: string;
 		seen: boolean;
 	}>;
 }

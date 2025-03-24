@@ -8,20 +8,15 @@ import {
 	Fab,
 	Pagination,
 } from "@mui/material";
-import { Close, Delete } from "@mui/icons-material";
-import { deleteStatusInState } from "@/redux/slices/user";
-import { useDispatch } from "react-redux";
-import { useDeleteStatusMutation } from "@/redux/api-slices";
+import { Close } from "@mui/icons-material";
 
 export function UserStatus({
 	followings,
 }: {
 	followings: Array<FollowingInterface>;
 }) {
-	const dispatch = useDispatch();
 	// State for opening and closing status backgrop status window
 	const [open, setOpen] = useState(false);
-	const [deleteStatus] = useDeleteStatusMutation();
 	// State for the index of pagination
 	const [statusIndex, setStatusIndex] = useState(1);
 	// State for the current user status object, initially all the values will be empty due to type safety
@@ -35,14 +30,6 @@ export function UserStatus({
 	//Function for closing the backdrop status window
 	const handleClose = () => {
 		setOpen(false);
-	};
-	const handleDeleteStatus = async (statusId: string) => {
-		await deleteStatus(statusId);
-		dispatch(deleteStatusInState(statusId));
-		// Adjust statusIndex if the deleted status was the last one
-		if (statusIndex > currentStatusObject.length - 1) {
-			setStatusIndex(Math.max(1, currentStatusObject.length - 1));
-		}
 	};
 	//Fuction for opening the backdrop status window
 	const handleOpen = (currentStatusArray: Array<StatusInterface>) => {
@@ -100,22 +87,6 @@ export function UserStatus({
 							color="default"
 						>
 							<Close fontSize="small" />
-						</Fab>
-						<Fab
-							onClick={() => {
-								handleDeleteStatus(currentStatusObject[statusIndex - 1]?._id);
-							}}
-							sx={{
-								position: "fixed",
-								top: 5,
-								right: 50,
-								boxShadow: "none",
-								bgcolor: "transparent",
-							}}
-							size="small"
-							color="default"
-						>
-							<Delete fontSize="small" />
 						</Fab>
 						<Stack
 							position={"fixed"}

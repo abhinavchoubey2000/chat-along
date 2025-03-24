@@ -33,8 +33,10 @@ export function ReceiveMessage() {
 				senderId: string;
 				receiverId: string;
 				message: string;
+				imageMessage: string;
 				image: { image_url: string; public_id: string };
 				time: string;
+				name: string;
 			}) => {
 				if (data.receiverId === userData._id) {
 					if (!pathname.startsWith("/chats/")) {
@@ -55,6 +57,8 @@ export function ReceiveMessage() {
 							image: data.image,
 							time: data.time,
 							message: data.message,
+							name: data.name,
+							imageMessage: data.imageMessage,
 						})
 					);
 				}
