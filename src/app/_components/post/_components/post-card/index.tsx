@@ -18,6 +18,7 @@ export function PostCard({
 	post_image,
 	comments,
 	likes,
+	darkMode,
 	date,
 }: PostInterface) {
 	return (
@@ -26,7 +27,10 @@ export function PostCard({
 				avatar={
 					<Link
 						href={`/${creator?.username}`}
-						style={{ textDecoration: "none", color: "black" }}
+						style={{
+							textDecoration: "none",
+							color: darkMode ? "white" : "black",
+						}}
 					>
 						<Avatar src={creator?.image.image_url} />
 					</Link>
@@ -34,13 +38,17 @@ export function PostCard({
 				action={
 					<PostOption
 						id={_id || ""}
+						darkMode
 						image_public_id={post_image?.public_id || ""}
 					/>
 				}
 				title={
 					<Link
 						href={`/${creator?.username}`}
-						style={{ textDecoration: "none", color: "black" }}
+						style={{
+							textDecoration: "none",
+							color: darkMode ? "white" : "black",
+						}}
 					>
 						{creator?.name}
 					</Link>
@@ -48,7 +56,11 @@ export function PostCard({
 				subheader={
 					<Link
 						href={`/${creator?.username}`}
-						style={{ textDecoration: "none", color: "black", opacity: 0.7 }}
+						style={{
+							textDecoration: "none",
+							color: darkMode ? "white" : "black",
+							opacity: 0.7,
+						}}
 					>
 						{date}
 					</Link>
@@ -67,7 +79,10 @@ export function PostCard({
 				image={post_image?.image_url}
 			/>
 			<CardContent>
-				<Typography variant="body2" sx={{ color: "black" }}>
+				<Typography
+					variant="body2"
+					sx={{ color: darkMode ? "white" : "black" }}
+				>
 					{caption}
 				</Typography>
 			</CardContent>
@@ -76,6 +91,7 @@ export function PostCard({
 					likes={likes || []}
 					comments={comments || []}
 					id={_id || ""}
+					darkMode
 					creatorId={creator?._id || ""}
 				/>
 			</CardActions>

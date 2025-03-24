@@ -33,12 +33,14 @@ const socket = io("https://chat-along-external-server.onrender.com/");
 export function LikeCommentButtonStack({
 	comments,
 	likes,
+	darkMode,
 	id,
 	creatorId,
 }: {
 	comments: Array<PostCommentsInterface>;
 	likes: Array<PostLikesInterface>;
 	id: string;
+	darkMode: boolean;
 	creatorId: string;
 }) {
 	const [isCommentOpen, setIsCommentOpen] = useState(false);
@@ -221,7 +223,10 @@ export function LikeCommentButtonStack({
 								<Stack>
 									<Link
 										href={`/${comment.userId.username}`}
-										style={{ textDecoration: "none", color: "black" }}
+										style={{
+											textDecoration: "none",
+											color: darkMode ? "white" : "black",
+										}}
 									>
 										<Typography variant="subtitle2" fontWeight={"bold"}>
 											{comment.userId.username}

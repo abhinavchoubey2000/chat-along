@@ -33,4 +33,5 @@ interface PostInterface {
 	date?: string;
 	likes?: Array<PostLikesInterface>;
 	comments?: Array<PostCommentsInterface>;
+	darkMode?: boolean;
 }

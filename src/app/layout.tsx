@@ -3,9 +3,9 @@ import type { Metadata } from "next";
 import { Toaster } from "react-hot-toast";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
 import {
-	MUIThemeProvider,
 	StorePublicPosts,
 	StoreUserData,
+	MUIThemeProvider,
 	StoreAllUsersData,
 	ReceiveMessage,
 	ReceiveNotification,
@@ -29,8 +29,8 @@ export default function RootLayout({
 		<html lang="en">
 			<body>
 				<AppRouterCacheProvider>
-					<MUIThemeProvider>
-						<ReduxProvider>
+					<ReduxProvider>
+						<MUIThemeProvider>
 							<main>
 								<StoreUserData />
 								<StorePublicPosts />
@@ -53,8 +53,8 @@ export default function RootLayout({
 									{children}
 								</Container>
 							</main>
-						</ReduxProvider>
-					</MUIThemeProvider>
+						</MUIThemeProvider>
+					</ReduxProvider>
 				</AppRouterCacheProvider>
 			</body>
 		</html>

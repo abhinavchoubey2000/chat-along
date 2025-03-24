@@ -11,7 +11,7 @@ import { clearNotificationsInState } from "@/redux/slices/user";
 import { useClearNotificationsMutation } from "@/redux/api-slices";
 
 export default function Notification() {
-	const { userData } = useSelector((state: RootState) => state.User);
+	const { userData, darkMode } = useSelector((state: RootState) => state.User);
 	const dispatch = useDispatch();
 	const [clearNotifications] = useClearNotificationsMutation();
 	const handleClearNotifications = async () => {
@@ -25,7 +25,7 @@ export default function Notification() {
 				paddingX={1}
 				direction={"row"}
 				position={"fixed"}
-				bgcolor={"white"}
+				bgcolor={darkMode ? "#121212" : "white"}
 				alignItems={"center"}
 				gap={2}
 				width={"100%"}
@@ -55,6 +55,7 @@ export default function Notification() {
 						return (
 							<NotificationCard
 								key={index}
+								darkMode={darkMode}
 								action={notification.action}
 								image={notification.image}
 								name={notification.name}

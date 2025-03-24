@@ -17,8 +17,8 @@ export function PostCard({
 					display: "flex",
 					alignItems: "center",
 					justifyContent: "center",
-					width: ["30vw","20vw"],
-					height: ["30vh","30vh"],
+					width: ["30vw","10vw"],
+					height: ["30vh","25vh"],
 					":hover":{
 						transition:["none","all 0.5s"],
 						transform:["none","scale(1.1)"]

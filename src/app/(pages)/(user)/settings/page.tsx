@@ -19,7 +19,10 @@ import { styled } from "@mui/material/styles";
 import Link from "next/link";
 import { ArrowBack } from "@mui/icons-material";
 import { useLogoutMutation } from "@/redux/api-slices";
+import { useSelector, useDispatch } from "react-redux";
 import toast from "react-hot-toast";
+import { RootState } from "@/redux/store";
+import { changeDarkModeInState } from "@/redux/slices/user";
 
 const SettingItem = styled(Box)(({ theme }) => ({
 	display: "flex",
@@ -35,12 +38,16 @@ const SettingItem = styled(Box)(({ theme }) => ({
 }));
 
 export default function Settings() {
-	const [darkMode, setDarkMode] = useState(false);
 	const [popupNotifications, setPopupNotifications] = useState(true);
 	const [sound, setSound] = useState(false);
+	const { darkMode } = useSelector((state: RootState) => state.User);
+	const dispatch = useDispatch();
 	const [isDialogOpened, setIsDialogOpened] = useState(false);
 	const [logout, { isLoading }] = useLogoutMutation();
 
+	const handleDarkMode = () => {
+		dispatch(changeDarkModeInState());
+	};
 	const openDialog = () => {
 		setIsDialogOpened(true);
 	};
@@ -78,7 +85,7 @@ export default function Settings() {
 				<Switch
 					sx={{ fontSize: ["0.8rem", "1rem"] }}
 					checked={darkMode}
-					onChange={() => setDarkMode(!darkMode)}
+					onChange={handleDarkMode}
 				/>
 			</SettingItem>
 

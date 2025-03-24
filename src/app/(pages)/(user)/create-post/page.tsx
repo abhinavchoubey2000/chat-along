@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { styled } from "@mui/material/styles";
+import { useSelector } from "react-redux";
 import {
 	useCreatePostMutation,
 	useUploadImageToCloudinaryMutation,
@@ -17,6 +18,7 @@ import {
 	CircularProgress,
 } from "@mui/material";
 import { ArrowBack, CloudUpload } from "@mui/icons-material";
+import { RootState } from "@/redux/store";
 
 const VisuallyHiddenInput = styled("input")({
 	clip: "rect(0 0 0 0)",
@@ -32,6 +34,7 @@ const VisuallyHiddenInput = styled("input")({
 
 export default function CreatePost() {
 	const [createPost] = useCreatePostMutation();
+	const { darkMode } = useSelector((state: RootState) => state.User);
 	const [
 		uploadImageToCloudinary,
 		{ isLoading: uploadImageToCloudinaryLoading },
@@ -94,7 +97,7 @@ export default function CreatePost() {
 				paddingX={1}
 				direction={"row"}
 				position={"fixed"}
-				bgcolor={"white"}
+				bgcolor={darkMode ? "#121212" : "white"}
 				alignItems={"center"}
 				gap={2}
 				width={"100%"}
@@ -108,7 +111,7 @@ export default function CreatePost() {
 			</Stack>
 
 			<Stack
-				pt={[4,10]}
+				pt={[4, 10]}
 				width={"100%"}
 				height={["100%", "100%"]}
 				gap={[1, 2]}
@@ -148,6 +151,7 @@ export default function CreatePost() {
 						border: "1px solid #d5d5d5",
 						padding: "8px",
 						resize: "none",
+						background: darkMode ? "#121212" : "white",
 						borderRadius: 5,
 					}}
 					placeholder="Write a caption..."

@@ -6,6 +6,7 @@ interface InitialStateInterface {
 	loading: boolean;
 	isAuthenticated: boolean;
 	isDialogOpened: boolean;
+	darkMode: boolean;
 }
 
 const initialState: InitialStateInterface = {
@@ -14,6 +15,7 @@ const initialState: InitialStateInterface = {
 	loading: true,
 	isAuthenticated: false,
 	isDialogOpened: false,
+	darkMode: false,
 };
 
 export const userSlice = createSlice({
@@ -188,6 +190,9 @@ export const userSlice = createSlice({
 				state.userData.status.splice(Number(indexOfStatus), 1);
 			}
 		},
+		changeDarkModeInState: (state) => {
+			state.darkMode = !state.darkMode;
+		},
 	},
 });
 
@@ -199,6 +204,7 @@ export const {
 	handleDialog,
 	sendMessageInState,
 	receiveMessageInState,
+	changeDarkModeInState,
 	clearMessagesInState,
 	receiveNotificationInState,
 	clearNotificationsInState,

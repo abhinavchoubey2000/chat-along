@@ -8,7 +8,7 @@ import { ArrowBack } from "@mui/icons-material";
 import { RootState } from "@/redux/store";
 
 export default function Chats() {
-	const { userData } = useSelector((state: RootState) => state.User);
+	const { userData, darkMode } = useSelector((state: RootState) => state.User);
 	let chatLastMessage = "";
 	let seen = false;
 
@@ -19,7 +19,7 @@ export default function Chats() {
 				paddingX={1}
 				direction={"row"}
 				position={"fixed"}
-				bgcolor={"white"}
+				bgcolor={darkMode ? "#121212" : "white"}
 				alignItems={"center"}
 				gap={2}
 				width={"100%"}
@@ -65,6 +65,7 @@ export default function Chats() {
 						return (
 							<UserCard
 								key={index}
+								darkMode={darkMode}
 								id={user._id}
 								name={user.name}
 								image={user.image.image_url}

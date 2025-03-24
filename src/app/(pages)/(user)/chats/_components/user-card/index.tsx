@@ -8,17 +8,19 @@ export function UserCard({
 	image,
 	lastMessage,
 	seen,
+	darkMode,
 }: {
 	id: string;
 	name: string;
 	image: string;
 	lastMessage: string;
 	seen: boolean;
+	darkMode: boolean;
 }) {
 	return (
 		<Link
 			href={`/chats/${id}`}
-			style={{ textDecoration: "none", color: "black" }}
+			style={{ textDecoration: "none", color: darkMode?"white":"black" }}
 		>
 			<Stack
 				direction={"row"}
@@ -28,7 +30,7 @@ export function UserCard({
 				py={1}
 				sx={{
 					"&:hover": {
-						bgcolor: "#ededed",
+						bgcolor: darkMode?"black":"#ededed",
 						transition: "all 0.3s",
 						cursor: "pointer",
 					},

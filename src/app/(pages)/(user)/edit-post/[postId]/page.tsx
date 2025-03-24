@@ -78,7 +78,7 @@ export default function UserPost() {
 						{post?.creator?.name}
 					</Link>
 				}
-				subheader={"1 Jan 2025"}
+				subheader={post.date}
 			/>
 			<CardMedia
 				component="img"
@@ -103,6 +103,7 @@ export default function UserPost() {
 						outline: "none",
 						borderRadius: 0,
 						resize: "none",
+						background: "transparent",
 						padding: "10px 10px",
 					}}
 				></textarea>

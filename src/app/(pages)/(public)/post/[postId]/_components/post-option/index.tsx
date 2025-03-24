@@ -27,8 +27,10 @@ import toast from "react-hot-toast";
 export function PostOption({
 	id,
 	image_public_id,
+	darkMode,
 }: {
 	id: string;
+	darkMode: boolean;
 	image_public_id: string;
 }) {
 	const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -86,7 +88,10 @@ export function PostOption({
 			>
 				<Link
 					href={`/edit-post/${id}`}
-					style={{ textDecoration: "none", color: "black" }}
+					style={{
+						textDecoration: "none",
+						color: darkMode ? "white" : "black",
+					}}
 				>
 					<MenuItem
 						onClick={() => {

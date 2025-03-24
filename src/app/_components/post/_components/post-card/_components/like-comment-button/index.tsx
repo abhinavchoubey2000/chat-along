@@ -34,12 +34,14 @@ export function LikeCommentButtonStack({
 	comments,
 	likes,
 	id,
+	darkMode,
 	creatorId,
 }: {
 	comments: Array<PostCommentsInterface>;
 	likes: Array<PostLikesInterface>;
 	id: string;
 	creatorId: string;
+	darkMode: boolean;
 }) {
 	const [isCommentOpen, setIsCommentOpen] = useState(false);
 	const [isDialogOpened, setIsDialogOpened] = useState(false);
@@ -219,7 +221,10 @@ export function LikeCommentButtonStack({
 								<Stack>
 									<Link
 										href={`/${comment.userId.username}`}
-										style={{ textDecoration: "none", color: "black" }}
+										style={{
+											textDecoration: "none",
+											color: darkMode ? "white" : "black",
+										}}
 									>
 										<Typography
 											sx={{ fontSize: ["0.7rem", "0.8rem"] }}

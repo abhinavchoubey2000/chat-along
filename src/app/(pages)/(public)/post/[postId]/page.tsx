@@ -8,7 +8,7 @@ import {
 	CardContent,
 	CardActions,
 	Avatar,
-	Typography
+	Typography,
 } from "@mui/material";
 import { LikeCommentButtonStack, PostOption } from "./_components";
 import Link from "next/link";
@@ -19,6 +19,7 @@ import { RootState } from "@/redux/store";
 export default function UserPost() {
 	const { postId } = useParams<{ postId: string }>();
 	const { postsData } = useSelector((state: RootState) => state.Post);
+	const { darkMode } = useSelector((state: RootState) => state.User);
 	const matchedPost = postsData.find((post) => post._id === postId);
 
 	return (
@@ -28,18 +29,22 @@ export default function UserPost() {
 				action={
 					<PostOption
 						id={matchedPost?._id || ""}
+						darkMode
 						image_public_id={matchedPost?.post_image?.public_id || ""}
 					/>
 				}
 				title={
 					<Link
 						href={`/${matchedPost?.creator?.username}`}
-						style={{ textDecoration: "none", color: "black" }}
+						style={{
+							textDecoration: "none",
+							color: darkMode ? "white" : "black",
+						}}
 					>
 						{matchedPost?.creator?.name}
 					</Link>
 				}
-				subheader={"1 Jan 2025"}
+				subheader={matchedPost?.date}
 			/>
 			<CardMedia
 				component="img"
@@ -53,7 +58,10 @@ export default function UserPost() {
 				image={matchedPost?.post_image?.image_url}
 			/>
 			<CardContent>
-				<Typography variant="body2" sx={{ color: "black" }}>
+				<Typography
+					variant="body2"
+					sx={{ color: darkMode ? "white" : "black" }}
+				>
 					{matchedPost?.caption}
 				</Typography>
 			</CardContent>
@@ -62,6 +70,7 @@ export default function UserPost() {
 					likes={matchedPost?.likes || []}
 					comments={matchedPost?.comments || []}
 					id={matchedPost?._id || ""}
+					darkMode
 					creatorId={matchedPost?.creator?._id || ""}
 				/>
 			</CardActions>

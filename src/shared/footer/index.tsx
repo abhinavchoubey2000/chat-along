@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { Stack, IconButton, Avatar} from "@mui/material";
+import { Stack, IconButton, Avatar } from "@mui/material";
 import { CustomToolTip } from "@/custom-components";
 import { useSelector, useDispatch } from "react-redux";
 import Link from "next/link";
@@ -15,7 +15,7 @@ import { handleDialog } from "@/redux/slices/user";
 import { usePathname } from "next/navigation";
 
 export function Footer() {
-	const { userData, isAuthenticated } = useSelector(
+	const { userData, isAuthenticated, darkMode } = useSelector(
 		(state: RootState) => state.User
 	);
 	const dispatch = useDispatch();
@@ -43,7 +43,7 @@ export function Footer() {
 			spacing={[4, 10]}
 			alignItems={"center"}
 			justifyContent={"space-between"}
-			bgcolor={"white"}
+			bgcolor={darkMode ? "#121212" : "white"}
 			sx={{
 				width: ["100%", "auto"],
 				maxWidth: "100%",

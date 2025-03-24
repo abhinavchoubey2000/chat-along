@@ -1,6 +1,8 @@
 import React from "react";
 import { Stack, Avatar, Typography } from "@mui/material";
 import Link from "next/link";
+import { useSelector } from "react-redux";
+import { RootState } from "@/redux/store";
 
 export function UserCard({
 	name,
@@ -18,10 +20,11 @@ export function UserCard({
 	const haveFollowed = followersArray.find(
 		(user) => user._id === loggedInUserId
 	);
+	const { darkMode } = useSelector((state: RootState) => state.User);
 	return (
 		<Link
 			href={`/${username}`}
-			style={{ textDecoration: "none", color: "black" }}
+			style={{ textDecoration: "none", color: darkMode ? "white" : "black" }}
 		>
 			<Stack
 				width={"100%"}
@@ -33,7 +36,7 @@ export function UserCard({
 				py={1}
 				sx={{
 					"&:hover": {
-						bgcolor: "#ededed",
+						bgcolor: darkMode ? "black" : "#ededed",
 						transition: "all 0.3s",
 						cursor: "pointer",
 					},

@@ -188,6 +188,7 @@ export const usersApi = createApi({
 				method: "PUT",
 			}),
 		}),
+
 		viewUserProfile: builder.mutation({
 			query: (username) => ({
 				url: `api/view-user-profile`,
@@ -195,11 +196,23 @@ export const usersApi = createApi({
 				body: { username },
 			}),
 		}),
+		forgotPassword: builder.mutation({
+			query: (data: { email: string; password: string; username: string }) => ({
+				url: `api/forgot-password`,
+				method: "PUT",
+				body: {
+					password: data.password,
+					email: data.email,
+					username: data.username,
+				},
+			}),
+		}),
 	}),
 });
 
 export const {
 	useFetchUserDataQuery,
+	useForgotPasswordMutation,
 	useFetchAllUsersDataQuery,
 	useLoginMutation,
 	useCheckEmailInDBMutation,
@@ -216,5 +229,5 @@ export const {
 	useSaveNotificationMutation,
 	useClearNotificationsMutation,
 	useViewUserProfileMutation,
-	useSaveSeenMessageMutation
+	useSaveSeenMessageMutation,
 } = usersApi;

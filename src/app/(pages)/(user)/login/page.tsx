@@ -69,15 +69,24 @@ export default function Login() {
 					fullWidth
 					margin="normal"
 				/>
-				<Typography alignSelf={"end"}>
-					Dont have account?{" "}
+				<Stack direction={"row"} justifyContent={"space-between"}>
 					<Link
-						href={"/signup"}
-						style={{ textDecoration: "none", color: "#06D001" }}
+						href={"/forgot-password"}
+						style={{ textDecoration: "none", color: "#046af2" }}
 					>
-						Let&apos;s create one
+						Forgot password?
 					</Link>
-				</Typography>
+
+					<Typography alignSelf={"end"}>
+						Dont have account?{" "}
+						<Link
+							href={"/signup"}
+							style={{ textDecoration: "none", color: "#06D001" }}
+						>
+							Let&apos;s create one
+						</Link>
+					</Typography>
+				</Stack>
 				<Button
 					sx={{ my: 2 }}
 					variant="contained"
