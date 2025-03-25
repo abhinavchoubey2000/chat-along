@@ -5,30 +5,24 @@ import {
 	DialogContent,
 	DialogContentText,
 	Stack,
-	// Typography,
+	Typography,
 } from "@mui/material";
 import React, { useState } from "react";
 
 export function RightImageMessage({
 	imageMessage,
-	// time,
+	time,
 	image,
+	darkMode,
 }: {
 	imageMessage: string;
 	time: string;
 	image: string;
+	darkMode: boolean;
 }) {
 	const [imageDialogOpened, setImageDialogOpened] = useState(false);
 	return (
-		<Stack
-			alignSelf={"flex-end"}
-			alignItems={"end"}
-			onClick={() => {
-				setImageDialogOpened(true);
-			}}
-			direction={"row"}
-			gap={1}
-		>
+		<Stack alignSelf={"flex-end"} alignItems={"end"} direction={"row"} gap={1}>
 			<Dialog
 				open={imageDialogOpened}
 				onClose={() => {
@@ -43,7 +37,13 @@ export function RightImageMessage({
 					</DialogContentText>
 				</DialogContent>
 			</Dialog>
-			<Box color={"white"} display={"flex"} flexDirection={"column"}>
+			<Box
+				color={"white"}
+				sx={{ maxWidth: "20vw" }}
+				display={"flex"}
+				flexDirection={"column"}
+				gap={1}
+			>
 				<img
 					src={imageMessage}
 					alt="Chat image"
@@ -56,12 +56,13 @@ export function RightImageMessage({
 						display: "block",
 					}}
 				/>
-				{/* <Typography
+				<Typography
 					alignSelf={"flex-end"}
+					color={darkMode ? "white" : "black"}
 					sx={{ fontSize: ["0.6rem", "0.7rem"], opacity: 0.7 }}
 				>
 					{time}
-				</Typography> */}
+				</Typography>
 			</Box>
 			<Avatar
 				src={image}

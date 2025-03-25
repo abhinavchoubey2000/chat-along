@@ -3,7 +3,9 @@
   "/(server)/api/(public)/get-all-users/route": "app/(server)/api/(public)/get-all-users/route.js",
   "/(server)/api/(public)/get-all-posts/route": "app/(server)/api/(public)/get-all-posts/route.js",
   "/(server)/api/(user)/get-user-profile/route": "app/(server)/api/(user)/get-user-profile/route.js",
-  "/(pages)/(user)/chats/page": "app/(pages)/(user)/chats/page.js",
-  "/(pages)/(user)/chats/[userId]/page": "app/(pages)/(user)/chats/[userId]/page.js",
-  "/(server)/api/(user)/seen-message/route": "app/(server)/api/(user)/seen-message/route.js"
+  "/(pages)/(user)/login/page": "app/(pages)/(user)/login/page.js",
+  "/(server)/api/(user)/login/route": "app/(server)/api/(user)/login/route.js",
+  "/(pages)/(user)/notification/page": "app/(pages)/(user)/notification/page.js",
+  "/(server)/api/(user)/clear-notifications/route": "app/(server)/api/(user)/clear-notifications/route.js",
+  "/(pages)/(public)/search-users/page": "app/(pages)/(public)/search-users/page.js"
 }

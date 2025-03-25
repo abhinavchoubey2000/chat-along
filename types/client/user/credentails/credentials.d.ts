@@ -12,6 +12,7 @@ interface UserResponseDataInterface {
 	blocked_users?: Array<BlockedUsersInterface>;
 	status?: Array<StatusInterface>;
 	chats?: ChatsInterface;
+	settings?: SettingsInterface;
 	notifications?: Array<NotificationInterface>;
 }
 
@@ -20,7 +21,13 @@ interface FollowingInterface {
 	name: string;
 	image: { image_url: string; public_id: string };
 	username: string;
-	status?: Array<StatusInterface>;
+	status: Array<StatusInterface>;
+}
+
+interface SettingsInterface {
+	sound: boolean;
+	popUp: boolean;
+	darkMode: boolean;
 }
 
 interface FollowersInterface {
@@ -39,9 +46,9 @@ interface BlockedUsersInterface {
 
 interface StatusInterface {
 	_id?: string;
-	statusContent: string;
-	colorName: string;
-	colorCode: string;
+	statusContent?: string;
+	colorName?: string;
+	colorCode?: string;
 }
 
 interface ChatsInterface {

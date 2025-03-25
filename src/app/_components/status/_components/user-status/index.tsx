@@ -12,8 +12,10 @@ import { Close } from "@mui/icons-material";
 
 export function UserStatus({
 	followings,
+	darkMode,
 }: {
 	followings: Array<FollowingInterface>;
+	darkMode: boolean;
 }) {
 	// State for opening and closing status backgrop status window
 	const [open, setOpen] = useState(false);
@@ -56,7 +58,11 @@ export function UserStatus({
 							border: "2px solid #06d001",
 						}}
 					/>
-					<Typography textAlign={"center"} variant="caption">
+					<Typography
+						textAlign={"center"}
+						color={darkMode ? "white" : "black"}
+						variant="caption"
+					>
 						{user.username}
 					</Typography>
 				</Stack>

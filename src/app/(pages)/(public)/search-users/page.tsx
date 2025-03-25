@@ -20,8 +20,9 @@ export default function SearchUsers() {
 	const { allUsersData, userData, loading } = useSelector(
 		(state: RootState) => state.User
 	);
-	const [searchedResults, setSearchedResults] =
-		useState<Array<UserResponseDataInterface>>([]);
+	const [searchedResults, setSearchedResults] = useState<
+		Array<UserResponseDataInterface>
+	>([]);
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setSearchText(e.target.value);
 	};
@@ -72,7 +73,7 @@ export default function SearchUsers() {
 
 			<Box
 				width={"100%"}
-				height={"80vh"}
+				height={"70vh"}
 				overflow={"auto"}
 				mt={1}
 				sx={{ display: "flex", flexDirection: "column" }}
@@ -80,6 +81,7 @@ export default function SearchUsers() {
 				{searchedResults.map((user, index) => {
 					return (
 						<UserCard
+							darkMode={userData.settings?.darkMode || false}
 							key={index}
 							name={user.name || ""}
 							username={user.username || ""}

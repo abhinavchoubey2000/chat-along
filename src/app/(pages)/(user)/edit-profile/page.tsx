@@ -19,7 +19,7 @@ import { useReplaceImageInCloudinaryMutation } from "@/redux/api-slices";
 import { useEditProfileMutation } from "@/redux/api-slices";
 
 export default function EditProfile() {
-	const { userData, darkMode } = useSelector((state: RootState) => state.User);
+	const { userData } = useSelector((state: RootState) => state.User);
 	const [editProfile] = useEditProfileMutation();
 	const [replaceImageInCloudinary, { isLoading }] =
 		useReplaceImageInCloudinaryMutation();
@@ -117,7 +117,7 @@ export default function EditProfile() {
 				direction={"row"}
 				spacing={1}
 				alignItems={"center"}
-				bgcolor={darkMode ? "#212121" : "#efefef"}
+				bgcolor={userData.settings?.darkMode ? "#212121" : "#efefef"}
 				justifyContent={"center"}
 				py={2}
 				px={2}
@@ -136,6 +136,7 @@ export default function EditProfile() {
 				<input
 					style={{ display: "none" }}
 					type="file"
+					accept="image/*"
 					ref={fileInputRef}
 					onChange={handleFileChange}
 				/>
@@ -156,7 +157,7 @@ export default function EditProfile() {
 						direction={"row"}
 						spacing={1}
 						alignItems={"center"}
-						bgcolor={darkMode ? "#212121" : "#efefef"}
+						bgcolor={userData.settings?.darkMode ? "#212121" : "#efefef"}
 						px={1}
 						borderRadius={2}
 					>
@@ -183,7 +184,10 @@ export default function EditProfile() {
 					px={2}
 					borderRadius={2}
 				>
-					<Typography color={darkMode?"black":"white"} sx={{ opacity: 0.7, fontSize: ["0.8rem", "1.5rem"] }}>
+					<Typography
+						color={userData.settings?.darkMode ? "black" : "white"}
+						sx={{ opacity: 0.7, fontSize: ["0.8rem", "1.5rem"] }}
+					>
 						#{userData.username}
 					</Typography>
 				</Stack>
@@ -215,7 +219,7 @@ export default function EditProfile() {
 							direction={"row"}
 							spacing={1}
 							alignItems={"center"}
-							bgcolor={darkMode?"#212121":"#efefef"}
+							bgcolor={userData.settings?.darkMode ? "#212121" : "#efefef"}
 							px={2}
 							py={1}
 							borderRadius={2}
@@ -249,7 +253,7 @@ export default function EditProfile() {
 							direction={"row"}
 							spacing={1}
 							alignItems={"center"}
-							bgcolor={darkMode?"#212121":"#efefef"}
+							bgcolor={userData.settings?.darkMode ? "#212121" : "#efefef"}
 							px={2}
 							py={1}
 							borderRadius={2}

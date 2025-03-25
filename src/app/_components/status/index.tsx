@@ -15,10 +15,14 @@ export function Status() {
 			<MyStatus
 				statusArray={userData.status || []}
 				loggedInUserImage={userData?.image?.image_url || ""}
+				darkMode={userData.settings?.darkMode || false}
 			/>
 
 			{/* Other connected users status component */}
-			<UserStatus followings={userData.following || []} />
+			<UserStatus
+				followings={userData.following || []}
+				darkMode={userData.settings?.darkMode || false}
+			/>
 		</Stack>
 	);
 }

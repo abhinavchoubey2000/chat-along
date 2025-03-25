@@ -1,8 +1,6 @@
 import React from "react";
 import { Stack, Avatar, Typography } from "@mui/material";
 import Link from "next/link";
-import { useSelector } from "react-redux";
-import { RootState } from "@/redux/store";
 
 export function UserCard({
 	name,
@@ -10,17 +8,18 @@ export function UserCard({
 	image,
 	loggedInUserId,
 	followersArray,
+	darkMode
 }: {
 	loggedInUserId: string;
 	followersArray: Array<FollowersInterface>;
 	name: string;
 	username: string;
 	image: string;
+	darkMode:boolean
 }) {
 	const haveFollowed = followersArray.find(
 		(user) => user._id === loggedInUserId
 	);
-	const { darkMode } = useSelector((state: RootState) => state.User);
 	return (
 		<Link
 			href={`/${username}`}

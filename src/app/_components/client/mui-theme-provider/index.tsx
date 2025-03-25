@@ -7,8 +7,8 @@ import { RootState } from "@/redux/store";
 import { getTheme } from "../mui-theme";
 
 export function MUIThemeProvider({ children }: { children: React.ReactNode }) {
-	const { darkMode } = useSelector((state: RootState) => state.User); // Get mode from Redux
-	const theme = getTheme(darkMode); // Dynamically create theme based on mode
+	const { userData } = useSelector((state: RootState) => state.User); // Get mode from Redux
+	const theme = getTheme(userData.settings?.darkMode || false); // Dynamically create theme based on mode
 
 	return (
 		<ThemeProvider theme={theme}>

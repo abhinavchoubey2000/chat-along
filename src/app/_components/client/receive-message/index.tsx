@@ -6,7 +6,7 @@ import { Message } from "./_components";
 import { RootState } from "@/redux/store";
 import { usePathname } from "next/navigation";
 import { Snackbar } from "@mui/material";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const socket = io("https://chat-along-external-server.onrender.com/");
 
@@ -25,6 +25,81 @@ export function ReceiveMessage() {
 	});
 	const pathname = usePathname();
 
+	useEffect(() => {
+		// Ensure service worker is registered for push notifications
+		if ("serviceWorker" in navigator) {
+			navigator.serviceWorker.register("/service-worker.js").then(() => {
+				console.log("Service Worker Registered!");
+			});
+		}
+
+		socket
+			.off()
+			.on(
+				"receiveMessage",
+				(data: {
+					senderId: string;
+					receiverId: string;
+					message: string;
+					imageMessage: string;
+					image: { image_url: string; public_id: string };
+					time: string;
+					name: string;
+				}) => {
+					if (data.receiverId === userData._id) {
+						if (!pathname.startsWith("/chats/")) {
+							const senderName = allUsersData.find(
+								(user) => user._id === data.senderId
+							)?.name;
+							setSenderData({
+								name: senderName || "",
+								image: data.image,
+								message: data.message,
+								id: data.senderId,
+							});
+							setOpen(true);
+						}
+
+						if (Notification.permission === "granted") {
+							// 1 Use Service Worker for better reliability
+							return navigator.serviceWorker.ready.then((registration) => {
+								registration.showNotification(data.message, {
+									body: "chatAlong",
+									icon: data.image.image_url || "/logo.png",
+									badge: "/logo.png",
+									data: { url: `/chats/${data.senderId}` },
+								});
+							});
+						} else {
+							// 2 Ask for permission if not granted
+							return Notification.requestPermission().then((permission) => {
+								if (permission === "granted") {
+									navigator.serviceWorker.ready.then((registration) => {
+										registration.showNotification(data.message, {
+											body: "chatAlong",
+											icon: data.image.image_url || "/logo.png",
+											badge: "/logo.png",
+											data: { url: `/chats/${data.senderId}` },
+										});
+									});
+								}
+							});
+						}
+
+						dispatch(
+							receiveMessageInState({
+								senderId: data.senderId,
+								image: data.image,
+								time: data.time,
+								message: data.message,
+								name: data.name,
+								imageMessage: data.imageMessage,
+							})
+						);
+					}
+				}
+			);
+	});
 	socket
 		.off()
 		.on(

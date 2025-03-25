@@ -69,7 +69,7 @@ export default function Login() {
 					fullWidth
 					margin="normal"
 				/>
-				<Stack direction={"row"} justifyContent={"space-between"}>
+				<Stack direction={["column","row"]} justifyContent={"space-between"} >
 					<Link
 						href={"/forgot-password"}
 						style={{ textDecoration: "none", color: "#046af2" }}

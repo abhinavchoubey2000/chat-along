@@ -151,6 +151,17 @@ export const usersApi = createApi({
 				},
 			}),
 		}),
+		saveSettings: builder.mutation({
+			query: (data: { popUp: boolean; sound: boolean; darkMode: boolean }) => ({
+				url: `api/save-settings`,
+				method: "PUT",
+				body: {
+					popUp: data.popUp,
+					sound: data.sound,
+					darkMode: data.darkMode,
+				},
+			}),
+		}),
 		saveSeenMessage: builder.mutation({
 			query: (userId: string) => ({
 				url: `api/seen-message`,
@@ -231,6 +242,7 @@ export const {
 	useEditProfileMutation,
 	useDeleteStatusMutation,
 	useSaveMessageMutation,
+	useSaveSettingsMutation,
 	useClearMessagesMutation,
 	useSaveNotificationMutation,
 	useClearNotificationsMutation,

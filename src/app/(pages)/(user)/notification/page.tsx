@@ -11,7 +11,7 @@ import { clearNotificationsInState } from "@/redux/slices/user";
 import { useClearNotificationsMutation } from "@/redux/api-slices";
 
 export default function Notification() {
-	const { userData, darkMode } = useSelector((state: RootState) => state.User);
+	const { userData } = useSelector((state: RootState) => state.User);
 	const dispatch = useDispatch();
 	const [clearNotifications] = useClearNotificationsMutation();
 	const handleClearNotifications = async () => {
@@ -25,7 +25,7 @@ export default function Notification() {
 				paddingX={1}
 				direction={"row"}
 				position={"fixed"}
-				bgcolor={darkMode ? "#121212" : "white"}
+				bgcolor={userData.settings?.darkMode ? "#121212" : "white"}
 				alignItems={"center"}
 				gap={2}
 				width={"100%"}
@@ -40,34 +40,36 @@ export default function Notification() {
 			<Box
 				pt={[4, 6]}
 				width={"100%"}
-				height={"80vh"}
+				height={"90vh"}
 				overflow={"auto"}
 				mt={1}
 				sx={{ display: "flex", flexDirection: "column" }}
 				gap={1}
 			>
-				{userData.notifications?.length === 0 ? (
-					<Typography textAlign={"center"} sx={{ opacity: 0.7 }}>
-						No notifications for now.
-					</Typography>
-				) : (
-					userData.notifications?.map((notification, index) => {
-						return (
-							<NotificationCard
-								key={index}
-								darkMode={darkMode}
-								action={notification.action}
-								image={notification.image}
-								name={notification.name}
-								link={notification.link}
-							/>
-						);
-					})
-				)}
+				<Stack sx={{ height: "90vh" }}>
+					{userData.notifications?.length === 0 ? (
+						<Typography textAlign={"center"} sx={{ opacity: 0.7 }}>
+							No notifications for now.
+						</Typography>
+					) : (
+						userData.notifications?.map((notification, index) => {
+							return (
+								<NotificationCard
+									key={index}
+									darkMode={userData.settings?.darkMode || false}
+									action={notification.action}
+									image={notification.image}
+									name={notification.name}
+									link={notification.link}
+								/>
+							);
+						})
+					)}
+				</Stack>
+				<Button onClick={handleClearNotifications} size="small" color="error">
+					Clear all
+				</Button>
 			</Box>
-			<Button onClick={handleClearNotifications} size="small" color="error">
-				Clear all
-			</Button>
 		</>
 	);
 }

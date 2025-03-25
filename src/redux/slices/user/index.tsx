@@ -6,7 +6,6 @@ interface InitialStateInterface {
 	loading: boolean;
 	isAuthenticated: boolean;
 	isDialogOpened: boolean;
-	darkMode: boolean;
 }
 
 const initialState: InitialStateInterface = {
@@ -15,7 +14,6 @@ const initialState: InitialStateInterface = {
 	loading: true,
 	isAuthenticated: false,
 	isDialogOpened: false,
-	darkMode: false,
 };
 
 export const userSlice = createSlice({
@@ -41,6 +39,7 @@ export const userSlice = createSlice({
 				name: string;
 				image: { image_url: string; public_id: string };
 				username: string;
+				status: Array<StatusInterface>;
 			}>
 		) => {
 			// Checking if user already followed then unfollow
@@ -70,6 +69,7 @@ export const userSlice = createSlice({
 					name: action.payload.name,
 					image: action.payload.image,
 					username: action.payload.username,
+					status: action.payload.status,
 				});
 
 				// Second person
@@ -200,7 +200,19 @@ export const userSlice = createSlice({
 			}
 		},
 		changeDarkModeInState: (state) => {
-			state.darkMode = !state.darkMode;
+			if (state.userData.settings) {
+				state.userData.settings.darkMode = !state.userData.settings?.darkMode;
+			}
+		},
+		changePopUpInState: (state) => {
+			if (state.userData.settings) {
+				state.userData.settings.popUp = !state.userData.settings?.popUp;
+			}
+		},
+		changeSoundInState: (state) => {
+			if (state.userData.settings) {
+				state.userData.settings.sound = !state.userData.settings?.sound;
+			}
 		},
 	},
 });
@@ -214,6 +226,8 @@ export const {
 	sendMessageInState,
 	receiveMessageInState,
 	changeDarkModeInState,
+	changePopUpInState,
+	changeSoundInState,
 	clearMessagesInState,
 	receiveNotificationInState,
 	clearNotificationsInState,

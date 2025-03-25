@@ -145,6 +145,14 @@ const userSchema = new __TURBOPACK__imported__module__$5b$externals$5d2f$__$5b$e
             test: []
         }
     },
+    settings: {
+        type: Object,
+        default: {
+            sound: false,
+            popUp: false,
+            darkMode: false
+        }
+    },
     notifications: [],
     status: [
         {

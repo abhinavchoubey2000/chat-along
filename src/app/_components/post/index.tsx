@@ -8,7 +8,7 @@ import { RootState } from "@/redux/store";
 
 export function Post() {
 	const { postsData } = useSelector((state: RootState) => state.Post);
-	const { loading, darkMode } = useSelector((state: RootState) => state.User);
+	const { loading, userData } = useSelector((state: RootState) => state.User);
 
 	return loading ? (
 		<Container
@@ -37,7 +37,7 @@ export function Post() {
 					<PostCard
 						key={index}
 						_id={post._id}
-						darkMode={darkMode}
+						darkMode={userData.settings?.darkMode}
 						creator={post.creator}
 						likes={post.likes}
 						comments={post.comments}

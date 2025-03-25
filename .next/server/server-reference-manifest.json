@@ -5,10 +5,15 @@
         "app/page": {
           "moduleId": "[project]/.next-internal/server/app/page/actions.js { ACTIONS_MODULE0 => \"[project]/src/shared/header/index.tsx [app-rsc] (ecmascript)\" } [app-rsc] (ecmascript)",
           "async": false
+        },
+        "app/(pages)/(public)/search-users/page": {
+          "moduleId": "[project]/.next-internal/server/app/(pages)/(public)/search-users/page/actions.js { ACTIONS_MODULE0 => \"[project]/src/shared/header/index.tsx [app-rsc] (ecmascript)\" } [app-rsc] (ecmascript)",
+          "async": false
         }
       },
       "layer": {
-        "app/page": "rsc"
+        "app/page": "rsc",
+        "app/(pages)/(public)/search-users/page": "rsc"
       }
     }
   },

@@ -21,9 +21,11 @@ import { useDeleteStatusMutation } from "@/redux/api-slices";
 export function MyStatus({
 	statusArray,
 	loggedInUserImage,
+	darkMode,
 }: {
 	statusArray: Array<StatusInterface>;
 	loggedInUserImage: string;
+	darkMode: boolean;
 }) {
 	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 	const menuOpen = Boolean(anchorEl);
@@ -85,7 +87,7 @@ export function MyStatus({
 				onClick={handleOpenMenu}
 				alignItems={"center"}
 				sx={{ cursor: "pointer", ml: 2 }}
-				spacing={[0,1]}
+				spacing={[0, 1]}
 			>
 				<Avatar
 					src={loggedInUserImage}
@@ -94,7 +96,11 @@ export function MyStatus({
 						width: [40, 70],
 					}}
 				/>
-				<Typography textAlign={"center"} variant="caption">
+				<Typography
+					textAlign={"center"}
+					color={darkMode ? "white" : "black"}
+					variant="caption"
+				>
 					Add Status
 				</Typography>
 			</Stack>
@@ -131,7 +137,7 @@ export function MyStatus({
 				onClick={handleOpenMenu}
 				alignItems={"center"}
 				sx={{ cursor: "pointer", pr: 2 }}
-				spacing={[0,1]}
+				spacing={[0, 1]}
 			>
 				<Avatar
 					src={loggedInUserImage}
@@ -141,7 +147,11 @@ export function MyStatus({
 						border: statusArray.length === 0 ? "0" : "2px solid #86d4ff",
 					}}
 				/>
-				<Typography textAlign={"center"} variant="caption">
+				<Typography
+					textAlign={"center"}
+					color={darkMode ? "white" : "black"}
+					variant="caption"
+				>
 					My Status
 				</Typography>
 			</Stack>
@@ -222,7 +232,7 @@ export function MyStatus({
 					) : (
 						<Typography
 							sx={{ fontSize: ["2rem", "3rem"] }}
-							px={[2,0]}
+							px={[2, 0]}
 							textAlign={"center"}
 						>
 							{statusArray[statusIndex - 1]?.statusContent || ""}

@@ -4,7 +4,9 @@ import { Toaster } from "react-hot-toast";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
 import {
 	StorePublicPosts,
+	AddToDevice,
 	StoreUserData,
+	AskForNotification,
 	MUIThemeProvider,
 	StoreAllUsersData,
 	ReceiveMessage,
@@ -27,11 +29,15 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
+			<head>
+				<link rel="manifest" href="/manifest.json" />
+			</head>
 			<body>
 				<AppRouterCacheProvider>
 					<ReduxProvider>
 						<MUIThemeProvider>
 							<main>
+								<AddToDevice />
 								<StoreUserData />
 								<StorePublicPosts />
 								<StoreAllUsersData />
@@ -50,6 +56,7 @@ export default function RootLayout({
 										overflowX: "hidden",
 									}}
 								>
+									<AskForNotification />
 									{children}
 								</Container>
 							</main>

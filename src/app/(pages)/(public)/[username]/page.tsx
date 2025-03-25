@@ -50,6 +50,7 @@ export default function User() {
 					name: matchedUser.name || "",
 					username: matchedUser.username || "",
 					image: matchedUser.image || { image_url: "", public_id: "" },
+					status: matchedUser?.status || [],
 				})
 			);
 

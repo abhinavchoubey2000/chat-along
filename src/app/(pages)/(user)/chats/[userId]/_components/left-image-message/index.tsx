@@ -1,18 +1,15 @@
-import {
-	Avatar,
-	Box,
-	Dialog,
-	Stack,
-} from "@mui/material";
+import { Avatar, Box, Dialog, Stack, Typography } from "@mui/material";
 import React, { useState } from "react";
 
 export function LeftImageMessage({
 	imageMessage,
-	// time,
+	time,
+	darkMode,
 	image,
 }: {
 	imageMessage: string;
 	time: string;
+	darkMode: boolean;
 	image: string;
 }) {
 	const [imageDialogOpened, setImageDialogOpened] = useState(false);
@@ -48,14 +45,19 @@ export function LeftImageMessage({
 						objectFit: "contain",
 						maxWidth: "90%", // Ensures it scales down within the dialog
 						maxHeight: "50vh", // Ensures it scales down within the dialog
-						width:"auto",
-						height:"auto"
+						width: "auto",
+						height: "auto",
 					}}
-					
 				/>
 				{/* </DialogContent> */}
 			</Dialog>
-			<Box color={"white"} display={"flex"} flexDirection={"column"}>
+			<Box
+				color={"white"}
+				sx={{ maxWidth: "20vw" }}
+				display={"flex"}
+				flexDirection={"column"}
+				gap={1}
+			>
 				<img
 					src={imageMessage}
 					alt="Chat image"
@@ -68,12 +70,13 @@ export function LeftImageMessage({
 						display: "block",
 					}}
 				/>
-				{/* <Typography
+				<Typography
 					alignSelf={"flex-end"}
+					color={darkMode ? "white" : "black"}
 					sx={{ fontSize: ["0.6rem", "0.7rem"], opacity: 0.7 }}
 				>
 					{time}
-				</Typography> */}
+				</Typography>
 			</Box>
 			<Avatar
 				src={image}

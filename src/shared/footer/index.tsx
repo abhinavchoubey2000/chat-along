@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { Stack, IconButton, Avatar } from "@mui/material";
+import { Stack, IconButton, Avatar, Badge } from "@mui/material";
 import { CustomToolTip } from "@/custom-components";
 import { useSelector, useDispatch } from "react-redux";
 import Link from "next/link";
@@ -15,9 +15,10 @@ import { handleDialog } from "@/redux/slices/user";
 import { usePathname } from "next/navigation";
 
 export function Footer() {
-	const { userData, isAuthenticated, darkMode } = useSelector(
+	const { userData, isAuthenticated } = useSelector(
 		(state: RootState) => state.User
 	);
+	const obj = Object.entries(userData.chats || {});
 	const dispatch = useDispatch();
 	const pathname = usePathname();
 
@@ -43,7 +44,7 @@ export function Footer() {
 			spacing={[4, 10]}
 			alignItems={"center"}
 			justifyContent={"space-between"}
-			bgcolor={darkMode ? "#121212" : "white"}
+			bgcolor={userData.settings?.darkMode ? "#121212" : "white"}
 			sx={{
 				width: ["100%", "auto"],
 				maxWidth: "100%",
@@ -88,7 +89,17 @@ export function Footer() {
 				{isAuthenticated ? (
 					<Link href={"/chats"}>
 						<IconButton>
-							<ChatBubble sx={iconStyle} />
+							<Badge
+								color="secondary"
+								badgeContent={
+									obj.slice(1, obj.length).filter((user) => {
+										const messages = user[1];
+										return messages[messages.length - 1].seen === false;
+									}).length
+								}
+							>
+								<ChatBubble sx={iconStyle} />
+							</Badge>
 						</IconButton>
 					</Link>
 				) : (

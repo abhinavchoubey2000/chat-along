@@ -8,10 +8,11 @@ import { ArrowBack } from "@mui/icons-material";
 import { RootState } from "@/redux/store";
 
 export default function Chats() {
-	const { userData, darkMode, allUsersData } = useSelector(
+	const { userData, allUsersData } = useSelector(
 		(state: RootState) => state.User
 	);
 	let chatLastMessage = "";
+	let lastMessageTime = "";
 	let seen = false;
 
 	console.log(Object.entries(userData.chats || {}));
@@ -22,7 +23,7 @@ export default function Chats() {
 				paddingX={1}
 				direction={"row"}
 				position={"fixed"}
-				bgcolor={darkMode ? "#121212" : "white"}
+				bgcolor={userData.settings?.darkMode ? "#121212" : "white"}
 				alignItems={"center"}
 				gap={2}
 				width={"100%"}
@@ -50,27 +51,39 @@ export default function Chats() {
 				) : (
 					Object.entries(userData.chats || {}).map((user, index) => {
 						if (!user || user[1].length === 0 || !user[0]) return null;
+						lastMessageTime = userData?.chats?.[user[0]]
+							? userData?.chats[user[0]][userData?.chats[user[0]].length - 1]
+									?.time
+							: "";
+
 						chatLastMessage = userData?.chats?.[user[0] || ""]
 							? userData?.chats[user[0] || ""][
 									userData?.chats[user[0] || ""]?.length - 1
 							  ].name === userData.name
-								? `You: ${
-										userData?.chats[user[0]][
-											userData?.chats[user[0]].length - 1
-										]?.message
-								  }`
+								? userData?.chats[user[0]][userData?.chats[user[0]].length - 1]
+										?.message !== ""
+									? `You: ${
+											userData?.chats[user[0]][
+												userData?.chats[user[0]].length - 1
+											]?.message
+									  }`
+									: "You sent an image"
 								: userData?.chats[user[0]][userData?.chats[user[0]].length - 1]
+										?.message !== ""
+								? userData?.chats[user[0]][userData?.chats[user[0]].length - 1]
 										?.message
+								: "sent an image"
 							: "Tap to chat";
 
 						seen = userData?.chats?.[user[0]]
 							? userData?.chats[user[0]][userData?.chats[user[0]].length - 1]
 									?.seen
 							: false;
+
 						return (
 							<UserCard
 								key={index}
-								darkMode={darkMode}
+								darkMode={userData.settings?.darkMode || false}
 								id={user[0]}
 								name={
 									allUsersData.find((userr) => userr._id === user[0])?.name ||
@@ -82,6 +95,7 @@ export default function Chats() {
 								}
 								lastMessage={chatLastMessage}
 								seen={seen}
+								time={lastMessageTime}
 							/>
 						);
 					})

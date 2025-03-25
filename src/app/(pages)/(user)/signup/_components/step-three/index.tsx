@@ -58,6 +58,7 @@ const StepThree: React.FC<StepThreeProps> = ({
 					ref={inputFileRef}
 					style={{ display: "none" }}
 					onChange={handleFileChange}
+					accept="image/*"
 				/>
 				<IconButton
 					onClick={() => {
@@ -78,13 +79,7 @@ const StepThree: React.FC<StepThreeProps> = ({
 					onClick={handleSubmit}
 					fullWidth
 				>
-					{!data.profilePicture ? (
-						isLoading ? (
-							<CircularProgress sx={{ color: "white" }} size={18} />
-						) : (
-							"Skip and finish"
-						)
-					) : isLoading ? (
+					{isLoading ? (
 						<CircularProgress sx={{ color: "white" }} size={18} />
 					) : (
 						"Finish"

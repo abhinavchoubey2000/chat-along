@@ -61,7 +61,7 @@ export default function ChatBox() {
 	const [message, setMessage] = useState("");
 	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 	const [isDialogOpened, setIsDialogOpened] = useState(false);
-	
+
 	const open = Boolean(anchorEl);
 	const [isTyping, setIsTyping] = useState(false);
 	const [saveMessage] = useSaveMessageMutation();
@@ -385,13 +385,13 @@ export default function ChatBox() {
 									image={value.image.image_url}
 								/>
 							) : (
-									<RightImageMessage
-										key={index}
-										imageMessage={value.imageMessage}
-										time={value.time}
-										image={value.image.image_url}
-									/>
-									
+								<RightImageMessage
+									key={index}
+									imageMessage={value.imageMessage}
+									time={value.time}
+									image={value.image.image_url}
+									darkMode={userData.settings?.darkMode || false}
+								/>
 							)
 						) : value.imageMessage === "" ? (
 							<LeftMessage
@@ -404,11 +404,11 @@ export default function ChatBox() {
 							<>
 								<LeftImageMessage
 									key={index}
+									darkMode={userData.settings?.darkMode || false}
 									imageMessage={value.imageMessage}
 									time={value.time}
 									image={value.image.image_url}
 								/>
-								
 							</>
 						);
 					})}
@@ -439,6 +439,7 @@ export default function ChatBox() {
 									<input
 										style={{ display: "none" }}
 										type="file"
+										accept="image/*"
 										onChange={handleFileChange}
 										ref={fileInputRef}
 									/>

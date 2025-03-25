@@ -12,6 +12,11 @@ export interface UserSchemaInterface extends Document {
 	image: { image_url: string; public_id: string };
 	status: StatusInterface[];
 	blocked_users: [string];
+	settings: {
+		sound: boolean;
+		darkMode: boolean;
+		popUp: boolean;
+	};
 	notifications: Array<{
 		action: string;
 		image: { image_url: string; public_id: string };
@@ -23,7 +28,7 @@ export interface UserSchemaInterface extends Document {
 			name: string;
 			image: { image_url: string; public_id: string };
 			message: string;
-			imageMessage:string
+			imageMessage: string;
 			time: string;
 			senderId: string;
 			seen: boolean;
@@ -81,6 +86,14 @@ const userSchema: Schema = new mongoose.Schema<UserSchemaInterface>(
 			type: Object, // Ensure chats is an object
 			default: {
 				test: [],
+			},
+		},
+		settings: {
+			type: Object,
+			default: {
+				sound: false,
+				popUp: false,
+				darkMode: false,
 			},
 		},
 		notifications: [],

@@ -34,7 +34,7 @@ const VisuallyHiddenInput = styled("input")({
 
 export default function CreatePost() {
 	const [createPost] = useCreatePostMutation();
-	const { darkMode } = useSelector((state: RootState) => state.User);
+	const { userData } = useSelector((state: RootState) => state.User);
 	const [
 		uploadImageToCloudinary,
 		{ isLoading: uploadImageToCloudinaryLoading },
@@ -97,7 +97,7 @@ export default function CreatePost() {
 				paddingX={1}
 				direction={"row"}
 				position={"fixed"}
-				bgcolor={darkMode ? "#121212" : "white"}
+				bgcolor={userData.settings?.darkMode ? "#121212" : "white"}
 				alignItems={"center"}
 				gap={2}
 				width={"100%"}
@@ -151,7 +151,8 @@ export default function CreatePost() {
 						border: "1px solid #d5d5d5",
 						padding: "8px",
 						resize: "none",
-						background: darkMode ? "#121212" : "white",
+						background: userData.settings?.darkMode ? "#121212" : "white",
+						color: userData.settings?.darkMode ? "white" : "black",
 						borderRadius: 5,
 					}}
 					placeholder="Write a caption..."

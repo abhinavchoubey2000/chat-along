@@ -147,6 +147,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$ico
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$icons$2d$material$2f$esm$2f$Search$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/@mui/icons-material/esm/Search.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$icons$2d$material$2f$esm$2f$AddCircleOutlineSharp$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/@mui/icons-material/esm/AddCircleOutlineSharp.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$icons$2d$material$2f$esm$2f$ChatBubble$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/@mui/icons-material/esm/ChatBubble.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Badge$2f$Badge$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Badge$3e$__ = __turbopack_import__("[project]/node_modules/@mui/material/Badge/Badge.js [app-client] (ecmascript) <export default as Badge>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Avatar$2f$Avatar$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Avatar$3e$__ = __turbopack_import__("[project]/node_modules/@mui/material/Avatar/Avatar.js [app-client] (ecmascript) <export default as Avatar>");
 ;
 var _s = __turbopack_refresh__.signature();
@@ -163,9 +164,10 @@ var _s = __turbopack_refresh__.signature();
 ;
 function Footer() {
     _s();
-    const { userData, isAuthenticated, darkMode } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$redux$2f$dist$2f$react$2d$redux$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useSelector"])({
+    const { userData, isAuthenticated } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$redux$2f$dist$2f$react$2d$redux$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useSelector"])({
         "Footer.useSelector": (state)=>state.User
     }["Footer.useSelector"]);
+    const obj = Object.entries(userData.chats || {});
     const dispatch = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$redux$2f$dist$2f$react$2d$redux$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useDispatch"])();
     const pathname = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["usePathname"])();
     const iconStyle = {
@@ -198,7 +200,7 @@ function Footer() {
         ],
         alignItems: "center",
         justifyContent: "space-between",
-        bgcolor: darkMode ? "#121212" : "white",
+        bgcolor: userData.settings?.darkMode ? "#121212" : "white",
         sx: {
             width: [
                 "100%",
@@ -220,22 +222,22 @@ function Footer() {
                             sx: pathname === "/" ? currentIconStyle : iconStyle
                         }, void 0, false, {
                             fileName: "[project]/src/shared/footer/index.tsx",
-                            lineNumber: 57,
+                            lineNumber: 58,
                             columnNumber: 7
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/shared/footer/index.tsx",
-                        lineNumber: 56,
+                        lineNumber: 57,
                         columnNumber: 6
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/shared/footer/index.tsx",
-                    lineNumber: 55,
+                    lineNumber: 56,
                     columnNumber: 5
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/shared/footer/index.tsx",
-                lineNumber: 54,
+                lineNumber: 55,
                 columnNumber: 4
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$custom$2d$components$2f$tooltip$2f$index$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CustomToolTip"], {
@@ -249,22 +251,22 @@ function Footer() {
                             sx: pathname === "/search-users" ? currentIconStyle : iconStyle
                         }, void 0, false, {
                             fileName: "[project]/src/shared/footer/index.tsx",
-                            lineNumber: 64,
+                            lineNumber: 65,
                             columnNumber: 7
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/shared/footer/index.tsx",
-                        lineNumber: 63,
+                        lineNumber: 64,
                         columnNumber: 6
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/shared/footer/index.tsx",
-                    lineNumber: 62,
+                    lineNumber: 63,
                     columnNumber: 5
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/shared/footer/index.tsx",
-                lineNumber: 61,
+                lineNumber: 62,
                 columnNumber: 4
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$custom$2d$components$2f$tooltip$2f$index$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CustomToolTip"], {
@@ -278,17 +280,17 @@ function Footer() {
                             sx: iconStyle
                         }, void 0, false, {
                             fileName: "[project]/src/shared/footer/index.tsx",
-                            lineNumber: 74,
+                            lineNumber: 75,
                             columnNumber: 8
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/shared/footer/index.tsx",
-                        lineNumber: 73,
+                        lineNumber: 74,
                         columnNumber: 7
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/shared/footer/index.tsx",
-                    lineNumber: 72,
+                    lineNumber: 73,
                     columnNumber: 6
                 }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$IconButton$2f$IconButton$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__IconButton$3e$__["IconButton"], {
                     onClick: ()=>{
@@ -296,17 +298,17 @@ function Footer() {
                     },
                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$icons$2d$material$2f$esm$2f$AddCircleOutlineSharp$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                         fileName: "[project]/src/shared/footer/index.tsx",
-                        lineNumber: 83,
+                        lineNumber: 84,
                         columnNumber: 7
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/shared/footer/index.tsx",
-                    lineNumber: 78,
+                    lineNumber: 79,
                     columnNumber: 6
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/shared/footer/index.tsx",
-                lineNumber: 70,
+                lineNumber: 71,
                 columnNumber: 4
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$custom$2d$components$2f$tooltip$2f$index$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CustomToolTip"], {
@@ -316,21 +318,32 @@ function Footer() {
                 children: isAuthenticated ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
                     href: "/chats",
                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$IconButton$2f$IconButton$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__IconButton$3e$__["IconButton"], {
-                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$icons$2d$material$2f$esm$2f$ChatBubble$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
-                            sx: iconStyle
+                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Badge$2f$Badge$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Badge$3e$__["Badge"], {
+                            color: "secondary",
+                            badgeContent: obj.slice(1, obj.length).filter((user)=>{
+                                const messages = user[1];
+                                return messages[messages.length - 1].seen === false;
+                            }).length,
+                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$icons$2d$material$2f$esm$2f$ChatBubble$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
+                                sx: iconStyle
+                            }, void 0, false, {
+                                fileName: "[project]/src/shared/footer/index.tsx",
+                                lineNumber: 101,
+                                columnNumber: 9
+                            }, this)
                         }, void 0, false, {
                             fileName: "[project]/src/shared/footer/index.tsx",
-                            lineNumber: 91,
+                            lineNumber: 92,
                             columnNumber: 8
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/shared/footer/index.tsx",
-                        lineNumber: 90,
+                        lineNumber: 91,
                         columnNumber: 7
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/shared/footer/index.tsx",
-                    lineNumber: 89,
+                    lineNumber: 90,
                     columnNumber: 6
                 }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$IconButton$2f$IconButton$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__IconButton$3e$__["IconButton"], {
                     onClick: ()=>{
@@ -340,17 +353,17 @@ function Footer() {
                         sx: iconStyle
                     }, void 0, false, {
                         fileName: "[project]/src/shared/footer/index.tsx",
-                        lineNumber: 100,
+                        lineNumber: 111,
                         columnNumber: 7
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/shared/footer/index.tsx",
-                    lineNumber: 95,
+                    lineNumber: 106,
                     columnNumber: 6
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/shared/footer/index.tsx",
-                lineNumber: 87,
+                lineNumber: 88,
                 columnNumber: 4
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$custom$2d$components$2f$tooltip$2f$index$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CustomToolTip"], {
@@ -374,12 +387,12 @@ function Footer() {
                         }
                     }, void 0, false, {
                         fileName: "[project]/src/shared/footer/index.tsx",
-                        lineNumber: 107,
+                        lineNumber: 118,
                         columnNumber: 7
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/shared/footer/index.tsx",
-                    lineNumber: 106,
+                    lineNumber: 117,
                     columnNumber: 6
                 }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Avatar$2f$Avatar$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Avatar$3e$__["Avatar"], {
                     onClick: ()=>{
@@ -399,22 +412,22 @@ function Footer() {
                     }
                 }, void 0, false, {
                     fileName: "[project]/src/shared/footer/index.tsx",
-                    lineNumber: 113,
+                    lineNumber: 124,
                     columnNumber: 6
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/shared/footer/index.tsx",
-                lineNumber: 104,
+                lineNumber: 115,
                 columnNumber: 4
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/shared/footer/index.tsx",
-        lineNumber: 37,
+        lineNumber: 38,
         columnNumber: 3
     }, this);
 }
-_s(Footer, "vne4RvpId9FgUbhYQk8qCGl08mg=", false, function() {
+_s(Footer, "ynyNK1nkcFZ9IaYzXG1evUu2Wwo=", false, function() {
     return [
         __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$redux$2f$dist$2f$react$2d$redux$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useSelector"],
         __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$redux$2f$dist$2f$react$2d$redux$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useDispatch"],

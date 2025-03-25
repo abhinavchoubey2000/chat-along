@@ -38,7 +38,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$mat
 ;
 ;
 ;
-function MyStatus({ statusArray, loggedInUserImage }) {
+function MyStatus({ statusArray, loggedInUserImage, darkMode }) {
     const [anchorEl, setAnchorEl] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(null);
     const menuOpen = Boolean(anchorEl);
     const router = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRouter"])();
@@ -113,27 +113,28 @@ function MyStatus({ statusArray, loggedInUserImage }) {
                     }
                 }, void 0, false, {
                     fileName: "[project]/src/app/_components/status/_components/my-status/index.tsx",
-                    lineNumber: 90,
+                    lineNumber: 92,
                     columnNumber: 5
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Typography$2f$Typography$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Typography$3e$__["Typography"], {
                     textAlign: "center",
+                    color: darkMode ? "white" : "black",
                     variant: "caption",
                     children: "Add Status"
                 }, void 0, false, {
                     fileName: "[project]/src/app/_components/status/_components/my-status/index.tsx",
-                    lineNumber: 97,
+                    lineNumber: 99,
                     columnNumber: 5
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/src/app/_components/status/_components/my-status/index.tsx",
-            lineNumber: 84,
+            lineNumber: 86,
             columnNumber: 4
         }, this)
     }, void 0, false, {
         fileName: "[project]/src/app/_components/status/_components/my-status/index.tsx",
-        lineNumber: 80,
+        lineNumber: 82,
         columnNumber: 3
     }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Fragment"], {
         children: [
@@ -154,7 +155,7 @@ function MyStatus({ statusArray, loggedInUserImage }) {
                         children: "View Status"
                     }, void 0, false, {
                         fileName: "[project]/src/app/_components/status/_components/my-status/index.tsx",
-                        lineNumber: 113,
+                        lineNumber: 119,
                         columnNumber: 5
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$MenuItem$2f$MenuItem$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__MenuItem$3e$__["MenuItem"], {
@@ -165,13 +166,13 @@ function MyStatus({ statusArray, loggedInUserImage }) {
                         children: "Add Status"
                     }, void 0, false, {
                         fileName: "[project]/src/app/_components/status/_components/my-status/index.tsx",
-                        lineNumber: 121,
+                        lineNumber: 127,
                         columnNumber: 5
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/app/_components/status/_components/my-status/index.tsx",
-                lineNumber: 104,
+                lineNumber: 110,
                 columnNumber: 4
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Stack$2f$Stack$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Stack$3e$__["Stack"], {
@@ -201,22 +202,23 @@ function MyStatus({ statusArray, loggedInUserImage }) {
                         }
                     }, void 0, false, {
                         fileName: "[project]/src/app/_components/status/_components/my-status/index.tsx",
-                        lineNumber: 136,
+                        lineNumber: 142,
                         columnNumber: 5
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Typography$2f$Typography$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Typography$3e$__["Typography"], {
                         textAlign: "center",
+                        color: darkMode ? "white" : "black",
                         variant: "caption",
                         children: "My Status"
                     }, void 0, false, {
                         fileName: "[project]/src/app/_components/status/_components/my-status/index.tsx",
-                        lineNumber: 144,
+                        lineNumber: 150,
                         columnNumber: 5
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/app/_components/status/_components/my-status/index.tsx",
-                lineNumber: 130,
+                lineNumber: 136,
                 columnNumber: 4
             }, this),
             statusArray.length > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Backdrop$2f$Backdrop$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Backdrop$3e$__["Backdrop"], {
@@ -258,12 +260,12 @@ function MyStatus({ statusArray, loggedInUserImage }) {
                                             fontSize: "small"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/_components/status/_components/my-status/index.tsx",
-                                            lineNumber: 177,
+                                            lineNumber: 187,
                                             columnNumber: 9
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/_components/status/_components/my-status/index.tsx",
-                                        lineNumber: 165,
+                                        lineNumber: 175,
                                         columnNumber: 8
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Fab$2f$Fab$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Fab$3e$__["Fab"], {
@@ -283,18 +285,18 @@ function MyStatus({ statusArray, loggedInUserImage }) {
                                             fontSize: "small"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/_components/status/_components/my-status/index.tsx",
-                                            lineNumber: 193,
+                                            lineNumber: 203,
                                             columnNumber: 9
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/_components/status/_components/my-status/index.tsx",
-                                        lineNumber: 179,
+                                        lineNumber: 189,
                                         columnNumber: 8
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/_components/status/_components/my-status/index.tsx",
-                                lineNumber: 164,
+                                lineNumber: 174,
                                 columnNumber: 7
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Stack$2f$Stack$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Stack$3e$__["Stack"], {
@@ -313,7 +315,7 @@ function MyStatus({ statusArray, loggedInUserImage }) {
                                         }
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/_components/status/_components/my-status/index.tsx",
-                                        lineNumber: 204,
+                                        lineNumber: 214,
                                         columnNumber: 8
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Stack$2f$Stack$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Stack$3e$__["Stack"], {
@@ -324,7 +326,7 @@ function MyStatus({ statusArray, loggedInUserImage }) {
                                                 children: "You"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/_components/status/_components/my-status/index.tsx",
-                                                lineNumber: 206,
+                                                lineNumber: 216,
                                                 columnNumber: 9
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Typography$2f$Typography$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Typography$3e$__["Typography"], {
@@ -335,19 +337,19 @@ function MyStatus({ statusArray, loggedInUserImage }) {
                                                 children: "2:33 PM"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/_components/status/_components/my-status/index.tsx",
-                                                lineNumber: 207,
+                                                lineNumber: 217,
                                                 columnNumber: 9
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/app/_components/status/_components/my-status/index.tsx",
-                                        lineNumber: 205,
+                                        lineNumber: 215,
                                         columnNumber: 8
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/_components/status/_components/my-status/index.tsx",
-                                lineNumber: 196,
+                                lineNumber: 206,
                                 columnNumber: 7
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Pagination$2f$Pagination$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Pagination$3e$__["Pagination"], {
@@ -358,18 +360,18 @@ function MyStatus({ statusArray, loggedInUserImage }) {
                                 onKeyUp: handleLeftRightButtons
                             }, void 0, false, {
                                 fileName: "[project]/src/app/_components/status/_components/my-status/index.tsx",
-                                lineNumber: 212,
+                                lineNumber: 222,
                                 columnNumber: 7
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/_components/status/_components/my-status/index.tsx",
-                        lineNumber: 163,
+                        lineNumber: 173,
                         columnNumber: 6
                     }, this),
                     isLoading ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$CircularProgress$2f$CircularProgress$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__CircularProgress$3e$__["CircularProgress"], {}, void 0, false, {
                         fileName: "[project]/src/app/_components/status/_components/my-status/index.tsx",
-                        lineNumber: 221,
+                        lineNumber: 231,
                         columnNumber: 7
                     }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Typography$2f$Typography$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Typography$3e$__["Typography"], {
                         sx: {
@@ -386,13 +388,13 @@ function MyStatus({ statusArray, loggedInUserImage }) {
                         children: statusArray[statusIndex - 1]?.statusContent || ""
                     }, void 0, false, {
                         fileName: "[project]/src/app/_components/status/_components/my-status/index.tsx",
-                        lineNumber: 223,
+                        lineNumber: 233,
                         columnNumber: 7
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/app/_components/status/_components/my-status/index.tsx",
-                lineNumber: 151,
+                lineNumber: 161,
                 columnNumber: 5
             }, this)
         ]
@@ -421,7 +423,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$mat
 ;
 ;
 ;
-function UserStatus({ followings }) {
+function UserStatus({ followings, darkMode }) {
     // State for opening and closing status backgrop status window
     const [open, setOpen] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
     // State for the index of pagination
@@ -479,22 +481,23 @@ function UserStatus({ followings }) {
                             }
                         }, void 0, false, {
                             fileName: "[project]/src/app/_components/status/_components/user-status/index.tsx",
-                            lineNumber: 51,
+                            lineNumber: 53,
                             columnNumber: 6
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Typography$2f$Typography$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Typography$3e$__["Typography"], {
                             textAlign: "center",
+                            color: darkMode ? "white" : "black",
                             variant: "caption",
                             children: user.username
                         }, void 0, false, {
                             fileName: "[project]/src/app/_components/status/_components/user-status/index.tsx",
-                            lineNumber: 59,
+                            lineNumber: 61,
                             columnNumber: 6
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/app/_components/status/_components/user-status/index.tsx",
-                    lineNumber: 43,
+                    lineNumber: 45,
                     columnNumber: 5
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Backdrop$2f$Backdrop$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Backdrop$3e$__["Backdrop"], {
@@ -534,12 +537,12 @@ function UserStatus({ followings }) {
                                         fontSize: "small"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/_components/status/_components/user-status/index.tsx",
-                                        lineNumber: 89,
+                                        lineNumber: 95,
                                         columnNumber: 8
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/_components/status/_components/user-status/index.tsx",
-                                    lineNumber: 77,
+                                    lineNumber: 83,
                                     columnNumber: 7
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Stack$2f$Stack$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Stack$3e$__["Stack"], {
@@ -558,7 +561,7 @@ function UserStatus({ followings }) {
                                             }
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/_components/status/_components/user-status/index.tsx",
-                                            lineNumber: 99,
+                                            lineNumber: 105,
                                             columnNumber: 8
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Stack$2f$Stack$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Stack$3e$__["Stack"], {
@@ -569,7 +572,7 @@ function UserStatus({ followings }) {
                                                     children: user.name
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/_components/status/_components/user-status/index.tsx",
-                                                    lineNumber: 104,
+                                                    lineNumber: 110,
                                                     columnNumber: 9
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Typography$2f$Typography$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Typography$3e$__["Typography"], {
@@ -580,19 +583,19 @@ function UserStatus({ followings }) {
                                                     children: "2:33 PM"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/_components/status/_components/user-status/index.tsx",
-                                                    lineNumber: 105,
+                                                    lineNumber: 111,
                                                     columnNumber: 9
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/app/_components/status/_components/user-status/index.tsx",
-                                            lineNumber: 103,
+                                            lineNumber: 109,
                                             columnNumber: 8
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/_components/status/_components/user-status/index.tsx",
-                                    lineNumber: 91,
+                                    lineNumber: 97,
                                     columnNumber: 7
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Pagination$2f$Pagination$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Pagination$3e$__["Pagination"], {
@@ -602,13 +605,13 @@ function UserStatus({ followings }) {
                                     size: "small"
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/_components/status/_components/user-status/index.tsx",
-                                    lineNumber: 110,
+                                    lineNumber: 116,
                                     columnNumber: 7
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/_components/status/_components/user-status/index.tsx",
-                            lineNumber: 76,
+                            lineNumber: 82,
                             columnNumber: 6
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Typography$2f$Typography$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Typography$3e$__["Typography"], {
@@ -617,19 +620,19 @@ function UserStatus({ followings }) {
                             children: currentStatusObject[statusIndex - 1].statusContent
                         }, void 0, false, {
                             fileName: "[project]/src/app/_components/status/_components/user-status/index.tsx",
-                            lineNumber: 117,
+                            lineNumber: 123,
                             columnNumber: 6
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/app/_components/status/_components/user-status/index.tsx",
-                    lineNumber: 64,
+                    lineNumber: 70,
                     columnNumber: 5
                 }, this)
             ]
         }, index, true, {
             fileName: "[project]/src/app/_components/status/_components/user-status/index.tsx",
-            lineNumber: 42,
+            lineNumber: 44,
             columnNumber: 4
         }, this);
     });
@@ -682,17 +685,19 @@ function Status() {
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$_components$2f$status$2f$_components$2f$my$2d$status$2f$index$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["MyStatus"], {
                 statusArray: userData.status || [],
-                loggedInUserImage: userData?.image?.image_url || ""
+                loggedInUserImage: userData?.image?.image_url || "",
+                darkMode: userData.settings?.darkMode || false
             }, void 0, false, {
                 fileName: "[project]/src/app/_components/status/index.tsx",
                 lineNumber: 15,
                 columnNumber: 4
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$_components$2f$status$2f$_components$2f$user$2d$status$2f$index$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["UserStatus"], {
-                followings: userData.following || []
+                followings: userData.following || [],
+                darkMode: userData.settings?.darkMode || false
             }, void 0, false, {
                 fileName: "[project]/src/app/_components/status/index.tsx",
-                lineNumber: 21,
+                lineNumber: 22,
                 columnNumber: 4
             }, this)
         ]
@@ -1585,7 +1590,7 @@ function PostCard({ _id, creator, caption, post_image, comments, likes, darkMode
                 }, void 0),
                 action: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$_components$2f$post$2f$_components$2f$post$2d$card$2f$_components$2f$post$2d$option$2f$index$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["PostOption"], {
                     id: _id || "",
-                    darkMode: true,
+                    darkMode: darkMode || false,
                     image_public_id: post_image?.public_id || ""
                 }, void 0, false, {
                     fileName: "[project]/src/app/_components/post/_components/post-card/index.tsx",
@@ -1660,7 +1665,7 @@ function PostCard({ _id, creator, caption, post_image, comments, likes, darkMode
                     likes: likes || [],
                     comments: comments || [],
                     id: _id || "",
-                    darkMode: true,
+                    darkMode: darkMode || false,
                     creatorId: creator?._id || ""
                 }, void 0, false, {
                     fileName: "[project]/src/app/_components/post/_components/post-card/index.tsx",
@@ -1776,6 +1781,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$ico
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$icons$2d$material$2f$esm$2f$Search$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/@mui/icons-material/esm/Search.js [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$icons$2d$material$2f$esm$2f$AddCircleOutlineSharp$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/@mui/icons-material/esm/AddCircleOutlineSharp.js [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$icons$2d$material$2f$esm$2f$ChatBubble$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/@mui/icons-material/esm/ChatBubble.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Badge$2f$Badge$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Badge$3e$__ = __turbopack_import__("[project]/node_modules/@mui/material/Badge/Badge.js [app-ssr] (ecmascript) <export default as Badge>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Avatar$2f$Avatar$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Avatar$3e$__ = __turbopack_import__("[project]/node_modules/@mui/material/Avatar/Avatar.js [app-ssr] (ecmascript) <export default as Avatar>");
 "use client";
 ;
@@ -1790,7 +1796,8 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$mat
 ;
 ;
 function Footer() {
-    const { userData, isAuthenticated, darkMode } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$redux$2f$dist$2f$react$2d$redux$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useSelector"])((state)=>state.User);
+    const { userData, isAuthenticated } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$redux$2f$dist$2f$react$2d$redux$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useSelector"])((state)=>state.User);
+    const obj = Object.entries(userData.chats || {});
     const dispatch = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$redux$2f$dist$2f$react$2d$redux$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useDispatch"])();
     const pathname = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["usePathname"])();
     const iconStyle = {
@@ -1823,7 +1830,7 @@ function Footer() {
         ],
         alignItems: "center",
         justifyContent: "space-between",
-        bgcolor: darkMode ? "#121212" : "white",
+        bgcolor: userData.settings?.darkMode ? "#121212" : "white",
         sx: {
             width: [
                 "100%",
@@ -1845,22 +1852,22 @@ function Footer() {
                             sx: pathname === "/" ? currentIconStyle : iconStyle
                         }, void 0, false, {
                             fileName: "[project]/src/shared/footer/index.tsx",
-                            lineNumber: 57,
+                            lineNumber: 58,
                             columnNumber: 7
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/shared/footer/index.tsx",
-                        lineNumber: 56,
+                        lineNumber: 57,
                         columnNumber: 6
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/shared/footer/index.tsx",
-                    lineNumber: 55,
+                    lineNumber: 56,
                     columnNumber: 5
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/shared/footer/index.tsx",
-                lineNumber: 54,
+                lineNumber: 55,
                 columnNumber: 4
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$custom$2d$components$2f$tooltip$2f$index$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["CustomToolTip"], {
@@ -1874,22 +1881,22 @@ function Footer() {
                             sx: pathname === "/search-users" ? currentIconStyle : iconStyle
                         }, void 0, false, {
                             fileName: "[project]/src/shared/footer/index.tsx",
-                            lineNumber: 64,
+                            lineNumber: 65,
                             columnNumber: 7
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/shared/footer/index.tsx",
-                        lineNumber: 63,
+                        lineNumber: 64,
                         columnNumber: 6
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/shared/footer/index.tsx",
-                    lineNumber: 62,
+                    lineNumber: 63,
                     columnNumber: 5
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/shared/footer/index.tsx",
-                lineNumber: 61,
+                lineNumber: 62,
                 columnNumber: 4
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$custom$2d$components$2f$tooltip$2f$index$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["CustomToolTip"], {
@@ -1903,17 +1910,17 @@ function Footer() {
                             sx: iconStyle
                         }, void 0, false, {
                             fileName: "[project]/src/shared/footer/index.tsx",
-                            lineNumber: 74,
+                            lineNumber: 75,
                             columnNumber: 8
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/shared/footer/index.tsx",
-                        lineNumber: 73,
+                        lineNumber: 74,
                         columnNumber: 7
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/shared/footer/index.tsx",
-                    lineNumber: 72,
+                    lineNumber: 73,
                     columnNumber: 6
                 }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$IconButton$2f$IconButton$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__IconButton$3e$__["IconButton"], {
                     onClick: ()=>{
@@ -1921,17 +1928,17 @@ function Footer() {
                     },
                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$icons$2d$material$2f$esm$2f$AddCircleOutlineSharp$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                         fileName: "[project]/src/shared/footer/index.tsx",
-                        lineNumber: 83,
+                        lineNumber: 84,
                         columnNumber: 7
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/shared/footer/index.tsx",
-                    lineNumber: 78,
+                    lineNumber: 79,
                     columnNumber: 6
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/shared/footer/index.tsx",
-                lineNumber: 70,
+                lineNumber: 71,
                 columnNumber: 4
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$custom$2d$components$2f$tooltip$2f$index$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["CustomToolTip"], {
@@ -1941,21 +1948,32 @@ function Footer() {
                 children: isAuthenticated ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
                     href: "/chats",
                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$IconButton$2f$IconButton$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__IconButton$3e$__["IconButton"], {
-                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$icons$2d$material$2f$esm$2f$ChatBubble$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
-                            sx: iconStyle
+                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Badge$2f$Badge$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Badge$3e$__["Badge"], {
+                            color: "secondary",
+                            badgeContent: obj.slice(1, obj.length).filter((user)=>{
+                                const messages = user[1];
+                                return messages[messages.length - 1].seen === false;
+                            }).length,
+                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$icons$2d$material$2f$esm$2f$ChatBubble$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
+                                sx: iconStyle
+                            }, void 0, false, {
+                                fileName: "[project]/src/shared/footer/index.tsx",
+                                lineNumber: 101,
+                                columnNumber: 9
+                            }, this)
                         }, void 0, false, {
                             fileName: "[project]/src/shared/footer/index.tsx",
-                            lineNumber: 91,
+                            lineNumber: 92,
                             columnNumber: 8
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/shared/footer/index.tsx",
-                        lineNumber: 90,
+                        lineNumber: 91,
                         columnNumber: 7
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/shared/footer/index.tsx",
-                    lineNumber: 89,
+                    lineNumber: 90,
                     columnNumber: 6
                 }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$IconButton$2f$IconButton$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__IconButton$3e$__["IconButton"], {
                     onClick: ()=>{
@@ -1965,17 +1983,17 @@ function Footer() {
                         sx: iconStyle
                     }, void 0, false, {
                         fileName: "[project]/src/shared/footer/index.tsx",
-                        lineNumber: 100,
+                        lineNumber: 111,
                         columnNumber: 7
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/shared/footer/index.tsx",
-                    lineNumber: 95,
+                    lineNumber: 106,
                     columnNumber: 6
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/shared/footer/index.tsx",
-                lineNumber: 87,
+                lineNumber: 88,
                 columnNumber: 4
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$custom$2d$components$2f$tooltip$2f$index$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["CustomToolTip"], {
@@ -1999,12 +2017,12 @@ function Footer() {
                         }
                     }, void 0, false, {
                         fileName: "[project]/src/shared/footer/index.tsx",
-                        lineNumber: 107,
+                        lineNumber: 118,
                         columnNumber: 7
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/shared/footer/index.tsx",
-                    lineNumber: 106,
+                    lineNumber: 117,
                     columnNumber: 6
                 }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Avatar$2f$Avatar$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Avatar$3e$__["Avatar"], {
                     onClick: ()=>{
@@ -2024,18 +2042,18 @@ function Footer() {
                     }
                 }, void 0, false, {
                     fileName: "[project]/src/shared/footer/index.tsx",
-                    lineNumber: 113,
+                    lineNumber: 124,
                     columnNumber: 6
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/shared/footer/index.tsx",
-                lineNumber: 104,
+                lineNumber: 115,
                 columnNumber: 4
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/shared/footer/index.tsx",
-        lineNumber: 37,
+        lineNumber: 38,
         columnNumber: 3
     }, this);
 }
@@ -2311,7 +2329,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$mat
 ;
 function Post() {
     const { postsData } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$redux$2f$dist$2f$react$2d$redux$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useSelector"])((state)=>state.Post);
-    const { loading, darkMode } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$redux$2f$dist$2f$react$2d$redux$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useSelector"])((state)=>state.User);
+    const { loading, userData } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$redux$2f$dist$2f$react$2d$redux$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useSelector"])((state)=>state.User);
     return loading ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$mui$2f$material$2f$Container$2f$Container$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Container$3e$__["Container"], {
         maxWidth: "sm",
         sx: {
@@ -2350,7 +2368,7 @@ function Post() {
             postsData.map((post, index)=>{
                 return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$_components$2f$post$2f$_components$2f$post$2d$card$2f$index$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["PostCard"], {
                     _id: post._id,
-                    darkMode: darkMode,
+                    darkMode: userData.settings?.darkMode,
                     creator: post.creator,
                     likes: post.likes,
                     comments: post.comments,

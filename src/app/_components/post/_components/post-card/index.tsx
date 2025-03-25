@@ -38,7 +38,7 @@ export function PostCard({
 				action={
 					<PostOption
 						id={_id || ""}
-						darkMode
+						darkMode={darkMode || false}
 						image_public_id={post_image?.public_id || ""}
 					/>
 				}
@@ -91,7 +91,7 @@ export function PostCard({
 					likes={likes || []}
 					comments={comments || []}
 					id={_id || ""}
-					darkMode
+					darkMode={darkMode || false}
 					creatorId={creator?._id || ""}
 				/>
 			</CardActions>

@@ -19,7 +19,7 @@ import { RootState } from "@/redux/store";
 export default function UserPost() {
 	const { postId } = useParams<{ postId: string }>();
 	const { postsData } = useSelector((state: RootState) => state.Post);
-	const { darkMode } = useSelector((state: RootState) => state.User);
+	const { userData } = useSelector((state: RootState) => state.User);
 	const matchedPost = postsData.find((post) => post._id === postId);
 
 	return (
@@ -29,7 +29,7 @@ export default function UserPost() {
 				action={
 					<PostOption
 						id={matchedPost?._id || ""}
-						darkMode
+						darkMode={userData.settings?.darkMode || false}
 						image_public_id={matchedPost?.post_image?.public_id || ""}
 					/>
 				}
@@ -38,7 +38,7 @@ export default function UserPost() {
 						href={`/${matchedPost?.creator?.username}`}
 						style={{
 							textDecoration: "none",
-							color: darkMode ? "white" : "black",
+							color: userData.settings?.darkMode ? "white" : "black",
 						}}
 					>
 						{matchedPost?.creator?.name}
@@ -60,7 +60,7 @@ export default function UserPost() {
 			<CardContent>
 				<Typography
 					variant="body2"
-					sx={{ color: darkMode ? "white" : "black" }}
+					sx={{ color: userData.settings?.darkMode ? "white" : "black" }}
 				>
 					{matchedPost?.caption}
 				</Typography>
@@ -70,7 +70,7 @@ export default function UserPost() {
 					likes={matchedPost?.likes || []}
 					comments={matchedPost?.comments || []}
 					id={matchedPost?._id || ""}
-					darkMode
+					darkMode={userData.settings?.darkMode || false}
 					creatorId={matchedPost?.creator?._id || ""}
 				/>
 			</CardActions>

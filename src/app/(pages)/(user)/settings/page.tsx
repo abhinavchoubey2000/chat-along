@@ -18,11 +18,15 @@ import {
 import { styled } from "@mui/material/styles";
 import Link from "next/link";
 import { ArrowBack } from "@mui/icons-material";
-import { useLogoutMutation } from "@/redux/api-slices";
+import { useLogoutMutation, useSaveSettingsMutation } from "@/redux/api-slices";
 import { useSelector, useDispatch } from "react-redux";
 import toast from "react-hot-toast";
 import { RootState } from "@/redux/store";
-import { changeDarkModeInState } from "@/redux/slices/user";
+import {
+	changeDarkModeInState,
+	changePopUpInState,
+	changeSoundInState,
+} from "@/redux/slices/user";
 
 const SettingItem = styled(Box)(({ theme }) => ({
 	display: "flex",
@@ -38,15 +42,35 @@ const SettingItem = styled(Box)(({ theme }) => ({
 }));
 
 export default function Settings() {
-	const [popupNotifications, setPopupNotifications] = useState(true);
-	const [sound, setSound] = useState(false);
-	const { darkMode } = useSelector((state: RootState) => state.User);
+	const { userData } = useSelector((state: RootState) => state.User);
 	const dispatch = useDispatch();
+	const [saveSettings] = useSaveSettingsMutation();
 	const [isDialogOpened, setIsDialogOpened] = useState(false);
 	const [logout, { isLoading }] = useLogoutMutation();
 
-	const handleDarkMode = () => {
+	const handleDarkMode = async () => {
 		dispatch(changeDarkModeInState());
+		await saveSettings({
+			popUp: userData.settings?.popUp || false,
+			sound: userData.settings?.sound || false,
+			darkMode: !userData.settings?.darkMode || false,
+		});
+	};
+	const handlePopUp = async () => {
+		dispatch(changePopUpInState());
+		await saveSettings({
+			popUp: !userData.settings?.popUp || false,
+			sound: userData.settings?.sound || false,
+			darkMode: userData.settings?.darkMode || false,
+		});
+	};
+	const handleSound = async () => {
+		dispatch(changeSoundInState());
+		await saveSettings({
+			popUp: userData.settings?.popUp || false,
+			sound: !userData.settings?.sound || false,
+			darkMode: userData.settings?.darkMode || false,
+		});
 	};
 	const openDialog = () => {
 		setIsDialogOpened(true);
@@ -84,7 +108,7 @@ export default function Settings() {
 				<Typography sx={{ fontSize: ["0.8rem", "1rem"] }}>Dark Mode</Typography>
 				<Switch
 					sx={{ fontSize: ["0.8rem", "1rem"] }}
-					checked={darkMode}
+					checked={userData.settings?.darkMode ?? false}
 					onChange={handleDarkMode}
 				/>
 			</SettingItem>
@@ -94,14 +118,17 @@ export default function Settings() {
 					Pop-up Notifications
 				</Typography>
 				<Switch
-					checked={popupNotifications}
-					onChange={() => setPopupNotifications(!popupNotifications)}
+					checked={userData.settings?.popUp ?? false}
+					onChange={handlePopUp}
 				/>
 			</SettingItem>
 
 			<SettingItem>
 				<Typography sx={{ fontSize: ["0.8rem", "1rem"] }}>Sound</Typography>
-				<Switch checked={sound} onChange={() => setSound(!sound)} />
+				<Switch
+					checked={userData.settings?.sound ?? false}
+					onChange={handleSound}
+				/>
 			</SettingItem>
 
 			<SettingItem color={"error.main"} onClick={openDialog}>

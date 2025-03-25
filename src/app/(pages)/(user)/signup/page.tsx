@@ -10,6 +10,7 @@ import {
 	useSignupMutation,
 } from "@/redux/api-slices";
 import { useUploadImageToCloudinaryMutation } from "@/redux/api-slices/post";
+import toast from "react-hot-toast";
 
 const Signup = () => {
 	const [activeStep, setActiveStep] = useState(0);
@@ -205,22 +206,26 @@ const Signup = () => {
 		}
 	};
 	const handleSubmit = async () => {
-		const imageFormData = new FormData();
-		imageFormData.append("image", formData.profilePicture || "");
-		const cloudinaryResponse = await uploadImageToCloudinary(imageFormData);
+		if (formData.profilePicture) {
+			const imageFormData = new FormData();
+			imageFormData.append("image", formData.profilePicture || "");
+			const cloudinaryResponse = await uploadImageToCloudinary(imageFormData);
 
-		await signup({
-			name: `${formData.firstName} ${formData.lastName}`,
-			phone: formData.phone,
-			email: formData.email,
-			image: {
-				image_url: cloudinaryResponse.data.image_url,
-				public_id: cloudinaryResponse.data.public_id,
-			},
-			username: formData.username,
-			password: formData.password,
-		});
-		window.location.href = "/login";
+			await signup({
+				name: `${formData.firstName} ${formData.lastName}`,
+				phone: formData.phone,
+				email: formData.email,
+				image: {
+					image_url: cloudinaryResponse.data.image_url,
+					public_id: cloudinaryResponse.data.public_id,
+				},
+				username: formData.username,
+				password: formData.password,
+			});
+			window.location.href = "/login";
+		} else {
+			toast.error("You must need a profile picture to finish.");
+		}
 	};
 
 	const nextStep = () => setActiveStep((prev) => prev + 1);
@@ -235,7 +240,7 @@ const Signup = () => {
 				</Typography>
 			</Stack>
 			<SignupStepper activeStep={activeStep} />
-			
+
 			{activeStep === 0 && (
 				<StepOne
 					data={formData}
@@ -264,7 +269,6 @@ const Signup = () => {
 					isLoading={cloudinaryLoading}
 				/>
 			)}
-			
 		</Box>
 	);
 };
