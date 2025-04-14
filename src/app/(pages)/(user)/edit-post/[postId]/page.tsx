@@ -111,7 +111,11 @@ export default function UserPost() {
 					{captionLoading ? (
 						<CircularProgress sx={{ color: "white" }} size={18} />
 					) : (
-						<Button color="secondary" onClick={handleUpdate}>
+						<Button
+							disabled={captionLoading}
+							color="secondary"
+							onClick={handleUpdate}
+						>
 							Update
 						</Button>
 					)}

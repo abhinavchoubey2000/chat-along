@@ -209,6 +209,7 @@ export default function User() {
 				{isAuthenticated ? (
 					<Button
 						variant="contained"
+						disabled={isLoading}
 						fullWidth
 						onClick={handleFollowUnfollowUser}
 					>

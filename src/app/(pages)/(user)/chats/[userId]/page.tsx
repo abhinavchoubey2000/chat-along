@@ -64,7 +64,8 @@ export default function ChatBox() {
 
 	const open = Boolean(anchorEl);
 	const [isTyping, setIsTyping] = useState(false);
-	const [saveMessage] = useSaveMessageMutation();
+	const [saveMessage, { isLoading: sendMessageLoading }] =
+		useSaveMessageMutation();
 	const [uploadImageToCloudinary] = useUploadImageToCloudinaryMutation();
 	const [saveSeenMessage] = useSaveSeenMessageMutation();
 	const [clearMessages] = useClearMessagesMutation();
@@ -448,6 +449,7 @@ export default function ChatBox() {
 								<IconButton
 									aria-label={"message"}
 									color="primary"
+									disabled={sendMessageLoading}
 									edge="end"
 									onClick={() => {
 										sendMessage();

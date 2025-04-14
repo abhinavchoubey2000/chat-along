@@ -58,6 +58,7 @@ const StepTwo: React.FC<StepTwoProps> = ({
 					variant="contained"
 					color="primary"
 					onClick={checkPassword}
+					disabled={isLoading}
 					fullWidth
 					sx={{ alignItems: "center", gap: 1 }}
 				>

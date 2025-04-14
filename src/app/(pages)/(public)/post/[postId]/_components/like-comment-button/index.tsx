@@ -50,9 +50,10 @@ export function LikeCommentButtonStack({
 		(state: RootState) => state.User
 	);
 	const dispatch = useDispatch();
-	const [likeUnlikePost] = useLikeUnlikePostMutation();
+	const [likeUnlikePost, { isLoading: likeLoading }] =
+		useLikeUnlikePostMutation();
 	const [saveNotification] = useSaveNotificationMutation();
-	const [commentPost] = useCommentPostMutation();
+	const [commentPost, { isLoading: commentLoading }] = useCommentPostMutation();
 
 	const handleLike = async () => {
 		if (isAuthenticated) {
@@ -171,6 +172,7 @@ export function LikeCommentButtonStack({
 								? "red"
 								: "",
 						}}
+						disabled={likeLoading}
 						onClick={handleLike}
 					>
 						<Favorite />
@@ -261,6 +263,7 @@ export function LikeCommentButtonStack({
 												aria-label={"add-comment"}
 												onClick={handleCommentSubmit}
 												edge="end"
+												disabled={commentLoading}
 											>
 												<SendOutlined />
 											</IconButton>

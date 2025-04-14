@@ -274,7 +274,7 @@ export default function EditProfile() {
 					)}
 				</Stack>
 			</Stack>
-			<Button color="secondary" variant="contained" onClick={updateChanges}>
+			<Button disabled={isLoading} color="secondary" variant="contained" onClick={updateChanges}>
 				{isLoading ? (
 					<CircularProgress sx={{ color: "white" }} size={18} />
 				) : (

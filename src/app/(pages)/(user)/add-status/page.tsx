@@ -194,6 +194,7 @@ export default function AddStatus() {
 					variant="contained"
 					fullWidth
 					onClick={handleAddStatus}
+					disabled={isLoading}
 				>
 					{isLoading ? (
 						<CircularProgress sx={{ color: "white" }} size={18} />

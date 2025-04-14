@@ -44,7 +44,8 @@ const SettingItem = styled(Box)(({ theme }) => ({
 export default function Settings() {
 	const { userData } = useSelector((state: RootState) => state.User);
 	const dispatch = useDispatch();
-	const [saveSettings] = useSaveSettingsMutation();
+	const [saveSettings, { isLoading: settingsLoading }] =
+		useSaveSettingsMutation();
 	const [isDialogOpened, setIsDialogOpened] = useState(false);
 	const [logout, { isLoading }] = useLogoutMutation();
 
@@ -107,6 +108,7 @@ export default function Settings() {
 			<SettingItem>
 				<Typography sx={{ fontSize: ["0.8rem", "1rem"] }}>Dark Mode</Typography>
 				<Switch
+					disabled={settingsLoading}
 					sx={{ fontSize: ["0.8rem", "1rem"] }}
 					checked={userData.settings?.darkMode ?? false}
 					onChange={handleDarkMode}
@@ -118,6 +120,7 @@ export default function Settings() {
 					Pop-up Notifications
 				</Typography>
 				<Switch
+					disabled={settingsLoading}
 					checked={userData.settings?.popUp ?? false}
 					onChange={handlePopUp}
 				/>
@@ -126,6 +129,7 @@ export default function Settings() {
 			<SettingItem>
 				<Typography sx={{ fontSize: ["0.8rem", "1rem"] }}>Sound</Typography>
 				<Switch
+					disabled={settingsLoading}
 					checked={userData.settings?.sound ?? false}
 					onChange={handleSound}
 				/>
@@ -142,6 +146,7 @@ export default function Settings() {
 					variant="text"
 					color="error"
 					fullWidth
+					disabled={isLoading}
 					onClick={handleLogout}
 					sx={{ fontSize: ["0.8rem", "1rem"] }}
 				>

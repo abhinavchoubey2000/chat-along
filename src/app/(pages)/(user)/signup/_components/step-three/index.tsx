@@ -78,6 +78,7 @@ const StepThree: React.FC<StepThreeProps> = ({
 					color="primary"
 					onClick={handleSubmit}
 					fullWidth
+					disabled={isLoading}
 				>
 					{isLoading ? (
 						<CircularProgress sx={{ color: "white" }} size={18} />

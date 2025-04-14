@@ -181,6 +181,7 @@ export default function CreatePost() {
 				fullWidth
 				onClick={createUserPost}
 				variant="outlined"
+				disabled={uploadImageToCloudinaryLoading}
 			>
 				{uploadImageToCloudinaryLoading ? (
 					<Typography

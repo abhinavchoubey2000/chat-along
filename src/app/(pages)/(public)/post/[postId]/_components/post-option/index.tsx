@@ -39,7 +39,8 @@ export function PostOption({
 	const deleteIconHoverStyle = { "&:hover": { color: colors.red["700"] } };
 	const [isDialogOpened, setIsDialogOpened] = useState(false);
 	const [deletePost] = useDeletePostMutation();
-	const [deleteImageFromCloudinary] = useDeleteImageFromCloudinaryMutation();
+	const [deleteImageFromCloudinary, { isLoading }] =
+		useDeleteImageFromCloudinaryMutation();
 	const dispatch = useDispatch();
 	const { userData } = useSelector((state: RootState) => state.User);
 
@@ -126,7 +127,12 @@ export function PostOption({
 				</DialogContent>
 				<DialogActions>
 					<Button onClick={closeDialog}>Cancel</Button>
-					<Button onClick={handleDeletePost} color="error" autoFocus>
+					<Button
+						onClick={handleDeletePost}
+						disabled={isLoading}
+						color="error"
+						autoFocus
+					>
 						Yes
 					</Button>
 				</DialogActions>
