@@ -12,20 +12,29 @@ import {
 import { Search } from "@mui/icons-material";
 import { UserCard } from "./_components";
 import { useSelector } from "react-redux";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { RootState } from "@/redux/store";
 
 export default function SearchUsers() {
 	const [searchText, setSearchText] = useState("");
+	const [searchTextInput, setSearchTextInput] = useState("");
+	const timerRef = useRef<number | null>(null);
 	const { allUsersData, userData, loading } = useSelector(
 		(state: RootState) => state.User
 	);
 	const [searchedResults, setSearchedResults] = useState<
 		Array<UserResponseDataInterface>
 	>([]);
-	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		setSearchText(e.target.value);
-	};
+
+	const handleDebounceChange = (() => {
+		return (event: React.ChangeEvent<HTMLInputElement>) => {
+			setSearchTextInput(event.target.value);
+			if (timerRef.current) clearTimeout(timerRef.current);
+			timerRef.current = window.setTimeout(() => {
+				setSearchText(event.target.value);
+			}, 1200);
+		};
+	})();
 
 	useEffect(() => {
 		setSearchedResults(
@@ -57,8 +66,8 @@ export default function SearchUsers() {
 				<OutlinedInput
 					id="outlined-adornment-search"
 					type={"text"}
-					value={searchText}
-					onChange={handleChange}
+					value={searchTextInput}
+					onChange={handleDebounceChange}
 					sx={{ borderRadius: 0 }}
 					endAdornment={
 						<InputAdornment position="end">
