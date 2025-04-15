@@ -6,10 +6,6 @@
           "moduleId": "[project]/.next-internal/server/app/page/actions.js { ACTIONS_MODULE0 => \"[project]/src/shared/header/index.tsx [app-rsc] (ecmascript)\" } [app-rsc] (ecmascript)",
           "async": false
         },
-        "app/(pages)/(public)/search-users/page": {
-          "moduleId": "[project]/.next-internal/server/app/(pages)/(public)/search-users/page/actions.js { ACTIONS_MODULE0 => \"[project]/src/shared/header/index.tsx [app-rsc] (ecmascript)\" } [app-rsc] (ecmascript)",
-          "async": false
-        },
         "app/(pages)/(public)/[username]/page": {
           "moduleId": "[project]/.next-internal/server/app/(pages)/(public)/[username]/page/actions.js { ACTIONS_MODULE0 => \"[project]/src/shared/header/index.tsx [app-rsc] (ecmascript)\" } [app-rsc] (ecmascript)",
           "async": false
@@ -17,13 +13,22 @@
         "app/(pages)/(user)/profile/page": {
           "moduleId": "[project]/.next-internal/server/app/(pages)/(user)/profile/page/actions.js { ACTIONS_MODULE0 => \"[project]/src/shared/header/index.tsx [app-rsc] (ecmascript)\" } [app-rsc] (ecmascript)",
           "async": false
+        },
+        "app/(pages)/(public)/search-users/page": {
+          "moduleId": "[project]/.next-internal/server/app/(pages)/(public)/search-users/page/actions.js { ACTIONS_MODULE0 => \"[project]/src/shared/header/index.tsx [app-rsc] (ecmascript)\" } [app-rsc] (ecmascript)",
+          "async": false
+        },
+        "app/(pages)/(public)/post/[postId]/page": {
+          "moduleId": "[project]/.next-internal/server/app/(pages)/(public)/post/[postId]/page/actions.js { ACTIONS_MODULE0 => \"[project]/src/shared/header/index.tsx [app-rsc] (ecmascript)\" } [app-rsc] (ecmascript)",
+          "async": false
         }
       },
       "layer": {
         "app/page": "rsc",
-        "app/(pages)/(public)/search-users/page": "rsc",
         "app/(pages)/(public)/[username]/page": "rsc",
-        "app/(pages)/(user)/profile/page": "rsc"
+        "app/(pages)/(user)/profile/page": "rsc",
+        "app/(pages)/(public)/search-users/page": "rsc",
+        "app/(pages)/(public)/post/[postId]/page": "rsc"
       }
     }
   },

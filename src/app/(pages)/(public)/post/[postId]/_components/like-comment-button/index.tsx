@@ -1,5 +1,10 @@
 "use client";
-import { Favorite, ModeComment, SendOutlined } from "@mui/icons-material";
+import {
+	Favorite,
+	ModeComment,
+	SendOutlined,
+	Delete,
+} from "@mui/icons-material";
 import io from "socket.io-client";
 import { UserCard } from "./_components";
 import {
@@ -23,8 +28,13 @@ import { RootState } from "@/redux/store";
 import {
 	useCommentPostMutation,
 	useLikeUnlikePostMutation,
+	useDeleteCommentMutation,
 } from "@/redux/api-slices/post";
-import { commentPostInState, likeUnlikePostInState } from "@/redux/slices/post";
+import {
+	commentPostInState,
+	likeUnlikePostInState,
+	deleteCommentPostFromState,
+} from "@/redux/slices/post";
 import { useSaveNotificationMutation } from "@/redux/api-slices";
 import { handleDialog } from "@/redux/slices/user";
 
@@ -54,6 +64,7 @@ export function LikeCommentButtonStack({
 		useLikeUnlikePostMutation();
 	const [saveNotification] = useSaveNotificationMutation();
 	const [commentPost, { isLoading: commentLoading }] = useCommentPostMutation();
+	const [deleteComment] = useDeleteCommentMutation();
 
 	const handleLike = async () => {
 		if (isAuthenticated) {
@@ -131,6 +142,10 @@ export function LikeCommentButtonStack({
 				receiverId: creatorId,
 			});
 		}
+	};
+	const handleDeleteComment = async (commentId: string, postId: string) => {
+		dispatch(deleteCommentPostFromState({ postId, commentId }));
+		await deleteComment({ postId, commentId });
 	};
 
 	return (
@@ -210,34 +225,57 @@ export function LikeCommentButtonStack({
 						height={"200px"}
 						overflow={"auto"}
 					>
-						{comments.map((comment, index) => (
-							<Stack
-								key={index}
-								direction="row"
-								spacing={1}
-								alignItems="center"
+						{comments.length === 0 ? (
+							<Typography
+								display={"flex"}
+								justifyContent={"center"}
+								alignItems={"center"}
 							>
-								<Avatar
-									src={comment.userId.image.image_url}
-									alt={comment.userId.username}
-									style={{ width: 40, height: 40 }}
-								/>
-								<Stack>
-									<Link
-										href={`/${comment.userId.username}`}
-										style={{
-											textDecoration: "none",
-											color: darkMode ? "white" : "black",
-										}}
-									>
-										<Typography variant="subtitle2" fontWeight={"bold"}>
-											{comment.userId.username}
-										</Typography>
-									</Link>
-									<Typography variant="body2">{comment.comment}</Typography>
+								This post have no comments yet
+							</Typography>
+						) : (
+							comments.map((comment, index) => (
+								<Stack
+									key={index}
+									direction="row"
+									spacing={1}
+									justifyContent={"space-between"}
+									alignItems="center"
+								>
+									<Stack direction="row" spacing={1} alignItems="center">
+										<Avatar
+											src={comment.userId.image.image_url}
+											alt={comment.userId.username}
+											style={{ width: 40, height: 40 }}
+										/>
+										<Stack>
+											<Link
+												href={`/${comment.userId.username}`}
+												style={{
+													textDecoration: "none",
+													color: darkMode ? "white" : "black",
+												}}
+											>
+												<Typography variant="subtitle2" fontWeight={"bold"}>
+													{comment.userId.username}
+												</Typography>
+											</Link>
+											<Typography variant="body2">{comment.comment}</Typography>
+										</Stack>
+									</Stack>
+									{userData._id === comment.userId._id ? (
+										<IconButton
+											color="error"
+											onClick={() => {
+												handleDeleteComment(comment._id!, id);
+											}}
+										>
+											<Delete />
+										</IconButton>
+									) : null}
 								</Stack>
-							</Stack>
-						))}
+							))
+						)}
 					</Stack>
 					<Divider />
 					{isAuthenticated ? (

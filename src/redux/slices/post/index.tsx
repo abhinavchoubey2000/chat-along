@@ -74,6 +74,22 @@ export const postSlice = createSlice({
 				},
 			});
 		},
+		deleteCommentPostFromState: (
+			state,
+			action: PayloadAction<{ postId: string; commentId: string }>
+		) => {
+			const postIndex = Number(
+				state.postsData.findIndex(
+					(post) => String(post._id) === String(action.payload.postId)
+				)
+			);
+			const commentIndex = Number(
+				state.postsData[postIndex].comments?.findIndex(
+					(comment) => String(comment._id) === String(action.payload.commentId)
+				)
+			);
+			state.postsData[postIndex].comments?.splice(commentIndex, 1);
+		},
 		changeLoadingState: (state, action: PayloadAction<boolean>) => {
 			state.loading = action.payload;
 		},
@@ -86,4 +102,5 @@ export const {
 	deletePostFromState,
 	likeUnlikePostInState,
 	commentPostInState,
+	deleteCommentPostFromState,
 } = postSlice.actions;

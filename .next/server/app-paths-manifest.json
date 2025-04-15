@@ -1,12 +1,16 @@
 {
   "/page": "app/page.js",
-  "/(server)/api/(public)/get-all-users/route": "app/(server)/api/(public)/get-all-users/route.js",
   "/(server)/api/(public)/get-all-posts/route": "app/(server)/api/(public)/get-all-posts/route.js",
+  "/(server)/api/(public)/get-all-users/route": "app/(server)/api/(public)/get-all-users/route.js",
   "/(server)/api/(user)/get-user-profile/route": "app/(server)/api/(user)/get-user-profile/route.js",
   "/(pages)/(user)/login/page": "app/(pages)/(user)/login/page.js",
   "/(server)/api/(user)/login/route": "app/(server)/api/(user)/login/route.js",
-  "/(pages)/(public)/search-users/page": "app/(pages)/(public)/search-users/page.js",
-  "/(pages)/(user)/create-post/page": "app/(pages)/(user)/create-post/page.js",
+  "/(server)/api/(post)/comment-post/route": "app/(server)/api/(post)/comment-post/route.js",
+  "/(server)/api/(user)/save-notification/route": "app/(server)/api/(user)/save-notification/route.js",
+  "/(server)/api/(post)/delete-post-comment/route": "app/(server)/api/(post)/delete-post-comment/route.js",
+  "/(pages)/(user)/chats/page": "app/(pages)/(user)/chats/page.js",
   "/(pages)/(public)/[username]/page": "app/(pages)/(public)/[username]/page.js",
-  "/(pages)/(user)/profile/page": "app/(pages)/(user)/profile/page.js"
+  "/(pages)/(user)/profile/page": "app/(pages)/(user)/profile/page.js",
+  "/(pages)/(public)/search-users/page": "app/(pages)/(public)/search-users/page.js",
+  "/(pages)/(public)/post/[postId]/page": "app/(pages)/(public)/post/[postId]/page.js"
 }

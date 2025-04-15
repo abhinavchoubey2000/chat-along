@@ -1,5 +1,10 @@
 "use client";
-import { Favorite, ModeComment, SendOutlined } from "@mui/icons-material";
+import {
+	Favorite,
+	ModeComment,
+	SendOutlined,
+	Delete,
+} from "@mui/icons-material";
 import io from "socket.io-client";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -19,11 +24,16 @@ import {
 import {
 	useLikeUnlikePostMutation,
 	useCommentPostMutation,
+	useDeleteCommentMutation,
 } from "@/redux/api-slices/post";
 import Link from "next/link";
 import React, { useState } from "react";
 import { RootState } from "@/redux/store";
-import { likeUnlikePostInState, commentPostInState } from "@/redux/slices/post";
+import {
+	likeUnlikePostInState,
+	commentPostInState,
+	deleteCommentPostFromState,
+} from "@/redux/slices/post";
 import { handleDialog } from "@/redux/slices/user";
 import { UserCard } from "./_components";
 import { useSaveNotificationMutation } from "@/redux/api-slices";
@@ -51,6 +61,7 @@ export function LikeCommentButtonStack({
 	);
 	const [likeUnlikePost] = useLikeUnlikePostMutation();
 	const [commentPost] = useCommentPostMutation();
+	const [deleteComment] = useDeleteCommentMutation();
 	const dispatch = useDispatch();
 	const [saveNotification] = useSaveNotificationMutation();
 
@@ -129,6 +140,10 @@ export function LikeCommentButtonStack({
 			});
 		}
 	};
+	const handleDeleteComment = async (commentId: string, postId: string) => {
+		dispatch(deleteCommentPostFromState({ commentId, postId }));
+		await deleteComment({ postId, commentId });
+	};
 
 	return (
 		<Stack direction={"column"} spacing={2} width={"100%"}>
@@ -206,39 +221,62 @@ export function LikeCommentButtonStack({
 						height={"200px"}
 						overflow={"auto"}
 					>
-						{comments.map((comment, index) => (
-							<Stack
-								key={index}
-								direction="row"
-								spacing={1}
-								alignItems="center"
+						{comments.length === 0 ? (
+							<Typography
+								display={"flex"}
+								justifyContent={"center"}
+								alignItems={"center"}
 							>
-								<Avatar
-									src={comment.userId.image.image_url}
-									alt={comment.userId.username}
-									sx={{ width: [30, 40], height: [30, 40] }}
-								/>
-								<Stack>
-									<Link
-										href={`/${comment.userId.username}`}
-										style={{
-											textDecoration: "none",
-											color: darkMode ? "white" : "black",
-										}}
-									>
-										<Typography
-											sx={{ fontSize: ["0.7rem", "0.8rem"] }}
-											fontWeight={"bold"}
+								This post have no comments yet
+							</Typography>
+						) : (
+							comments.map((comment, index) => (
+								<Stack
+									key={index}
+									direction="row"
+									spacing={1}
+									alignItems="center"
+									justifyContent={"space-between"}
+								>
+									<Stack direction="row" spacing={1} alignItems="center">
+										<Avatar
+											src={comment.userId.image.image_url}
+											alt={comment.userId.username}
+											sx={{ width: [30, 40], height: [30, 40] }}
+										/>
+										<Stack>
+											<Link
+												href={`/${comment.userId.username}`}
+												style={{
+													textDecoration: "none",
+													color: darkMode ? "white" : "black",
+												}}
+											>
+												<Typography
+													sx={{ fontSize: ["0.7rem", "0.8rem"] }}
+													fontWeight={"bold"}
+												>
+													{comment.userId.username}
+												</Typography>
+											</Link>
+											<Typography sx={{ fontSize: ["0.7rem", "0.8rem"] }}>
+												{comment.comment}
+											</Typography>
+										</Stack>
+									</Stack>
+									{comment.userId._id === userData._id ? (
+										<IconButton
+											color="error"
+											onClick={() => {
+												handleDeleteComment(comment._id!, id);
+											}}
 										>
-											{comment.userId.username}
-										</Typography>
-									</Link>
-									<Typography sx={{ fontSize: ["0.7rem", "0.8rem"] }}>
-										{comment.comment}
-									</Typography>
+											<Delete />
+										</IconButton>
+									) : null}
 								</Stack>
-							</Stack>
-						))}
+							))
+						)}
 					</Stack>
 					<Divider />
 					{isAuthenticated ? (

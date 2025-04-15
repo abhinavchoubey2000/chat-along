@@ -85,6 +85,16 @@ export const postApi = createApi({
 				},
 			}),
 		}),
+		deleteComment: builder.mutation({
+			query: (data: { postId: string; commentId: string }) => ({
+				url: `api/delete-post-comment`,
+				method: "DELETE",
+				body: {
+					postId: data.postId,
+					commentId: data.commentId,
+				},
+			}),
+		}),
 	}),
 });
 
@@ -92,6 +102,7 @@ export const {
 	useFetchPublicPostsDataQuery,
 	useLikeUnlikePostMutation,
 	useCommentPostMutation,
+	useDeleteCommentMutation,
 	useUploadImageToCloudinaryMutation,
 	useDeleteImageFromCloudinaryMutation,
 	useCreatePostMutation,
